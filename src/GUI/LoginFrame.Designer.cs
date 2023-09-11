@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginFrame));
             this.resetPassword = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
@@ -36,12 +37,13 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.leftPanel = new System.Windows.Forms.Panel();
-            this.button_login = new Palacio_el_restaurante.src.Controls.RJButton();
-            this.getPassword = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
-            this.getUsername = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             this.loadPicture = new System.Windows.Forms.PictureBox();
             this.panelL = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button_login = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.getPassword = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
+            this.getUsername = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             ((System.ComponentModel.ISupportInitialize)(this.createP)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -127,6 +129,38 @@
             this.leftPanel.TabIndex = 0;
             this.leftPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
+            // loadPicture
+            // 
+            this.loadPicture.Image = global::Palacio_el_restaurante.Properties.Resources.conexion;
+            this.loadPicture.Location = new System.Drawing.Point(59, 18);
+            this.loadPicture.Name = "loadPicture";
+            this.loadPicture.Size = new System.Drawing.Size(137, 117);
+            this.loadPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.loadPicture.TabIndex = 10;
+            this.loadPicture.TabStop = false;
+            // 
+            // panelL
+            // 
+            this.panelL.Controls.Add(this.loadPicture);
+            this.panelL.Location = new System.Drawing.Point(496, 258);
+            this.panelL.Name = "panelL";
+            this.panelL.Size = new System.Drawing.Size(256, 156);
+            this.panelL.TabIndex = 11;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Palacio_el_restaurante.Properties.Resources.espaguetis;
+            this.pictureBox3.Location = new System.Drawing.Point(623, 21);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(69, 60);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 12;
+            this.pictureBox3.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // button_login
             // 
             this.button_login.BackColor = System.Drawing.Color.MediumSlateBlue;
@@ -194,34 +228,6 @@
             this.getUsername.Texts = "";
             this.getUsername.UnderlinedStyle = false;
             // 
-            // loadPicture
-            // 
-            this.loadPicture.Image = global::Palacio_el_restaurante.Properties.Resources.conexion;
-            this.loadPicture.Location = new System.Drawing.Point(59, 18);
-            this.loadPicture.Name = "loadPicture";
-            this.loadPicture.Size = new System.Drawing.Size(137, 117);
-            this.loadPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.loadPicture.TabIndex = 10;
-            this.loadPicture.TabStop = false;
-            // 
-            // panelL
-            // 
-            this.panelL.Controls.Add(this.loadPicture);
-            this.panelL.Location = new System.Drawing.Point(496, 385);
-            this.panelL.Name = "panelL";
-            this.panelL.Size = new System.Drawing.Size(256, 156);
-            this.panelL.TabIndex = 11;
-            // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = global::Palacio_el_restaurante.Properties.Resources.espaguetis;
-            this.pictureBox3.Location = new System.Drawing.Point(623, 21);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(69, 60);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 12;
-            this.pictureBox3.TabStop = false;
-            // 
             // LoginFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -272,5 +278,6 @@
         private System.Windows.Forms.PictureBox loadPicture;
         private System.Windows.Forms.Panel panelL;
         private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.Timer timer1;
     }
 }

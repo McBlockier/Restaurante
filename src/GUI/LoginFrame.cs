@@ -19,6 +19,7 @@ namespace Palacio_el_restaurante
     {
         public int xClick = 0, yClick = 0;
         private InquiriesDB request = new InquiriesDB();
+        private int hh, mm, ss;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -58,32 +59,45 @@ namespace Palacio_el_restaurante
                     break;
                 default:
                     break;
-            }
-           
+            }        
         }
         private void button_login_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(getUsername.Texts) || String.IsNullOrEmpty(getPassword.Texts))
             {
                 RJMessageBox.Show("The username or password is empty or incorrect",
-                    "WARNING2", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-               
+                    "WARNING2", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);              
             }
-            else {
-                /*
+            else {              
                 panelL.Show();
                 resetPassword.Hide();
                 create.Hide();
                 createP.Hide();
                 button_login.Hide();
                 loadPicture.Show();
-                
-                this.Hide();
-                FoodUI foodGUI = new FoodUI();
-                foodGUI.Show();   
-                */
+                timer1.Start();             
             }
         }
+        private void resetTimer()
+        {
+            hh = 0;
+            mm = 0;
+            ss = 0;
+            timer1.Stop();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            ss += 1;
+           if(ss == 32)
+            {
+                resetTimer();
+                FoodUI food = new FoodUI();
+                food.Show();
+                this.Hide();
+            }
+        }
+
         private void resetPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (String.IsNullOrEmpty(getUsername.Texts))
