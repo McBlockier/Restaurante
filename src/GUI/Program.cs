@@ -16,7 +16,10 @@ namespace Palacio_el_restaurante
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginFrame());
+
+            LoginFrame login = new LoginFrame();
+            login.Show();
+            Application.Run();
         }
     }
 }

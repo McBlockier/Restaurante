@@ -9,12 +9,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Palacio_el_restaurante
+namespace Palacio_el_restaurante.src.UI
 {
-   
-    public partial class LoginFrame : Form
+    public partial class LoginReset : Form
     {
-        private String password = "", username = "";
         public int xClick = 0, yClick = 0;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -27,56 +25,48 @@ namespace Palacio_el_restaurante
           int nWidthEllipse, // height of ellipse
           int nHeightEllipse // width of ellipse
       );
-        public LoginFrame()
+        public LoginReset()
         {
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-
-           
+            smsP.Visible = false;
         }
-        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            if (e.Button != MouseButtons.Left)
-            { xClick = e.X; yClick = e.Y; }
-            else
-            { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
+            this.Hide();
+            LoginFrame loginFrame = new LoginFrame();
+            loginFrame.Show();
         }
 
-        private void Exit_Click(object sender, EventArgs e)
+        private void button_reset_MouseHover(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
-
-        private void LoginFrame_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button_login_Click(object sender, EventArgs e)
-        {
-            username = getUsername.Texts;
-            password = getPassword.Texts;
-            if (String.IsNullOrEmpty(username) || String.IsNullOrEmpty(password))
+            if (getPassword.Texts.Length > 0 & getPassowrdC.Texts.Length > 0)
             {
-
-            }
-            else { 
-
-                getUsername.Texts = "";
-                getPassword.Texts = "";
-            }
-           
+                if(getPassword.Texts.Length == getPassowrdC.Texts.Length)
+                {
+                    smsP.Visible = false;
+                }
+                else
+                {
+                    smsP.Visible =true;
+                    smsP.Text = "Passwords must match!";
+                }
+            }         
+        }
+        //Button for reset passwords
+        private void button_reset_Click(object sender, EventArgs e)
+        {
 
         }
+        //End
 
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        private void LoginReset_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left)
             { xClick = e.X; yClick = e.Y; }
             else
             { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
         }
-    
     }
 }
