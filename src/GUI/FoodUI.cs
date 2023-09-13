@@ -14,6 +14,7 @@ namespace Palacio_el_restaurante.src.UI
     public partial class FoodUI : Form
     {
         public int xClick = 0, yClick = 0;
+        private int ss;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -30,7 +31,9 @@ namespace Palacio_el_restaurante.src.UI
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-           
+            picture_out.Enabled = false;
+            picture_setting.Enabled = false;
+
         }
         //Function of motion panel or frame
         private void motionFrame(object sender, MouseEventArgs e)
@@ -40,25 +43,57 @@ namespace Palacio_el_restaurante.src.UI
             else
             { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
         }
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            ss += 1;
+            if(ss == 15)
+            {
+                resetTimer();
+                LoginFrame login = new LoginFrame();
+                login.Show();
+                login.Visible = true;
+                this.Hide();               
+            }
+        }
+        private void resetTimer()
+        {
+            ss = 0;
+            timer1.Stop();
+        }
+        private void picture_out_Click_1(object sender, EventArgs e)
+        {
+            timer1.Start();
+        }
+
+        private void panel4_MouseEnter(object sender, EventArgs e)
+        {
+            picture_out.Enabled = true;
+        }
+
+        private void panel3_MouseEnter(object sender, EventArgs e)
+        {
+            picture_setting.Enabled = true;
+        }
+
+        private void panel3_MouseLeave(object sender, EventArgs e)
+        {
+            picture_setting.Enabled = false;
+        }
+
+        private void picture_out_MouseLeave(object sender, EventArgs e)
+        {
+            picture_out.Enabled = false;
+        }
+
+        private void panel4_MouseLeave(object sender, EventArgs e)
+        {
+            picture_out.Enabled = false;
+        }
 
         private void FoodUI_MouseMove(object sender, MouseEventArgs e)
         {
             motionFrame(sender, e);
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void panel1_MouseMove(object sender, MouseEventArgs e)
-        {
-            motionFrame(sender, e);
-        }
-
-        private void panel2_MouseMove(object sender, MouseEventArgs e)
-        {
-            motionFrame(sender, e);
-        }
     }
 }

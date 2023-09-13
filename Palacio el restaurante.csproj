@@ -231,6 +231,10 @@
     <None Include="src\Img\wallpaper_blue.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\Img\salida.gif" />
+    <None Include="src\Img\resta.jpg" />
+    <None Include="src\Img\zumo-de-naranja.png" />
+    <None Include="src\Img\semilla-de-cafe.png" />
     <None Include="src\Img\volver.png" />
     <None Include="src\Img\tierra.gif" />
     <None Include="src\Img\alojamiento.png" />
@@ -238,6 +242,9 @@
     <None Include="src\Img\ajustes.gif" />
     <None Include="src\Img\cerrar-con-llave.png" />
     <None Include="src\Img\agregar-usuario.gif" />
+    <None Include="src\Img\cafe.jpg" />
+    <None Include="src\Img\ambur_wall.jpg" />
+    <None Include="src\Img\back_coffe.jpg" />
     <Content Include="src\Img\chat.png" />
     <None Include="src\Img\contrasena.gif" />
     <None Include="src\Img\conexion.gif" />
@@ -248,6 +255,7 @@
     <None Include="src\Img\hombre.png" />
     <None Include="src\Img\hombre %281%29.png" />
     <None Include="src\Img\House.png" />
+    <None Include="src\Img\hamburguesa.png" />
     <Content Include="src\Img\information.png" />
     <None Include="src\Img\location.gif" />
     <None Include="src\Img\location-imageonline.co-9183562.gif" />
@@ -256,6 +264,18 @@
     <None Include="src\Img\ojo_off.gif" />
     <None Include="src\Img\newUsuario.png" />
     <None Include="src\Img\newCandado.png" />
+    <None Include="src\Img\jugo_wall.jpg" />
+    <None Include="src\Img\langosta.png" />
+    <None Include="src\Img\leche.png" />
+    <None Include="src\Img\Mariscos_Wall.jpg" />
+    <None Include="src\Img\olla_caliente.jpg" />
+    <None Include="src\Img\olla-caliente.png" />
+    <None Include="src\Img\milk_wall.jpg" />
+    <None Include="src\Img\milk_back.jpg" />
+    <None Include="src\Img\juice_back.jpg" />
+    <None Include="src\Img\logo_Restaurante.jpg" />
+    <None Include="src\Img\pollo.png" />
+    <None Include="src\Img\pala.jpg" />
     <Content Include="src\Img\question.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

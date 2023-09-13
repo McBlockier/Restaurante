@@ -8,10 +8,12 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 
 namespace Palacio_el_restaurante
 {  
@@ -19,7 +21,7 @@ namespace Palacio_el_restaurante
     {
         public int xClick = 0, yClick = 0;
         private InquiriesDB request = new InquiriesDB();
-        private int hh, mm, ss;
+        private int ss;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -36,6 +38,7 @@ namespace Palacio_el_restaurante
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+
             panelL.Hide();
             loadPicture.Hide();
             getPassword.PasswordChar = true;
@@ -84,8 +87,6 @@ namespace Palacio_el_restaurante
         }
         private void resetTimer()
         {
-            hh = 0;
-            mm = 0;
             ss = 0;
             timer1.Stop();
         }
@@ -154,7 +155,7 @@ namespace Palacio_el_restaurante
             if (e.Button != MouseButtons.Left)
             { xClick = e.X; yClick = e.Y; }
             else
-            { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
+            { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }        
         }   
     }
 }
