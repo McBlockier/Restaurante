@@ -38,7 +38,12 @@ namespace Palacio_el_restaurante
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             panelL.Hide();
             loadPicture.Hide();
+            getPassword.PasswordChar = true;
+            showPassword.Image = Properties.Resources.ojo_off;
+            create.Enabled = false;
+            resetPassword.Visible = false;
         }
+ 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left)
@@ -72,7 +77,6 @@ namespace Palacio_el_restaurante
                 panelL.Show();
                 resetPassword.Hide();
                 create.Hide();
-                createP.Hide();
                 button_login.Hide();
                 loadPicture.Show();
                 timer1.Start();             
@@ -96,6 +100,31 @@ namespace Palacio_el_restaurante
                 food.Show();
                 this.Hide();
             }
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+           if(getPassword.PasswordChar != true)
+            {
+                showPassword.Image = Properties.Resources.ojo_off;
+                getPassword.PasswordChar = true;
+            }
+            else
+            {
+                showPassword.Image = Properties.Resources.ojo_on;
+                getPassword.PasswordChar = false;
+            }
+            
+        }
+
+        private void area_MouseEnter(object sender, EventArgs e)
+        {
+            create.Enabled = true;
+        }
+
+        private void area_MouseLeave(object sender, EventArgs e)
+        {
+            create.Enabled = false;
         }
 
         private void resetPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -196,25 +196,27 @@
             // pictureVilla
             // 
             this.pictureVilla.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.pictureVilla.BackgroundImage = global::Palacio_el_restaurante.Properties.Resources.alojamiento;
             this.pictureVilla.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureVilla.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureVilla.Location = new System.Drawing.Point(130, 185);
+            this.pictureVilla.Image = global::Palacio_el_restaurante.Properties.Resources.House;
+            this.pictureVilla.Location = new System.Drawing.Point(119, 185);
             this.pictureVilla.Name = "pictureVilla";
             this.pictureVilla.Size = new System.Drawing.Size(86, 83);
+            this.pictureVilla.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureVilla.TabIndex = 12;
             this.pictureVilla.TabStop = false;
             // 
             // pictureHotel
             // 
             this.pictureHotel.BackColor = System.Drawing.Color.PaleTurquoise;
-            this.pictureHotel.BackgroundImage = global::Palacio_el_restaurante.Properties.Resources.hotel;
             this.pictureHotel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureHotel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureHotel.Enabled = false;
-            this.pictureHotel.Location = new System.Drawing.Point(400, 185);
+            this.pictureHotel.Image = global::Palacio_el_restaurante.Properties.Resources.hotel;
+            this.pictureHotel.Location = new System.Drawing.Point(389, 185);
             this.pictureHotel.Name = "pictureHotel";
             this.pictureHotel.Size = new System.Drawing.Size(86, 83);
+            this.pictureHotel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureHotel.TabIndex = 13;
             this.pictureHotel.TabStop = false;
             // 

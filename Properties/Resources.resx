@@ -121,6 +121,9 @@
   <data name="acceso" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\acceso.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="agregar_usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\agregar-usuario.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="ajustes" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\ajustes.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -181,6 +184,9 @@
   <data name="hotel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\hotel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="House" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\House.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Imagen_de_WhatsApp_2023_09_04_a_las_18_23_45" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\img\Imagen de WhatsApp 2023-09-04 a las 18.23.45.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -198,6 +204,18 @@
   </data>
   <data name="mesa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\mesa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="newCandado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\newCandado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="newUsuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\newUsuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ojo_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\ojo_off.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ojo_on" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\ojo_on.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="paciente" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\paciente.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

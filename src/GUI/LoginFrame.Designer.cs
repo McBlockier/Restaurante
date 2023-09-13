@@ -31,32 +31,35 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginFrame));
             this.resetPassword = new System.Windows.Forms.LinkLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.create = new System.Windows.Forms.LinkLabel();
-            this.createP = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.leftPanel = new System.Windows.Forms.Panel();
-            this.loadPicture = new System.Windows.Forms.PictureBox();
             this.panelL = new System.Windows.Forms.Panel();
+            this.loadPicture = new System.Windows.Forms.PictureBox();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.button_login = new Palacio_el_restaurante.src.Controls.RJButton();
             this.getPassword = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             this.getUsername = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
-            ((System.ComponentModel.ISupportInitialize)(this.createP)).BeginInit();
+            this.create = new System.Windows.Forms.PictureBox();
+            this.showPassword = new System.Windows.Forms.PictureBox();
+            this.area = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loadPicture)).BeginInit();
+            this.leftPanel.SuspendLayout();
             this.panelL.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.loadPicture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.create)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showPassword)).BeginInit();
+            this.area.SuspendLayout();
             this.SuspendLayout();
             // 
             // resetPassword
             // 
             this.resetPassword.AutoSize = true;
             this.resetPassword.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetPassword.Location = new System.Drawing.Point(491, 357);
+            this.resetPassword.Location = new System.Drawing.Point(459, 244);
             this.resetPassword.Name = "resetPassword";
             this.resetPassword.Size = new System.Drawing.Size(261, 25);
             this.resetPassword.TabIndex = 5;
@@ -64,46 +67,13 @@
             this.resetPassword.Text = "Forgot username/password?";
             this.resetPassword.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.resetPassword_LinkClicked);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(565, 75);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 24);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "USER LOGIN";
-            // 
-            // create
-            // 
-            this.create.AutoSize = true;
-            this.create.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.create.Location = new System.Drawing.Point(512, 448);
-            this.create.Name = "create";
-            this.create.Size = new System.Drawing.Size(180, 25);
-            this.create.TabIndex = 8;
-            this.create.TabStop = true;
-            this.create.Text = "Create you account";
-            this.create.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // createP
-            // 
-            this.createP.BackgroundImage = global::Palacio_el_restaurante.Properties.Resources.flecha_derecha_recta;
-            this.createP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.createP.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.createP.Location = new System.Drawing.Point(698, 448);
-            this.createP.Name = "createP";
-            this.createP.Size = new System.Drawing.Size(25, 23);
-            this.createP.TabIndex = 9;
-            this.createP.TabStop = false;
-            // 
             // pictureBox2
             // 
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Image = global::Palacio_el_restaurante.Properties.Resources.candado;
-            this.pictureBox2.Location = new System.Drawing.Point(466, 200);
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Image = global::Palacio_el_restaurante.Properties.Resources.newCandado;
+            this.pictureBox2.Location = new System.Drawing.Point(421, 201);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(38, 34);
+            this.pictureBox2.Size = new System.Drawing.Size(48, 34);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 4;
             this.pictureBox2.TabStop = false;
@@ -111,8 +81,8 @@
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Image = global::Palacio_el_restaurante.Properties.Resources.usuario;
-            this.pictureBox1.Location = new System.Drawing.Point(466, 126);
+            this.pictureBox1.Image = global::Palacio_el_restaurante.Properties.Resources.newUsuario;
+            this.pictureBox1.Location = new System.Drawing.Point(419, 126);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(38, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -123,36 +93,37 @@
             // 
             this.leftPanel.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("leftPanel.BackgroundImage")));
             this.leftPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.leftPanel.Controls.Add(this.pictureBox2);
             this.leftPanel.Location = new System.Drawing.Point(-2, -1);
             this.leftPanel.Name = "leftPanel";
-            this.leftPanel.Size = new System.Drawing.Size(446, 495);
+            this.leftPanel.Size = new System.Drawing.Size(469, 495);
             this.leftPanel.TabIndex = 0;
             this.leftPanel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
-            // 
-            // loadPicture
-            // 
-            this.loadPicture.Image = global::Palacio_el_restaurante.Properties.Resources.conexion;
-            this.loadPicture.Location = new System.Drawing.Point(59, 18);
-            this.loadPicture.Name = "loadPicture";
-            this.loadPicture.Size = new System.Drawing.Size(137, 117);
-            this.loadPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.loadPicture.TabIndex = 10;
-            this.loadPicture.TabStop = false;
             // 
             // panelL
             // 
             this.panelL.Controls.Add(this.loadPicture);
-            this.panelL.Location = new System.Drawing.Point(496, 258);
+            this.panelL.Location = new System.Drawing.Point(489, 258);
             this.panelL.Name = "panelL";
-            this.panelL.Size = new System.Drawing.Size(256, 156);
+            this.panelL.Size = new System.Drawing.Size(206, 158);
             this.panelL.TabIndex = 11;
+            // 
+            // loadPicture
+            // 
+            this.loadPicture.Image = global::Palacio_el_restaurante.Properties.Resources.conexion;
+            this.loadPicture.Location = new System.Drawing.Point(24, 16);
+            this.loadPicture.Name = "loadPicture";
+            this.loadPicture.Size = new System.Drawing.Size(154, 130);
+            this.loadPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.loadPicture.TabIndex = 10;
+            this.loadPicture.TabStop = false;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Palacio_el_restaurante.Properties.Resources.espaguetis;
-            this.pictureBox3.Location = new System.Drawing.Point(623, 21);
+            this.pictureBox3.Location = new System.Drawing.Point(524, 9);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(69, 60);
+            this.pictureBox3.Size = new System.Drawing.Size(124, 110);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 12;
             this.pictureBox3.TabStop = false;
@@ -175,9 +146,9 @@
             this.button_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_login.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_login.ForeColor = System.Drawing.Color.White;
-            this.button_login.Location = new System.Drawing.Point(525, 268);
+            this.button_login.Location = new System.Drawing.Point(489, 295);
             this.button_login.Name = "button_login";
-            this.button_login.Size = new System.Drawing.Size(217, 41);
+            this.button_login.Size = new System.Drawing.Size(206, 41);
             this.button_login.TabIndex = 6;
             this.button_login.Text = "LOGIN";
             this.button_login.TextColor = System.Drawing.Color.White;
@@ -193,7 +164,7 @@
             this.getPassword.BorderSize = 2;
             this.getPassword.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getPassword.Location = new System.Drawing.Point(512, 200);
+            this.getPassword.Location = new System.Drawing.Point(464, 200);
             this.getPassword.Margin = new System.Windows.Forms.Padding(4);
             this.getPassword.Multiline = false;
             this.getPassword.Name = "getPassword";
@@ -215,7 +186,7 @@
             this.getUsername.BorderSize = 2;
             this.getUsername.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getUsername.Location = new System.Drawing.Point(512, 126);
+            this.getUsername.Location = new System.Drawing.Point(464, 126);
             this.getUsername.Margin = new System.Windows.Forms.Padding(4);
             this.getUsername.Multiline = false;
             this.getUsername.Name = "getUsername";
@@ -228,20 +199,52 @@
             this.getUsername.Texts = "";
             this.getUsername.UnderlinedStyle = false;
             // 
+            // create
+            // 
+            this.create.BackColor = System.Drawing.Color.Transparent;
+            this.create.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.create.Image = global::Palacio_el_restaurante.Properties.Resources.agregar_usuario;
+            this.create.Location = new System.Drawing.Point(17, 15);
+            this.create.Name = "create";
+            this.create.Size = new System.Drawing.Size(73, 61);
+            this.create.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.create.TabIndex = 13;
+            this.create.TabStop = false;
+            // 
+            // showPassword
+            // 
+            this.showPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.showPassword.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.showPassword.Location = new System.Drawing.Point(731, 200);
+            this.showPassword.Name = "showPassword";
+            this.showPassword.Size = new System.Drawing.Size(51, 50);
+            this.showPassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.showPassword.TabIndex = 14;
+            this.showPassword.TabStop = false;
+            this.showPassword.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // area
+            // 
+            this.area.Controls.Add(this.create);
+            this.area.Location = new System.Drawing.Point(746, 406);
+            this.area.Name = "area";
+            this.area.Size = new System.Drawing.Size(111, 88);
+            this.area.TabIndex = 15;
+            this.area.MouseEnter += new System.EventHandler(this.area_MouseEnter);
+            this.area.MouseLeave += new System.EventHandler(this.area_MouseLeave);
+            // 
             // LoginFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(848, 494);
-            this.Controls.Add(this.pictureBox3);
+            this.Controls.Add(this.area);
             this.Controls.Add(this.panelL);
-            this.Controls.Add(this.createP);
-            this.Controls.Add(this.create);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.showPassword);
+            this.Controls.Add(this.pictureBox3);
             this.Controls.Add(this.button_login);
             this.Controls.Add(this.resetPassword);
-            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.getPassword);
             this.Controls.Add(this.getUsername);
@@ -252,12 +255,15 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
-            ((System.ComponentModel.ISupportInitialize)(this.createP)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.loadPicture)).EndInit();
+            this.leftPanel.ResumeLayout(false);
             this.panelL.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.loadPicture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.create)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showPassword)).EndInit();
+            this.area.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -272,12 +278,12 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.LinkLabel resetPassword;
         private src.Controls.RJButton button_login;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.LinkLabel create;
-        private System.Windows.Forms.PictureBox createP;
         private System.Windows.Forms.PictureBox loadPicture;
         private System.Windows.Forms.Panel panelL;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.PictureBox create;
+        private System.Windows.Forms.PictureBox showPassword;
+        private System.Windows.Forms.Panel area;
     }
 }

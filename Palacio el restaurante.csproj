@@ -237,6 +237,7 @@
     <None Include="src\Img\acceso.gif" />
     <None Include="src\Img\ajustes.gif" />
     <None Include="src\Img\cerrar-con-llave.png" />
+    <None Include="src\Img\agregar-usuario.gif" />
     <Content Include="src\Img\chat.png" />
     <None Include="src\Img\contrasena.gif" />
     <None Include="src\Img\conexion.gif" />
@@ -246,10 +247,15 @@
     <None Include="src\Img\hotel.png" />
     <None Include="src\Img\hombre.png" />
     <None Include="src\Img\hombre %281%29.png" />
+    <None Include="src\Img\House.png" />
     <Content Include="src\Img\information.png" />
     <None Include="src\Img\location.gif" />
     <None Include="src\Img\location-imageonline.co-9183562.gif" />
     <None Include="src\Img\paciente.gif" />
+    <None Include="src\Img\ojo_on.gif" />
+    <None Include="src\Img\ojo_off.gif" />
+    <None Include="src\Img\newUsuario.png" />
+    <None Include="src\Img\newCandado.png" />
     <Content Include="src\Img\question.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
