@@ -17,6 +17,7 @@ namespace Palacio_el_restaurante.src.UI
         public int xClick = 0, yClick = 0;
         private int ss;
         private int countA, countS, countI;
+        private int buttonCountL, buttonCountM, buttonCountC;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -80,14 +81,10 @@ namespace Palacio_el_restaurante.src.UI
             Application.Exit();
         }
 
-        
-
         private void FoodUI_MouseMove(object sender, MouseEventArgs e)
         {
             motionFrame(sender, e);
         }
-
-       
 
         private void clickMore(String type)
         {
@@ -132,7 +129,7 @@ namespace Palacio_el_restaurante.src.UI
                         default:
                             if (countA > 9)
                             {
-                                RJMessageBox.Show("You don't put more ice", "Warning!",
+                                RJMessageBox.Show("You don't put more amount", "Warning!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 countA = 10;
                             }
@@ -178,7 +175,7 @@ namespace Palacio_el_restaurante.src.UI
                         default:
                             if (countS > 9)
                             {
-                                RJMessageBox.Show("You don't put more ice", "Warning!",
+                                RJMessageBox.Show("You don't put more sugar", "Warning!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 countS = 10;
                             }
@@ -238,13 +235,11 @@ namespace Palacio_el_restaurante.src.UI
             countA++;
             clickMore("Amount");
         }
-
         private void rjPictureRounded5_Click(object sender, EventArgs e)
         {
             countS++;
             clickMore("Sugar");
         }
-
         private void rjPictureRounded8_Click(object sender, EventArgs e)
         {
             countI++;
@@ -253,20 +248,54 @@ namespace Palacio_el_restaurante.src.UI
 
         private void button_MinusS_Click(object sender, EventArgs e)
         {
-            Image imgOff = Properties.Resources.letra_l_Off;
-            Image imgOn = Properties.Resources.letra_l;
-            if(button_MinusS.Image != imgOn)
+            buttonCountL++;
+            if(buttonCountL < 2)
             {
-                button_MinusS.Image = imgOn;
+                button_MoreS.Image = Properties.Resources.letra_c_off;
+                showCount2.Image = Properties.Resources.letra_m_off;
+                button_MinusS.Image = Properties.Resources.letra_l;
+                buttonCountM = 0;
+                buttonCountC = 0;
             }
             else
             {
-                if(button_MinusS.Image != imgOff)
-                {
-                    button_MinusS.Image = imgOff;
-                }
+                button_MinusS.Image = Properties.Resources.letra_l_Off;
+                buttonCountL = 0;
             }
-
+        }
+        private void showCount2_Click(object sender, EventArgs e)
+        {
+            buttonCountM++;
+            if(buttonCountM < 2)
+            {
+                showCount2.Image = Properties.Resources.letra_m;
+                button_MinusS.Image = Properties.Resources.letra_l_Off;
+                button_MoreS.Image = Properties.Resources.letra_c_off;
+                buttonCountC = 0;
+                buttonCountL = 0;
+            }
+            else
+            {
+                showCount2.Image = Properties.Resources.letra_m_off;
+                buttonCountM = 0;
+            }
+        }
+        private void button_MoreS_Click(object sender, EventArgs e)
+        {
+            buttonCountC++;
+            if(buttonCountC < 2)
+            {
+                button_MoreS.Image = Properties.Resources.letra_c;
+                showCount2.Image = Properties.Resources.letra_m_off;
+                button_MinusS.Image = Properties.Resources.letra_l_Off;
+                buttonCountM = 0;
+                buttonCountL = 0;
+            }
+            else
+            {
+                button_MoreS.Image = Properties.Resources.letra_c_off;
+                buttonCountC = 0;
+            }
         }
 
         private void button_MinusC_Click(object sender, EventArgs e)
@@ -285,6 +314,5 @@ namespace Palacio_el_restaurante.src.UI
             countA--;
             clickMore("Ice");
         }
-
     }
 }

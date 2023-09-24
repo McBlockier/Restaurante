@@ -39,6 +39,7 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector NET 8.1.0\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
@@ -88,17 +89,30 @@
     <Compile Include="src\Conection\InquiriesDB.cs" />
     <Compile Include="src\Conection\Persona.cs" />
     <Compile Include="src\Conection\SecureEncryptor.cs" />
+    <Compile Include="src\Controls\CustomLinkLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\Controls\FormMessageBox.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\Controls\FormMessageBox.Designer.cs">
       <DependentUpon>FormMessageBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Controls\GraphicsExtensions.cs" />
     <Compile Include="src\Controls\RJButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\Controls\RJComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="src\Controls\RJMessageBox.cs" />
+    <Compile Include="src\Controls\RjPanel.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\Controls\RJPictureRounded.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Controls\RJProgressBar.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\Controls\RJTextBox.cs">
@@ -231,6 +245,8 @@
     <None Include="src\Img\wallpaper_blue.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\Img\seaFood.png" />
+    <None Include="src\Img\Yellow.png" />
     <None Include="src\Img\uno.png" />
     <None Include="src\Img\tres.png" />
     <None Include="src\Img\siete.png" />
@@ -270,6 +286,7 @@
     <None Include="src\Img\hombre %281%29.png" />
     <None Include="src\Img\House.png" />
     <None Include="src\Img\hamburguesa.png" />
+    <None Include="src\Img\fastFood.png" />
     <Content Include="src\Img\information.png" />
     <None Include="src\Img\location.gif" />
     <None Include="src\Img\location-imageonline.co-9183562.gif" />
