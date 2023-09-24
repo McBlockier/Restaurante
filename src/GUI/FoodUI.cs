@@ -31,8 +31,6 @@ namespace Palacio_el_restaurante.src.UI
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            picture_out.Enabled = false;
-            picture_setting.Enabled = false;
 
         }
         //Function of motion panel or frame
@@ -63,31 +61,21 @@ namespace Palacio_el_restaurante.src.UI
         private void picture_out_Click_1(object sender, EventArgs e)
         {
             timer1.Start();
+            LoginFrame login = new LoginFrame();
+            login.Show();
+            this.Hide();
         }
 
-        private void panel4_MouseEnter(object sender, EventArgs e)
+        private void pictureLogOut_Click(object sender, EventArgs e)
         {
-            picture_out.Enabled = true;
+            LoginFrame login = new LoginFrame();
+            login.Show();
+            this.Hide();
         }
 
-        private void panel3_MouseEnter(object sender, EventArgs e)
+        private void pictureBox5_Click(object sender, EventArgs e)
         {
-            picture_setting.Enabled = true;
-        }
-
-        private void panel3_MouseLeave(object sender, EventArgs e)
-        {
-            picture_setting.Enabled = false;
-        }
-
-        private void picture_out_MouseLeave(object sender, EventArgs e)
-        {
-            picture_out.Enabled = false;
-        }
-
-        private void panel4_MouseLeave(object sender, EventArgs e)
-        {
-            picture_out.Enabled = false;
+            Application.Exit();
         }
 
         private void FoodUI_MouseMove(object sender, MouseEventArgs e)

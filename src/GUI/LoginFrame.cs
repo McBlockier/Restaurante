@@ -43,7 +43,6 @@ namespace Palacio_el_restaurante
             loadPicture.Hide();
             getPassword.PasswordChar = true;
             showPassword.Image = Properties.Resources.ojo_off;
-            create.Enabled = false;
             resetPassword.Visible = false;
         }
  
@@ -150,6 +149,24 @@ namespace Palacio_el_restaurante
             LoginCreateA create = new LoginCreateA();
             create.Show();
         }
+
+        private void create_Click(object sender, EventArgs e)
+        {
+            LoginCreateA loginA = new LoginCreateA();
+            loginA.Show();
+            this.Hide();
+        }
+
+        private void create_MouseHover(object sender, EventArgs e)
+        {
+            create.Image = Properties.Resources.agregar_usuario;
+        }
+
+        private void create_MouseLeave(object sender, EventArgs e)
+        {
+            create.Image = Properties.Resources.addUser;
+        }
+
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left)

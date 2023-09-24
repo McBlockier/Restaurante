@@ -155,6 +155,8 @@ namespace Palacio_el_restaurante.src.UI
                         }
                         else
                         {
+
+                            //Aqui va la logica para registrar el usuario
                             rjButton1.Hide();
                             pictureAcces.Show();
 

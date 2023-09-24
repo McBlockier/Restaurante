@@ -231,6 +231,7 @@
     <None Include="src\Img\wallpaper_blue.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\Img\x.gif" />
     <None Include="src\Img\salida.gif" />
     <None Include="src\Img\resta.jpg" />
     <None Include="src\Img\zumo-de-naranja.png" />
@@ -245,9 +246,12 @@
     <None Include="src\Img\cafe.jpg" />
     <None Include="src\Img\ambur_wall.jpg" />
     <None Include="src\Img\back_coffe.jpg" />
+    <None Include="src\Img\addUser.jpg" />
+    <None Include="src\Img\billetera.gif" />
     <Content Include="src\Img\chat.png" />
     <None Include="src\Img\contrasena.gif" />
     <None Include="src\Img\conexion.gif" />
+    <None Include="src\Img\cocinando.gif" />
     <Content Include="src\Img\error.png" />
     <None Include="src\Img\espaguetis.gif" />
     <Content Include="src\Img\exclamation.png" />

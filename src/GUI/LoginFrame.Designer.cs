@@ -43,7 +43,6 @@
             this.getUsername = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             this.create = new System.Windows.Forms.PictureBox();
             this.showPassword = new System.Windows.Forms.PictureBox();
-            this.area = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.leftPanel.SuspendLayout();
@@ -52,7 +51,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.create)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.showPassword)).BeginInit();
-            this.area.SuspendLayout();
             this.SuspendLayout();
             // 
             // resetPassword
@@ -103,7 +101,7 @@
             // panelL
             // 
             this.panelL.Controls.Add(this.loadPicture);
-            this.panelL.Location = new System.Drawing.Point(489, 258);
+            this.panelL.Location = new System.Drawing.Point(489, 263);
             this.panelL.Name = "panelL";
             this.panelL.Size = new System.Drawing.Size(206, 158);
             this.panelL.TabIndex = 11;
@@ -203,13 +201,16 @@
             // 
             this.create.BackColor = System.Drawing.Color.Transparent;
             this.create.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.create.Image = global::Palacio_el_restaurante.Properties.Resources.agregar_usuario;
-            this.create.Location = new System.Drawing.Point(17, 15);
+            this.create.Image = global::Palacio_el_restaurante.Properties.Resources.addUser;
+            this.create.Location = new System.Drawing.Point(771, 433);
             this.create.Name = "create";
-            this.create.Size = new System.Drawing.Size(73, 61);
+            this.create.Size = new System.Drawing.Size(65, 61);
             this.create.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.create.TabIndex = 13;
             this.create.TabStop = false;
+            this.create.Click += new System.EventHandler(this.create_Click);
+            this.create.MouseLeave += new System.EventHandler(this.create_MouseLeave);
+            this.create.MouseHover += new System.EventHandler(this.create_MouseHover);
             // 
             // showPassword
             // 
@@ -223,23 +224,13 @@
             this.showPassword.TabStop = false;
             this.showPassword.Click += new System.EventHandler(this.pictureBox4_Click);
             // 
-            // area
-            // 
-            this.area.Controls.Add(this.create);
-            this.area.Location = new System.Drawing.Point(746, 406);
-            this.area.Name = "area";
-            this.area.Size = new System.Drawing.Size(111, 88);
-            this.area.TabIndex = 15;
-            this.area.MouseEnter += new System.EventHandler(this.area_MouseEnter);
-            this.area.MouseLeave += new System.EventHandler(this.area_MouseLeave);
-            // 
             // LoginFrame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(848, 494);
-            this.Controls.Add(this.area);
+            this.Controls.Add(this.create);
             this.Controls.Add(this.panelL);
             this.Controls.Add(this.showPassword);
             this.Controls.Add(this.pictureBox3);
@@ -263,7 +254,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.create)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.showPassword)).EndInit();
-            this.area.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,6 +274,5 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox create;
         private System.Windows.Forms.PictureBox showPassword;
-        private System.Windows.Forms.Panel area;
     }
 }

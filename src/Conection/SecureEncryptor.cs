@@ -14,8 +14,10 @@ namespace Palacio_el_restaurante.src.Conection
     {
         private const int KeySize = 256; //bits
         private const int IvSize = 128; //bits
-        private byte[] encryptedData;
+        public byte[] encryptedData;
         private string textoDesencriptado = "";
+        private string key = "";
+        
 
         public SecureEncryptor(String Original_Text)
         {
@@ -26,16 +28,8 @@ namespace Palacio_el_restaurante.src.Conection
             }
             encryptedData = Encrypt(Original_Text, clave);
             textoDesencriptado = Dencrypt(encryptedData, clave);
+            
         }
-        public byte[] getEncrypt()
-        {
-            return encryptedData;
-        }
-        public string getDenCrypt()
-        {
-            return textoDesencriptado;
-        }
-
         private byte[] Encrypt(string texto, byte[] clave)
         {
             using (AesCng aes = new AesCng())
@@ -79,6 +73,68 @@ namespace Palacio_el_restaurante.src.Conection
                 {
                     byte[] decryptedBytes = decryptor.TransformFinalBlock(ciphertextBytes, 0, ciphertextBytes.Length);
                     return Encoding.UTF8.GetString(decryptedBytes);
+                }
+            }
+        }
+
+        public static string EncryptPassword(String password)
+        {
+            using (Aes aesAlg = Aes.Create())
+            {
+                String keyPass = GenerarCadenaAleatoria(32);
+                String block = GenerarCadenaAleatoria(16);
+                aesAlg.Key = Encoding.UTF8.GetBytes(keyPass);
+                aesAlg.IV = Encoding.UTF8.GetBytes(block);
+
+                ICryptoTransform encryptor = aesAlg.CreateEncryptor(aesAlg.Key, aesAlg.IV);
+
+                using (MemoryStream msEncrypt = new MemoryStream())
+                {
+                    using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                    {
+                        using (StreamWriter swEncrypt = new StreamWriter(csEncrypt))
+                        {
+                            swEncrypt.Write(password);
+                        }
+                    }
+
+                    return Convert.ToBase64String(msEncrypt.ToArray());
+                }
+            }
+        }
+        static string GenerarCadenaAleatoria(int longitud)
+        {
+            const string caracteresPermitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            Random random = new Random();
+            char[] resultado = new char[longitud];
+
+            for (int i = 0; i < longitud; i++)
+            {
+                int indiceCaracter = random.Next(caracteresPermitidos.Length);
+                resultado[i] = caracteresPermitidos[indiceCaracter];
+            }
+
+            return new string(resultado);
+        }
+
+        static string Desencriptar(string textoEncriptado, string clave, string iv)
+        {
+            using (Aes aesAlg = Aes.Create())
+            {
+                aesAlg.Key = Encoding.UTF8.GetBytes(clave);
+                aesAlg.IV = Encoding.UTF8.GetBytes(iv);
+
+                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+                using (MemoryStream msDecrypt = new MemoryStream(Convert.FromBase64String(textoEncriptado)))
+                {
+                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        {
+                            return srDecrypt.ReadToEnd();
+                        }
+                    }
                 }
             }
         }
