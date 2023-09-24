@@ -31,16 +31,11 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FoodUI));
             this.leftPanel = new System.Windows.Forms.Panel();
-            this.rjButton5 = new Palacio_el_restaurante.src.Controls.RJButton();
-            this.rjButton4 = new Palacio_el_restaurante.src.Controls.RJButton();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label_coffe = new System.Windows.Forms.Label();
-            this.rjButton3 = new Palacio_el_restaurante.src.Controls.RJButton();
-            this.rjButton2 = new Palacio_el_restaurante.src.Controls.RJButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.button_coffe = new Palacio_el_restaurante.src.Controls.RJButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
@@ -56,13 +51,20 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.nick = new System.Windows.Forms.Label();
-            this.rjPictureRounded2 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.rjPictureRounded1 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
-            this.rjButton1 = new Palacio_el_restaurante.src.Controls.RJButton();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelJuice = new System.Windows.Forms.Panel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label20 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -79,10 +81,29 @@
             this.label7 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelFood = new System.Windows.Forms.Panel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
-            this.rjButton6 = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjButton7 = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.showCount4 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.rjPictureRounded7 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.rjPictureRounded8 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.showCount3 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.rjPictureRounded4 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.rjPictureRounded5 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.showCount2 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.button_MinusS = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.button_MoreS = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.showCount1 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.button_MinusC = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.button_MoreC = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.rjButton6 = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.rjPictureRounded2 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.rjPictureRounded1 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.rjButton1 = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.rjButton5 = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.rjButton4 = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.rjButton3 = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.rjButton2 = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.button_coffe = new Palacio_el_restaurante.src.Controls.RJButton();
             this.leftPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel7.SuspendLayout();
@@ -94,16 +115,32 @@
             this.panelSettings.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded1)).BeginInit();
             this.panelJuice.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel8.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.panelFood.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showCount4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showCount3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showCount2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button_MinusS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button_MoreS)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showCount1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button_MinusC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button_MoreC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded1)).BeginInit();
             this.SuspendLayout();
             // 
             // leftPanel
@@ -123,46 +160,6 @@
             this.leftPanel.Name = "leftPanel";
             this.leftPanel.Size = new System.Drawing.Size(287, 863);
             this.leftPanel.TabIndex = 0;
-            // 
-            // rjButton5
-            // 
-            this.rjButton5.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton5.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton5.BackgroundImage = global::Palacio_el_restaurante.Properties.Resources.Mariscos_Wall;
-            this.rjButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.rjButton5.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton5.BorderRadius = 20;
-            this.rjButton5.BorderSize = 0;
-            this.rjButton5.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton5.FlatAppearance.BorderSize = 0;
-            this.rjButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton5.ForeColor = System.Drawing.Color.White;
-            this.rjButton5.Location = new System.Drawing.Point(12, 638);
-            this.rjButton5.Name = "rjButton5";
-            this.rjButton5.Size = new System.Drawing.Size(259, 109);
-            this.rjButton5.TabIndex = 9;
-            this.rjButton5.TextColor = System.Drawing.Color.White;
-            this.rjButton5.UseVisualStyleBackColor = false;
-            // 
-            // rjButton4
-            // 
-            this.rjButton4.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton4.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton4.BackgroundImage = global::Palacio_el_restaurante.Properties.Resources.ambur_wall;
-            this.rjButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.rjButton4.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton4.BorderRadius = 20;
-            this.rjButton4.BorderSize = 0;
-            this.rjButton4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton4.FlatAppearance.BorderSize = 0;
-            this.rjButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton4.ForeColor = System.Drawing.Color.White;
-            this.rjButton4.Location = new System.Drawing.Point(12, 509);
-            this.rjButton4.Name = "rjButton4";
-            this.rjButton4.Size = new System.Drawing.Size(259, 109);
-            this.rjButton4.TabIndex = 8;
-            this.rjButton4.TextColor = System.Drawing.Color.White;
-            this.rjButton4.UseVisualStyleBackColor = false;
             // 
             // label4
             // 
@@ -216,47 +213,6 @@
             this.label_coffe.TabIndex = 4;
             this.label_coffe.Text = "Coffe";
             // 
-            // rjButton3
-            // 
-            this.rjButton3.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton3.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton3.BackgroundImage = global::Palacio_el_restaurante.Properties.Resources.jugo_wall;
-            this.rjButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.rjButton3.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton3.BorderRadius = 20;
-            this.rjButton3.BorderSize = 0;
-            this.rjButton3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton3.FlatAppearance.BorderSize = 0;
-            this.rjButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton3.ForeColor = System.Drawing.Color.White;
-            this.rjButton3.Location = new System.Drawing.Point(12, 316);
-            this.rjButton3.Name = "rjButton3";
-            this.rjButton3.Size = new System.Drawing.Size(259, 115);
-            this.rjButton3.TabIndex = 3;
-            this.rjButton3.TextColor = System.Drawing.Color.White;
-            this.rjButton3.UseVisualStyleBackColor = false;
-            // 
-            // rjButton2
-            // 
-            this.rjButton2.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton2.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton2.BackgroundImage = global::Palacio_el_restaurante.Properties.Resources.milk_wall;
-            this.rjButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.rjButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton2.BorderRadius = 20;
-            this.rjButton2.BorderSize = 0;
-            this.rjButton2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton2.FlatAppearance.BorderSize = 0;
-            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton2.ForeColor = System.Drawing.Color.White;
-            this.rjButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.rjButton2.Location = new System.Drawing.Point(12, 179);
-            this.rjButton2.Name = "rjButton2";
-            this.rjButton2.Size = new System.Drawing.Size(259, 114);
-            this.rjButton2.TabIndex = 2;
-            this.rjButton2.TextColor = System.Drawing.Color.White;
-            this.rjButton2.UseVisualStyleBackColor = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -266,26 +222,6 @@
             this.label1.Size = new System.Drawing.Size(57, 24);
             this.label1.TabIndex = 1;
             this.label1.Text = "Drink";
-            // 
-            // button_coffe
-            // 
-            this.button_coffe.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.button_coffe.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.button_coffe.BackgroundImage = global::Palacio_el_restaurante.Properties.Resources.cafe;
-            this.button_coffe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button_coffe.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.button_coffe.BorderRadius = 20;
-            this.button_coffe.BorderSize = 0;
-            this.button_coffe.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button_coffe.FlatAppearance.BorderSize = 0;
-            this.button_coffe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_coffe.ForeColor = System.Drawing.Color.White;
-            this.button_coffe.Location = new System.Drawing.Point(12, 47);
-            this.button_coffe.Name = "button_coffe";
-            this.button_coffe.Size = new System.Drawing.Size(259, 110);
-            this.button_coffe.TabIndex = 0;
-            this.button_coffe.TextColor = System.Drawing.Color.White;
-            this.button_coffe.UseVisualStyleBackColor = false;
             // 
             // panel2
             // 
@@ -447,23 +383,6 @@
             this.nick.TabIndex = 3;
             this.nick.Text = "McBlockier";
             // 
-            // rjPictureRounded2
-            // 
-            this.rjPictureRounded2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.rjPictureRounded2.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPictureRounded2.BorderColor = System.Drawing.Color.Gold;
-            this.rjPictureRounded2.BorderColor2 = System.Drawing.Color.HotPink;
-            this.rjPictureRounded2.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
-            this.rjPictureRounded2.BorderSize = 2;
-            this.rjPictureRounded2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjPictureRounded2.GradientAngle = 50F;
-            this.rjPictureRounded2.Location = new System.Drawing.Point(165, 0);
-            this.rjPictureRounded2.Name = "rjPictureRounded2";
-            this.rjPictureRounded2.Size = new System.Drawing.Size(89, 89);
-            this.rjPictureRounded2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPictureRounded2.TabIndex = 2;
-            this.rjPictureRounded2.TabStop = false;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.MediumSlateBlue;
@@ -486,54 +405,127 @@
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
-            // rjPictureRounded1
-            // 
-            this.rjPictureRounded1.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjPictureRounded1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPictureRounded1.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjPictureRounded1.BorderColor2 = System.Drawing.Color.MediumSlateBlue;
-            this.rjPictureRounded1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Dash;
-            this.rjPictureRounded1.BorderSize = 2;
-            this.rjPictureRounded1.GradientAngle = 50F;
-            this.rjPictureRounded1.Image = global::Palacio_el_restaurante.Properties.Resources.logo_Restaurante;
-            this.rjPictureRounded1.Location = new System.Drawing.Point(3, -1);
-            this.rjPictureRounded1.Name = "rjPictureRounded1";
-            this.rjPictureRounded1.Size = new System.Drawing.Size(93, 93);
-            this.rjPictureRounded1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPictureRounded1.TabIndex = 2;
-            this.rjPictureRounded1.TabStop = false;
-            // 
-            // rjButton1
-            // 
-            this.rjButton1.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton1.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton1.BorderRadius = 20;
-            this.rjButton1.BorderSize = 0;
-            this.rjButton1.Enabled = false;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.ForeColor = System.Drawing.Color.White;
-            this.rjButton1.Location = new System.Drawing.Point(-19, -4);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(497, 92);
-            this.rjButton1.TabIndex = 3;
-            this.rjButton1.TextColor = System.Drawing.Color.White;
-            this.rjButton1.UseVisualStyleBackColor = false;
-            // 
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // panelJuice
             // 
-            this.panelJuice.BackColor = System.Drawing.Color.LightGray;
+            this.panelJuice.BackColor = System.Drawing.Color.White;
+            this.panelJuice.Controls.Add(this.label24);
+            this.panelJuice.Controls.Add(this.label23);
+            this.panelJuice.Controls.Add(this.label22);
+            this.panelJuice.Controls.Add(this.label21);
+            this.panelJuice.Controls.Add(this.panel11);
+            this.panelJuice.Controls.Add(this.panel10);
+            this.panelJuice.Controls.Add(this.label20);
+            this.panelJuice.Controls.Add(this.panel9);
+            this.panelJuice.Controls.Add(this.panel8);
             this.panelJuice.Controls.Add(this.rjButton6);
             this.panelJuice.Controls.Add(this.pictureBox6);
             this.panelJuice.Location = new System.Drawing.Point(277, 87);
             this.panelJuice.Name = "panelJuice";
             this.panelJuice.Size = new System.Drawing.Size(604, 349);
             this.panelJuice.TabIndex = 2;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(403, 158);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(34, 24);
+            this.label24.TabIndex = 15;
+            this.label24.Text = "Ice";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.Location = new System.Drawing.Point(203, 158);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(60, 24);
+            this.label23.TabIndex = 14;
+            this.label23.Text = "Sugar";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(403, 22);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(44, 24);
+            this.label22.TabIndex = 13;
+            this.label22.Text = "Size";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(197, 22);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(80, 24);
+            this.label21.TabIndex = 12;
+            this.label21.Text = "Amount";
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.showCount4);
+            this.panel11.Controls.Add(this.rjPictureRounded7);
+            this.panel11.Controls.Add(this.rjPictureRounded8);
+            this.panel11.Location = new System.Drawing.Point(396, 185);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(188, 64);
+            this.panel11.TabIndex = 7;
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.showCount3);
+            this.panel10.Controls.Add(this.rjPictureRounded4);
+            this.panel10.Controls.Add(this.rjPictureRounded5);
+            this.panel10.Location = new System.Drawing.Point(192, 185);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(188, 64);
+            this.panel10.TabIndex = 11;
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.ForestGreen;
+            this.label20.Location = new System.Drawing.Point(12, 22);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(170, 24);
+            this.label20.TabIndex = 10;
+            this.label20.Text = "CM Macchiato Tea";
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.showCount2);
+            this.panel9.Controls.Add(this.button_MinusS);
+            this.panel9.Controls.Add(this.button_MoreS);
+            this.panel9.Location = new System.Drawing.Point(396, 49);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(188, 64);
+            this.panel9.TabIndex = 7;
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.showCount1);
+            this.panel8.Controls.Add(this.button_MinusC);
+            this.panel8.Controls.Add(this.button_MoreC);
+            this.panel8.Location = new System.Drawing.Point(192, 49);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(188, 64);
+            this.panel8.TabIndex = 2;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Location = new System.Drawing.Point(16, 49);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(149, 150);
+            this.pictureBox6.TabIndex = 0;
+            this.pictureBox6.TabStop = false;
             // 
             // panel4
             // 
@@ -703,21 +695,232 @@
             this.panelFood.Size = new System.Drawing.Size(604, 421);
             this.panelFood.TabIndex = 3;
             // 
-            // pictureBox6
-            // 
-            this.pictureBox6.Location = new System.Drawing.Point(16, 30);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(168, 165);
-            this.pictureBox6.TabIndex = 0;
-            this.pictureBox6.TabStop = false;
-            // 
             // pictureBox7
             // 
             this.pictureBox7.Location = new System.Drawing.Point(16, 37);
             this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(168, 165);
+            this.pictureBox7.Size = new System.Drawing.Size(155, 148);
             this.pictureBox7.TabIndex = 1;
             this.pictureBox7.TabStop = false;
+            // 
+            // rjButton7
+            // 
+            this.rjButton7.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton7.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton7.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton7.BorderRadius = 20;
+            this.rjButton7.BorderSize = 0;
+            this.rjButton7.FlatAppearance.BorderSize = 0;
+            this.rjButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton7.ForeColor = System.Drawing.Color.White;
+            this.rjButton7.Location = new System.Drawing.Point(520, 362);
+            this.rjButton7.Name = "rjButton7";
+            this.rjButton7.Size = new System.Drawing.Size(82, 56);
+            this.rjButton7.TabIndex = 2;
+            this.rjButton7.Text = "rjButton7";
+            this.rjButton7.TextColor = System.Drawing.Color.White;
+            this.rjButton7.UseVisualStyleBackColor = false;
+            // 
+            // showCount4
+            // 
+            this.showCount4.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.showCount4.BorderColor = System.Drawing.Color.Transparent;
+            this.showCount4.BorderColor2 = System.Drawing.Color.Transparent;
+            this.showCount4.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.showCount4.BorderSize = 1;
+            this.showCount4.GradientAngle = 50F;
+            this.showCount4.Image = global::Palacio_el_restaurante.Properties.Resources.cero;
+            this.showCount4.Location = new System.Drawing.Point(68, 6);
+            this.showCount4.Name = "showCount4";
+            this.showCount4.Size = new System.Drawing.Size(53, 53);
+            this.showCount4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.showCount4.TabIndex = 6;
+            this.showCount4.TabStop = false;
+            // 
+            // rjPictureRounded7
+            // 
+            this.rjPictureRounded7.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.rjPictureRounded7.BorderColor = System.Drawing.Color.Transparent;
+            this.rjPictureRounded7.BorderColor2 = System.Drawing.Color.Transparent;
+            this.rjPictureRounded7.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rjPictureRounded7.BorderSize = 1;
+            this.rjPictureRounded7.GradientAngle = 50F;
+            this.rjPictureRounded7.Image = global::Palacio_el_restaurante.Properties.Resources.menos;
+            this.rjPictureRounded7.Location = new System.Drawing.Point(0, 8);
+            this.rjPictureRounded7.Name = "rjPictureRounded7";
+            this.rjPictureRounded7.Size = new System.Drawing.Size(53, 53);
+            this.rjPictureRounded7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.rjPictureRounded7.TabIndex = 5;
+            this.rjPictureRounded7.TabStop = false;
+            this.rjPictureRounded7.Click += new System.EventHandler(this.rjPictureRounded7_Click);
+            // 
+            // rjPictureRounded8
+            // 
+            this.rjPictureRounded8.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.rjPictureRounded8.BorderColor = System.Drawing.Color.Black;
+            this.rjPictureRounded8.BorderColor2 = System.Drawing.Color.Black;
+            this.rjPictureRounded8.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rjPictureRounded8.BorderSize = 2;
+            this.rjPictureRounded8.GradientAngle = 50F;
+            this.rjPictureRounded8.Image = global::Palacio_el_restaurante.Properties.Resources.mas;
+            this.rjPictureRounded8.Location = new System.Drawing.Point(135, 8);
+            this.rjPictureRounded8.Name = "rjPictureRounded8";
+            this.rjPictureRounded8.Size = new System.Drawing.Size(53, 53);
+            this.rjPictureRounded8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.rjPictureRounded8.TabIndex = 4;
+            this.rjPictureRounded8.TabStop = false;
+            this.rjPictureRounded8.Click += new System.EventHandler(this.rjPictureRounded8_Click);
+            // 
+            // showCount3
+            // 
+            this.showCount3.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.showCount3.BorderColor = System.Drawing.Color.Transparent;
+            this.showCount3.BorderColor2 = System.Drawing.Color.Transparent;
+            this.showCount3.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.showCount3.BorderSize = 1;
+            this.showCount3.GradientAngle = 50F;
+            this.showCount3.Image = global::Palacio_el_restaurante.Properties.Resources.cero;
+            this.showCount3.Location = new System.Drawing.Point(68, 6);
+            this.showCount3.Name = "showCount3";
+            this.showCount3.Size = new System.Drawing.Size(53, 53);
+            this.showCount3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.showCount3.TabIndex = 6;
+            this.showCount3.TabStop = false;
+            // 
+            // rjPictureRounded4
+            // 
+            this.rjPictureRounded4.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.rjPictureRounded4.BorderColor = System.Drawing.Color.Transparent;
+            this.rjPictureRounded4.BorderColor2 = System.Drawing.Color.Transparent;
+            this.rjPictureRounded4.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rjPictureRounded4.BorderSize = 1;
+            this.rjPictureRounded4.GradientAngle = 50F;
+            this.rjPictureRounded4.Image = global::Palacio_el_restaurante.Properties.Resources.menos;
+            this.rjPictureRounded4.Location = new System.Drawing.Point(0, 8);
+            this.rjPictureRounded4.Name = "rjPictureRounded4";
+            this.rjPictureRounded4.Size = new System.Drawing.Size(53, 53);
+            this.rjPictureRounded4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.rjPictureRounded4.TabIndex = 5;
+            this.rjPictureRounded4.TabStop = false;
+            this.rjPictureRounded4.Click += new System.EventHandler(this.rjPictureRounded4_Click);
+            // 
+            // rjPictureRounded5
+            // 
+            this.rjPictureRounded5.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.rjPictureRounded5.BorderColor = System.Drawing.Color.Black;
+            this.rjPictureRounded5.BorderColor2 = System.Drawing.Color.Black;
+            this.rjPictureRounded5.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rjPictureRounded5.BorderSize = 2;
+            this.rjPictureRounded5.GradientAngle = 50F;
+            this.rjPictureRounded5.Image = global::Palacio_el_restaurante.Properties.Resources.mas;
+            this.rjPictureRounded5.Location = new System.Drawing.Point(135, 8);
+            this.rjPictureRounded5.Name = "rjPictureRounded5";
+            this.rjPictureRounded5.Size = new System.Drawing.Size(53, 53);
+            this.rjPictureRounded5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.rjPictureRounded5.TabIndex = 4;
+            this.rjPictureRounded5.TabStop = false;
+            this.rjPictureRounded5.Click += new System.EventHandler(this.rjPictureRounded5_Click);
+            // 
+            // showCount2
+            // 
+            this.showCount2.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.showCount2.BorderColor = System.Drawing.Color.Transparent;
+            this.showCount2.BorderColor2 = System.Drawing.Color.Transparent;
+            this.showCount2.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.showCount2.BorderSize = 1;
+            this.showCount2.GradientAngle = 50F;
+            this.showCount2.Image = global::Palacio_el_restaurante.Properties.Resources.letra_m_off;
+            this.showCount2.Location = new System.Drawing.Point(68, 6);
+            this.showCount2.Name = "showCount2";
+            this.showCount2.Size = new System.Drawing.Size(53, 53);
+            this.showCount2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.showCount2.TabIndex = 6;
+            this.showCount2.TabStop = false;
+            // 
+            // button_MinusS
+            // 
+            this.button_MinusS.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.button_MinusS.BorderColor = System.Drawing.Color.Transparent;
+            this.button_MinusS.BorderColor2 = System.Drawing.Color.Transparent;
+            this.button_MinusS.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.button_MinusS.BorderSize = 1;
+            this.button_MinusS.GradientAngle = 50F;
+            this.button_MinusS.Image = global::Palacio_el_restaurante.Properties.Resources.letra_l_Off;
+            this.button_MinusS.Location = new System.Drawing.Point(0, 8);
+            this.button_MinusS.Name = "button_MinusS";
+            this.button_MinusS.Size = new System.Drawing.Size(53, 53);
+            this.button_MinusS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.button_MinusS.TabIndex = 5;
+            this.button_MinusS.TabStop = false;
+            this.button_MinusS.Tag = "L_Off";
+            this.button_MinusS.Click += new System.EventHandler(this.button_MinusS_Click);
+            // 
+            // button_MoreS
+            // 
+            this.button_MoreS.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.button_MoreS.BorderColor = System.Drawing.Color.Black;
+            this.button_MoreS.BorderColor2 = System.Drawing.Color.Black;
+            this.button_MoreS.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.button_MoreS.BorderSize = 2;
+            this.button_MoreS.GradientAngle = 50F;
+            this.button_MoreS.Image = global::Palacio_el_restaurante.Properties.Resources.letra_c_off;
+            this.button_MoreS.Location = new System.Drawing.Point(135, 8);
+            this.button_MoreS.Name = "button_MoreS";
+            this.button_MoreS.Size = new System.Drawing.Size(53, 53);
+            this.button_MoreS.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.button_MoreS.TabIndex = 4;
+            this.button_MoreS.TabStop = false;
+            // 
+            // showCount1
+            // 
+            this.showCount1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.showCount1.BorderColor = System.Drawing.Color.Transparent;
+            this.showCount1.BorderColor2 = System.Drawing.Color.Transparent;
+            this.showCount1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.showCount1.BorderSize = 1;
+            this.showCount1.GradientAngle = 50F;
+            this.showCount1.Image = global::Palacio_el_restaurante.Properties.Resources.cero;
+            this.showCount1.Location = new System.Drawing.Point(68, 6);
+            this.showCount1.Name = "showCount1";
+            this.showCount1.Size = new System.Drawing.Size(53, 53);
+            this.showCount1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.showCount1.TabIndex = 6;
+            this.showCount1.TabStop = false;
+            // 
+            // button_MinusC
+            // 
+            this.button_MinusC.BackColor = System.Drawing.Color.Transparent;
+            this.button_MinusC.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.button_MinusC.BorderColor = System.Drawing.Color.Transparent;
+            this.button_MinusC.BorderColor2 = System.Drawing.Color.Transparent;
+            this.button_MinusC.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.button_MinusC.BorderSize = 1;
+            this.button_MinusC.GradientAngle = 50F;
+            this.button_MinusC.Image = global::Palacio_el_restaurante.Properties.Resources.menos;
+            this.button_MinusC.Location = new System.Drawing.Point(0, 8);
+            this.button_MinusC.Name = "button_MinusC";
+            this.button_MinusC.Size = new System.Drawing.Size(53, 53);
+            this.button_MinusC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.button_MinusC.TabIndex = 5;
+            this.button_MinusC.TabStop = false;
+            this.button_MinusC.Click += new System.EventHandler(this.button_MinusC_Click);
+            // 
+            // button_MoreC
+            // 
+            this.button_MoreC.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.button_MoreC.BorderColor = System.Drawing.Color.Black;
+            this.button_MoreC.BorderColor2 = System.Drawing.Color.Black;
+            this.button_MoreC.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.button_MoreC.BorderSize = 2;
+            this.button_MoreC.GradientAngle = 50F;
+            this.button_MoreC.Image = global::Palacio_el_restaurante.Properties.Resources.mas;
+            this.button_MoreC.Location = new System.Drawing.Point(135, 8);
+            this.button_MoreC.Name = "button_MoreC";
+            this.button_MoreC.Size = new System.Drawing.Size(53, 53);
+            this.button_MoreC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.button_MoreC.TabIndex = 4;
+            this.button_MoreC.TabStop = false;
+            this.button_MoreC.Click += new System.EventHandler(this.button_MoreC_Click);
             // 
             // rjButton6
             // 
@@ -737,23 +940,158 @@
             this.rjButton6.TextColor = System.Drawing.Color.White;
             this.rjButton6.UseVisualStyleBackColor = false;
             // 
-            // rjButton7
+            // rjPictureRounded2
             // 
-            this.rjButton7.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton7.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjButton7.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton7.BorderRadius = 20;
-            this.rjButton7.BorderSize = 0;
-            this.rjButton7.FlatAppearance.BorderSize = 0;
-            this.rjButton7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton7.ForeColor = System.Drawing.Color.White;
-            this.rjButton7.Location = new System.Drawing.Point(520, 362);
-            this.rjButton7.Name = "rjButton7";
-            this.rjButton7.Size = new System.Drawing.Size(82, 56);
-            this.rjButton7.TabIndex = 2;
-            this.rjButton7.Text = "rjButton7";
-            this.rjButton7.TextColor = System.Drawing.Color.White;
-            this.rjButton7.UseVisualStyleBackColor = false;
+            this.rjPictureRounded2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rjPictureRounded2.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.rjPictureRounded2.BorderColor = System.Drawing.Color.Gold;
+            this.rjPictureRounded2.BorderColor2 = System.Drawing.Color.HotPink;
+            this.rjPictureRounded2.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
+            this.rjPictureRounded2.BorderSize = 2;
+            this.rjPictureRounded2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjPictureRounded2.GradientAngle = 50F;
+            this.rjPictureRounded2.Location = new System.Drawing.Point(165, 0);
+            this.rjPictureRounded2.Name = "rjPictureRounded2";
+            this.rjPictureRounded2.Size = new System.Drawing.Size(89, 89);
+            this.rjPictureRounded2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.rjPictureRounded2.TabIndex = 2;
+            this.rjPictureRounded2.TabStop = false;
+            // 
+            // rjPictureRounded1
+            // 
+            this.rjPictureRounded1.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjPictureRounded1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.rjPictureRounded1.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjPictureRounded1.BorderColor2 = System.Drawing.Color.MediumSlateBlue;
+            this.rjPictureRounded1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            this.rjPictureRounded1.BorderSize = 2;
+            this.rjPictureRounded1.GradientAngle = 50F;
+            this.rjPictureRounded1.Image = global::Palacio_el_restaurante.Properties.Resources.logo_Restaurante;
+            this.rjPictureRounded1.Location = new System.Drawing.Point(3, -1);
+            this.rjPictureRounded1.Name = "rjPictureRounded1";
+            this.rjPictureRounded1.Size = new System.Drawing.Size(93, 93);
+            this.rjPictureRounded1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.rjPictureRounded1.TabIndex = 2;
+            this.rjPictureRounded1.TabStop = false;
+            // 
+            // rjButton1
+            // 
+            this.rjButton1.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton1.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton1.BorderRadius = 20;
+            this.rjButton1.BorderSize = 0;
+            this.rjButton1.Enabled = false;
+            this.rjButton1.FlatAppearance.BorderSize = 0;
+            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton1.ForeColor = System.Drawing.Color.White;
+            this.rjButton1.Location = new System.Drawing.Point(-19, -4);
+            this.rjButton1.Name = "rjButton1";
+            this.rjButton1.Size = new System.Drawing.Size(497, 92);
+            this.rjButton1.TabIndex = 3;
+            this.rjButton1.TextColor = System.Drawing.Color.White;
+            this.rjButton1.UseVisualStyleBackColor = false;
+            // 
+            // rjButton5
+            // 
+            this.rjButton5.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton5.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton5.BackgroundImage = global::Palacio_el_restaurante.Properties.Resources.Mariscos_Wall;
+            this.rjButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rjButton5.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton5.BorderRadius = 20;
+            this.rjButton5.BorderSize = 0;
+            this.rjButton5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjButton5.FlatAppearance.BorderSize = 0;
+            this.rjButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton5.ForeColor = System.Drawing.Color.White;
+            this.rjButton5.Location = new System.Drawing.Point(12, 638);
+            this.rjButton5.Name = "rjButton5";
+            this.rjButton5.Size = new System.Drawing.Size(259, 109);
+            this.rjButton5.TabIndex = 9;
+            this.rjButton5.TextColor = System.Drawing.Color.White;
+            this.rjButton5.UseVisualStyleBackColor = false;
+            // 
+            // rjButton4
+            // 
+            this.rjButton4.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton4.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton4.BackgroundImage = global::Palacio_el_restaurante.Properties.Resources.ambur_wall;
+            this.rjButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rjButton4.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton4.BorderRadius = 20;
+            this.rjButton4.BorderSize = 0;
+            this.rjButton4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjButton4.FlatAppearance.BorderSize = 0;
+            this.rjButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton4.ForeColor = System.Drawing.Color.White;
+            this.rjButton4.Location = new System.Drawing.Point(12, 509);
+            this.rjButton4.Name = "rjButton4";
+            this.rjButton4.Size = new System.Drawing.Size(259, 109);
+            this.rjButton4.TabIndex = 8;
+            this.rjButton4.TextColor = System.Drawing.Color.White;
+            this.rjButton4.UseVisualStyleBackColor = false;
+            // 
+            // rjButton3
+            // 
+            this.rjButton3.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton3.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton3.BackgroundImage = global::Palacio_el_restaurante.Properties.Resources.jugo_wall;
+            this.rjButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rjButton3.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton3.BorderRadius = 20;
+            this.rjButton3.BorderSize = 0;
+            this.rjButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjButton3.FlatAppearance.BorderSize = 0;
+            this.rjButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton3.ForeColor = System.Drawing.Color.White;
+            this.rjButton3.Location = new System.Drawing.Point(12, 316);
+            this.rjButton3.Name = "rjButton3";
+            this.rjButton3.Size = new System.Drawing.Size(259, 115);
+            this.rjButton3.TabIndex = 3;
+            this.rjButton3.TextColor = System.Drawing.Color.White;
+            this.rjButton3.UseVisualStyleBackColor = false;
+            // 
+            // rjButton2
+            // 
+            this.rjButton2.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton2.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjButton2.BackgroundImage = global::Palacio_el_restaurante.Properties.Resources.milk_wall;
+            this.rjButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.rjButton2.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton2.BorderRadius = 20;
+            this.rjButton2.BorderSize = 0;
+            this.rjButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjButton2.FlatAppearance.BorderSize = 0;
+            this.rjButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton2.ForeColor = System.Drawing.Color.White;
+            this.rjButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.rjButton2.Location = new System.Drawing.Point(12, 179);
+            this.rjButton2.Name = "rjButton2";
+            this.rjButton2.Size = new System.Drawing.Size(259, 114);
+            this.rjButton2.TabIndex = 2;
+            this.rjButton2.TextColor = System.Drawing.Color.White;
+            this.rjButton2.UseVisualStyleBackColor = false;
+            // 
+            // button_coffe
+            // 
+            this.button_coffe.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.button_coffe.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.button_coffe.BackgroundImage = global::Palacio_el_restaurante.Properties.Resources.cafe;
+            this.button_coffe.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_coffe.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.button_coffe.BorderRadius = 20;
+            this.button_coffe.BorderSize = 0;
+            this.button_coffe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button_coffe.FlatAppearance.BorderSize = 0;
+            this.button_coffe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_coffe.ForeColor = System.Drawing.Color.White;
+            this.button_coffe.Location = new System.Drawing.Point(12, 47);
+            this.button_coffe.Name = "button_coffe";
+            this.button_coffe.Size = new System.Drawing.Size(259, 110);
+            this.button_coffe.TabIndex = 0;
+            this.button_coffe.TextColor = System.Drawing.Color.White;
+            this.button_coffe.UseVisualStyleBackColor = false;
             // 
             // FoodUI
             // 
@@ -788,17 +1126,34 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded1)).EndInit();
             this.panelJuice.ResumeLayout(false);
+            this.panelJuice.PerformLayout();
+            this.panel11.ResumeLayout(false);
+            this.panel10.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel8.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.panelFood.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showCount4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showCount3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showCount2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button_MinusS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button_MoreS)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.showCount1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button_MinusC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.button_MoreC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -858,5 +1213,26 @@
         private System.Windows.Forms.PictureBox pictureBox7;
         private Controls.RJButton rjButton6;
         private Controls.RJButton rjButton7;
+        private System.Windows.Forms.Panel panel8;
+        private Controls.RJPictureRounded button_MinusC;
+        private Controls.RJPictureRounded button_MoreC;
+        private Controls.RJPictureRounded showCount1;
+        private System.Windows.Forms.Panel panel9;
+        private Controls.RJPictureRounded showCount2;
+        private Controls.RJPictureRounded button_MinusS;
+        private Controls.RJPictureRounded button_MoreS;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Panel panel11;
+        private Controls.RJPictureRounded showCount4;
+        private Controls.RJPictureRounded rjPictureRounded7;
+        private Controls.RJPictureRounded rjPictureRounded8;
+        private System.Windows.Forms.Panel panel10;
+        private Controls.RJPictureRounded showCount3;
+        private Controls.RJPictureRounded rjPictureRounded4;
+        private Controls.RJPictureRounded rjPictureRounded5;
+        private System.Windows.Forms.Label label24;
     }
 }

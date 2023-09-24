@@ -231,6 +231,10 @@
     <None Include="src\Img\wallpaper_blue.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\Img\uno.png" />
+    <None Include="src\Img\tres.png" />
+    <None Include="src\Img\siete.png" />
+    <None Include="src\Img\seis.png" />
     <None Include="src\Img\x.gif" />
     <None Include="src\Img\salida.gif" />
     <None Include="src\Img\resta.jpg" />
@@ -248,10 +252,16 @@
     <None Include="src\Img\back_coffe.jpg" />
     <None Include="src\Img\addUser.jpg" />
     <None Include="src\Img\billetera.gif" />
+    <None Include="src\Img\boton-menos.png" />
+    <None Include="src\Img\cero.png" />
     <Content Include="src\Img\chat.png" />
     <None Include="src\Img\contrasena.gif" />
     <None Include="src\Img\conexion.gif" />
     <None Include="src\Img\cocinando.gif" />
+    <None Include="src\Img\cinco.png" />
+    <None Include="src\Img\cuatro.png" />
+    <None Include="src\Img\diez.png" />
+    <None Include="src\Img\dos.png" />
     <Content Include="src\Img\error.png" />
     <None Include="src\Img\espaguetis.gif" />
     <Content Include="src\Img\exclamation.png" />
@@ -280,6 +290,16 @@
     <None Include="src\Img\logo_Restaurante.jpg" />
     <None Include="src\Img\pollo.png" />
     <None Include="src\Img\pala.jpg" />
+    <None Include="src\Img\mas.png" />
+    <None Include="src\Img\nueve.png" />
+    <None Include="src\Img\ocho.png" />
+    <None Include="src\Img\menos.png" />
+    <None Include="src\Img\letra-c.png" />
+    <None Include="src\Img\letra-c_off.png" />
+    <None Include="src\Img\letra-l.png" />
+    <None Include="src\Img\letra-l_Off.png" />
+    <None Include="src\Img\letra-m.png" />
+    <None Include="src\Img\letra-m_off.png" />
     <Content Include="src\Img\question.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

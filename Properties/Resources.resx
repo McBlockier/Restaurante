@@ -142,8 +142,14 @@
   <data name="billetera" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\billetera.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="boton_menos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\boton-menos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="boton_x" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\img\boton-x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="boton_x1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\boton-x.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="boton_x__1_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\img\boton-x (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,11 +163,17 @@
   <data name="carrito" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\carrito.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cero" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\cero.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="cerrar_con_llave" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\cerrar-con-llave.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="chat" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\img\chat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cinco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\cinco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="cocinando" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\cocinando.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,8 +184,17 @@
   <data name="contrasena" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\contrasena.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cuatro" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\cuatro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="CustomMessageBox" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Controls\CustomMessageBox.csproj;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="diez" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\diez.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\dos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="error" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\img\error.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,6 +247,24 @@
   <data name="leche" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\leche.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="letra_c" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\letra-c.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="letra_c_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\letra-c_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="letra_l" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\letra-l.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="letra_l_Off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\letra-l_Off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="letra_m" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\letra-m.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="letra_m_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\letra-m_off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="location" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\location.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -241,6 +280,12 @@
   <data name="Mariscos_Wall" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\Mariscos_Wall.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="mas" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\mas.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="menos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\menos.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="mesa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\mesa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -255,6 +300,12 @@
   </data>
   <data name="newUsuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\newUsuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nueve" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\nueve.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ocho" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\ocho.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ojo_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\ojo_off.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -292,14 +343,26 @@
   <data name="salida1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\salida.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="seis" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\seis.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="semilla_de_cafe" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\semilla-de-cafe.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="siete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\siete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Spagueti" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\Spagueti.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="tierra" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\tierra.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tres" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\tres.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="uno" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\uno.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="usuario" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\img\usuario.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
