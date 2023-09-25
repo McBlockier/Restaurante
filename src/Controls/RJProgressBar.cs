@@ -25,7 +25,7 @@ namespace Palacio_el_restaurante.src.Controls
         private CustomProgressBarStyle progressBarStyle = CustomProgressBarStyle.Horizontal;
         private System.Timers.Timer spinnerTimer;
         private int spinnerAngle = 0;
-        private Bitmap circularProgressBarCache; // Cache para ProgressBar circular
+        private Bitmap circularProgressBarCache; 
 
         public RJProgressBar()
         {
@@ -77,7 +77,6 @@ namespace Palacio_el_restaurante.src.Controls
                 Invalidate();
             }
         }
-
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -95,7 +94,6 @@ namespace Palacio_el_restaurante.src.Controls
                     break;
             }
         }
-
         private void DrawHorizontalProgressBar(Graphics g)
         {
             float percent = (float)(value - minimum) / (maximum - minimum);
@@ -174,7 +172,6 @@ namespace Palacio_el_restaurante.src.Controls
         {
             if (disposing)
             {
-                // Liberar recursos cuando se dispose el control
                 spinnerTimer?.Dispose();
                 circularProgressBarCache?.Dispose();
             }

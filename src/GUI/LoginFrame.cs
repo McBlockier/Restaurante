@@ -53,27 +53,12 @@ namespace Palacio_el_restaurante
             else
             { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
         }
-        private void ShowMessageError(String errorType)
-        {
-            switch (errorType)
-            {
-                case "password":
-                    RJMessageBox.Show("");
-                    break;
-                case "username":
-                    break;
-                case "empty fields":
-                    break;
-                default:
-                    break;
-            }        
-        }
         private void button_login_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(getUsername.Texts) || String.IsNullOrEmpty(getPassword.Texts))
             {
-                RJMessageBox.Show("The username or password is empty or incorrect",
-                    "WARNING2", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);              
+                RJMessageBox.Show("El usuario o la contraseña son incorrectos",
+                    "AVISO!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);              
             }
             else {              
                 panelL.Show();
@@ -116,24 +101,13 @@ namespace Palacio_el_restaurante
             }
             
         }
-
-        private void area_MouseEnter(object sender, EventArgs e)
-        {
-            create.Enabled = true;
-        }
-
-        private void area_MouseLeave(object sender, EventArgs e)
-        {
-            create.Enabled = false;
-        }
-
         private void resetPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (String.IsNullOrEmpty(getUsername.Texts))
             {
-                RJMessageBox.Show("The recipient user must enter first, " +
-                    "you cannot leave that space blank",
-                   "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RJMessageBox.Show("Debe ingresar primero el usuario, " +
+                    "no puede dejar ese espacio en blanco",
+                   "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
@@ -141,13 +115,6 @@ namespace Palacio_el_restaurante
                 LoginReset loginReset = new LoginReset();
                 loginReset.Show();
             }
-        }
-
-        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            this.Hide();
-            LoginCreateA create = new LoginCreateA();
-            create.Show();
         }
 
         private void create_Click(object sender, EventArgs e)

@@ -1,0 +1,12 @@
+Todos los componentes de Windows Forms utilizados en esta aplicación son propiedad exclusiva de McBlockier y 
+están protegidos por derechos de autor y otras leyes de propiedad intelectual. 
+Todos los derechos están reservados para McBlockier.
+
+El uso no autorizado, la copia, la distribución o la modificación de estos componentes de Windows Forms,
+ya sea total o parcialmente, sin el permiso expreso y por escrito de McBlockier, 
+está estrictamente prohibido y puede estar sujeto a acciones legales.
+
+Los componentes de Windows Forms desarrollados por McBlockier son el resultado de esfuerzos significativos de diseño,
+desarrollo y pruebas. Cualquier uso indebido o no autorizado de estos componentes puede tener consecuencias legales graves.
+
+© [2017] McBlockier. Todos los derechos reservados.

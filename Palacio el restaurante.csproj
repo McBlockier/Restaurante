@@ -127,6 +127,12 @@
     <Compile Include="src\Controls\RJTextBoxRounded.Designer.cs">
       <DependentUpon>RJTextBoxRounded.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\GUI\AdminIU.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\GUI\AdminIU.Designer.cs">
+      <DependentUpon>AdminIU.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\GUI\FoodUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,6 +251,8 @@
     <None Include="src\Img\wallpaper_blue.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\Img\tomate_Off.png" />
+    <None Include="src\Img\tomate.png" />
     <None Include="src\Img\seaFood.png" />
     <None Include="src\Img\Yellow.png" />
     <None Include="src\Img\uno.png" />
@@ -270,6 +278,14 @@
     <None Include="src\Img\billetera.gif" />
     <None Include="src\Img\boton-menos.png" />
     <None Include="src\Img\cero.png" />
+    <Content Include="CopyRight.txt" />
+    <Content Include="src\Controls\Credits.txt" />
+    <None Include="src\Img\cebolla.png" />
+    <None Include="src\Img\cebolla_Off.png" />
+    <None Include="src\Img\batido.gif" />
+    <None Include="src\Img\Amburgesa.jpg" />
+    <None Include="src\Img\Amburgesa.png" />
+    <None Include="src\Img\Capu.png" />
     <Content Include="src\Img\chat.png" />
     <None Include="src\Img\contrasena.gif" />
     <None Include="src\Img\conexion.gif" />
@@ -278,6 +294,8 @@
     <None Include="src\Img\cuatro.png" />
     <None Include="src\Img\diez.png" />
     <None Include="src\Img\dos.png" />
+    <None Include="src\Img\chile_Off.png" />
+    <None Include="src\Img\chile.png" />
     <Content Include="src\Img\error.png" />
     <None Include="src\Img\espaguetis.gif" />
     <Content Include="src\Img\exclamation.png" />
@@ -287,6 +305,8 @@
     <None Include="src\Img\House.png" />
     <None Include="src\Img\hamburguesa.png" />
     <None Include="src\Img\fastFood.png" />
+    <None Include="src\Img\fuego.png" />
+    <None Include="src\Img\fuego_Off.png" />
     <Content Include="src\Img\information.png" />
     <None Include="src\Img\location.gif" />
     <None Include="src\Img\location-imageonline.co-9183562.gif" />
@@ -317,6 +337,9 @@
     <None Include="src\Img\letra-l_Off.png" />
     <None Include="src\Img\letra-m.png" />
     <None Include="src\Img\letra-m_off.png" />
+    <None Include="src\Img\lechuga.png" />
+    <None Include="src\Img\lechuga_Off.png" />
+    <None Include="src\Img\presentacion-del-capuchino.png" />
     <Content Include="src\Img\question.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
