@@ -35,13 +35,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EPPlus, Version=6.2.9.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.6.2.9\lib\net462\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.Interfaces, Version=6.1.1.0, Culture=neutral, PublicKeyToken=a694d7f3b0907a61, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.Interfaces.6.1.1\lib\net462\EPPlus.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus.System.Drawing, Version=6.1.1.0, Culture=neutral, PublicKeyToken=2308d35469c9bac0, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.System.Drawing.6.1.1\lib\net462\EPPlus.System.Drawing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=8.1.0.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files (x86)\MySQL\MySQL Connector NET 8.1.0\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SqlXml" />
     <Reference Include="System.IO, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -54,6 +68,7 @@
       <Private>True</Private>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Security" />
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net463\System.Security.Cryptography.Algorithms.dll</HintPath>
       <Private>True</Private>
@@ -73,6 +88,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System.Text.Json, Version=7.0.0.3, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
+    <Reference Include="System.Threading.Tasks" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -104,6 +120,9 @@
     </Compile>
     <Compile Include="src\Controls\RJComboBox.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Controls\RJDataGridView.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\Controls\RJMessageBox.cs" />
     <Compile Include="src\Controls\RjPanel.cs">
@@ -177,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Controls\RJTextBoxRounded.resx">
       <DependentUpon>RJTextBoxRounded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\GUI\AdminIU.resx">
+      <DependentUpon>AdminIU.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\GUI\FoodUI.resx">
       <DependentUpon>FoodUI.cs</DependentUpon>
@@ -279,6 +301,11 @@
     <None Include="src\Img\boton-menos.png" />
     <None Include="src\Img\cero.png" />
     <Content Include="CopyRight.txt" />
+    <None Include="Resources\PALACIOOOOOOO.png" />
+    <None Include="Resources\PALACIOOOOOOO1.png" />
+    <None Include="Resources\FONDO.jpg" />
+    <None Include="Resources\PALACIOOOOOOO2.png" />
+    <None Include="Resources\PALACIOOOOOOO3.png" />
     <Content Include="src\Controls\Credits.txt" />
     <None Include="src\Img\cebolla.png" />
     <None Include="src\Img\cebolla_Off.png" />

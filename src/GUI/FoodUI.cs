@@ -79,7 +79,6 @@ namespace Palacio_el_restaurante.src.UI
         {
             motionFrame(sender, e);
         }
-
         private void clickMore(String type)
         {
             switch (type)
@@ -235,7 +234,6 @@ namespace Palacio_el_restaurante.src.UI
             countS++;
             clickMore("Sugar");
         }
-
         private void button_Onion_Click(object sender, EventArgs e)
         {
             buttonOn++;
@@ -289,7 +287,6 @@ namespace Palacio_el_restaurante.src.UI
                 button_Spicy.Image = Properties.Resources.chile;
                 button_VerySpicy.Image = Properties.Resources.fuego_Off;
                 buttonVSp = 0;
-
             }
             else
             {
@@ -320,7 +317,6 @@ namespace Palacio_el_restaurante.src.UI
             countAM++;
             clickButton("AmountM");
         }
-
 
        private void clickButton(String typeButton)
         {
@@ -431,10 +427,9 @@ namespace Palacio_el_restaurante.src.UI
             clickButton("BagChips");
         }
 
-        private void button_MinusF_Click(object sender, EventArgs e)
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
-            countBM--;
-            clickButton("BagChips");
+
         }
 
         private void pictureBox6_Click(object sender, EventArgs e)
@@ -442,6 +437,56 @@ namespace Palacio_el_restaurante.src.UI
 
         }
 
+        private void showCount1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel12_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void leftPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button_coffe_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelFood_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panelJuice_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pink_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_MinusF_Click(object sender, EventArgs e)
+        {
+            countBM--;
+            clickButton("BagChips");
+        }
         private void rjPictureRounded8_Click(object sender, EventArgs e)
         {
             countI++;

@@ -40,7 +40,6 @@ namespace Palacio_el_restaurante
                 ReleaseResources(form);
             }
         }
-
         private static void ReleaseResources(Form form)
         {
             form.Dispose();

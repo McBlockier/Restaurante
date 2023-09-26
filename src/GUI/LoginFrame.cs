@@ -1,5 +1,7 @@
 ﻿using CustomMessageBox;
 using Palacio_el_restaurante.src.Conection;
+using Palacio_el_restaurante.src.Controls;
+using Palacio_el_restaurante.src.GUI;
 using Palacio_el_restaurante.src.UI;
 using System;
 using System.Collections.Generic;
@@ -38,12 +40,48 @@ namespace Palacio_el_restaurante
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            toolTip1.OwnerDraw = true;
+            toolTip1.Draw += new DrawToolTipEventHandler(toolTip1_Draw);
+            toolTip1.Popup += new PopupEventHandler(toolTip1_Popup);
 
             panelL.Hide();
             loadPicture.Hide();
             getPassword.PasswordChar = true;
             showPassword.Image = Properties.Resources.ojo_off;
             resetPassword.Visible = false;
+
+        }
+        private void toolTip1_Popup(object sender, PopupEventArgs e)
+        {
+            string texto = e.AssociatedControl.Text; 
+            Size textSize = TextRenderer.MeasureText(texto, e.AssociatedControl.Font);
+            int margen = 5; 
+            e.ToolTipSize = new Size(textSize.Width + margen, textSize.Height + margen);
+
+            Point cursorPos = Cursor.Position;
+            if (cursorPos.X + e.ToolTipSize.Width > Screen.PrimaryScreen.Bounds.Right)
+            {
+                cursorPos.X = Screen.PrimaryScreen.Bounds.Right - e.ToolTipSize.Width;
+            }
+
+            if (cursorPos.Y + e.ToolTipSize.Height > Screen.PrimaryScreen.Bounds.Bottom)
+            {
+                cursorPos.Y = Screen.PrimaryScreen.Bounds.Bottom - e.ToolTipSize.Height;
+            }
+
+            toolTip1.Show(texto, e.AssociatedControl, cursorPos, 3000); 
+        }
+
+
+        private void toolTip1_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+
+            Font font = new Font("Arial", 12, FontStyle.Bold);
+            Brush textColor = Brushes.White; 
+
+            e.Graphics.DrawString(e.ToolTipText, font, textColor, e.Bounds.X + 6, e.Bounds.Y + 6);
         }
  
         private void panel1_MouseMove(object sender, MouseEventArgs e)
@@ -83,6 +121,7 @@ namespace Palacio_el_restaurante
                 resetTimer();
                 FoodUI food = new FoodUI();
                 food.Show();
+   
                 this.Hide();
             }
         }
