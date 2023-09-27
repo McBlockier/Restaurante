@@ -105,38 +105,44 @@ namespace Palacio_el_restaurante.src.Controls
         }
         public void ExecuteSqlQuery(string sqlQuery)
         {
-            try
+            if (string.IsNullOrEmpty(sqlQuery))
             {
-                if (databaseConnection == null)
-                {
-                    MessageBox.Show("La conexión a la base de datos no está configurada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                MessageBox.Show("La consulta SQL está vacía.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-                if (databaseConnection.State == ConnectionState.Closed)
-                {
-                    databaseConnection.Open();
-                }
+            if (databaseConnection == null)
+            {
+                MessageBox.Show("La conexión a la base de datos no está configurada.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-                MySqlCommand cmd = new MySqlCommand(sqlQuery, databaseConnection);
+            if (databaseConnection.State == ConnectionState.Closed)
+            {
+                databaseConnection.Open();
+            }
+
+            using (MySqlCommand cmd = new MySqlCommand(sqlQuery, databaseConnection))
+            {
                 DataTable dataTable = new DataTable();
                 using (MySqlDataAdapter adapter = new MySqlDataAdapter(cmd))
                 {
                     adapter.Fill(dataTable);
                 }
 
-                LoadData(dataTable);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al ejecutar la consulta SQL: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            finally
-            {
-                if (databaseConnection.State == ConnectionState.Open)
+                if (dataTable.Rows.Count > 0)
                 {
-                    databaseConnection.Close();
+                    LoadData(dataTable);
                 }
+                else
+                {
+                    MessageBox.Show("No se encontraron resultados para la consulta.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+
+            if (databaseConnection.State == ConnectionState.Open)
+            {
+                databaseConnection.Close();
             }
         }
 

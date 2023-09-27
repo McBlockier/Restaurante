@@ -1,30 +1,37 @@
 ﻿using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static OfficeOpenXml.ExcelErrorValue;
+using System.Web.Services.Description;
+using System.Windows.Documents;
+using System.Windows;
 
 namespace Palacio_el_restaurante.src.Conection
 {
-    public class Conection
+    public class Connection
     {
         private static MySqlConnection connection;
-        private static String server, port, password, user, database, stringConnection;
-        //Clase que establece la conexión con el servidor local MySQL
-        public static MySqlConnection getConnection()
-        {
-             server = "localhost";
-             port = "3308";
-             password = "root";
-             user = "McBlockier";
-             database = "rpalacio";
+        private static string server, port, password, user, database;
 
-            stringConnection = "Database=" + database + "; Data Source=" 
-                + server +"; port=" + port + "; User Id=" + user + "; Password=" + password + ";";
+        // Método que establece la conexión con el servidor MySQL
+        public static MySqlConnection GetConnection()
+        {
+            server = "Matebook16s";
+            port = "3308";
+            user = "McBlockier";
+            password = "root";
+            database = "palacio";
+
+            string stringConnection = $"Server={server}; Port={port}; Database={database}; User={user}; Password={password};";
 
             connection = new MySqlConnection(stringConnection);
-            return connection;           
+
+            return connection;
         }
     }
 }

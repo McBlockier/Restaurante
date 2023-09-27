@@ -343,6 +343,16 @@ namespace Palacio_el_restaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap consulta {
+            get {
+                object obj = ResourceManager.GetObject("consulta", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap contrasena {
             get {
                 object obj = ResourceManager.GetObject("contrasena", resourceCulture);
@@ -431,6 +441,36 @@ namespace Palacio_el_restaurante.Properties {
         public static System.Drawing.Bitmap fastFood {
             get {
                 object obj = ResourceManager.GetObject("fastFood", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap filtrar {
+            get {
+                object obj = ResourceManager.GetObject("filtrar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap filtrar1 {
+            get {
+                object obj = ResourceManager.GetObject("filtrar1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap filtro_ON {
+            get {
+                object obj = ResourceManager.GetObject("filtro_ON", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -808,6 +848,16 @@ namespace Palacio_el_restaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap nube_de_datos {
+            get {
+                object obj = ResourceManager.GetObject("nube_de_datos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap nueve {
             get {
                 object obj = ResourceManager.GetObject("nueve", resourceCulture);
@@ -931,6 +981,16 @@ namespace Palacio_el_restaurante.Properties {
         public static System.Drawing.Bitmap pollo {
             get {
                 object obj = ResourceManager.GetObject("pollo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap portapapeles {
+            get {
+                object obj = ResourceManager.GetObject("portapapeles", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

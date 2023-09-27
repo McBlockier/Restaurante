@@ -59,10 +59,10 @@
             // resetPassword
             // 
             this.resetPassword.AutoSize = true;
-            this.resetPassword.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetPassword.Location = new System.Drawing.Point(473, 274);
+            this.resetPassword.Font = new System.Drawing.Font("Microsoft Tai Le", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.resetPassword.Location = new System.Drawing.Point(485, 288);
             this.resetPassword.Name = "resetPassword";
-            this.resetPassword.Size = new System.Drawing.Size(261, 25);
+            this.resetPassword.Size = new System.Drawing.Size(237, 22);
             this.resetPassword.TabIndex = 5;
             this.resetPassword.TabStop = true;
             this.resetPassword.Text = "Forgot username/password?";
@@ -72,7 +72,7 @@
             // 
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.pictureBox2.Image = global::Palacio_el_restaurante.Properties.Resources.newCandado;
-            this.pictureBox2.Location = new System.Drawing.Point(438, 207);
+            this.pictureBox2.Location = new System.Drawing.Point(438, 225);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(38, 34);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -83,7 +83,7 @@
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::Palacio_el_restaurante.Properties.Resources.newUsuario;
-            this.pictureBox1.Location = new System.Drawing.Point(433, 156);
+            this.pictureBox1.Location = new System.Drawing.Point(433, 174);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(34, 37);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -104,9 +104,9 @@
             // pictureBox4
             // 
             this.pictureBox4.Image = global::Palacio_el_restaurante.Properties.Resources.PALACIOOOOOOO3;
-            this.pictureBox4.Location = new System.Drawing.Point(416, 30);
+            this.pictureBox4.Location = new System.Drawing.Point(364, 15);
             this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(308, 113);
+            this.pictureBox4.Size = new System.Drawing.Size(380, 141);
             this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 5;
             this.pictureBox4.TabStop = false;
@@ -114,17 +114,17 @@
             // panelL
             // 
             this.panelL.Controls.Add(this.loadPicture);
-            this.panelL.Location = new System.Drawing.Point(489, 324);
+            this.panelL.Location = new System.Drawing.Point(523, 352);
             this.panelL.Name = "panelL";
-            this.panelL.Size = new System.Drawing.Size(206, 158);
+            this.panelL.Size = new System.Drawing.Size(162, 140);
             this.panelL.TabIndex = 11;
             // 
             // loadPicture
             // 
             this.loadPicture.Image = global::Palacio_el_restaurante.Properties.Resources.conexion;
-            this.loadPicture.Location = new System.Drawing.Point(63, 49);
+            this.loadPicture.Location = new System.Drawing.Point(33, 2);
             this.loadPicture.Name = "loadPicture";
-            this.loadPicture.Size = new System.Drawing.Size(80, 71);
+            this.loadPicture.Size = new System.Drawing.Size(85, 84);
             this.loadPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.loadPicture.TabIndex = 10;
             this.loadPicture.TabStop = false;
@@ -132,7 +132,7 @@
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Palacio_el_restaurante.Properties.Resources.espaguetis;
-            this.pictureBox3.Location = new System.Drawing.Point(671, 48);
+            this.pictureBox3.Location = new System.Drawing.Point(681, 48);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(74, 75);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -148,9 +148,9 @@
             this.create.BackColor = System.Drawing.Color.Transparent;
             this.create.Cursor = System.Windows.Forms.Cursors.Hand;
             this.create.Image = global::Palacio_el_restaurante.Properties.Resources.addUser;
-            this.create.Location = new System.Drawing.Point(771, 433);
+            this.create.Location = new System.Drawing.Point(771, 429);
             this.create.Name = "create";
-            this.create.Size = new System.Drawing.Size(65, 61);
+            this.create.Size = new System.Drawing.Size(71, 53);
             this.create.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.create.TabIndex = 13;
             this.create.TabStop = false;
@@ -162,7 +162,7 @@
             // 
             this.showPassword.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.showPassword.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.showPassword.Location = new System.Drawing.Point(745, 230);
+            this.showPassword.Location = new System.Drawing.Point(745, 226);
             this.showPassword.Name = "showPassword";
             this.showPassword.Size = new System.Drawing.Size(38, 40);
             this.showPassword.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -184,7 +184,7 @@
             this.button_login.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_login.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_login.ForeColor = System.Drawing.Color.White;
-            this.button_login.Location = new System.Drawing.Point(489, 295);
+            this.button_login.Location = new System.Drawing.Point(500, 313);
             this.button_login.Name = "button_login";
             this.button_login.Size = new System.Drawing.Size(206, 41);
             this.button_login.TabIndex = 6;
@@ -202,7 +202,7 @@
             this.getPassword.BorderSize = 2;
             this.getPassword.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getPassword.Location = new System.Drawing.Point(478, 206);
+            this.getPassword.Location = new System.Drawing.Point(478, 224);
             this.getPassword.Margin = new System.Windows.Forms.Padding(4);
             this.getPassword.Multiline = false;
             this.getPassword.Name = "getPassword";
@@ -224,7 +224,7 @@
             this.getUsername.BorderSize = 2;
             this.getUsername.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getUsername.Location = new System.Drawing.Point(478, 156);
+            this.getUsername.Location = new System.Drawing.Point(478, 174);
             this.getUsername.Margin = new System.Windows.Forms.Padding(4);
             this.getUsername.Multiline = false;
             this.getUsername.Name = "getUsername";

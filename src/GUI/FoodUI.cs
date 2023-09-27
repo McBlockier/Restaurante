@@ -482,6 +482,11 @@ namespace Palacio_el_restaurante.src.UI
 
         }
 
+        private void FoodUI_Load(object sender, EventArgs e)
+        {
+
+        }
+
         private void button_MinusF_Click(object sender, EventArgs e)
         {
             countBM--;

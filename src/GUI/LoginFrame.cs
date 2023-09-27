@@ -119,9 +119,8 @@ namespace Palacio_el_restaurante
            if(ss == 32)
             {
                 resetTimer();
-                FoodUI food = new FoodUI();
-                food.Show();
-   
+                AdminIU admin = new AdminIU();
+                admin.Show();
                 this.Hide();
             }
         }

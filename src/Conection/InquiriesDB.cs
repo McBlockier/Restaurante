@@ -13,7 +13,7 @@ namespace Palacio_el_restaurante.src.Conection
     internal class InquiriesDB
     {
         //Conexión global con la base de datos
-        private static MySqlConnection connection = Conection.getConnection();
+        private static MySqlConnection connection = Conection.Connection.GetConnection();
         private static Boolean value = false;
 
         public static Boolean registerUser(Persona persona)

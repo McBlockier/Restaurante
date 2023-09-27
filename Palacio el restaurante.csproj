@@ -99,6 +99,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\Conection\Conection.cs" />
@@ -145,6 +146,9 @@
     </Compile>
     <Compile Include="src\Controls\RJTextBoxRounded.Designer.cs">
       <DependentUpon>RJTextBoxRounded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Controls\RJTextBoxSQL.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\GUI\AdminIU.cs">
       <SubType>Form</SubType>
@@ -306,6 +310,12 @@
     <None Include="Resources\FONDO.jpg" />
     <None Include="Resources\PALACIOOOOOOO2.png" />
     <None Include="Resources\PALACIOOOOOOO3.png" />
+    <None Include="Resources\filtro_ON.png" />
+    <None Include="Resources\filtrar.png" />
+    <None Include="Resources\filtrar.gif" />
+    <None Include="Resources\portapapeles.gif" />
+    <None Include="Resources\nube-de-datos.gif" />
+    <None Include="Resources\consulta.gif" />
     <Content Include="src\Controls\Credits.txt" />
     <None Include="src\Img\cebolla.png" />
     <None Include="src\Img\cebolla_Off.png" />
