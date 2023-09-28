@@ -60,7 +60,7 @@
             // 
             this.resetPassword.AutoSize = true;
             this.resetPassword.Font = new System.Drawing.Font("Microsoft Tai Le", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetPassword.Location = new System.Drawing.Point(485, 288);
+            this.resetPassword.Location = new System.Drawing.Point(485, 287);
             this.resetPassword.Name = "resetPassword";
             this.resetPassword.Size = new System.Drawing.Size(237, 22);
             this.resetPassword.TabIndex = 5;
@@ -114,15 +114,15 @@
             // panelL
             // 
             this.panelL.Controls.Add(this.loadPicture);
-            this.panelL.Location = new System.Drawing.Point(523, 352);
+            this.panelL.Location = new System.Drawing.Point(516, 352);
             this.panelL.Name = "panelL";
-            this.panelL.Size = new System.Drawing.Size(162, 140);
+            this.panelL.Size = new System.Drawing.Size(169, 140);
             this.panelL.TabIndex = 11;
             // 
             // loadPicture
             // 
             this.loadPicture.Image = global::Palacio_el_restaurante.Properties.Resources.conexion;
-            this.loadPicture.Location = new System.Drawing.Point(33, 2);
+            this.loadPicture.Location = new System.Drawing.Point(43, 2);
             this.loadPicture.Name = "loadPicture";
             this.loadPicture.Size = new System.Drawing.Size(85, 84);
             this.loadPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

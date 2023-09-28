@@ -96,7 +96,8 @@ namespace Palacio_el_restaurante
             if (String.IsNullOrEmpty(getUsername.Texts) || String.IsNullOrEmpty(getPassword.Texts))
             {
                 RJMessageBox.Show("El usuario o la contraseña son incorrectos",
-                    "AVISO!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);              
+                    "AVISO!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                resetPassword.Visible = true;
             }
             else {              
                 panelL.Show();
@@ -119,8 +120,8 @@ namespace Palacio_el_restaurante
            if(ss == 32)
             {
                 resetTimer();
-                AdminIU admin = new AdminIU();
-                admin.Show();
+                FoodUI food = new FoodUI();
+                food.Show();
                 this.Hide();
             }
         }

@@ -1,4 +1,5 @@
 ﻿using CustomMessageBox;
+using Palacio_el_restaurante.src.GUI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -485,6 +486,21 @@ namespace Palacio_el_restaurante.src.UI
         private void FoodUI_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void rjAddTea_Click(object sender, EventArgs e)
+        {
+           DialogResult result = RJMessageBox.Show("¿Esta seguro(a) de agregar ese pedido?", "Pregunta", MessageBoxButtons.YesNo);
+            if(result == DialogResult.Yes)
+            {
+                //Aqui la logica para agregar ese pedido
+            }
+        }
+
+        private void pictureBox8_Click(object sender, EventArgs e)
+        {
+            OrdersGUI orders = new OrdersGUI();
+            orders.Show();
         }
 
         private void button_MinusF_Click(object sender, EventArgs e)

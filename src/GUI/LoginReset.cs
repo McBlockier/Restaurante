@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CustomMessageBox;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,7 +58,19 @@ namespace Palacio_el_restaurante.src.UI
         //Button for reset passwords
         private void button_reset_Click(object sender, EventArgs e)
         {
+           DialogResult  result = RJMessageBox.Show("¿Esta seguro de ingresar la nueva contraseña?", "Pregunta", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
+            {
+                //Aqui va la logica para reiniciar la contraseña
 
+
+
+
+
+                LoginFrame login = new LoginFrame();
+                login.Show();
+                this.Hide();
+            }
         }
         //End
 

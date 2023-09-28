@@ -104,6 +104,16 @@ namespace Palacio_el_restaurante.src.GUI
             s4.Visible = true;
         }
 
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelStaff_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left)

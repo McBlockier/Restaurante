@@ -44,6 +44,9 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button_coffe = new Palacio_el_restaurante.src.Controls.RJButton();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel21 = new System.Windows.Forms.Panel();
+            this.label39 = new System.Windows.Forms.Label();
+            this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
@@ -164,6 +167,8 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.leftPanel.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel21.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
             this.panel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             this.panel6.SuspendLayout();
@@ -439,6 +444,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Controls.Add(this.panel21);
             this.panel2.Controls.Add(this.panel7);
             this.panel2.Controls.Add(this.panel6);
             this.panel2.Controls.Add(this.panelLogOut);
@@ -450,6 +456,37 @@
             this.panel2.Size = new System.Drawing.Size(1136, 88);
             this.panel2.TabIndex = 1;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // panel21
+            // 
+            this.panel21.Controls.Add(this.label39);
+            this.panel21.Controls.Add(this.pictureBox8);
+            this.panel21.Location = new System.Drawing.Point(568, 2);
+            this.panel21.Name = "panel21";
+            this.panel21.Size = new System.Drawing.Size(62, 87);
+            this.panel21.TabIndex = 8;
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label39.Location = new System.Drawing.Point(6, 58);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(48, 16);
+            this.label39.TabIndex = 2;
+            this.label39.Text = "Orders";
+            // 
+            // pictureBox8
+            // 
+            this.pictureBox8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox8.Image = global::Palacio_el_restaurante.Properties.Resources.envio;
+            this.pictureBox8.Location = new System.Drawing.Point(16, 16);
+            this.pictureBox8.Name = "pictureBox8";
+            this.pictureBox8.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox8.TabIndex = 2;
+            this.pictureBox8.TabStop = false;
+            this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
             // 
             // panel7
             // 
@@ -1120,6 +1157,7 @@
             this.rjAddTea.Text = "Add to cart";
             this.rjAddTea.TextColor = System.Drawing.Color.White;
             this.rjAddTea.UseVisualStyleBackColor = false;
+            this.rjAddTea.Click += new System.EventHandler(this.rjAddTea_Click);
             // 
             // pictureBox6
             // 
@@ -1962,6 +2000,9 @@
             this.leftPanel.ResumeLayout(false);
             this.leftPanel.PerformLayout();
             this.panel2.ResumeLayout(false);
+            this.panel21.ResumeLayout(false);
+            this.panel21.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
@@ -2170,5 +2211,8 @@
         private Controls.RJComboBox rjItemF;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel panel21;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.PictureBox pictureBox8;
     }
 }
