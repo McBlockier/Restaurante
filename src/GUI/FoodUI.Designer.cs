@@ -165,6 +165,7 @@
             this.button_AddFood = new Palacio_el_restaurante.src.Controls.RJButton();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.rjButton1 = new Palacio_el_restaurante.src.Controls.RJButton();
             this.leftPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel21.SuspendLayout();
@@ -1172,6 +1173,7 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.rjButton1);
             this.panel4.Controls.Add(this.pictureBox2);
             this.panel4.Controls.Add(this.panel20);
             this.panel4.Controls.Add(this.panel19);
@@ -1980,6 +1982,26 @@
             this.pictureBox7.TabIndex = 1;
             this.pictureBox7.TabStop = false;
             // 
+            // rjButton1
+            // 
+            this.rjButton1.BackColor = System.Drawing.Color.Plum;
+            this.rjButton1.BackgroundColor = System.Drawing.Color.Plum;
+            this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton1.BorderRadius = 5;
+            this.rjButton1.BorderSize = 0;
+            this.rjButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjButton1.FlatAppearance.BorderSize = 0;
+            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton1.ForeColor = System.Drawing.Color.White;
+            this.rjButton1.Location = new System.Drawing.Point(65, 5);
+            this.rjButton1.Name = "rjButton1";
+            this.rjButton1.Size = new System.Drawing.Size(88, 36);
+            this.rjButton1.TabIndex = 29;
+            this.rjButton1.Text = "Clear";
+            this.rjButton1.TextColor = System.Drawing.Color.White;
+            this.rjButton1.UseVisualStyleBackColor = false;
+            // 
             // FoodUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2214,5 +2236,6 @@
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.PictureBox pictureBox8;
+        private Controls.RJButton rjButton1;
     }
 }
