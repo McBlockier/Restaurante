@@ -1,4 +1,5 @@
 ﻿using CustomMessageBox;
+using Palacio_el_restaurante.src.Conection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace Palacio_el_restaurante.src.UI
     public partial class LoginCreateA : Form
     {
         public int xClick = 0, yClick = 0;
+        private int ss = 0;
         private String hotel = "Hotel_Button";
         private String villa = "Villa_Button";
         private String valueLocation = "";
@@ -160,8 +162,27 @@ namespace Palacio_el_restaurante.src.UI
                             if(result == DialogResult.Yes)
                             {
                                 //Aqui va la logica para registrar el usuario
-                                rjButton1.Hide();
-                                pictureAcces.Show();
+                                InquiriesDB DB = new InquiriesDB();
+                                Persona persona = new Persona();
+                                persona.IdUser = username.Texts;
+                                persona.Password = password.Texts;
+                                persona.Name = rjName.Texts;
+                                persona.LastNameP = lastNameP.Texts;
+                                persona.LastNameM = lastNameM.Texts;
+                                persona.PhoneNumber = tel.Texts;
+                                persona.Settlement_type1 = valueLocation;
+                                persona.PrimaryStreet = rjStreet1.Texts;
+                                persona.SecondaryStreet = rjStreet2.Texts;
+                                if (DB.registerUser(persona))
+                                {
+                                    rjButton1.Hide();
+                                    pictureAcces.Show();
+                                    timer1.Start();
+                                }
+                                else
+                                {
+                                    RJMessageBox.Show("Something went wrong during registration", "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
                             }                           
                         }
                     }
@@ -173,11 +194,6 @@ namespace Palacio_el_restaurante.src.UI
         {
             Thread.Sleep(1000);
             pictureLocation.Enabled = false;
-        }
-
-        private void rjAreaCity_MouseEnter(object sender, EventArgs e)
-        {
-
         }
 
         private void rjAreaCity_KeyPress(object sender, KeyPressEventArgs e)
@@ -194,6 +210,36 @@ namespace Palacio_el_restaurante.src.UI
             this.Hide();
             LoginFrame loginFrame = new LoginFrame();
             loginFrame.Show();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            ss += 1;
+            if (ss == 23)
+            {
+                resetTimer();
+                timer1.Stop();
+                LoginFrame login = new LoginFrame();
+                login.Show();
+                this.Hide();
+            }
+        }
+        private void resetTimer()
+        {
+            ss = 0;
+            timer1.Stop();
+        }
+
+        private void tel_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; 
+            }
+            if (tel.Texts.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; 
+            }
         }
 
         private void hover_Effect_Left(String typeButton)

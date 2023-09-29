@@ -16,7 +16,7 @@ namespace Palacio_el_restaurante.src.Conection
         private const int IvSize = 128; //bits
         public byte[] encryptedData;
         private string textoDesencriptado = "";
-        private string key = "";
+
         
 
         public SecureEncryptor(String Original_Text)
@@ -102,6 +102,33 @@ namespace Palacio_el_restaurante.src.Conection
                 }
             }
         }
+
+        public static string DecryptPassword(string encryptedPassword)
+        {
+            using (Aes aesAlg = Aes.Create())
+            {
+                String keyPass = GenerarCadenaAleatoria(32);
+                String block = GenerarCadenaAleatoria(16);
+                aesAlg.Key = Encoding.UTF8.GetBytes(keyPass);
+                aesAlg.IV = Encoding.UTF8.GetBytes(block);
+
+                ICryptoTransform decryptor = aesAlg.CreateDecryptor(aesAlg.Key, aesAlg.IV);
+
+                using (MemoryStream msDecrypt = new MemoryStream(Convert.FromBase64String(encryptedPassword)))
+                {
+                    using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                    {
+                        using (StreamReader srDecrypt = new StreamReader(csDecrypt))
+                        {
+                            return srDecrypt.ReadToEnd();
+                        }
+                    }
+                }
+            }
+        }
+
+
+
         static string GenerarCadenaAleatoria(int longitud)
         {
             const string caracteresPermitidos = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

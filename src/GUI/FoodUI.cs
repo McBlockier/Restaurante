@@ -45,6 +45,8 @@ namespace Palacio_el_restaurante.src.UI
             { xClick = e.X; yClick = e.Y; }
             else
             { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
+
+            
         }
         private void timer1_Tick(object sender, EventArgs e)
         {

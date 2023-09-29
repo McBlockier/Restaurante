@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginCreateA));
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureLogo = new System.Windows.Forms.PictureBox();
@@ -61,6 +62,7 @@
             this.rjHotel = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjVilla = new Palacio_el_restaurante.src.Controls.RJButton();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
@@ -361,6 +363,7 @@
             this.tel.TabIndex = 10;
             this.tel.Texts = "";
             this.tel.UnderlinedStyle = false;
+            this.tel.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tel_KeyPress);
             // 
             // lastNameM
             // 
@@ -613,6 +616,10 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // LoginCreateA
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -691,5 +698,6 @@
         private System.Windows.Forms.PictureBox pictureLogo;
         private Controls.RJButton rjButton2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Timer timer1;
     }
 }

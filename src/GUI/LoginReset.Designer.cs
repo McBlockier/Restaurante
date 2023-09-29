@@ -28,17 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginReset));
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.getPassword = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
-            this.getPassowrdC = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
-            this.button_reset = new Palacio_el_restaurante.src.Controls.RJButton();
             this.smsP = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.passwordLoad = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.button_reset = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.getPassowrdC = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
+            this.getPassword = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.passwordLoad)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -63,49 +65,44 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // getPassword
+            // smsP
             // 
-            this.getPassword.BackColor = System.Drawing.Color.Gainsboro;
-            this.getPassword.BorderColor = System.Drawing.Color.Transparent;
-            this.getPassword.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.getPassword.BorderRadius = 10;
-            this.getPassword.BorderSize = 2;
-            this.getPassword.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getPassword.Location = new System.Drawing.Point(69, 209);
-            this.getPassword.Margin = new System.Windows.Forms.Padding(4);
-            this.getPassword.Multiline = false;
-            this.getPassword.Name = "getPassword";
-            this.getPassword.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.getPassword.PasswordChar = true;
-            this.getPassword.PlaceholderColor = System.Drawing.Color.Gray;
-            this.getPassword.PlaceholderText = "Password";
-            this.getPassword.Size = new System.Drawing.Size(286, 40);
-            this.getPassword.TabIndex = 3;
-            this.getPassword.Texts = "";
-            this.getPassword.UnderlinedStyle = false;
+            this.smsP.AutoSize = true;
+            this.smsP.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.smsP.ForeColor = System.Drawing.Color.DarkRed;
+            this.smsP.Location = new System.Drawing.Point(93, 253);
+            this.smsP.Name = "smsP";
+            this.smsP.Size = new System.Drawing.Size(46, 20);
+            this.smsP.TabIndex = 10;
+            this.smsP.Text = "smsP";
             // 
-            // getPassowrdC
+            // label2
             // 
-            this.getPassowrdC.BackColor = System.Drawing.Color.Gainsboro;
-            this.getPassowrdC.BorderColor = System.Drawing.Color.Transparent;
-            this.getPassowrdC.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.getPassowrdC.BorderRadius = 10;
-            this.getPassowrdC.BorderSize = 2;
-            this.getPassowrdC.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getPassowrdC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getPassowrdC.Location = new System.Drawing.Point(69, 293);
-            this.getPassowrdC.Margin = new System.Windows.Forms.Padding(4);
-            this.getPassowrdC.Multiline = false;
-            this.getPassowrdC.Name = "getPassowrdC";
-            this.getPassowrdC.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.getPassowrdC.PasswordChar = true;
-            this.getPassowrdC.PlaceholderColor = System.Drawing.Color.Gray;
-            this.getPassowrdC.PlaceholderText = "Password";
-            this.getPassowrdC.Size = new System.Drawing.Size(288, 40);
-            this.getPassowrdC.TabIndex = 4;
-            this.getPassowrdC.Texts = "";
-            this.getPassowrdC.UnderlinedStyle = false;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.DarkRed;
+            this.label2.Location = new System.Drawing.Point(28, 91);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(327, 60);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Enter your new password for you account,\r\nyour password might be 8 characters min" +
+    "im\r\nyou might remember that.\r\n";
+            // 
+            // passwordLoad
+            // 
+            this.passwordLoad.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("passwordLoad.BackgroundImage")));
+            this.passwordLoad.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.passwordLoad.Image = global::Palacio_el_restaurante.Properties.Resources.contrasena;
+            this.passwordLoad.Location = new System.Drawing.Point(363, 12);
+            this.passwordLoad.Name = "passwordLoad";
+            this.passwordLoad.Size = new System.Drawing.Size(82, 76);
+            this.passwordLoad.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.passwordLoad.TabIndex = 14;
+            this.passwordLoad.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // button_reset
             // 
@@ -130,40 +127,50 @@
             this.button_reset.Click += new System.EventHandler(this.button_reset_Click);
             this.button_reset.MouseHover += new System.EventHandler(this.button_reset_MouseHover);
             // 
-            // smsP
+            // getPassowrdC
             // 
-            this.smsP.AutoSize = true;
-            this.smsP.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.smsP.ForeColor = System.Drawing.Color.DarkRed;
-            this.smsP.Location = new System.Drawing.Point(93, 253);
-            this.smsP.Name = "smsP";
-            this.smsP.Size = new System.Drawing.Size(46, 20);
-            this.smsP.TabIndex = 10;
-            this.smsP.Text = "smsP";
+            this.getPassowrdC.BackColor = System.Drawing.Color.Gainsboro;
+            this.getPassowrdC.BorderColor = System.Drawing.Color.Transparent;
+            this.getPassowrdC.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.getPassowrdC.BorderRadius = 10;
+            this.getPassowrdC.BorderSize = 2;
+            this.getPassowrdC.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.getPassowrdC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.getPassowrdC.Location = new System.Drawing.Point(69, 293);
+            this.getPassowrdC.Margin = new System.Windows.Forms.Padding(4);
+            this.getPassowrdC.Multiline = false;
+            this.getPassowrdC.Name = "getPassowrdC";
+            this.getPassowrdC.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.getPassowrdC.PasswordChar = true;
+            this.getPassowrdC.PlaceholderColor = System.Drawing.Color.Gray;
+            this.getPassowrdC.PlaceholderText = "Password";
+            this.getPassowrdC.Size = new System.Drawing.Size(288, 40);
+            this.getPassowrdC.TabIndex = 4;
+            this.getPassowrdC.Texts = "";
+            this.getPassowrdC.UnderlinedStyle = false;
             // 
-            // label2
+            // getPassword
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(28, 91);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(327, 60);
-            this.label2.TabIndex = 11;
-            this.label2.Text = "Enter your new password for you account,\r\nyour password might be 8 characters min" +
-    "im\r\nyou might remember that.\r\n";
-            // 
-            // pictureBox4
-            // 
-            this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
-            this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.Image = global::Palacio_el_restaurante.Properties.Resources.contrasena;
-            this.pictureBox4.Location = new System.Drawing.Point(363, 12);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(82, 76);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox4.TabIndex = 14;
-            this.pictureBox4.TabStop = false;
+            this.getPassword.BackColor = System.Drawing.Color.Gainsboro;
+            this.getPassword.BorderColor = System.Drawing.Color.Transparent;
+            this.getPassword.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.getPassword.BorderRadius = 10;
+            this.getPassword.BorderSize = 2;
+            this.getPassword.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.getPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.getPassword.Location = new System.Drawing.Point(69, 209);
+            this.getPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.getPassword.Multiline = false;
+            this.getPassword.Name = "getPassword";
+            this.getPassword.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.getPassword.PasswordChar = true;
+            this.getPassword.PlaceholderColor = System.Drawing.Color.Gray;
+            this.getPassword.PlaceholderText = "Password";
+            this.getPassword.Size = new System.Drawing.Size(286, 40);
+            this.getPassword.TabIndex = 3;
+            this.getPassword.Texts = "";
+            this.getPassword.UnderlinedStyle = false;
+            this.getPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.getPassword_KeyPress);
             // 
             // LoginReset
             // 
@@ -171,7 +178,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(467, 473);
-            this.Controls.Add(this.pictureBox4);
+            this.Controls.Add(this.passwordLoad);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.smsP);
             this.Controls.Add(this.button_reset);
@@ -185,7 +192,7 @@
             this.Text = "LoginReset";
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.LoginReset_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.passwordLoad)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -199,6 +206,7 @@
         private Controls.RJButton button_reset;
         private System.Windows.Forms.Label smsP;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox passwordLoad;
+        private System.Windows.Forms.Timer timer1;
     }
 }

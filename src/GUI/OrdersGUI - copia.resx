@@ -118,20 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="passwordLoad.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAA
-        1AAAANQBhp5IhgAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAEHSURBVEhL7ZUt
-        DgIxEIXHcQXCIZA4FAaLRGG5B9kjsBoLHoXiBusJjgQFHkHKe9AmQ2fCEn4MocmXtO9nxmyyEkJ4CE4L
-        TMAS7CO8U2t5HY0rJnCG4AD48KA39LoJVyQ4RRzyDIU3g/iiSBecY5mcwBSMIrxTSz6zXXeWEUQaYAtS
-        eQfaTq4dvZRjp2FyRhDpxEKin2cS9FSOdEzGCCJjVdjkfg4zKj82vhFESlVY5H4OMypfGt8IIjNVmOV+
-        Tl3+7nEVvrkAh1/QPIYJ780a8vzdl6SHD8ARpPCrcMbAW7COgU+w9hZUKvAu1X9BHf8FtfzogpUKvMvK
-        W9AD+lf5KpzRu80NcgFc9aPKxucTUwAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAQEAAAAEAIAAoQgAAFgAAACgAAABAAAAAgAAAAAEAIAAAAAAAAEAAANgBAADYAQAAAAAAAAAA

@@ -122,9 +122,9 @@
             // loadPicture
             // 
             this.loadPicture.Image = global::Palacio_el_restaurante.Properties.Resources.conexion;
-            this.loadPicture.Location = new System.Drawing.Point(43, 2);
+            this.loadPicture.Location = new System.Drawing.Point(31, 2);
             this.loadPicture.Name = "loadPicture";
-            this.loadPicture.Size = new System.Drawing.Size(85, 84);
+            this.loadPicture.Size = new System.Drawing.Size(108, 106);
             this.loadPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.loadPicture.TabIndex = 10;
             this.loadPicture.TabStop = false;
@@ -277,7 +277,6 @@
         #endregion
 
         private System.Windows.Forms.Panel leftPanel;
-        private src.Controls.RJTextBoxRounded getUsername;
         private src.Controls.RJTextBoxRounded getPassword;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
@@ -291,5 +290,6 @@
         private System.Windows.Forms.PictureBox showPassword;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.PictureBox pictureBox4;
+        public src.Controls.RJTextBoxRounded getUsername;
     }
 }

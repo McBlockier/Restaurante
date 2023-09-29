@@ -13,7 +13,9 @@ namespace Palacio_el_restaurante.src.Conection
         private String name, lastNameP, lastNameM, primaryStreet, 
             secondaryStreet, Settlement_type, password, idUser, phoneNumber;
       
-        public string Name { get => name; set => name = value; }
+        public string Name {
+            get => name;
+            set => name = value; }
         public string LastNameP { get => lastNameP; set => lastNameP = value; }
         public string LastNameM { get => lastNameM; set => lastNameM = value; }
         public string PrimaryStreet { get => primaryStreet; set => primaryStreet = value; }

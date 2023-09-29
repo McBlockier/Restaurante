@@ -1,4 +1,5 @@
 ﻿using CustomMessageBox;
+using MySql.Data.MySqlClient;
 using Palacio_el_restaurante.src.Conection;
 using Palacio_el_restaurante.src.Controls;
 using Palacio_el_restaurante.src.GUI;
@@ -95,17 +96,27 @@ namespace Palacio_el_restaurante
         {
             if (String.IsNullOrEmpty(getUsername.Texts) || String.IsNullOrEmpty(getPassword.Texts))
             {
-                RJMessageBox.Show("El usuario o la contraseña son incorrectos",
-                    "AVISO!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                resetPassword.Visible = true;
+                RJMessageBox.Show("You can't leave empty spaces",
+                    "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else {              
-                panelL.Show();
-                resetPassword.Hide();
-                create.Hide();
-                button_login.Hide();
-                loadPicture.Show();
-                timer1.Start();             
+            else {   
+                InquiriesDB DB = new InquiriesDB();
+                if(DB.valueLogin(getUsername.Texts, getPassword.Texts))
+                {
+                    panelL.Show();
+                    resetPassword.Hide();
+                    create.Hide();
+                    button_login.Hide();
+                    loadPicture.Show();
+                    timer1.Start();
+                    
+                }
+                else
+                {
+                    RJMessageBox.Show("Username or password aren't correct, please check out it",
+                    "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    resetPassword.Visible = true;
+                }                                        
             }
         }
         private void resetTimer()
@@ -120,8 +131,9 @@ namespace Palacio_el_restaurante
            if(ss == 32)
             {
                 resetTimer();
+                timer1.Stop();
                 FoodUI food = new FoodUI();
-                food.Show();
+                food.Show();           
                 this.Hide();
             }
         }
@@ -144,15 +156,15 @@ namespace Palacio_el_restaurante
         {
             if (String.IsNullOrEmpty(getUsername.Texts))
             {
-                RJMessageBox.Show("Debe ingresar primero el usuario, " +
-                    "no puede dejar ese espacio en blanco",
+                RJMessageBox.Show("User must enter",
                    "INFORMACIÓN", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                this.Hide();
+                this.Visible = false;
                 LoginReset loginReset = new LoginReset();
                 loginReset.Show();
+                loginReset.getUserName(getUsername.Texts);
             }
         }
 

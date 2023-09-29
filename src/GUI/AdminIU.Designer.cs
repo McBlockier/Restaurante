@@ -30,16 +30,16 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminIU));
             this.root = new System.Windows.Forms.Panel();
-            this.panelSQL = new System.Windows.Forms.Panel();
             this.panelinv = new System.Windows.Forms.Panel();
-            this.panelStaff = new System.Windows.Forms.Panel();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.rjInventory = new Palacio_el_restaurante.src.Controls.RJComboBox();
             this.rjDataGridView1 = new Palacio_el_restaurante.src.Controls.RJDataGridView();
+            this.panelStaff = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             this.rjStaff = new Palacio_el_restaurante.src.Controls.RJComboBox();
             this.rjDataGridView2 = new Palacio_el_restaurante.src.Controls.RJDataGridView();
+            this.panelSQL = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.rjComboBox1 = new Palacio_el_restaurante.src.Controls.RJComboBox();
             this.rjData = new Palacio_el_restaurante.src.Controls.RJDataGridView();
             this.rjPictureRounded6 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
@@ -58,11 +58,11 @@
             this.rjPictureRounded2 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.rjPictureRounded1 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.root.SuspendLayout();
-            this.panelSQL.SuspendLayout();
             this.panelinv.SuspendLayout();
-            this.panelStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjDataGridView1)).BeginInit();
+            this.panelStaff.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjDataGridView2)).BeginInit();
+            this.panelSQL.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).BeginInit();
@@ -92,16 +92,6 @@
             this.root.TabIndex = 1;
             this.root.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
-            // panelSQL
-            // 
-            this.panelSQL.Controls.Add(this.label4);
-            this.panelSQL.Controls.Add(this.rjComboBox1);
-            this.panelSQL.Controls.Add(this.rjData);
-            this.panelSQL.Location = new System.Drawing.Point(109, 27);
-            this.panelSQL.Name = "panelSQL";
-            this.panelSQL.Size = new System.Drawing.Size(901, 676);
-            this.panelSQL.TabIndex = 3;
-            // 
             // panelinv
             // 
             this.panelinv.Controls.Add(this.label5);
@@ -112,28 +102,6 @@
             this.panelinv.Size = new System.Drawing.Size(901, 674);
             this.panelinv.TabIndex = 4;
             // 
-            // panelStaff
-            // 
-            this.panelStaff.Controls.Add(this.label6);
-            this.panelStaff.Controls.Add(this.rjStaff);
-            this.panelStaff.Controls.Add(this.rjDataGridView2);
-            this.panelStaff.Location = new System.Drawing.Point(109, 27);
-            this.panelStaff.Name = "panelStaff";
-            this.panelStaff.Size = new System.Drawing.Size(904, 675);
-            this.panelStaff.TabIndex = 5;
-            this.panelStaff.Paint += new System.Windows.Forms.PaintEventHandler(this.panelStaff_Paint);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("FZYaoTi", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(342, 52);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(210, 38);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Consultations";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -143,16 +111,6 @@
             this.label5.Size = new System.Drawing.Size(210, 38);
             this.label5.TabIndex = 15;
             this.label5.Text = "Consultations";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("FZYaoTi", 19.8F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(342, 59);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(210, 38);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Consultations";
             // 
             // rjInventory
             // 
@@ -183,6 +141,28 @@
             this.rjDataGridView1.Size = new System.Drawing.Size(895, 411);
             this.rjDataGridView1.TabIndex = 0;
             // 
+            // panelStaff
+            // 
+            this.panelStaff.Controls.Add(this.label6);
+            this.panelStaff.Controls.Add(this.rjStaff);
+            this.panelStaff.Controls.Add(this.rjDataGridView2);
+            this.panelStaff.Location = new System.Drawing.Point(109, 27);
+            this.panelStaff.Name = "panelStaff";
+            this.panelStaff.Size = new System.Drawing.Size(904, 675);
+            this.panelStaff.TabIndex = 5;
+            this.panelStaff.Paint += new System.Windows.Forms.PaintEventHandler(this.panelStaff_Paint);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("FZYaoTi", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(342, 52);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(210, 38);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Consultations";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
             // rjStaff
             // 
             this.rjStaff.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -211,6 +191,26 @@
             this.rjDataGridView2.RowTemplate.Height = 24;
             this.rjDataGridView2.Size = new System.Drawing.Size(897, 410);
             this.rjDataGridView2.TabIndex = 0;
+            // 
+            // panelSQL
+            // 
+            this.panelSQL.Controls.Add(this.label4);
+            this.panelSQL.Controls.Add(this.rjComboBox1);
+            this.panelSQL.Controls.Add(this.rjData);
+            this.panelSQL.Location = new System.Drawing.Point(109, 27);
+            this.panelSQL.Name = "panelSQL";
+            this.panelSQL.Size = new System.Drawing.Size(901, 676);
+            this.panelSQL.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("FZYaoTi", 19.8F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(342, 59);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(210, 38);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Consultations";
             // 
             // rjComboBox1
             // 
@@ -488,14 +488,14 @@
             this.Name = "AdminIU";
             this.Text = "AdminIU";
             this.root.ResumeLayout(false);
-            this.panelSQL.ResumeLayout(false);
-            this.panelSQL.PerformLayout();
             this.panelinv.ResumeLayout(false);
             this.panelinv.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rjDataGridView1)).EndInit();
             this.panelStaff.ResumeLayout(false);
             this.panelStaff.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rjDataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjDataGridView2)).EndInit();
+            this.panelSQL.ResumeLayout(false);
+            this.panelSQL.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).EndInit();
