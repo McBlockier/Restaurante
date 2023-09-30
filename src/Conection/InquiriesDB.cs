@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace Palacio_el_restaurante.src.Conection
 {
-    //Clase de consultas a la base de datos
     public class InquiriesDB
     {      
         private  Boolean value = false;
@@ -58,6 +57,31 @@ namespace Palacio_el_restaurante.src.Conection
                     System.Windows.Forms.MessageBoxIcon.Error);
             }                    
             return value;
+        }
+        public int getRank(String username)
+        {
+            int rank = 0;
+            try
+            {
+                Connection connection = new Connection();
+                MySqlConnection con = connection.getConnection();
+                con.Open();
+                String SQL = "SELECT id_jerarquia FROM usuario WHERE idUser LIKE @idUser";
+                MySqlCommand command = new MySqlCommand(SQL, con);
+                command.Parameters.AddWithValue("@idUser", username);
+                MySqlDataReader reader = command.ExecuteReader();
+                if(reader.Read())
+                {
+                    rank = (int)reader["id_jerarquia"];
+                    con.Close();
+                }
+
+            }catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                  System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return rank;
         }
 
         public  Boolean valueLogin(String username, String password)
@@ -127,9 +151,27 @@ namespace Palacio_el_restaurante.src.Conection
             return value;
         }
 
+        public String[] getConsumables()
+        {
+            String[] consumables = new String[40];
+            try
+            {
+                Connection connection = new Connection();
+                MySqlConnection con = connection.getConnection();
+                con.Open();
+                String SQL = "SELECT *";
+
+            }catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
+            }
+
+            return consumables;
+        }
 
 
 
-        
+
     }
 }

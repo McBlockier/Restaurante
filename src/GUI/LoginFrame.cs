@@ -130,11 +130,25 @@ namespace Palacio_el_restaurante
             ss += 1;
            if(ss == 32)
             {
+                InquiriesDB DB = new InquiriesDB();
                 resetTimer();
                 timer1.Stop();
-                FoodUI food = new FoodUI();
-                food.Show();           
-                this.Hide();
+                switch (DB.getRank(getUsername.Texts))
+                {
+                    case 1:
+                        AdminIU admin = new AdminIU();
+                        admin.Show();
+                        this.Hide();
+                        break;
+                    case 2:
+                        FoodUI food = new FoodUI();
+                        food.Show();
+                        this.Hide();
+                        break;
+                    case 3:
+                        break;
+                }
+                
             }
         }
 

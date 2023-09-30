@@ -161,7 +161,6 @@ namespace Palacio_el_restaurante.src.UI
                             DialogResult result = RJMessageBox.Show("¿Esta seguro(a) de crear el usuario?", "Pregunta", MessageBoxButtons.YesNo);
                             if(result == DialogResult.Yes)
                             {
-                                //Aqui va la logica para registrar el usuario
                                 InquiriesDB DB = new InquiriesDB();
                                 Persona persona = new Persona();
                                 persona.IdUser = username.Texts;

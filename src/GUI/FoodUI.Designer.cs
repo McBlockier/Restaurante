@@ -47,10 +47,10 @@
             this.panel21 = new System.Windows.Forms.Panel();
             this.label39 = new System.Windows.Forms.Label();
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.panelClose = new System.Windows.Forms.Panel();
             this.label19 = new System.Windows.Forms.Label();
             this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.panel6 = new System.Windows.Forms.Panel();
+            this.panelWallet = new System.Windows.Forms.Panel();
             this.label18 = new System.Windows.Forms.Label();
             this.picture_Wallet = new System.Windows.Forms.PictureBox();
             this.panelLogOut = new System.Windows.Forms.Panel();
@@ -99,6 +99,7 @@
             this.rjAddTea = new Palacio_el_restaurante.src.Controls.RJButton();
             this.pictureBox6 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.rjButton1 = new Palacio_el_restaurante.src.Controls.RJButton();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel20 = new System.Windows.Forms.Panel();
             this.panel19 = new System.Windows.Forms.Panel();
@@ -165,14 +166,13 @@
             this.button_AddFood = new Palacio_el_restaurante.src.Controls.RJButton();
             this.pictureBox7 = new System.Windows.Forms.PictureBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.rjButton1 = new Palacio_el_restaurante.src.Controls.RJButton();
             this.leftPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel21.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            this.panel7.SuspendLayout();
+            this.panelClose.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
-            this.panel6.SuspendLayout();
+            this.panelWallet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_Wallet)).BeginInit();
             this.panelLogOut.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureLogOut)).BeginInit();
@@ -446,8 +446,8 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.panel21);
-            this.panel2.Controls.Add(this.panel7);
-            this.panel2.Controls.Add(this.panel6);
+            this.panel2.Controls.Add(this.panelClose);
+            this.panel2.Controls.Add(this.panelWallet);
             this.panel2.Controls.Add(this.panelLogOut);
             this.panel2.Controls.Add(this.panelSettings);
             this.panel2.Controls.Add(this.panel1);
@@ -489,14 +489,14 @@
             this.pictureBox8.TabStop = false;
             this.pictureBox8.Click += new System.EventHandler(this.pictureBox8_Click);
             // 
-            // panel7
+            // panelClose
             // 
-            this.panel7.Controls.Add(this.label19);
-            this.panel7.Controls.Add(this.pictureBox5);
-            this.panel7.Location = new System.Drawing.Point(815, 1);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(60, 90);
-            this.panel7.TabIndex = 7;
+            this.panelClose.Controls.Add(this.label19);
+            this.panelClose.Controls.Add(this.pictureBox5);
+            this.panelClose.Location = new System.Drawing.Point(815, 1);
+            this.panelClose.Name = "panelClose";
+            this.panelClose.Size = new System.Drawing.Size(60, 90);
+            this.panelClose.TabIndex = 7;
             // 
             // label19
             // 
@@ -520,14 +520,14 @@
             this.pictureBox5.TabStop = false;
             this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
             // 
-            // panel6
+            // panelWallet
             // 
-            this.panel6.Controls.Add(this.label18);
-            this.panel6.Controls.Add(this.picture_Wallet);
-            this.panel6.Location = new System.Drawing.Point(755, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(60, 90);
-            this.panel6.TabIndex = 6;
+            this.panelWallet.Controls.Add(this.label18);
+            this.panelWallet.Controls.Add(this.picture_Wallet);
+            this.panelWallet.Location = new System.Drawing.Point(755, 0);
+            this.panelWallet.Name = "panelWallet";
+            this.panelWallet.Size = new System.Drawing.Size(60, 90);
+            this.panelWallet.TabIndex = 6;
             // 
             // label18
             // 
@@ -1216,6 +1216,26 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(255, 774);
             this.panel4.TabIndex = 3;
+            // 
+            // rjButton1
+            // 
+            this.rjButton1.BackColor = System.Drawing.Color.Plum;
+            this.rjButton1.BackgroundColor = System.Drawing.Color.Plum;
+            this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjButton1.BorderRadius = 5;
+            this.rjButton1.BorderSize = 0;
+            this.rjButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjButton1.FlatAppearance.BorderSize = 0;
+            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjButton1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjButton1.ForeColor = System.Drawing.Color.White;
+            this.rjButton1.Location = new System.Drawing.Point(65, 5);
+            this.rjButton1.Name = "rjButton1";
+            this.rjButton1.Size = new System.Drawing.Size(88, 36);
+            this.rjButton1.TabIndex = 29;
+            this.rjButton1.Text = "Clear";
+            this.rjButton1.TextColor = System.Drawing.Color.White;
+            this.rjButton1.UseVisualStyleBackColor = false;
             // 
             // pictureBox2
             // 
@@ -1982,26 +2002,6 @@
             this.pictureBox7.TabIndex = 1;
             this.pictureBox7.TabStop = false;
             // 
-            // rjButton1
-            // 
-            this.rjButton1.BackColor = System.Drawing.Color.Plum;
-            this.rjButton1.BackgroundColor = System.Drawing.Color.Plum;
-            this.rjButton1.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjButton1.BorderRadius = 5;
-            this.rjButton1.BorderSize = 0;
-            this.rjButton1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjButton1.FlatAppearance.BorderSize = 0;
-            this.rjButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjButton1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rjButton1.ForeColor = System.Drawing.Color.White;
-            this.rjButton1.Location = new System.Drawing.Point(65, 5);
-            this.rjButton1.Name = "rjButton1";
-            this.rjButton1.Size = new System.Drawing.Size(88, 36);
-            this.rjButton1.TabIndex = 29;
-            this.rjButton1.Text = "Clear";
-            this.rjButton1.TextColor = System.Drawing.Color.White;
-            this.rjButton1.UseVisualStyleBackColor = false;
-            // 
             // FoodUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -2025,11 +2025,11 @@
             this.panel21.ResumeLayout(false);
             this.panel21.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
+            this.panelClose.ResumeLayout(false);
+            this.panelClose.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
+            this.panelWallet.ResumeLayout(false);
+            this.panelWallet.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picture_Wallet)).EndInit();
             this.panelLogOut.ResumeLayout(false);
             this.panelLogOut.PerformLayout();
@@ -2139,10 +2139,10 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panelWallet;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.PictureBox picture_Wallet;
-        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Panel panelClose;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.PictureBox pictureBox5;
         private System.Windows.Forms.PictureBox pictureBox6;

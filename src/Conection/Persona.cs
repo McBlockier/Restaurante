@@ -7,7 +7,6 @@ using System.Threading.Tasks;
 
 namespace Palacio_el_restaurante.src.Conection
 {
-    //Clase intermediaria con lo relacionado a Personas
     public class Persona
     {
         private String name, lastNameP, lastNameM, primaryStreet, 

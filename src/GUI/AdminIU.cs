@@ -1,4 +1,5 @@
 ﻿using CustomMessageBox;
+using MySql.Data.MySqlClient;
 using Palacio_el_restaurante.src.Conection;
 using Palacio_el_restaurante.src.Controls;
 using System;
@@ -37,6 +38,23 @@ namespace Palacio_el_restaurante.src.GUI
             s2.Visible = false;
             s3.Visible = false;
             s4.Visible = false;
+
+        }
+
+        private void sql()
+        {
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                rjDataInv.SetDatabaseConnection(connection);
+                rjDataInv.ExecuteSqlQuery("SELECT * FROM consumible");
+
+            }catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
         private void setVisiblePanels()
         {
@@ -81,6 +99,8 @@ namespace Palacio_el_restaurante.src.GUI
             panelSQL.Visible = false;
             panelinv.Visible = true;
             panelStaff.Visible = false;
+
+            sql();
         }
 
         private void rjPictureRounded3_Click(object sender, EventArgs e)
@@ -94,6 +114,23 @@ namespace Palacio_el_restaurante.src.GUI
             panelSQL.Visible = false;
             panelinv.Visible = false;
             panelStaff.Visible = true;
+            sqlStaff();
+        }
+        private void sqlStaff()
+        {
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                rjDataStaff.SetDatabaseConnection(connection);
+                rjDataStaff.ExecuteSqlQuery("SELECT * FROM usuario");
+
+            }
+            catch(Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                 System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
 
         private void rjPictureRounded5_Click(object sender, EventArgs e)
