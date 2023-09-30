@@ -1,14 +1,7 @@
 ﻿using CustomMessageBox;
 using Palacio_el_restaurante.src.GUI;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.UI
@@ -46,18 +39,18 @@ namespace Palacio_el_restaurante.src.UI
             else
             { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
 
-            
+
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
             ss += 1;
-            if(ss == 15)
+            if (ss == 15)
             {
                 resetTimer();
                 LoginFrame login = new LoginFrame();
                 login.Show();
                 login.Visible = true;
-                this.Hide();               
+                this.Hide();
             }
         }
         private void resetTimer()
@@ -216,12 +209,12 @@ namespace Palacio_el_restaurante.src.UI
                             showCount4.Image = Properties.Resources.diez;
                             break;
                         default:
-                            if(countI > 9)
+                            if (countI > 9)
                             {
                                 RJMessageBox.Show("No puedes poner mucho hielo", "ADVERTENCIA!",
                                 MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 countI = 10;
-                            }                          
+                            }
                             break;
                     }
                     break;
@@ -240,7 +233,7 @@ namespace Palacio_el_restaurante.src.UI
         private void button_Onion_Click(object sender, EventArgs e)
         {
             buttonOn++;
-            if(buttonOn < 2)
+            if (buttonOn < 2)
             {
                 button_Onion.Image = Properties.Resources.cebolla;
 
@@ -321,52 +314,52 @@ namespace Palacio_el_restaurante.src.UI
             clickButton("AmountM");
         }
 
-       private void clickButton(String typeButton)
+        private void clickButton(String typeButton)
         {
             switch (typeButton)
             {
                 case "AmountM":
                     switch (countAM)
                     {
-                            case 0:
+                        case 0:
                             showAmount.Image = Properties.Resources.cero;
                             break;
-                            case 1:
+                        case 1:
                             showAmount.Image = Properties.Resources.uno;
                             break;
-                            case 2:
+                        case 2:
                             showAmount.Image = Properties.Resources.dos;
                             break;
-                            case 3:
+                        case 3:
                             showAmount.Image = Properties.Resources.tres;
                             break;
-                            case 4:
+                        case 4:
                             showAmount.Image = Properties.Resources.cuatro;
                             break;
-                            case 5:
+                        case 5:
                             showAmount.Image = Properties.Resources.cinco;
                             break;
-                            case 6:
+                        case 6:
                             showAmount.Image = Properties.Resources.seis;
                             break;
-                            case 7:
+                        case 7:
                             showAmount.Image = Properties.Resources.siete;
                             break;
-                            case 8:
+                        case 8:
                             showAmount.Image = Properties.Resources.ocho;
                             break;
-                            case 9:
+                        case 9:
                             showAmount.Image = Properties.Resources.nueve;
                             break;
-                            case 10:
+                        case 10:
                             showAmount.Image = Properties.Resources.diez;
                             break;
                         default:
-                            if(countAM > 9)
+                            if (countAM > 9)
                             {
-                               RJMessageBox.Show("Estas ingresando mucho", "ADVERTENCIA!",
-                               MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }                          
+                                RJMessageBox.Show("Estas ingresando mucho", "ADVERTENCIA!",
+                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
                             break;
                     }
                     break;
@@ -407,11 +400,11 @@ namespace Palacio_el_restaurante.src.UI
                             showBag.Image = Properties.Resources.diez;
                             break;
                         default:
-                            if(countBM > 9)
+                            if (countBM > 9)
                             {
                                 RJMessageBox.Show("Estas ingresando muchas papas", "ADVERTENCIA!",
                               MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }                         
+                            }
                             break;
                     }
                     break;
@@ -492,8 +485,8 @@ namespace Palacio_el_restaurante.src.UI
 
         private void rjAddTea_Click(object sender, EventArgs e)
         {
-           DialogResult result = RJMessageBox.Show("¿Esta seguro(a) de agregar ese pedido?", "Pregunta", MessageBoxButtons.YesNo);
-            if(result == DialogResult.Yes)
+            DialogResult result = RJMessageBox.Show("¿Esta seguro(a) de agregar ese pedido?", "Pregunta", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
             {
                 //Aqui la logica para agregar ese pedido
             }
@@ -519,7 +512,7 @@ namespace Palacio_el_restaurante.src.UI
         private void button_MinusS_Click(object sender, EventArgs e)
         {
             buttonCountL++;
-            if(buttonCountL < 2)
+            if (buttonCountL < 2)
             {
                 button_MoreS.Image = Properties.Resources.letra_c_off;
                 showCount2.Image = Properties.Resources.letra_m_off;
@@ -553,7 +546,7 @@ namespace Palacio_el_restaurante.src.UI
         private void showCount2_Click(object sender, EventArgs e)
         {
             buttonCountM++;
-            if(buttonCountM < 2)
+            if (buttonCountM < 2)
             {
                 showCount2.Image = Properties.Resources.letra_m;
                 button_MinusS.Image = Properties.Resources.letra_l_Off;
@@ -570,7 +563,7 @@ namespace Palacio_el_restaurante.src.UI
         private void button_MoreS_Click(object sender, EventArgs e)
         {
             buttonCountC++;
-            if(buttonCountC < 2)
+            if (buttonCountC < 2)
             {
                 button_MoreS.Image = Properties.Resources.letra_c;
                 showCount2.Image = Properties.Resources.letra_m_off;

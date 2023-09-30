@@ -1,14 +1,12 @@
-﻿using System;
-using System.Data;
-using System.Drawing;
-using System.Windows.Forms;
-using SortOrder = System.Windows.Forms.SortOrder;
+﻿using MySql.Data.MySqlClient;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
+using System;
+using System.Data;
+using System.Drawing;
 using System.IO;
-using System.Threading;
-using MySql.Data.MySqlClient;
-using System.Runtime.InteropServices;
+using System.Windows.Forms;
+using SortOrder = System.Windows.Forms.SortOrder;
 
 namespace Palacio_el_restaurante.src.Controls
 {
@@ -18,7 +16,7 @@ namespace Palacio_el_restaurante.src.Controls
         private SortOrder sortOrder = SortOrder.None;
         private BindingSource bindingSource;
         private MySqlConnection databaseConnection;
-        private ContextMenuStrip menuContextual; 
+        private ContextMenuStrip menuContextual;
         private int indiceFilaSeleccionada = -1;
         private string opcionSeleccionada;
 
@@ -43,7 +41,7 @@ namespace Palacio_el_restaurante.src.Controls
             menuContextual.Items.Add(actualizarMenuItem);
 
             ToolStripMenuItem borrarMenuItem = new ToolStripMenuItem("Borrar");
-            borrarMenuItem.Tag = "Borrar"; 
+            borrarMenuItem.Tag = "Borrar";
             borrarMenuItem.Click += MenuContextual_Click;
             menuContextual.Items.Add(borrarMenuItem);
 
@@ -348,4 +346,4 @@ namespace Palacio_el_restaurante.src.Controls
 
 
     }
- }
+}

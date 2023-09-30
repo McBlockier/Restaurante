@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
-using System.Windows.Shapes;
 
 namespace Palacio_el_restaurante.src.Controls
 {
@@ -25,7 +20,7 @@ namespace Palacio_el_restaurante.src.Controls
         private CustomProgressBarStyle progressBarStyle = CustomProgressBarStyle.Horizontal;
         private System.Timers.Timer spinnerTimer;
         private int spinnerAngle = 0;
-        private Bitmap circularProgressBarCache; 
+        private Bitmap circularProgressBarCache;
 
         public RJProgressBar()
         {

@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.ConstrainedExecution;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Palacio_el_restaurante.src.Controls
 {
@@ -34,7 +27,7 @@ namespace Palacio_el_restaurante.src.Controls
         string text = "";
         private bool bloquearObtencionDeTexto = false;
         private List<string> registrosGetAllText = new List<string>();
-        private int indiceSeleccionado = -1; 
+        private int indiceSeleccionado = -1;
 
 
         public RJTextBoxSQL()
@@ -47,7 +40,7 @@ namespace Palacio_el_restaurante.src.Controls
         }
         private void CustomRichTextBox_TextChanged(object sender, EventArgs e)
         {
-             textoActual = this.Text;
+            textoActual = this.Text;
             ResaltarPalabrasYConvertirAMayusculas(textoActual);
         }
         public bool BlockGetText
@@ -107,7 +100,31 @@ namespace Palacio_el_restaurante.src.Controls
             int primeraLineaVisible = this.GetLineFromCharIndex(this.GetCharIndexFromPosition(new Point(0, 0)));
             return primeraLineaVisible;
         }
+        protected override void OnKeyUp(KeyEventArgs e)
+        {
+            base.OnKeyUp(e);
 
+            if (e.KeyCode == Keys.Up)
+            {
+                if (indiceSeleccionado > 0)
+                {
+                    indiceSeleccionado--;
+                    string consultaSeleccionada = registrosGetAllText[indiceSeleccionado];
+                    this.Text = consultaSeleccionada;
+                    this.Select(0, 0);
+                }
+            }
+            else if (e.KeyCode == Keys.Down)
+            {
+                if (indiceSeleccionado < registrosGetAllText.Count - 1)
+                {
+                    indiceSeleccionado++;
+                    string consultaSeleccionada = registrosGetAllText[indiceSeleccionado];
+                    this.Text = consultaSeleccionada;
+                    this.Select(0, 0);
+                }
+            }
+        }
         public string GetText()
         {
             string originalText = this.Text;
@@ -120,7 +137,7 @@ namespace Palacio_el_restaurante.src.Controls
 
             string textoCompleto = this.SelectedText;
 
-            this.Select(0, 0); 
+            this.Select(0, 0);
             this.SelectionColor = colorActual;
             this.SelectionFont = fontActual;
             this.Text = originalText;
@@ -136,32 +153,32 @@ namespace Palacio_el_restaurante.src.Controls
         }
         public string GetAllText()
         {
-                string originalText = this.Text;
-                Color colorActual = this.SelectionColor;
-                Font fontActual = this.SelectionFont;
+            string originalText = this.Text;
+            Color colorActual = this.SelectionColor;
+            Font fontActual = this.SelectionFont;
 
-                Color colorAzul = Color.Blue;
-                Font fuenteNegrita = new Font(this.Font, FontStyle.Bold);
+            Color colorAzul = Color.Blue;
+            Font fuenteNegrita = new Font(this.Font, FontStyle.Bold);
 
-                this.SelectAll();
-                this.SelectionColor = colorAzul;
-                this.SelectionFont = fuenteNegrita;
-                string textoCompleto = this.SelectedText;
+            this.SelectAll();
+            this.SelectionColor = colorAzul;
+            this.SelectionFont = fuenteNegrita;
+            string textoCompleto = this.SelectedText;
 
-                this.Select(0, 0);
-                this.SelectionColor = colorActual;
-                this.SelectionFont = fontActual;
-                this.Text = originalText;
-                  registrosGetAllText.Add(textoCompleto);
+            this.Select(0, 0);
+            this.SelectionColor = colorActual;
+            this.SelectionFont = fontActual;
+            this.Text = originalText;
+            registrosGetAllText.Add(textoCompleto);
 
-                if (registrosGetAllText.Count > 6)
-                {
-                    registrosGetAllText.RemoveAt(0);
-                }
-                indiceSeleccionado = registrosGetAllText.Count - 1;
+            if (registrosGetAllText.Count > 6)
+            {
+                registrosGetAllText.RemoveAt(0);
+            }
+            indiceSeleccionado = registrosGetAllText.Count - 1;
 
 
-            return text + textoCompleto;        
+            return text + textoCompleto;
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)

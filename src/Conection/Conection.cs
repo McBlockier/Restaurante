@@ -1,5 +1,4 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
 
 
 namespace Palacio_el_restaurante.src.Conection
@@ -17,5 +16,5 @@ namespace Palacio_el_restaurante.src.Conection
             return connection;
         }
 
-      }
+    }
 }

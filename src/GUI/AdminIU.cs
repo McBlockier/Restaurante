@@ -1,20 +1,12 @@
 ﻿using CustomMessageBox;
 using MySql.Data.MySqlClient;
 using Palacio_el_restaurante.src.Conection;
-using Palacio_el_restaurante.src.Controls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
-using System.Drawing.Printing;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.GUI
@@ -70,7 +62,8 @@ namespace Palacio_el_restaurante.src.GUI
                 rjDataInv.SetDatabaseConnection(connection);
                 rjDataInv.ExecuteSqlQuery("SELECT * FROM consumible");
 
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
                     System.Windows.Forms.MessageBoxIcon.Error);
@@ -106,7 +99,7 @@ namespace Palacio_el_restaurante.src.GUI
             panelSQL.Visible = true;
             panelinv.Visible = false;
             panelStaff.Visible = false;
-         
+
         }
 
         private void rjPictureRounded2_Click(object sender, EventArgs e)
@@ -130,7 +123,6 @@ namespace Palacio_el_restaurante.src.GUI
             s3.Visible = true;
             s4.Visible = false;
 
-
             panelSQL.Visible = false;
             panelinv.Visible = false;
             panelStaff.Visible = true;
@@ -146,7 +138,7 @@ namespace Palacio_el_restaurante.src.GUI
                 rjDataStaff.ExecuteSqlQuery("SELECT * FROM usuario");
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
                  System.Windows.Forms.MessageBoxIcon.Error);
@@ -170,13 +162,14 @@ namespace Palacio_el_restaurante.src.GUI
                 rjData.SetDatabaseConnection(connection);
                 rjData.ExecuteSqlQuery(rjSQL.GetAllText());
                 rjSQL.Clear();
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
                  System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
-       
+
         private void Upload_Click(object sender, EventArgs e)
         {
             this.Upload.Image = Properties.Resources.foto_Upload;
@@ -196,7 +189,7 @@ namespace Palacio_el_restaurante.src.GUI
                         imagenOriginal = RemoveWhiteBackground(imagenOriginal);
                     }
                     byte[] imagenBytes = ImageToByteArray(imagenOriginal);
-                    InquiriesDB DB2 = new InquiriesDB(); 
+                    InquiriesDB DB2 = new InquiriesDB();
                     DataGridViewCell celdaSeleccionada = rjDataInv.CurrentCell;
                     object valorCelda = celdaSeleccionada.Value;
                     if (DB2.existImage(valorCelda) != true)
@@ -224,9 +217,10 @@ namespace Palacio_el_restaurante.src.GUI
                     }
                     else
                     {
-                      DialogResult result = RJMessageBox.Show("You already have a linked image, " +
-                            "do you want to update it?", "QUESTION", MessageBoxButtons.OK, MessageBoxIcon.Question);
-                       if(result == DialogResult.Yes) {
+                        DialogResult result = RJMessageBox.Show("You already have a linked image, " +
+                              "do you want to update it?", "QUESTION", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                        if (result == DialogResult.Yes)
+                        {
                             InquiriesDB DB = new InquiriesDB();
                             if (DB.updateImage(valorCelda, imagenBytes))
                             {
@@ -237,7 +231,7 @@ namespace Palacio_el_restaurante.src.GUI
                             {
                                 RJMessageBox.Show("It wasn't uploaded successfully", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                 this.Upload.Image = Properties.Resources.foto_Off;
-                            }                                      
+                            }
                         }
                     }
                 }
@@ -252,7 +246,7 @@ namespace Palacio_el_restaurante.src.GUI
         {
             using (MemoryStream stream = new MemoryStream())
             {
-                imagen.Save(stream, ImageFormat.Png); 
+                imagen.Save(stream, ImageFormat.Png);
                 return stream.ToArray();
             }
         }
@@ -260,7 +254,7 @@ namespace Palacio_el_restaurante.src.GUI
         private Image RemoveWhiteBackground(Image imagen)
         {
             Bitmap bmp = new Bitmap(imagen);
-            bmp.MakeTransparent(Color.White); 
+            bmp.MakeTransparent(Color.White);
             return bmp;
         }
 
@@ -273,7 +267,9 @@ namespace Palacio_el_restaurante.src.GUI
                 rjDataInv.SetDatabaseConnection(connection);
                 rjDataInv.ExecuteSqlQuery(rjSQLInv.GetAllText());
                 rjSQLInv.Clear();
-            }catch (Exception ex)
+                sql();
+            }
+            catch (Exception ex)
             {
                 RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
                  System.Windows.Forms.MessageBoxIcon.Error);
@@ -290,6 +286,7 @@ namespace Palacio_el_restaurante.src.GUI
                 rjDataInv.SetDatabaseConnection(connection);
                 rjDataInv.ExecuteSqlQuery(rjSQLStaff.GetAllText());
                 rjSQLStaff.Clear();
+                sqlStaff();
             }
             catch (Exception ex)
             {
@@ -340,12 +337,11 @@ namespace Palacio_el_restaurante.src.GUI
         {
             TimeSpan tiempoTranscurrido = stopwatch.Elapsed;
             SetLap.Text = tiempoTranscurrido.ToString(@"hh\:mm\:ss");
-
         }
 
         private void rjSQLInv_Click(object sender, EventArgs e)
         {
-            if(count == 0)
+            if (count == 0)
             {
                 count++;
                 DialogResult result = RJMessageBox.Show("Are you accessing full control of queries, are you sure of what you are doing, " +
@@ -359,10 +355,8 @@ namespace Palacio_el_restaurante.src.GUI
                 {
                     rjSQLInv.ReadOnly = true;
                 }
-            }         
+            }
         }
-
-
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left)

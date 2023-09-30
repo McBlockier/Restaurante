@@ -1,11 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
 using System.IO;
-using static System.Net.Mime.MediaTypeNames;
+using System.Security.Cryptography;
+using System.Text;
 
 
 namespace Palacio_el_restaurante.src.Conection
@@ -17,18 +13,18 @@ namespace Palacio_el_restaurante.src.Conection
         public byte[] encryptedData;
         private string textoDesencriptado = "";
 
-        
+
 
         public SecureEncryptor(String Original_Text)
         {
-            byte[] clave = new byte[KeySize / 8]; 
+            byte[] clave = new byte[KeySize / 8];
             using (RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider())
             {
                 rng.GetBytes(clave);
             }
             encryptedData = Encrypt(Original_Text, clave);
             textoDesencriptado = Dencrypt(encryptedData, clave);
-            
+
         }
         private byte[] Encrypt(string texto, byte[] clave)
         {

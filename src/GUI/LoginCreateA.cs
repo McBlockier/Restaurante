@@ -1,16 +1,9 @@
 ﻿using CustomMessageBox;
 using Palacio_el_restaurante.src.Conection;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Drawing.Printing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.UI
@@ -49,10 +42,10 @@ namespace Palacio_el_restaurante.src.UI
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             panelData.Hide();
             pictureAcces.Hide();
-            pictureLocation.Hide(); 
+            pictureLocation.Hide();
             logo.BackColor = Color.FromArgb(3, 47, 186);
             pictureLogo.BackColor = Color.FromArgb(3, 47, 186);
-            
+
         }
 
         private void rjHotel_MouseHover(object sender, EventArgs e)
@@ -64,7 +57,7 @@ namespace Palacio_el_restaurante.src.UI
         private void hover_Effect(String typeButton)
         {
             Color hover = Color.FromArgb(156, 215, 214);
-            switch(typeButton)
+            switch (typeButton)
             {
                 case "Hotel_Button":
                     this.pictureHotel.BackColor = hover;
@@ -76,7 +69,7 @@ namespace Palacio_el_restaurante.src.UI
                     break;
             }
         }
-       
+
 
         private void rjHotel_MouseLeave(object sender, EventArgs e)
         {
@@ -95,7 +88,7 @@ namespace Palacio_el_restaurante.src.UI
 
         private void button_next_Click(object sender, EventArgs e)
         {
-            if(String.IsNullOrEmpty(rjStreet1.Texts) && String.IsNullOrEmpty(rjStreet2.Texts))
+            if (String.IsNullOrEmpty(rjStreet1.Texts) && String.IsNullOrEmpty(rjStreet2.Texts))
             {
                 RJMessageBox.Show("Both streets must enter", "Warning");
             }
@@ -117,7 +110,7 @@ namespace Palacio_el_restaurante.src.UI
                         panelData.Show();
                     }
                 }
-                
+
             }
         }
 
@@ -151,7 +144,7 @@ namespace Palacio_el_restaurante.src.UI
                     }
                     else
                     {
-                        if(String.IsNullOrEmpty(username.Texts) && String.IsNullOrEmpty(password.Texts))
+                        if (String.IsNullOrEmpty(username.Texts) && String.IsNullOrEmpty(password.Texts))
                         {
                             RJMessageBox.Show("The username and password spaces must not be empty", "Warning");
                         }
@@ -159,7 +152,7 @@ namespace Palacio_el_restaurante.src.UI
                         {
 
                             DialogResult result = RJMessageBox.Show("¿Esta seguro(a) de crear el usuario?", "Pregunta", MessageBoxButtons.YesNo);
-                            if(result == DialogResult.Yes)
+                            if (result == DialogResult.Yes)
                             {
                                 InquiriesDB DB = new InquiriesDB();
                                 Persona persona = new Persona();
@@ -182,7 +175,7 @@ namespace Palacio_el_restaurante.src.UI
                                 {
                                     RJMessageBox.Show("Something went wrong during registration", "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 }
-                            }                           
+                            }
                         }
                     }
                 }
@@ -233,18 +226,18 @@ namespace Palacio_el_restaurante.src.UI
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                e.Handled = true; 
+                e.Handled = true;
             }
             if (tel.Texts.Length >= 10 && !char.IsControl(e.KeyChar))
             {
-                e.Handled = true; 
+                e.Handled = true;
             }
         }
 
         private void hover_Effect_Left(String typeButton)
         {
             Color hoverLeft = Color.FromArgb(174, 238, 239);
-            switch(typeButton)
+            switch (typeButton)
             {
                 case "Hotel_Button":
                     this.pictureHotel.BackColor = hoverLeft;

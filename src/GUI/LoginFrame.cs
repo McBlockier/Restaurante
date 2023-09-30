@@ -1,25 +1,15 @@
 ﻿using CustomMessageBox;
-using MySql.Data.MySqlClient;
 using Palacio_el_restaurante.src.Conection;
-using Palacio_el_restaurante.src.Controls;
 using Palacio_el_restaurante.src.GUI;
 using Palacio_el_restaurante.src.UI;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
 namespace Palacio_el_restaurante
-{  
+{
     public partial class LoginFrame : Form
     {
         public int xClick = 0, yClick = 0;
@@ -54,9 +44,9 @@ namespace Palacio_el_restaurante
         }
         private void toolTip1_Popup(object sender, PopupEventArgs e)
         {
-            string texto = e.AssociatedControl.Text; 
+            string texto = e.AssociatedControl.Text;
             Size textSize = TextRenderer.MeasureText(texto, e.AssociatedControl.Font);
-            int margen = 5; 
+            int margen = 5;
             e.ToolTipSize = new Size(textSize.Width + margen, textSize.Height + margen);
 
             Point cursorPos = Cursor.Position;
@@ -70,7 +60,7 @@ namespace Palacio_el_restaurante
                 cursorPos.Y = Screen.PrimaryScreen.Bounds.Bottom - e.ToolTipSize.Height;
             }
 
-            toolTip1.Show(texto, e.AssociatedControl, cursorPos, 3000); 
+            toolTip1.Show(texto, e.AssociatedControl, cursorPos, 3000);
         }
 
 
@@ -80,11 +70,11 @@ namespace Palacio_el_restaurante
             e.DrawBorder();
 
             Font font = new Font("Arial", 12, FontStyle.Bold);
-            Brush textColor = Brushes.White; 
+            Brush textColor = Brushes.White;
 
             e.Graphics.DrawString(e.ToolTipText, font, textColor, e.Bounds.X + 6, e.Bounds.Y + 6);
         }
- 
+
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left)
@@ -99,9 +89,10 @@ namespace Palacio_el_restaurante
                 RJMessageBox.Show("You can't leave empty spaces",
                     "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            else {   
+            else
+            {
                 InquiriesDB DB = new InquiriesDB();
-                if(DB.valueLogin(getUsername.Texts, getPassword.Texts))
+                if (DB.valueLogin(getUsername.Texts, getPassword.Texts))
                 {
                     panelL.Show();
                     resetPassword.Hide();
@@ -109,14 +100,14 @@ namespace Palacio_el_restaurante
                     button_login.Hide();
                     loadPicture.Show();
                     timer1.Start();
-                    
+
                 }
                 else
                 {
                     RJMessageBox.Show("Username or password aren't correct, please check out it",
                     "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     resetPassword.Visible = true;
-                }                                        
+                }
             }
         }
         private void resetTimer()
@@ -128,7 +119,7 @@ namespace Palacio_el_restaurante
         private void timer1_Tick(object sender, EventArgs e)
         {
             ss += 1;
-           if(ss == 32)
+            if (ss == 32)
             {
                 InquiriesDB DB = new InquiriesDB();
                 resetTimer();
@@ -148,13 +139,13 @@ namespace Palacio_el_restaurante
                     case 3:
                         break;
                 }
-                
+
             }
         }
 
         private void pictureBox4_Click(object sender, EventArgs e)
         {
-           if(getPassword.PasswordChar != true)
+            if (getPassword.PasswordChar != true)
             {
                 showPassword.Image = Properties.Resources.ojo_off;
                 getPassword.PasswordChar = true;
@@ -164,7 +155,7 @@ namespace Palacio_el_restaurante
                 showPassword.Image = Properties.Resources.ojo_on;
                 getPassword.PasswordChar = false;
             }
-            
+
         }
         private void resetPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -204,7 +195,7 @@ namespace Palacio_el_restaurante
             if (e.Button != MouseButtons.Left)
             { xClick = e.X; yClick = e.Y; }
             else
-            { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }        
-        }   
+            { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
+        }
     }
 }

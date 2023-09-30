@@ -1,8 +1,4 @@
-﻿using Palacio_el_restaurante.src.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante
@@ -12,7 +8,7 @@ namespace Palacio_el_restaurante
         [STAThread]
         static void Main()
         {
-            
+
             Application.Run(new LoginFrame());
         }
 

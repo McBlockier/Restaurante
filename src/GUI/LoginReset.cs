@@ -1,14 +1,7 @@
 ﻿using CustomMessageBox;
 using Palacio_el_restaurante.src.Conection;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.UI
@@ -37,7 +30,7 @@ namespace Palacio_el_restaurante.src.UI
             smsP.Visible = false;
             passwordLoad.Visible = false;
             button_reset.Enabled = false;
-            getPassword.TextChanged += TextBox_TextChanged;;
+            getPassword.TextChanged += TextBox_TextChanged; ;
         }
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -61,31 +54,31 @@ namespace Palacio_el_restaurante.src.UI
         {
             if (getPassword.Texts.Length > 0 & getPassowrdC.Texts.Length > 0)
             {
-                if(getPassword.Texts.Length == getPassowrdC.Texts.Length)
+                if (getPassword.Texts.Length == getPassowrdC.Texts.Length)
                 {
                     smsP.Visible = false;
                 }
                 else
                 {
-                    smsP.Visible =true;
+                    smsP.Visible = true;
                     smsP.Text = "Passwords must match!";
                 }
-            }         
+            }
         }
-        public  void getUserName(String userName)
+        public void getUserName(String userName)
         {
-           UserName = userName;
+            UserName = userName;
         }
         //Button for reset passwords
         private void button_reset_Click(object sender, EventArgs e)
         {
-           DialogResult  result = RJMessageBox.Show("¿Esta seguro de ingresar la nueva contraseña?", "Pregunta", MessageBoxButtons.YesNo);
+            DialogResult result = RJMessageBox.Show("¿Esta seguro de ingresar la nueva contraseña?", "Pregunta", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
                 //Aqui va la logica para reiniciar la contraseña
                 InquiriesDB DB = new InquiriesDB();
                 Persona persona = new Persona();
-                if(getPassword.Texts.Length > 7 && getPassowrdC.Texts.Length > 7)
+                if (getPassword.Texts.Length > 7 && getPassowrdC.Texts.Length > 7)
                 {
                     if (getPassword.Texts.Equals(getPassowrdC.Texts))
                     {

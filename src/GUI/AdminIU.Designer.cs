@@ -188,9 +188,9 @@
             this.panelinv.Controls.Add(this.rjInventory);
             this.panelinv.Controls.Add(this.rjDataInv);
             this.panelinv.Controls.Add(this.pictureBox2);
-            this.panelinv.Location = new System.Drawing.Point(109, 26);
+            this.panelinv.Location = new System.Drawing.Point(109, 28);
             this.panelinv.Name = "panelinv";
-            this.panelinv.Size = new System.Drawing.Size(901, 675);
+            this.panelinv.Size = new System.Drawing.Size(901, 673);
             this.panelinv.TabIndex = 4;
             // 
             // Upload
@@ -232,7 +232,7 @@
             this.rjSQLInv.Location = new System.Drawing.Point(15, 12);
             this.rjSQLInv.Name = "rjSQLInv";
             this.rjSQLInv.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rjSQLInv.Size = new System.Drawing.Size(444, 197);
+            this.rjSQLInv.Size = new System.Drawing.Size(511, 194);
             this.rjSQLInv.TabIndex = 17;
             this.rjSQLInv.Text = "";
             this.rjSQLInv.Click += new System.EventHandler(this.rjSQLInv_Click);
@@ -294,9 +294,9 @@
             this.panelStaff.Controls.Add(this.rjStaff);
             this.panelStaff.Controls.Add(this.rjDataStaff);
             this.panelStaff.Controls.Add(this.pictureBox3);
-            this.panelStaff.Location = new System.Drawing.Point(109, 28);
+            this.panelStaff.Location = new System.Drawing.Point(109, 27);
             this.panelStaff.Name = "panelStaff";
-            this.panelStaff.Size = new System.Drawing.Size(904, 674);
+            this.panelStaff.Size = new System.Drawing.Size(904, 675);
             this.panelStaff.TabIndex = 5;
             // 
             // rjExecute
@@ -326,7 +326,7 @@
             this.rjSQLStaff.Location = new System.Drawing.Point(15, 3);
             this.rjSQLStaff.Name = "rjSQLStaff";
             this.rjSQLStaff.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rjSQLStaff.Size = new System.Drawing.Size(472, 203);
+            this.rjSQLStaff.Size = new System.Drawing.Size(567, 203);
             this.rjSQLStaff.TabIndex = 16;
             this.rjSQLStaff.Text = "";
             this.rjSQLStaff.Click += new System.EventHandler(this.rjSQLStaff_Click);
@@ -419,7 +419,7 @@
             this.rjSQL.Location = new System.Drawing.Point(15, 19);
             this.rjSQL.Name = "rjSQL";
             this.rjSQL.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.rjSQL.Size = new System.Drawing.Size(530, 243);
+            this.rjSQL.Size = new System.Drawing.Size(567, 243);
             this.rjSQL.TabIndex = 15;
             this.rjSQL.Text = "";
             this.rjSQL.Click += new System.EventHandler(this.rjSQL_Click);

@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.Controls
 {
-    public class RjPanel:Panel
+    public class RjPanel : Panel
     {
 
         private int borderRadius = 10;
