@@ -112,7 +112,7 @@ namespace Palacio_el_restaurante.src.Controls
                 }
                 else
                 {
-                    MessageBox.Show("No se encontraron resultados para la consulta.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                   
                 }
             }
 
