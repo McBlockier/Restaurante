@@ -538,6 +538,36 @@ namespace Palacio_el_restaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap foto_Off {
+            get {
+                object obj = ResourceManager.GetObject("foto_Off", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap foto_Up {
+            get {
+                object obj = ResourceManager.GetObject("foto_Up", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap foto_Upload {
+            get {
+                object obj = ResourceManager.GetObject("foto_Upload", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap fuego {
             get {
                 object obj = ResourceManager.GetObject("fuego", resourceCulture);
@@ -851,6 +881,16 @@ namespace Palacio_el_restaurante.Properties {
         public static System.Drawing.Bitmap milk_wall {
             get {
                 object obj = ResourceManager.GetObject("milk_wall", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap mysql {
+            get {
+                object obj = ResourceManager.GetObject("mysql", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

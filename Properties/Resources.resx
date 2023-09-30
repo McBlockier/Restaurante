@@ -475,4 +475,16 @@
   <data name="caja_de_entrega__1_" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\caja-de-entrega (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="foto_Off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\foto_Off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="foto_Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\foto_Up.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="foto_Upload" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\foto_Upload.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mysql" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\mysql.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

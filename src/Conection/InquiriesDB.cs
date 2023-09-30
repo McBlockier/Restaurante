@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -115,8 +116,91 @@ namespace Palacio_el_restaurante.src.Conection
             {
                 RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
                     System.Windows.Forms.MessageBoxIcon.Error);
+            }        
+            return value;
+        }
+        public Boolean uploadImage(object nameProduct, byte[] image)
+        {
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                connection.Open();
+                String SQL = "INSERT INTO imagenconsumible(nombreConsumible, imagen)VALUES(@nombreConsumible, @imagen)";
+                MySqlCommand command = new MySqlCommand(SQL, connection);
+                command.Parameters.AddWithValue("@nombreConsumible", nameProduct.ToString());
+                command.Parameters.AddWithValue("@imagen", image);
+                int i = command.ExecuteNonQuery();
+                if (i != 1)
+                {
+                    value = false;
+                }
+                else
+                {
+                    value = true;
+                }
+            }catch(Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
             }
-            
+            return value;
+        }
+        public Boolean existImage(object nameProduct)
+        {
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                connection.Open();
+                String SQL = "SELECT image FROM imagenconsumible WHERE nombreConsumible LIKE @nombreConsumible";
+                MySqlCommand command = new MySqlCommand( SQL, connection);
+                command.Parameters.AddWithValue("@nombreConsumible", nameProduct.ToString());
+                int i = command.ExecuteNonQuery();
+                if (i != 1)
+                {
+                    value = false;
+                }
+                else
+                {
+                    value = true;
+                }
+            }
+            catch(Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return value;
+        }
+
+        public Boolean updateImage(object nameProduct, byte[] newImage)
+        {
+            Boolean getValue = existImage(nameProduct);
+            if (getValue)
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                connection.Open();
+                String SQL = $"UPDATE imagenconsumible SET imagen={newImage} WHERE nombreConsumible LIKE @nombreConsumible";
+                MySqlCommand command = new MySqlCommand(SQL, connection);
+                command.Parameters.AddWithValue("@nombreConsumible", nameProduct.ToString());
+                int i = command.ExecuteNonQuery();
+                if (i != 1)
+                {
+                    value = false;
+                }
+                else
+                {
+                    value= true;
+                }
+            }
+            else
+            {
+                RJMessageBox.Show("The image you are trying to update isn't accessible", "WARNING!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Warning);
+            }
+
             return value;
         }
 
@@ -150,28 +234,6 @@ namespace Palacio_el_restaurante.src.Conection
             }
             return value;
         }
-
-        public String[] getConsumables()
-        {
-            String[] consumables = new String[40];
-            try
-            {
-                Connection connection = new Connection();
-                MySqlConnection con = connection.getConnection();
-                con.Open();
-                String SQL = "SELECT *";
-
-            }catch (Exception ex)
-            {
-                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                    System.Windows.Forms.MessageBoxIcon.Error);
-            }
-
-            return consumables;
-        }
-
-
-
 
     }
 }

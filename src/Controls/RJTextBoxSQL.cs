@@ -32,6 +32,10 @@ namespace Palacio_el_restaurante.src.Controls
         public int FirstVisibleLine { get; private set; }
         string textoActual = "";
         string text = "";
+        private bool bloquearObtencionDeTexto = false;
+        private List<string> registrosGetAllText = new List<string>();
+        private int indiceSeleccionado = -1; 
+
 
         public RJTextBoxSQL()
         {
@@ -45,6 +49,11 @@ namespace Palacio_el_restaurante.src.Controls
         {
              textoActual = this.Text;
             ResaltarPalabrasYConvertirAMayusculas(textoActual);
+        }
+        public bool BlockGetText
+        {
+            get { return bloquearObtencionDeTexto; }
+            set { bloquearObtencionDeTexto = value; }
         }
 
         private void ResaltarPalabrasYConvertirAMayusculas(string texto)
@@ -116,28 +125,64 @@ namespace Palacio_el_restaurante.src.Controls
             this.SelectionFont = fontActual;
             this.Text = originalText;
 
+            registrosGetAllText.Add(textoCompleto);
+            if (registrosGetAllText.Count > 6)
+            {
+                registrosGetAllText.RemoveAt(0);
+            }
+            indiceSeleccionado = registrosGetAllText.Count - 1;
+
             return textoCompleto;
         }
         public string GetAllText()
         {
-            string originalText = this.Text;
-            Color colorActual = this.SelectionColor;
-            Font fontActual = this.SelectionFont;
+                string originalText = this.Text;
+                Color colorActual = this.SelectionColor;
+                Font fontActual = this.SelectionFont;
 
-            Color colorAzul = Color.Blue;
-            Font fuenteNegrita = new Font(this.Font, FontStyle.Bold);
+                Color colorAzul = Color.Blue;
+                Font fuenteNegrita = new Font(this.Font, FontStyle.Bold);
 
-            this.SelectAll();
-            this.SelectionColor = colorAzul; 
-            this.SelectionFont = fuenteNegrita; 
-            string textoCompleto = this.SelectedText;
+                this.SelectAll();
+                this.SelectionColor = colorAzul;
+                this.SelectionFont = fuenteNegrita;
+                string textoCompleto = this.SelectedText;
 
-            this.Select(0, 0); 
-            this.SelectionColor = colorActual;
-            this.SelectionFont = fontActual;
-            this.Text = originalText;
+                this.Select(0, 0);
+                this.SelectionColor = colorActual;
+                this.SelectionFont = fontActual;
+                this.Text = originalText;
+                  registrosGetAllText.Add(textoCompleto);
 
-            return text + textoCompleto;
+                if (registrosGetAllText.Count > 6)
+                {
+                    registrosGetAllText.RemoveAt(0);
+                }
+                indiceSeleccionado = registrosGetAllText.Count - 1;
+
+
+            return text + textoCompleto;        
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.X))
+            {
+                if (registrosGetAllText.Count > 0)
+                {
+                    using (var popupForm = new CustomPopupForm(string.Join(Environment.NewLine, registrosGetAllText)))
+                    {
+                        popupForm.ShowDialog();
+                        string seleccion = popupForm.SelectedText;
+                        if (!string.IsNullOrEmpty(seleccion))
+                        {
+                            this.Text = text + seleccion;
+                        }
+                    }
+                }
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
 

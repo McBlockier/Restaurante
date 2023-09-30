@@ -8,77 +8,19 @@ using OfficeOpenXml.Style;
 using System.IO;
 using System.Threading;
 using MySql.Data.MySqlClient;
+using System.Runtime.InteropServices;
 
 namespace Palacio_el_restaurante.src.Controls
 {
-    using System;
-    using System.Drawing;
-    using System.Windows.Forms;
-
-    internal class CustomPopupForm : Form
-    {
-        private RichTextBox richTextBox;
-        private Button zoomInButton;
-        private Button zoomOutButton;
-
-        private int zoomLevel = 100;
-
-        public CustomPopupForm(string documentationText)
-        {
-            // Configuración de la ventana emergente
-            this.Text = "Documentación de RJDataGridView";
-            this.Size = new Size(600, 400);
-
-            // Crear el RichTextBox para mostrar la documentación
-            richTextBox = new RichTextBox();
-            richTextBox.Dock = DockStyle.Fill;
-            richTextBox.Text = documentationText;
-            richTextBox.ZoomFactor = zoomLevel / 100f; // Establecer el nivel de zoom inicial
-            richTextBox.ReadOnly = true;
-
-            // Botón de zoom in
-            zoomInButton = new Button();
-            zoomInButton.Text = "Zoom In (+)";
-            zoomInButton.Dock = DockStyle.Bottom;
-            zoomInButton.Click += ZoomInButton_Click;
-
-            // Botón de zoom out
-            zoomOutButton = new Button();
-            zoomOutButton.Text = "Zoom Out (-)";
-            zoomOutButton.Dock = DockStyle.Bottom;
-            zoomOutButton.Click += ZoomOutButton_Click;
-
-            // Agregar controles al formulario
-            this.Controls.Add(richTextBox);
-            this.Controls.Add(zoomInButton);
-            this.Controls.Add(zoomOutButton);
-        }
-
-        private void ZoomInButton_Click(object sender, EventArgs e)
-        {
-            // Incrementar el nivel de zoom
-            zoomLevel += 10;
-            richTextBox.ZoomFactor = zoomLevel / 100f;
-        }
-
-        private void ZoomOutButton_Click(object sender, EventArgs e)
-        {
-            // Decrementar el nivel de zoom
-            if (zoomLevel > 10)
-            {
-                zoomLevel -= 10;
-                richTextBox.ZoomFactor = zoomLevel / 100f;
-            }
-        }
-    }
-
-
     public class RJDataGridView : DataGridView
     {
         private Button exportToExcelButton;
         private SortOrder sortOrder = SortOrder.None;
         private BindingSource bindingSource;
         private MySqlConnection databaseConnection;
+        private ContextMenuStrip menuContextual; 
+        private int indiceFilaSeleccionada = -1;
+        private string opcionSeleccionada;
 
 
         public RJDataGridView()
@@ -86,8 +28,44 @@ namespace Palacio_el_restaurante.src.Controls
             InitializeCustomStyles();
             InitializeSorting();
             InitializeExportToExcelButton();
+            InicializarMenuContextual();
         }
+        public string GetOption()
+        {
+            return opcionSeleccionada;
+        }
+        private void InicializarMenuContextual()
+        {
+            menuContextual = new ContextMenuStrip();
+            ToolStripMenuItem actualizarMenuItem = new ToolStripMenuItem("Actualizar");
+            actualizarMenuItem.Tag = "Actualizar";
+            actualizarMenuItem.Click += MenuContextual_Click;
+            menuContextual.Items.Add(actualizarMenuItem);
 
+            ToolStripMenuItem borrarMenuItem = new ToolStripMenuItem("Borrar");
+            borrarMenuItem.Tag = "Borrar"; 
+            borrarMenuItem.Click += MenuContextual_Click;
+            menuContextual.Items.Add(borrarMenuItem);
+
+            this.ContextMenuStrip = menuContextual;
+        }
+        private void MenuContextual_Click(object sender, EventArgs e)
+        {
+            if (indiceFilaSeleccionada >= 0)
+            {
+                ToolStripMenuItem menuItem = (ToolStripMenuItem)sender;
+                opcionSeleccionada = menuItem.Tag.ToString();
+            }
+        }
+        protected override void OnCellMouseDown(DataGridViewCellMouseEventArgs e)
+        {
+            base.OnCellMouseDown(e);
+            if (e.Button == MouseButtons.Right && e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                indiceFilaSeleccionada = e.RowIndex;
+                menuContextual.Show(this, e.Location);
+            }
+        }
         private void InitializeExportToExcelButton()
         {
             exportToExcelButton = new Button();
@@ -192,7 +170,6 @@ namespace Palacio_el_restaurante.src.Controls
             }
         }
 
-
         private void InitializeSorting()
         {
             this.ColumnHeaderMouseClick += CustomDataGridView_ColumnHeaderMouseClick;
@@ -232,6 +209,7 @@ namespace Palacio_el_restaurante.src.Controls
             this.DataSource = bindingSource;
             exportToExcelButton.Visible = true;
         }
+
 
         private void ExportToExcel()
         {

@@ -122,9 +122,9 @@
             // loadPicture
             // 
             this.loadPicture.Image = global::Palacio_el_restaurante.Properties.Resources.conexion;
-            this.loadPicture.Location = new System.Drawing.Point(31, 2);
+            this.loadPicture.Location = new System.Drawing.Point(23, 2);
             this.loadPicture.Name = "loadPicture";
-            this.loadPicture.Size = new System.Drawing.Size(108, 106);
+            this.loadPicture.Size = new System.Drawing.Size(125, 128);
             this.loadPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.loadPicture.TabIndex = 10;
             this.loadPicture.TabStop = false;
