@@ -53,7 +53,7 @@ namespace Palacio_el_restaurante.src.GUI
 
         }
 
-        private void sql()
+        public void sql()
         {
             try
             {
@@ -331,6 +331,12 @@ namespace Palacio_el_restaurante.src.GUI
                     rjSQL.ReadOnly = true;
                 }
             }
+        }
+
+        private void rjInsertPanel_Click(object sender, EventArgs e)
+        {
+            InsertGUI insert = new InsertGUI();
+            insert.ShowDialog();
         }
 
         private void timer1_Tick(object sender, EventArgs e)

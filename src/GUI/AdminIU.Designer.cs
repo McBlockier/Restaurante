@@ -74,6 +74,7 @@
             this.rjPictureRounded2 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.rjPictureRounded1 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.rjInsertPanel = new Palacio_el_restaurante.src.Controls.RJButton();
             this.root.SuspendLayout();
             this.panelinv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Upload)).BeginInit();
@@ -181,6 +182,7 @@
             // 
             // panelinv
             // 
+            this.panelinv.Controls.Add(this.rjInsertPanel);
             this.panelinv.Controls.Add(this.Upload);
             this.panelinv.Controls.Add(this.rjExecuteIn);
             this.panelinv.Controls.Add(this.rjSQLInv);
@@ -217,7 +219,7 @@
             this.rjExecuteIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjExecuteIn.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
             this.rjExecuteIn.ForeColor = System.Drawing.Color.White;
-            this.rjExecuteIn.Location = new System.Drawing.Point(339, 220);
+            this.rjExecuteIn.Location = new System.Drawing.Point(406, 235);
             this.rjExecuteIn.Name = "rjExecuteIn";
             this.rjExecuteIn.Size = new System.Drawing.Size(120, 39);
             this.rjExecuteIn.TabIndex = 18;
@@ -269,11 +271,11 @@
             // rjDataInv
             // 
             this.rjDataInv.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.rjDataInv.Location = new System.Drawing.Point(1, 265);
+            this.rjDataInv.Location = new System.Drawing.Point(1, 309);
             this.rjDataInv.Name = "rjDataInv";
             this.rjDataInv.RowHeadersWidth = 51;
             this.rjDataInv.RowTemplate.Height = 24;
-            this.rjDataInv.Size = new System.Drawing.Size(895, 411);
+            this.rjDataInv.Size = new System.Drawing.Size(895, 367);
             this.rjDataInv.TabIndex = 0;
             // 
             // pictureBox2
@@ -693,6 +695,27 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // rjInsertPanel
+            // 
+            this.rjInsertPanel.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjInsertPanel.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjInsertPanel.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjInsertPanel.BorderRadius = 20;
+            this.rjInsertPanel.BorderSize = 0;
+            this.rjInsertPanel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjInsertPanel.FlatAppearance.BorderSize = 0;
+            this.rjInsertPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjInsertPanel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
+            this.rjInsertPanel.ForeColor = System.Drawing.Color.White;
+            this.rjInsertPanel.Location = new System.Drawing.Point(15, 236);
+            this.rjInsertPanel.Name = "rjInsertPanel";
+            this.rjInsertPanel.Size = new System.Drawing.Size(116, 38);
+            this.rjInsertPanel.TabIndex = 21;
+            this.rjInsertPanel.Text = "Automatic";
+            this.rjInsertPanel.TextColor = System.Drawing.Color.White;
+            this.rjInsertPanel.UseVisualStyleBackColor = false;
+            this.rjInsertPanel.Click += new System.EventHandler(this.rjInsertPanel_Click);
+            // 
             // AdminIU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -780,5 +803,6 @@
         private System.Windows.Forms.Label time;
         private System.Windows.Forms.Label date;
         private System.Windows.Forms.Timer timer1;
+        private Controls.RJButton rjInsertPanel;
     }
 }

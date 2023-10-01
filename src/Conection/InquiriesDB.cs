@@ -168,6 +168,212 @@ namespace Palacio_el_restaurante.src.Conection
             }
             return value;
         }
+        public Boolean deleteProduct(String clurp)
+        {
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                connection.Open();
+                String SQL = "DELETE FROM consumible WHERE clurp LIKE @clurp";
+                MySqlCommand command = new MySqlCommand(SQL, connection);
+                command.Parameters.AddWithValue("@clurp", clurp);
+                int i = command.ExecuteNonQuery();  
+                if (i != 1)
+                {
+                    value = false;
+                    connection.Close();
+                }
+                else
+                {
+                    value = true;
+                    connection.Close();
+                }
+
+            }catch(Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return value;
+        }
+        public Boolean existProduct(int Clurp)
+        {
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                connection.Open();
+                String SQL = "SELECT nombre FROM consumible WHERE clurp LIKE @clurp";
+                MySqlCommand command = new MySqlCommand(SQL, connection);
+                command.Parameters.AddWithValue("@clurp", Clurp);
+                int i = command.ExecuteNonQuery();
+                if( i != 0)
+                {
+                    value = true;
+                    connection.Close();
+                }
+                else
+                {
+                    value = false;
+                    connection.Close();
+                }
+            }catch(Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return value;
+        }
+        public Boolean updateProduct(Product producto)
+        {
+            Connection con = new Connection();
+            MySqlConnection connection = con.getConnection();
+            connection.Open();
+            String SQL = "";
+            MySqlCommand command;
+            try
+            {             
+
+            if(!String.IsNullOrEmpty(producto.Name) && !String.IsNullOrEmpty(producto.Description)
+                    && !String.IsNullOrEmpty(producto.Price.ToString()) && !String.IsNullOrEmpty(producto.Type))
+                {
+                    SQL = "UPDATE consumible SET nombre=@nombre, tipo=@tipo, precio=@precio, descri=@descri WHERE clurp LIKE @clurp";
+                    MySqlCommand command2 = new MySqlCommand(SQL, connection);
+                    command2.Parameters.AddWithValue("@clurp", producto.Clurp);
+                    command2.Parameters.AddWithValue("@nombre", producto.Name);
+                    command2.Parameters.AddWithValue("@tipo", producto.Type);
+                    command2.Parameters.AddWithValue("@precio", producto.Price);
+                    command2.Parameters.AddWithValue("@descri", producto.Description);
+                    int j = command2.ExecuteNonQuery();
+                    if(j > 0)
+                    {
+                        value = true;
+                        connection.Close();
+                    }
+                    else
+                    {
+                        value = false;
+                        connection.Close();
+                    }
+                }
+                else
+                {
+                    if (!String.IsNullOrEmpty(producto.Name))
+                    {
+                        SQL = "UPDATE consumible SET nombre=@nombre WHERE clurp LIKE @clurp";
+                        command = new MySqlCommand(SQL, connection);
+                        command.Parameters.AddWithValue("@clurp", producto.Clurp);
+                        command.Parameters.AddWithValue("@nombre", producto.Name);
+                        int i = command.ExecuteNonQuery();
+                        if(i > 0)
+                        {
+                            value = true;
+                            connection.Close();
+                        }
+                        else
+                        {
+                            value = false;
+                            connection.Close();
+                        }
+                    }                   
+                    else if (!String.IsNullOrEmpty(producto.Description))
+                    {
+                        SQL = "UPDATE consumible SET descri=@descri WHERE clurp LIKE @clurp ";
+                        command = new MySqlCommand(SQL, connection);
+                        command.Parameters.AddWithValue("@clurp", producto.Clurp);
+                        command.Parameters.AddWithValue("@descri", producto.Description);
+                        int i = command.ExecuteNonQuery();
+                        if (i > 0)
+                        {
+                            value = true;
+                            connection.Close();
+                        }
+                        else
+                        {
+                            value = false;
+                            connection.Close();
+                        }
+                    }
+                    else if (!String.IsNullOrEmpty(producto.Price.ToString()))
+                    {
+                        SQL = "UPDATE consumible SET precio=@precio WHERE clurp LIKE @clurp";
+                        command = new MySqlCommand(SQL, connection);
+                        command.Parameters.AddWithValue("@clurp", producto.Clurp);
+                        command.Parameters.AddWithValue("@precio", producto.Price);
+                        int i = command.ExecuteNonQuery();
+                        if (i > 0)
+                        {
+                            value = true;
+                            connection.Close();
+                        }
+                        else
+                        {
+                            value = false;
+                            connection.Close();
+                        }
+                    }
+                    else if (!String.IsNullOrEmpty(producto.Type))
+                    {
+                        SQL = "UPDATE consumible SET tipo=@tipo WHERE clurp LIKE @clurp";
+                        command = new MySqlCommand(SQL, connection);
+                        command.Parameters.AddWithValue("@clurp", producto.Clurp);
+                        command.Parameters.AddWithValue("@tipo", producto.Type);
+                        int i = command.ExecuteNonQuery();
+                        if (i > 0)
+                        {
+                            value = true;
+                            connection.Close();
+                        }
+                        else
+                        {
+                            value = false;
+                            connection.Close();
+                        }
+                    }
+                }             
+
+            }catch(Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                  System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return value;
+        }
+        public Boolean addProduct(Product producto)
+        {
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                connection.Open();
+                String SQL = "INSERT INTO consumible(clurp, nombre, tipo, precio, descri) " +
+                    "VALUES(@clurp, @nombre, @tipo, @precio, @descri)";
+                MySqlCommand command = new MySqlCommand( SQL, connection);
+                command.Parameters.AddWithValue("@clurp", producto.Clurp);
+                command.Parameters.AddWithValue("@nombre", producto.Name);
+                command.Parameters.AddWithValue("@tipo", producto.Type);
+                command.Parameters.AddWithValue("@precio", producto.Price);
+                command.Parameters.AddWithValue("@descri", producto.Description);
+                int i = command.ExecuteNonQuery();
+                if(i != 1)
+                {
+                    value = false;
+                    connection.Close();
+                }
+                else
+                {
+                    value = true;
+                    connection.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return value;
+        }
 
         public Boolean updateImage(object nameProduct, byte[] newImage)
         {

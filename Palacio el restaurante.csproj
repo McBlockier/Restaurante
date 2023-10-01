@@ -111,6 +111,7 @@
     <Compile Include="src\Conection\Conection.cs" />
     <Compile Include="src\Conection\InquiriesDB.cs" />
     <Compile Include="src\Conection\Persona.cs" />
+    <Compile Include="src\Conection\Product.cs" />
     <Compile Include="src\Conection\SecureEncryptor.cs" />
     <Compile Include="src\Controls\CustomLinkLabel.cs">
       <SubType>Component</SubType>
@@ -171,6 +172,12 @@
     <Compile Include="src\GUI\FoodUI.Designer.cs">
       <DependentUpon>FoodUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\GUI\InsertGUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\GUI\InsertGUI.Designer.cs">
+      <DependentUpon>InsertGUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\GUI\LoginCreateA.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,6 +231,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\GUI\FoodUI.resx">
       <DependentUpon>FoodUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\GUI\InsertGUI.resx">
+      <DependentUpon>InsertGUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\GUI\LoginCreateA.resx">
       <DependentUpon>LoginCreateA.cs</DependentUpon>
