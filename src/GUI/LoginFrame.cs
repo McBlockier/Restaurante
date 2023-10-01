@@ -141,7 +141,7 @@ namespace Palacio_el_restaurante
                             food3.Show();
                             food3.panelOrder.Visible = true;
                             food3.panelRecord.Visible = true;
-                        }                       
+                        }
                         break;
                     case 2:
                         FoodUI food = new FoodUI();
@@ -173,7 +173,6 @@ namespace Palacio_el_restaurante
                 showPassword.Image = Properties.Resources.ojo_on;
                 getPassword.PasswordChar = false;
             }
-
         }
         private void resetPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
@@ -206,6 +205,14 @@ namespace Palacio_el_restaurante
         private void create_MouseLeave(object sender, EventArgs e)
         {
             create.Image = Properties.Resources.addUser;
+        }
+
+        private void pictureBox4_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+            { xClick = e.X; yClick = e.Y; }
+            else
+            { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)

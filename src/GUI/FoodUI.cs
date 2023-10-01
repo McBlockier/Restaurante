@@ -16,6 +16,8 @@ namespace Palacio_el_restaurante.src.UI
         private int buttonCountL, buttonCountM, buttonCountC;
         private int buttonOn, buttonLe, buttonTo, buttonSp, buttonVSp;
         private int countAM, countBM;
+        private int ssAnimation = 0;
+        private int ssAminationFood = 0;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -35,19 +37,18 @@ namespace Palacio_el_restaurante.src.UI
             loadDrink.Enabled = false;
             loadFood.Enabled = false;
             fillBoxes();
-
         }
         private void fillBoxes()
         {
             InquiriesDB DB = new InquiriesDB();
-            List<string> consumablesList = DB.getConsumable("Bebida"); 
+            List<string> consumablesList = DB.getConsumable("Bebida");
             foreach (string consumable in consumablesList)
             {
                 rjItemD.Items.Add(consumable);
             }
 
             List<string> foodList = DB.GetFood("Platillo Fuerte");
-            foreach(string food in foodList)
+            foreach (string food in foodList)
             {
                 rjItemF.Items.Add(food);
             }
@@ -444,29 +445,94 @@ namespace Palacio_el_restaurante.src.UI
             clickButton("BagChips");
         }
 
+
         private void rjAddTea_Click(object sender, EventArgs e)
         {
             DialogResult result = RJMessageBox.Show("Are you sure to add this request to your list?", "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                //Logica de bebidas
-                Sale venta = new Sale();
-                venta.Amount = countA;
-
-
-
+                try
+                {
+                    InquiriesDB DB = new InquiriesDB();
+                    String[] id = { "1A", "1B", "1C", "1D", "1E", "1F" };
+                    List<String> trabajador = DB.GetEmployes(id);
+                    Sale venta = new Sale();
+                    venta.Amount = countA;
+                    if (trabajador.Count > 0)
+                    {
+                        Random random = new Random();
+                        int indiceAleatorio = random.Next(0, id.Length);
+                        venta.IdEmploy = id[indiceAleatorio];
+                    }
+                    String typeDrink = rjItemD.SelectedItem as String;
+                    venta.IdDish = DB.GetClurp(typeDrink)[0];
+                    venta.Price = float.Parse(DB.GetClurp(typeDrink)[1]);
+                    SaleHistory saleHistory = new SaleHistory();
+                    saleHistory.AddSale(venta);
+                    venta.Date = DateTime.Now.Date;
+                    if (DB.registSale(venta))
+                    {
+                        RJMessageBox.Show("Your order is being processed", "INFORMATION!",
+                              MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        timer2.Start();
+                    }
+                    else
+                    {
+                        RJMessageBox.Show("Your order could not be processed", "INFORMATION!",
+                              MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                        System.Windows.Forms.MessageBoxIcon.Error);
+                }
             }
         }
+
 
         private void button_AddFood_Click(object sender, EventArgs e)
         {
             DialogResult result = RJMessageBox.Show("Are you sure to add this request to your list?", "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                //Logica de bebidas
+                try
+                {
+                    InquiriesDB DB = new InquiriesDB();
+                    String[] id = { "1A", "1B", "1C", "1D", "1E", "1F" };
+                    List<String> trabajador = DB.GetEmployes(id);
+                    Sale venta = new Sale();
+                    venta.Amount = countAM;
+                    if (trabajador.Count > 0)
+                    {
+                        Random random = new Random();
+                        int indiceAleatorio = random.Next(0, id.Length);
+                        venta.IdEmploy = id[indiceAleatorio];
+                    }
 
-
-
+                    String typeDrink = rjItemF.SelectedItem as String;
+                    venta.IdDish = DB.GetClurp(typeDrink)[0];
+                    venta.Price = float.Parse(DB.GetClurp(typeDrink)[1]);
+                    SaleHistory saleHistory = new SaleHistory();
+                    saleHistory.AddSale(venta);
+                    venta.Date = DateTime.Now.Date;
+                    if (DB.registSale(venta))
+                    {
+                        RJMessageBox.Show("Your order is being processed", "INFORMATION!",
+                              MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        timer2.Start();
+                    }
+                    else
+                    {
+                        RJMessageBox.Show("Your order could not be processed", "INFORMATION!",
+                              MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -483,7 +549,7 @@ namespace Palacio_el_restaurante.src.UI
 
         private void panelJuice_MouseEnter(object sender, EventArgs e)
         {
-            Close.Enabled=false;
+            Close.Enabled = false;
             LogOut.Enabled = false;
             Wallet.Enabled = false;
             Settings.Enabled = false;
@@ -528,6 +594,58 @@ namespace Palacio_el_restaurante.src.UI
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             motionFrame(sender, e);
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            RecordGUI recordGUI = new RecordGUI();
+            recordGUI.Show();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            ssAnimation += 1;
+            if (ssAnimation < 45)
+            {
+                loadDrink.Enabled = true;
+            }
+            else
+            {
+                timer2.Stop();
+                loadDrink.Enabled = false;
+                RJMessageBox.Show("Your order is ready to be shipped", "INFORMATION!",
+                             MessageBoxButtons.OK, MessageBoxIcon.Information);
+                showCount1.Image = Properties.Resources.cero;
+                showCount2.Image = Properties.Resources.letra_m_off;
+                showCount3.Image = Properties.Resources.cero;
+                showCount4.Image = Properties.Resources.cero;
+                button_MinusS.Image = Properties.Resources.letra_l_Off;
+                button_MoreS.Image = Properties.Resources.letra_c_off;
+                ssAnimation = 0;
+            }
+        }
+        private void timer3_Tick(object sender, EventArgs e)
+        {
+            ssAminationFood += 1;
+            if (ssAminationFood < 70)
+            {
+                loadFood.Enabled = true;
+            }
+            else
+            {
+                timer3.Stop();
+                loadFood.Enabled = false;
+                RJMessageBox.Show("Your order is ready to be shipped", "INFORMATION!",
+                             MessageBoxButtons.OK, MessageBoxIcon.Information);
+                showAmount.Image = Properties.Resources.cero;
+                showBag.Image = Properties.Resources.cero;
+                button_Onion.Image = Properties.Resources.cebolla_Off;
+                button_Tomato.Image = Properties.Resources.tomate_Off;
+                button_Lettuce.Image = Properties.Resources.lechuga_Off;
+                button_Spicy.Image = Properties.Resources.chile_Off;
+                button_VerySpicy.Image = Properties.Resources.fuego_Off;
+                ssAminationFood = 0;
+            }
         }
 
         private void button_MinusF_Click(object sender, EventArgs e)
@@ -614,7 +732,6 @@ namespace Palacio_el_restaurante.src.UI
         {
             countA--;
             clickMore("Amount");
-
         }
         private void rjPictureRounded4_Click(object sender, EventArgs e)
         {

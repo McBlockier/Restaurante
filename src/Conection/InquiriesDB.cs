@@ -821,7 +821,7 @@ namespace Palacio_el_restaurante.src.Conection
                 MySqlConnection con = connection.getConnection();
                 con.Open();
                 String SQL = "SELECT nombre FROM consumible WHERE tipo LIKE @tipo";
-                MySqlCommand command = new MySqlCommand( SQL, con);
+                MySqlCommand command = new MySqlCommand(SQL, con);
                 command.Parameters.AddWithValue("@tipo", category);
                 MySqlDataReader reader = command.ExecuteReader();
                 while (reader.Read())
@@ -832,12 +832,118 @@ namespace Palacio_el_restaurante.src.Conection
                 reader.Close();
                 con.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
                     System.Windows.Forms.MessageBoxIcon.Error);
             }
             return consumables;
+        }
+        public List<String> GetEmployes(String[] idEmploye)
+        {
+            List<String> getEmployes = new List<String>();
+            try
+            {
+                Connection connection = new Connection();
+                MySqlConnection con = connection.getConnection();
+                con.Open();
+                String SQL = "SELECT nombre FROM empleado WHERE id LIKE @id";
+                MySqlCommand command = new MySqlCommand(SQL, con);
+                command.Parameters.AddWithValue("@id", idEmploye);
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string employeName = reader.GetString("nombre");
+                    getEmployes.Add(employeName);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return getEmployes;
+
+        }
+        public int GetIdSale(Sale venta)
+        {
+            int lastInsertedId = 0;
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                connection.Open();
+                string getLastIdQuery = "SELECT MAX(idVenta) FROM venta;";
+                MySqlCommand getLastIdCommand = new MySqlCommand(getLastIdQuery, connection);
+                lastInsertedId = Convert.ToInt32(getLastIdCommand.ExecuteScalar());
+                venta.IdSale = lastInsertedId;
+            }
+            catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return lastInsertedId;
+        }
+        public Boolean registSale(Sale venta)
+        {
+            String[] id = { "1A", "1B", "1C", "1D", "1E", "1F" };
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                connection.Open();
+                Random random = new Random();
+                int indiceAleatorio = random.Next(0, id.Length);
+                String SQL = "INSERT INTO venta(idVenta,idPlato,cantidad,Idemple,precio,fecha)" +
+                    "VALUES(@idVenta,@idPlato,@cantidad,@Idemple,@precio,@fecha) ";
+                MySqlCommand command = new MySqlCommand(SQL, connection);
+                command.Parameters.AddWithValue("@idVenta", GetIdSale(venta) + 1);
+                command.Parameters.AddWithValue("@idPlato", venta.IdDish);
+                command.Parameters.AddWithValue("@cantidad", venta.Amount);
+                command.Parameters.AddWithValue("@Idemple", id[indiceAleatorio]);
+                command.Parameters.AddWithValue("@precio", venta.Price * venta.Amount);
+                command.Parameters.AddWithValue("@fecha", venta.Date);
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected > 0)
+                {
+                    value = true;
+                }
+                connection.Close();
+            }
+            catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                        System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return value;
+        }
+        public String[] GetClurp(String nameDrink)
+        {
+            String[] clurp = new String[6];
+            try
+            {
+                Connection connection = new Connection();
+                MySqlConnection con = connection.getConnection();
+                con.Open();
+                String SQL = "SELECT clurp, precio FROM consumible WHERE nombre LIKE @nombre";
+                MySqlCommand command = new MySqlCommand(SQL, con);
+                command.Parameters.AddWithValue("@nombre", nameDrink);
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    clurp[0] = reader.GetString("clurp");
+                    clurp[1] = reader.GetString("precio");
+                }
+            }
+            catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                        System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return clurp;
         }
         public List<String> GetFood(String category)
         {
@@ -859,15 +965,13 @@ namespace Palacio_el_restaurante.src.Conection
                 reader.Close();
                 con.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
                     System.Windows.Forms.MessageBoxIcon.Error);
             }
             return consumables;
         }
-
-
 
 
 

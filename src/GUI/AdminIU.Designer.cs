@@ -627,11 +627,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(14, 642);
+            this.label3.Location = new System.Drawing.Point(17, 642);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 19);
+            this.label3.Size = new System.Drawing.Size(69, 19);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Settings";
+            this.label3.Text = "Log Out";
             // 
             // label2
             // 
@@ -672,7 +672,7 @@
             this.rjPictureRounded5.BorderSize = 2;
             this.rjPictureRounded5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjPictureRounded5.GradientAngle = 50F;
-            this.rjPictureRounded5.Image = global::Palacio_el_restaurante.Properties.Resources.ajustes;
+            this.rjPictureRounded5.Image = global::Palacio_el_restaurante.Properties.Resources.salida1;
             this.rjPictureRounded5.Location = new System.Drawing.Point(15, 576);
             this.rjPictureRounded5.Name = "rjPictureRounded5";
             this.rjPictureRounded5.Size = new System.Drawing.Size(66, 66);

@@ -262,6 +262,9 @@
     <EmbeddedResource Include="src\GUI\OrdersGUI.resx">
       <DependentUpon>OrdersGUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\GUI\RecordGUI.resx">
+      <DependentUpon>RecordGUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\GUI\UserGUI.resx">
       <DependentUpon>UserGUI.cs</DependentUpon>
     </EmbeddedResource>

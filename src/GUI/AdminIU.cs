@@ -151,6 +151,9 @@ namespace Palacio_el_restaurante.src.GUI
             s2.Visible = false;
             s3.Visible = false;
             s4.Visible = true;
+            LoginFrame loginFrame = new LoginFrame();
+            loginFrame.Show();
+            this.Hide();
         }
 
         private void Execute_Click(object sender, EventArgs e)
