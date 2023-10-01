@@ -199,7 +199,7 @@
             // 
             this.Upload.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Upload.Image = global::Palacio_el_restaurante.Properties.Resources.foto_Off;
-            this.Upload.Location = new System.Drawing.Point(842, 3);
+            this.Upload.Location = new System.Drawing.Point(838, 8);
             this.Upload.Name = "Upload";
             this.Upload.Size = new System.Drawing.Size(50, 52);
             this.Upload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
