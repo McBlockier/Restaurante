@@ -6,6 +6,7 @@ namespace Palacio_el_restaurante.src.Conection
     {
         private String name, lastNameP, lastNameM, primaryStreet,
             secondaryStreet, Settlement_type, password, idUser, phoneNumber;
+        private int rank;
 
         public string Name
         {
@@ -20,6 +21,7 @@ namespace Palacio_el_restaurante.src.Conection
         public string Password { get => password; set => password = value; }
         public string PhoneNumber { get => phoneNumber; set => phoneNumber = value; }
         public string IdUser { get => idUser; set => idUser = value; }
+        public int Rank { get => rank; set => rank = value; }
 
     }
 }

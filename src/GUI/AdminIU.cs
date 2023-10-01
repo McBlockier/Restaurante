@@ -128,7 +128,7 @@ namespace Palacio_el_restaurante.src.GUI
             panelStaff.Visible = true;
             sqlStaff();
         }
-        private void sqlStaff()
+        public void sqlStaff()
         {
             try
             {

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CustomMessageBox;
+using Palacio_el_restaurante.src.Conection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -53,33 +55,155 @@ namespace Palacio_el_restaurante.src.GUI
                     rjUpdate.Visible = true;
                     rjDelete.Visible = false;
                     rjAddUp.Visible = false;
+
+                    getUsername.Enabled = true;
+                    getName.Enabled = true;
+                    getPhoneNumber.Enabled = true;
+                    getPassword.Enabled = true;
+                    getLastNameP.Enabled = true;
+                    getLastNameM.Enabled = true;
+                    getStreet1.Enabled = true;
+                    getStreet2.Enabled = true;
+                    getLocation.Enabled = true;
                     break;
                 case "Delete":
                     rjUpdate.Visible = false;
                     rjDelete.Visible = true;
                     rjAddUp.Visible = false;
+
+
+                    getUsername.Enabled = true;
+                    getName.Enabled = false;
+                    getPhoneNumber.Enabled = false;
+                    getPassword.Enabled = false;
+                    getLastNameP.Enabled = false;
+                    getLastNameM.Enabled = false;
+                    getStreet1.Enabled = false;
+                    getStreet2.Enabled = false;
+                    getLocation.Enabled = false;
+                    rjRank.Enabled = false;
+                    
                     break;
                 case "Add Up":
                     rjUpdate.Visible = false;
                     rjDelete.Visible = false;
                     rjAddUp.Visible = true;
+
+
+                    getUsername.Enabled = true;
+                    getName.Enabled = true;
+                    getPhoneNumber.Enabled = true;
+                    getPassword.Enabled = true;
+                    getLastNameP.Enabled = true;
+                    getLastNameM.Enabled = true;
+                    getStreet1.Enabled = true;
+                    getStreet2.Enabled = true;
+                    getLocation.Enabled = true;
                     break;
             }
         }
 
         private void rjPictureRounded4_Click(object sender, EventArgs e)
         {
+            AdminIU admin = new AdminIU();
+            admin.sqlStaff();
             this.Hide();
         }
 
         private void rjAddUp_Click(object sender, EventArgs e)
         {
+            DialogResult result = RJMessageBox.Show("Are you sure to do this operation?",
+                    "QUESTION!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result.Equals(DialogResult.Yes))
+            {
+                Persona persona = new Persona();
+                if (!String.IsNullOrEmpty(getUsername.Texts) && !String.IsNullOrEmpty(getPassword.Texts) &&
+                    !String.IsNullOrEmpty(getLastNameP.Texts) && !String.IsNullOrEmpty(getLastNameM.Texts) &&
+                    !String.IsNullOrEmpty(getStreet1.Texts) && !String.IsNullOrEmpty(getStreet2.Texts) &&
+                    !String.IsNullOrEmpty(getLocation.Texts) && !String.IsNullOrEmpty(getPhoneNumber.Texts) &&
+                    !String.IsNullOrEmpty(rjRank.SelectedItem as String))
+                {
+                    persona.IdUser = getUsername.Texts;
+                    persona.Name = getUsername.Texts;
+                    persona.Name = getName.Texts;
+                    persona.PhoneNumber = getPhoneNumber.Texts;
+                    persona.LastNameP = getLastNameP.Texts;
+                    persona.LastNameM = getLastNameM.Texts;
+                    persona.PrimaryStreet = getStreet1.Texts;
+                    persona.SecondaryStreet = getStreet2.Texts;
+                    persona.Settlement_type1 = getLocation.Texts;
+                    switch(rjRank.SelectedItem as String)
+                    {
+                        case "Administrador":
+                            persona.Rank = 1;
+                            break;
+                        case "Usuario":
+                            persona.Rank = 2;
+                            break;
+                        case "Repartidor":
+                            persona.Rank = 3;
+                            break;
+                        default:
+                            persona.Rank = 2;
+                            break;
+                    }
 
+                    InquiriesDB DB = new InquiriesDB();
+                    if (DB.registerUser(persona))
+                    {
+                        RJMessageBox.Show("Registered user successfully",
+                        "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clearFields();
+                    }
+                    else
+                    {
+                        RJMessageBox.Show("User registration could not be done",
+                        "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
+                }
+                else
+                {
+                    RJMessageBox.Show("There can be no blank spaces",
+                        "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
+        private void clearFields()
+        {
+            getUsername.Texts = String.Empty;
+            getName.Texts = String.Empty;
+            getPhoneNumber.Texts = String.Empty;
+            getPassword.Texts = String.Empty;
+            getLastNameP.Texts = String.Empty;
+            getLastNameM.Texts = String.Empty;
+            getStreet1.Texts = String.Empty;
+            getStreet2.Texts = String.Empty;
+            getLocation.Texts = String.Empty;
         }
 
         private void rjDelete_Click(object sender, EventArgs e)
         {
-
+            DialogResult result = RJMessageBox.Show("Are you sure to delete the user?",
+                       "QUESTION!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result.Equals(DialogResult.Yes))
+            {
+                Persona persona = new Persona();
+                persona.IdUser = getUsername.Texts;
+                InquiriesDB DB = new InquiriesDB();
+                if (DB.deleteUser(persona))
+                {
+                    RJMessageBox.Show("The user was successfully removed",
+                           "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    clearFields();
+                }
+                else
+                {
+                    RJMessageBox.Show("The user wasn't successfully removed",
+                           "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
         }
         private void rjUpdate_Click(object sender, EventArgs e)
         {

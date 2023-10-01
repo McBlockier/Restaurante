@@ -20,18 +20,34 @@ namespace Palacio_el_restaurante.src.Conection
                 String SQL = "INSERT INTO usuario(idUser, nombre, lastNameP, lastNameM, " +
                     "password, id_jerarquia, street1, street2, locacion, telefono) VALUES (@idUser, @nombre, " +
                     "@lastNameP, @lastNameM, @password, @id_jerarquia, @street1, @street2, @locacion, @telefono)";
-
                 MySqlCommand command = new MySqlCommand(SQL, con);
-                command.Parameters.AddWithValue("@idUser", persona.IdUser);
-                command.Parameters.AddWithValue("@nombre", persona.Name);
-                command.Parameters.AddWithValue("@lastNameP", persona.LastNameP);
-                command.Parameters.AddWithValue("@lastNameM", persona.LastNameM);
-                command.Parameters.AddWithValue("@password", persona.Password);
-                command.Parameters.AddWithValue("@id_jerarquia", 2);
-                command.Parameters.AddWithValue("@street1", persona.PrimaryStreet);
-                command.Parameters.AddWithValue("@street2", persona.SecondaryStreet);
-                command.Parameters.AddWithValue("@locacion", persona.Settlement_type1);
-                command.Parameters.AddWithValue("@telefono", persona.PhoneNumber);
+                if (String.IsNullOrEmpty(persona.Rank.ToString()))
+                {
+                    command.Parameters.AddWithValue("@idUser", persona.IdUser);
+                    command.Parameters.AddWithValue("@nombre", persona.Name);
+                    command.Parameters.AddWithValue("@lastNameP", persona.LastNameP);
+                    command.Parameters.AddWithValue("@lastNameM", persona.LastNameM);
+                    command.Parameters.AddWithValue("@password", persona.Password);
+                    command.Parameters.AddWithValue("@id_jerarquia", 2);
+                    command.Parameters.AddWithValue("@street1", persona.PrimaryStreet);
+                    command.Parameters.AddWithValue("@street2", persona.SecondaryStreet);
+                    command.Parameters.AddWithValue("@locacion", persona.Settlement_type1);
+                    command.Parameters.AddWithValue("@telefono", persona.PhoneNumber);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@idUser", persona.IdUser);
+                    command.Parameters.AddWithValue("@nombre", persona.Name);
+                    command.Parameters.AddWithValue("@lastNameP", persona.LastNameP);
+                    command.Parameters.AddWithValue("@lastNameM", persona.LastNameM);
+                    command.Parameters.AddWithValue("@password", persona.Password);
+                    command.Parameters.AddWithValue("@id_jerarquia", persona.Rank);
+                    command.Parameters.AddWithValue("@street1", persona.PrimaryStreet);
+                    command.Parameters.AddWithValue("@street2", persona.SecondaryStreet);
+                    command.Parameters.AddWithValue("@locacion", persona.Settlement_type1);
+                    command.Parameters.AddWithValue("@telefono", persona.PhoneNumber);
+                }
+                            
                 int result = command.ExecuteNonQuery();
                 if (result != 1)
                 {
