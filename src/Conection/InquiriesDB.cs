@@ -1,6 +1,7 @@
 ﻿using CustomMessageBox;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.Conection
@@ -804,5 +805,71 @@ namespace Palacio_el_restaurante.src.Conection
             }
             return value;
         }
+
+
+
+
+        //FoodGUI
+
+
+        public List<String> getConsumable(String category)
+        {
+            List<string> consumables = new List<string>();
+            try
+            {
+                Connection connection = new Connection();
+                MySqlConnection con = connection.getConnection();
+                con.Open();
+                String SQL = "SELECT nombre FROM consumible WHERE tipo LIKE @tipo";
+                MySqlCommand command = new MySqlCommand( SQL, con);
+                command.Parameters.AddWithValue("@tipo", category);
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string consumableName = reader.GetString("nombre");
+                    consumables.Add(consumableName);
+                }
+                reader.Close();
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return consumables;
+        }
+        public List<String> GetFood(String category)
+        {
+            List<string> consumables = new List<string>();
+            try
+            {
+                Connection connection = new Connection();
+                MySqlConnection con = connection.getConnection();
+                con.Open();
+                String SQL = "SELECT nombre FROM consumible WHERE tipo LIKE @tipo";
+                MySqlCommand command = new MySqlCommand(SQL, con);
+                command.Parameters.AddWithValue("@tipo", category);
+                MySqlDataReader reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    string consumableName = reader.GetString("nombre");
+                    consumables.Add(consumableName);
+                }
+                reader.Close();
+                con.Close();
+            }
+            catch(Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return consumables;
+        }
+
+
+
+
+
     }
 }

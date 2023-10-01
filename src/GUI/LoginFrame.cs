@@ -127,19 +127,37 @@ namespace Palacio_el_restaurante
                 switch (DB.getRank(getUsername.Texts))
                 {
                     case 1:
-                        AdminIU admin = new AdminIU();
-                        admin.Show();
-                        this.Hide();
+
+                        DialogResult result = RJMessageBox.Show("Access the administration panel?", "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (result.Equals(DialogResult.Yes))
+                        {
+                            AdminIU admin = new AdminIU();
+                            admin.Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            FoodUI food3 = new FoodUI();
+                            food3.Show();
+                            food3.panelOrder.Visible = true;
+                            food3.panelRecord.Visible = true;
+                        }                       
                         break;
                     case 2:
                         FoodUI food = new FoodUI();
                         food.Show();
+                        food.panelOrder.Visible = false;
+                        food.panelRecord.Visible = false;
                         this.Hide();
                         break;
                     case 3:
+                        FoodUI food2 = new FoodUI();
+                        food2.Show();
+                        food2.panelOrder.Visible = true;
+                        food2.panelRecord.Visible = false;
+                        this.Hide();
                         break;
                 }
-
             }
         }
 

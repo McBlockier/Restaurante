@@ -1,6 +1,8 @@
 ﻿using CustomMessageBox;
+using Palacio_el_restaurante.src.Conection;
 using Palacio_el_restaurante.src.GUI;
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -30,6 +32,25 @@ namespace Palacio_el_restaurante.src.UI
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            loadDrink.Enabled = false;
+            loadFood.Enabled = false;
+            fillBoxes();
+
+        }
+        private void fillBoxes()
+        {
+            InquiriesDB DB = new InquiriesDB();
+            List<string> consumablesList = DB.getConsumable("Bebida"); 
+            foreach (string consumable in consumablesList)
+            {
+                rjItemD.Items.Add(consumable);
+            }
+
+            List<string> foodList = DB.GetFood("Platillo Fuerte");
+            foreach(string food in foodList)
+            {
+                rjItemF.Items.Add(food);
+            }
 
         }
         private void motionFrame(object sender, MouseEventArgs e)
@@ -423,72 +444,29 @@ namespace Palacio_el_restaurante.src.UI
             clickButton("BagChips");
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox6_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void showCount1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label20_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel12_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void leftPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void button_coffe_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panelFood_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void panelJuice_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pink_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void FoodUI_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void rjAddTea_Click(object sender, EventArgs e)
         {
-            DialogResult result = RJMessageBox.Show("¿Esta seguro(a) de agregar ese pedido?", "Pregunta", MessageBoxButtons.YesNo);
+            DialogResult result = RJMessageBox.Show("Are you sure to add this request to your list?", "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                //Aqui la logica para agregar ese pedido
+                //Logica de bebidas
+                Sale venta = new Sale();
+                venta.Amount = countA;
+
+
+
+            }
+        }
+
+        private void button_AddFood_Click(object sender, EventArgs e)
+        {
+            DialogResult result = RJMessageBox.Show("Are you sure to add this request to your list?", "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                //Logica de bebidas
+
+
+
             }
         }
 
@@ -496,6 +474,60 @@ namespace Palacio_el_restaurante.src.UI
         {
             OrdersGUI orders = new OrdersGUI();
             orders.Show();
+        }
+
+        private void panelClose_MouseEnter(object sender, EventArgs e)
+        {
+            Close.Enabled = true;
+        }
+
+        private void panelJuice_MouseEnter(object sender, EventArgs e)
+        {
+            Close.Enabled=false;
+            LogOut.Enabled = false;
+            Wallet.Enabled = false;
+            Settings.Enabled = false;
+            Orders.Enabled = false;
+        }
+
+        private void panelWallet_MouseEnter(object sender, EventArgs e)
+        {
+            Wallet.Enabled = true;
+        }
+
+        private void panelLogOut_MouseEnter(object sender, EventArgs e)
+        {
+            LogOut.Enabled = true;
+        }
+
+        private void panelSettings_MouseEnter(object sender, EventArgs e)
+        {
+            Settings.Enabled = true;
+        }
+
+        private void panel21_MouseEnter(object sender, EventArgs e)
+        {
+            Orders.Enabled = true;
+        }
+
+        private void panelJuice_MouseMove(object sender, MouseEventArgs e)
+        {
+            motionFrame(sender, e);
+        }
+
+        private void panelFood_MouseMove(object sender, MouseEventArgs e)
+        {
+            motionFrame(sender, e);
+        }
+
+        private void panel2_MouseMove(object sender, MouseEventArgs e)
+        {
+            motionFrame(sender, e);
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            motionFrame(sender, e);
         }
 
         private void button_MinusF_Click(object sender, EventArgs e)
