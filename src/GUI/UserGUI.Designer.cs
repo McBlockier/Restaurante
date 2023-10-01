@@ -29,10 +29,9 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.getName = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.rjAddUp = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjDelete = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjUpdate = new Palacio_el_restaurante.src.Controls.RJButton();
@@ -46,8 +45,10 @@
             this.getLastNameM = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             this.getLastNameP = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             this.getPassword = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
+            this.label2 = new System.Windows.Forms.Label();
             this.rjPictureRounded3 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.getUsername = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
+            this.check = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded3)).BeginInit();
@@ -55,6 +56,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.check);
             this.panel1.Controls.Add(this.getName);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.label1);
@@ -80,36 +82,6 @@
             this.panel1.TabIndex = 0;
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(91, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(60, 27);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Staff";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(384, 84);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 19);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "Rank";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(87, 84);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 19);
-            this.label3.TabIndex = 31;
-            this.label3.Text = "Operation";
-            // 
             // getName
             // 
             this.getName.BackColor = System.Drawing.Color.Gainsboro;
@@ -119,7 +91,7 @@
             this.getName.BorderSize = 2;
             this.getName.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getName.Location = new System.Drawing.Point(161, 162);
+            this.getName.Location = new System.Drawing.Point(15, 167);
             this.getName.Margin = new System.Windows.Forms.Padding(4);
             this.getName.Multiline = false;
             this.getName.Name = "getName";
@@ -131,6 +103,26 @@
             this.getName.TabIndex = 32;
             this.getName.Texts = "";
             this.getName.UnderlinedStyle = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(396, 115);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 19);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Operation";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(395, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(47, 19);
+            this.label1.TabIndex = 30;
+            this.label1.Text = "Rank";
             // 
             // rjAddUp
             // 
@@ -224,7 +216,7 @@
             this.rjOperation.IconColor = System.Drawing.Color.MediumSlateBlue;
             this.rjOperation.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.rjOperation.ListTextColor = System.Drawing.Color.DimGray;
-            this.rjOperation.Location = new System.Drawing.Point(75, 102);
+            this.rjOperation.Location = new System.Drawing.Point(384, 133);
             this.rjOperation.MinimumSize = new System.Drawing.Size(200, 30);
             this.rjOperation.Name = "rjOperation";
             this.rjOperation.Padding = new System.Windows.Forms.Padding(1);
@@ -244,7 +236,7 @@
             this.rjRank.IconColor = System.Drawing.Color.MediumSlateBlue;
             this.rjRank.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.rjRank.ListTextColor = System.Drawing.Color.DimGray;
-            this.rjRank.Location = new System.Drawing.Point(373, 102);
+            this.rjRank.Location = new System.Drawing.Point(384, 44);
             this.rjRank.MinimumSize = new System.Drawing.Size(200, 30);
             this.rjRank.Name = "rjRank";
             this.rjRank.Padding = new System.Windows.Forms.Padding(1);
@@ -295,6 +287,7 @@
             this.getPhoneNumber.TabIndex = 22;
             this.getPhoneNumber.Texts = "";
             this.getPhoneNumber.UnderlinedStyle = false;
+            this.getPhoneNumber.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.getPhoneNumber_KeyPress);
             // 
             // getStreet2
             // 
@@ -406,6 +399,16 @@
             this.getPassword.Texts = "";
             this.getPassword.UnderlinedStyle = false;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(91, 33);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 27);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Staff";
+            // 
             // rjPictureRounded3
             // 
             this.rjPictureRounded3.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
@@ -444,6 +447,18 @@
             this.getUsername.TabIndex = 2;
             this.getUsername.Texts = "";
             this.getUsername.UnderlinedStyle = false;
+            this.getUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.getUsername_KeyPress);
+            // 
+            // check
+            // 
+            this.check.AutoSize = true;
+            this.check.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
+            this.check.Location = new System.Drawing.Point(15, 116);
+            this.check.Name = "check";
+            this.check.Size = new System.Drawing.Size(120, 23);
+            this.check.TabIndex = 33;
+            this.check.Text = "Search User";
+            this.check.UseVisualStyleBackColor = true;
             // 
             // UserGUI
             // 
@@ -483,5 +498,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         public Controls.RJTextBoxRounded getName;
+        private System.Windows.Forms.CheckBox check;
     }
 }

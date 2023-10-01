@@ -1,17 +1,7 @@
 ﻿using CustomMessageBox;
-using MySql.Data.MySqlClient;
 using Palacio_el_restaurante.src.Conection;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.GUI
@@ -51,11 +41,8 @@ namespace Palacio_el_restaurante.src.GUI
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             fillBox();
         }
-
-
         private void rjInsert_Click(object sender, EventArgs e)
         {
-
             DialogResult result = RJMessageBox.Show("Be sure to do this operation, the changes cannot be reversed?", "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result.Equals(DialogResult.Yes))
             {
@@ -100,18 +87,58 @@ namespace Palacio_el_restaurante.src.GUI
         {
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
             {
-                e.Handled = true; 
+                e.Handled = true;
             }
             else if (getClurp.Texts.Length >= 3 && e.KeyChar != (char)Keys.Back)
             {
-                e.Handled = true; 
+                e.Handled = true;
+            }
+            if (check.Checked && getClurp.Texts.Length >= 3)
+            {
+                try
+                {
+                    InquiriesDB DB = new InquiriesDB();
+                    Product producto = new Product();
+
+                    if (DB.existProduct(int.Parse(getClurp.Texts)))
+                    {
+                        producto.Clurp = int.Parse(getClurp.Texts);
+                        getName.Texts = DB.infoProduct(getClurp.Texts)[0];
+                        switch (DB.infoProduct(getClurp.Texts)[1])
+                        {
+                            case "Bebida":
+                                rjType.Texts = "Bebida";
+                                break;
+                            case "Platillo fuerte":
+                                rjType.Texts = "Platillo fuerte";
+                                break;
+                            case "Platillo Fuerte":
+                                rjType.Texts = "Platillo fuerte";
+                                break;
+                            case "Postre":
+                                rjType.Texts = "Postre";
+                                break;
+                            case "Entrada":
+                                rjType.Texts = "Entrada";
+                                break;
+                        }
+
+                        getPrice.Texts = DB.infoProduct(getClurp.Texts)[2];
+                        getDescription.Texts = DB.infoProduct(getClurp.Texts)[3];
+                    }
+                }
+                catch (Exception ex)
+                {
+                    RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                  System.Windows.Forms.MessageBoxIcon.Error);
+                }
             }
         }
 
         private void rjOperation_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-             itemSeleccionado = rjOperation.SelectedItem as String;
-            switch(itemSeleccionado)
+            itemSeleccionado = rjOperation.SelectedItem as String;
+            switch (itemSeleccionado)
             {
                 case "Update":
                     rjInsert.Visible = false;
@@ -150,7 +177,6 @@ namespace Palacio_el_restaurante.src.GUI
                 {
                     if (DB.existProduct(int.Parse(getClurp.Texts)))
                     {
-
                         if (!String.IsNullOrEmpty(getName.Texts) && !String.IsNullOrEmpty(getClurp.Texts)
                        && !String.IsNullOrEmpty(getDescription.Texts) && !String.IsNullOrEmpty(getPrice.Texts)
                        && !String.IsNullOrEmpty(rjType.SelectedItem as String))
@@ -238,7 +264,7 @@ namespace Palacio_el_restaurante.src.GUI
                 {
                     RJMessageBox.Show("Could not remove product", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }       
+            }
         }
 
         private void fillBox()

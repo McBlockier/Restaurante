@@ -8,6 +8,7 @@ namespace Palacio_el_restaurante.src.Conection
     public class InquiriesDB
     {
         private Boolean value = false;
+        private int count = 0, countP = 0;
         public Boolean registerUser(Persona persona)
         {
             SecureEncryptor encrypt = new SecureEncryptor(persona.Password);
@@ -22,8 +23,9 @@ namespace Palacio_el_restaurante.src.Conection
                     "password, id_jerarquia, street1, street2, locacion, telefono) VALUES (@idUser, @nombre, " +
                     "@lastNameP, @lastNameM, @password, @id_jerarquia, @street1, @street2, @locacion, @telefono)";
                 MySqlCommand command = new MySqlCommand(SQL, con);
-                if (String.IsNullOrEmpty(persona.Rank.ToString()))
+                if (!String.IsNullOrEmpty(persona.Rank.ToString()))
                 {
+
                     command.Parameters.AddWithValue("@idUser", persona.IdUser);
                     command.Parameters.AddWithValue("@nombre", persona.Name);
                     command.Parameters.AddWithValue("@lastNameP", persona.LastNameP);
@@ -48,7 +50,7 @@ namespace Palacio_el_restaurante.src.Conection
                     command.Parameters.AddWithValue("@locacion", persona.Settlement_type1);
                     command.Parameters.AddWithValue("@telefono", persona.PhoneNumber);
                 }
-                            
+
                 int result = command.ExecuteNonQuery();
                 if (result != 1)
                 {
@@ -74,7 +76,7 @@ namespace Palacio_el_restaurante.src.Conection
             try
             {
                 Connection connection = new Connection();
-                MySqlConnection con = connection.getConnection();   
+                MySqlConnection con = connection.getConnection();
                 con.Open();
                 if (!String.IsNullOrEmpty(persona.IdUser) && !String.IsNullOrEmpty(persona.Name) &&
                     !String.IsNullOrEmpty(persona.LastNameP) && !String.IsNullOrEmpty(persona.LastNameM) &&
@@ -131,7 +133,8 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }else
+                        }
+                        else
                         if (!String.IsNullOrEmpty(persona.Password))
                         {
                             SQL = "UPDATE usuario SET password=@password WHERE idUser LIKE @idUser";
@@ -149,7 +152,8 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }else
+                        }
+                        else
                         if (!String.IsNullOrEmpty(persona.LastNameP))
                         {
                             SQL = "UPDATE usuario SET lastNameP=@lastNameP WHERE idUser LIKE @idUser";
@@ -167,7 +171,8 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }else
+                        }
+                        else
                         if (!String.IsNullOrEmpty(persona.LastNameM))
                         {
                             SQL = "UPDATE usuario SET lastNameM=@lastNameM WHERE idUser LIKE @idUser";
@@ -185,7 +190,8 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }else
+                        }
+                        else
 
                         //Segunda sección
                         if (!String.IsNullOrEmpty(persona.PrimaryStreet))
@@ -205,7 +211,8 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }else
+                        }
+                        else
                         if (!String.IsNullOrEmpty(persona.SecondaryStreet))
                         {
                             SQL = "UPDATE usuario SET street2=@street2 WHERE idUser LIKE @idUser";
@@ -223,7 +230,8 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }else
+                        }
+                        else
                         if (!String.IsNullOrEmpty(persona.Settlement_type1))
                         {
                             SQL = "UPDATE usuario SET locacion=@locacion WHERE idUser LIKE @idUser";
@@ -241,7 +249,8 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }else
+                        }
+                        else
                         if (!String.IsNullOrEmpty(persona.PhoneNumber))
                         {
                             SQL = "UPDATE usuario SET telefono=@telefono WHERE idUser LIKE @idUser";
@@ -259,7 +268,8 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }else
+                        }
+                        else
                         if (!String.IsNullOrEmpty(persona.Rank.ToString()))
                         {
                             SQL = "UPDATE usuario SET id_jerarquia=@id_jerarquia WHERE idUser LIKE @idUser";
@@ -286,7 +296,7 @@ namespace Palacio_el_restaurante.src.Conection
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
@@ -304,7 +314,7 @@ namespace Palacio_el_restaurante.src.Conection
                 MySqlCommand command = new MySqlCommand(SQL, con);
                 command.Parameters.AddWithValue("@idUser", persona.IdUser);
                 int i = command.ExecuteNonQuery();
-                if(i > 0)
+                if (i > 0)
                 {
                     value = true;
                     con.Close();
@@ -315,7 +325,8 @@ namespace Palacio_el_restaurante.src.Conection
                     con.Close();
                 }
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
                     System.Windows.Forms.MessageBoxIcon.Error);
@@ -450,7 +461,7 @@ namespace Palacio_el_restaurante.src.Conection
                 String SQL = "DELETE FROM consumible WHERE clurp LIKE @clurp";
                 MySqlCommand command = new MySqlCommand(SQL, connection);
                 command.Parameters.AddWithValue("@clurp", clurp);
-                int i = command.ExecuteNonQuery();  
+                int i = command.ExecuteNonQuery();
                 if (i != 1)
                 {
                     value = false;
@@ -462,12 +473,50 @@ namespace Palacio_el_restaurante.src.Conection
                     connection.Close();
                 }
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
                     System.Windows.Forms.MessageBoxIcon.Error);
             }
             return value;
+        }
+
+        public String[] infoProduct(String clurp)
+        {
+            String[] getInfoProduct = new String[10];
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                connection.Open();
+                String SQL = "SELECT * FROM consumible WHERE clurp LIKE @clurp";
+                MySqlCommand command = new MySqlCommand(SQL, connection);
+                command.Parameters.AddWithValue("@clurp", clurp);
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    getInfoProduct[0] = reader["nombre"].ToString();
+                    getInfoProduct[1] = reader["tipo"].ToString();
+                    getInfoProduct[2] = reader["precio"].ToString();
+                    getInfoProduct[3] = reader["descri"].ToString();
+                }
+                else
+                {
+                    if (countP == 0)
+                    {
+                        RJMessageBox.Show("The producto aren't exists in the data base", "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                            System.Windows.Forms.MessageBoxIcon.Information);
+                        countP++;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                   System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return getInfoProduct;
         }
         public Boolean existProduct(int Clurp)
         {
@@ -478,9 +527,9 @@ namespace Palacio_el_restaurante.src.Conection
                 connection.Open();
                 String SQL = "SELECT nombre FROM consumible WHERE clurp LIKE @clurp";
                 MySqlCommand command = new MySqlCommand(SQL, connection);
-                command.Parameters.AddWithValue("@clurp", Clurp);
+                command.Parameters.AddWithValue("@clurp", Clurp.ToString());
                 int i = command.ExecuteNonQuery();
-                if( i != 0)
+                if (i != 0)
                 {
                     value = true;
                     connection.Close();
@@ -490,12 +539,58 @@ namespace Palacio_el_restaurante.src.Conection
                     value = false;
                     connection.Close();
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
                     System.Windows.Forms.MessageBoxIcon.Error);
             }
             return value;
+        }
+
+
+        public String[] searchInfoUser(String username)
+        {
+            String[] getInfo = new String[9];
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                connection.Open();
+                String SQL = "SELECT * FROM usuario WHERE idUser LIKE @idUser";
+                MySqlCommand command = new MySqlCommand(SQL, connection);
+                command.Parameters.AddWithValue("@idUser", username);
+                MySqlDataReader reader = command.ExecuteReader();
+                if (reader.Read())
+                {
+                    getInfo[0] = reader["nombre"].ToString();
+                    getInfo[1] = reader["lastNameP"].ToString();
+                    getInfo[2] = reader["lastNameM"].ToString();
+                    getInfo[3] = reader["password"].ToString();
+                    getInfo[4] = reader["id_jerarquia"].ToString();
+                    getInfo[5] = reader["street1"].ToString();
+                    getInfo[6] = reader["street2"].ToString();
+                    getInfo[7] = reader["locacion"].ToString();
+                    getInfo[8] = reader["telefono"].ToString();
+                }
+                else
+                {
+                    if (count == 0)
+                    {
+                        RJMessageBox.Show("The infor of username aren't exists in the data base",
+                                      "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        count++;
+                    }
+                }
+                connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                   System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return getInfo;
         }
         public Boolean updateProduct(Product producto)
         {
@@ -505,10 +600,10 @@ namespace Palacio_el_restaurante.src.Conection
             String SQL = "";
             MySqlCommand command;
             try
-            {             
+            {
 
-            if(!String.IsNullOrEmpty(producto.Name) && !String.IsNullOrEmpty(producto.Description)
-                    && !String.IsNullOrEmpty(producto.Price.ToString()) && !String.IsNullOrEmpty(producto.Type))
+                if (!String.IsNullOrEmpty(producto.Name) && !String.IsNullOrEmpty(producto.Description)
+                        && !String.IsNullOrEmpty(producto.Price.ToString()) && !String.IsNullOrEmpty(producto.Type))
                 {
                     SQL = "UPDATE consumible SET nombre=@nombre, tipo=@tipo, precio=@precio, descri=@descri WHERE clurp LIKE @clurp";
                     MySqlCommand command2 = new MySqlCommand(SQL, connection);
@@ -518,7 +613,7 @@ namespace Palacio_el_restaurante.src.Conection
                     command2.Parameters.AddWithValue("@precio", producto.Price);
                     command2.Parameters.AddWithValue("@descri", producto.Description);
                     int j = command2.ExecuteNonQuery();
-                    if(j > 0)
+                    if (j > 0)
                     {
                         value = true;
                         connection.Close();
@@ -538,7 +633,7 @@ namespace Palacio_el_restaurante.src.Conection
                         command.Parameters.AddWithValue("@clurp", producto.Clurp);
                         command.Parameters.AddWithValue("@nombre", producto.Name);
                         int i = command.ExecuteNonQuery();
-                        if(i > 0)
+                        if (i > 0)
                         {
                             value = true;
                             connection.Close();
@@ -548,7 +643,7 @@ namespace Palacio_el_restaurante.src.Conection
                             value = false;
                             connection.Close();
                         }
-                    }                   
+                    }
                     else if (!String.IsNullOrEmpty(producto.Description))
                     {
                         SQL = "UPDATE consumible SET descri=@descri WHERE clurp LIKE @clurp ";
@@ -603,9 +698,10 @@ namespace Palacio_el_restaurante.src.Conection
                             connection.Close();
                         }
                     }
-                }             
+                }
 
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
                   System.Windows.Forms.MessageBoxIcon.Error);
@@ -621,14 +717,14 @@ namespace Palacio_el_restaurante.src.Conection
                 connection.Open();
                 String SQL = "INSERT INTO consumible(clurp, nombre, tipo, precio, descri) " +
                     "VALUES(@clurp, @nombre, @tipo, @precio, @descri)";
-                MySqlCommand command = new MySqlCommand( SQL, connection);
+                MySqlCommand command = new MySqlCommand(SQL, connection);
                 command.Parameters.AddWithValue("@clurp", producto.Clurp);
                 command.Parameters.AddWithValue("@nombre", producto.Name);
                 command.Parameters.AddWithValue("@tipo", producto.Type);
                 command.Parameters.AddWithValue("@precio", producto.Price);
                 command.Parameters.AddWithValue("@descri", producto.Description);
                 int i = command.ExecuteNonQuery();
-                if(i != 1)
+                if (i != 1)
                 {
                     value = false;
                     connection.Close();

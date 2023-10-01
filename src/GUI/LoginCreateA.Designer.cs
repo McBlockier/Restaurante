@@ -341,6 +341,7 @@
             this.username.TabIndex = 11;
             this.username.Texts = "";
             this.username.UnderlinedStyle = false;
+            this.username.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.username_KeyPress);
             // 
             // tel
             // 

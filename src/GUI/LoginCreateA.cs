@@ -126,59 +126,67 @@ namespace Palacio_el_restaurante.src.UI
 
         private void rjButton1_Click(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(rjName.Texts))
+            if (username.Texts.Length == 10)
             {
-                RJMessageBox.Show("Must at least have a  name", "Warning");
-            }
-            else
-            {
-                if (String.IsNullOrEmpty(lastNameP.Texts))
+                if (String.IsNullOrEmpty(rjName.Texts))
                 {
-                    RJMessageBox.Show("Must at least have a last name", "Warning");
+                    RJMessageBox.Show("Must at least have a  name", "Warning");
                 }
                 else
                 {
-                    if (String.IsNullOrEmpty(tel.Texts))
+                    if (String.IsNullOrEmpty(lastNameP.Texts))
                     {
-                        RJMessageBox.Show("Must at least have a phone number", "Warning");
+                        RJMessageBox.Show("Must at least have a last name", "Warning");
                     }
                     else
                     {
-                        if (String.IsNullOrEmpty(username.Texts) && String.IsNullOrEmpty(password.Texts))
+                        if (String.IsNullOrEmpty(tel.Texts))
                         {
-                            RJMessageBox.Show("The username and password spaces must not be empty", "Warning");
+                            RJMessageBox.Show("Must at least have a phone number", "Warning");
                         }
                         else
                         {
-
-                            DialogResult result = RJMessageBox.Show("¿Esta seguro(a) de crear el usuario?", "Pregunta", MessageBoxButtons.YesNo);
-                            if (result == DialogResult.Yes)
+                            if (String.IsNullOrEmpty(username.Texts) && String.IsNullOrEmpty(password.Texts))
                             {
-                                InquiriesDB DB = new InquiriesDB();
-                                Persona persona = new Persona();
-                                persona.IdUser = username.Texts;
-                                persona.Password = password.Texts;
-                                persona.Name = rjName.Texts;
-                                persona.LastNameP = lastNameP.Texts;
-                                persona.LastNameM = lastNameM.Texts;
-                                persona.PhoneNumber = tel.Texts;
-                                persona.Settlement_type1 = valueLocation;
-                                persona.PrimaryStreet = rjStreet1.Texts;
-                                persona.SecondaryStreet = rjStreet2.Texts;
-                                if (DB.registerUser(persona))
+                                RJMessageBox.Show("The username and password spaces must not be empty", "Warning");
+                            }
+                            else
+                            {
+
+                                DialogResult result = RJMessageBox.Show("¿Esta seguro(a) de crear el usuario?", "Pregunta", MessageBoxButtons.YesNo);
+                                if (result == DialogResult.Yes)
                                 {
-                                    rjButton1.Hide();
-                                    pictureAcces.Show();
-                                    timer1.Start();
-                                }
-                                else
-                                {
-                                    RJMessageBox.Show("Something went wrong during registration", "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    InquiriesDB DB = new InquiriesDB();
+                                    Persona persona = new Persona();
+                                    persona.IdUser = username.Texts;
+                                    persona.Password = password.Texts;
+                                    persona.Name = rjName.Texts;
+                                    persona.LastNameP = lastNameP.Texts;
+                                    persona.LastNameM = lastNameM.Texts;
+                                    persona.PhoneNumber = tel.Texts;
+                                    persona.Settlement_type1 = valueLocation;
+                                    persona.PrimaryStreet = rjStreet1.Texts;
+                                    persona.SecondaryStreet = rjStreet2.Texts;
+                                    if (DB.registerUser(persona))
+                                    {
+                                        rjButton1.Hide();
+                                        pictureAcces.Show();
+                                        timer1.Start();
+                                    }
+                                    else
+                                    {
+                                        RJMessageBox.Show("Something went wrong during registration", "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
                                 }
                             }
                         }
                     }
                 }
+
+            }
+            else
+            {
+                RJMessageBox.Show("The username must be 10 of length, please check", "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -231,6 +239,18 @@ namespace Palacio_el_restaurante.src.UI
             if (tel.Texts.Length >= 10 && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void username_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (username.Texts.Length > 8)
+            {
+                DialogResult result = RJMessageBox.Show("Are you agree with your username?", "QUESTION!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    username.Enabled = false;
+                }
             }
         }
 

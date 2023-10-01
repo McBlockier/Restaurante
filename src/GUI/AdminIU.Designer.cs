@@ -47,6 +47,7 @@
             this.rjDataInv = new Palacio_el_restaurante.src.Controls.RJDataGridView();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelStaff = new System.Windows.Forms.Panel();
+            this.rjAutoStaff = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjExecute = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjSQLStaff = new Palacio_el_restaurante.src.Controls.RJTextBoxSQL();
             this.label6 = new System.Windows.Forms.Label();
@@ -75,7 +76,6 @@
             this.rjPictureRounded2 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.rjPictureRounded1 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.rjAutoStaff = new Palacio_el_restaurante.src.Controls.RJButton();
             this.root.SuspendLayout();
             this.panelinv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Upload)).BeginInit();
@@ -191,9 +191,9 @@
             this.panelinv.Controls.Add(this.rjInventory);
             this.panelinv.Controls.Add(this.rjDataInv);
             this.panelinv.Controls.Add(this.pictureBox2);
-            this.panelinv.Location = new System.Drawing.Point(109, 27);
+            this.panelinv.Location = new System.Drawing.Point(109, 26);
             this.panelinv.Name = "panelinv";
-            this.panelinv.Size = new System.Drawing.Size(901, 675);
+            this.panelinv.Size = new System.Drawing.Size(901, 676);
             this.panelinv.TabIndex = 4;
             // 
             // rjInsertPanel
@@ -323,6 +323,27 @@
             this.panelStaff.Name = "panelStaff";
             this.panelStaff.Size = new System.Drawing.Size(904, 675);
             this.panelStaff.TabIndex = 5;
+            // 
+            // rjAutoStaff
+            // 
+            this.rjAutoStaff.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjAutoStaff.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjAutoStaff.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjAutoStaff.BorderRadius = 15;
+            this.rjAutoStaff.BorderSize = 0;
+            this.rjAutoStaff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjAutoStaff.FlatAppearance.BorderSize = 0;
+            this.rjAutoStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjAutoStaff.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
+            this.rjAutoStaff.ForeColor = System.Drawing.Color.White;
+            this.rjAutoStaff.Location = new System.Drawing.Point(24, 213);
+            this.rjAutoStaff.Name = "rjAutoStaff";
+            this.rjAutoStaff.Size = new System.Drawing.Size(116, 38);
+            this.rjAutoStaff.TabIndex = 22;
+            this.rjAutoStaff.Text = "Automatic";
+            this.rjAutoStaff.TextColor = System.Drawing.Color.White;
+            this.rjAutoStaff.UseVisualStyleBackColor = false;
+            this.rjAutoStaff.Click += new System.EventHandler(this.rjAutoStaff_Click);
             // 
             // rjExecute
             // 
@@ -717,27 +738,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // rjAutoStaff
-            // 
-            this.rjAutoStaff.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjAutoStaff.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjAutoStaff.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjAutoStaff.BorderRadius = 15;
-            this.rjAutoStaff.BorderSize = 0;
-            this.rjAutoStaff.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjAutoStaff.FlatAppearance.BorderSize = 0;
-            this.rjAutoStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjAutoStaff.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
-            this.rjAutoStaff.ForeColor = System.Drawing.Color.White;
-            this.rjAutoStaff.Location = new System.Drawing.Point(24, 213);
-            this.rjAutoStaff.Name = "rjAutoStaff";
-            this.rjAutoStaff.Size = new System.Drawing.Size(116, 38);
-            this.rjAutoStaff.TabIndex = 22;
-            this.rjAutoStaff.Text = "Automatic";
-            this.rjAutoStaff.TextColor = System.Drawing.Color.White;
-            this.rjAutoStaff.UseVisualStyleBackColor = false;
-            this.rjAutoStaff.Click += new System.EventHandler(this.rjAutoStaff_Click);
             // 
             // AdminIU
             // 

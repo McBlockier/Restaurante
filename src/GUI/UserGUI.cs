@@ -1,14 +1,7 @@
 ﻿using CustomMessageBox;
 using Palacio_el_restaurante.src.Conection;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.GUI
@@ -16,6 +9,7 @@ namespace Palacio_el_restaurante.src.GUI
     public partial class UserGUI : Form
     {
         public int xClick = 0, yClick = 0;
+        private String[] infoUsername = new String[11];
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
       (
@@ -50,7 +44,8 @@ namespace Palacio_el_restaurante.src.GUI
 
         private void rjOperation_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            switch(rjOperation.SelectedItem as String) {
+            switch (rjOperation.SelectedItem as String)
+            {
                 case "Update":
                     rjUpdate.Visible = true;
                     rjDelete.Visible = false;
@@ -82,7 +77,7 @@ namespace Palacio_el_restaurante.src.GUI
                     getStreet2.Enabled = false;
                     getLocation.Enabled = false;
                     rjRank.Enabled = false;
-                    
+
                     break;
                 case "Add Up":
                     rjUpdate.Visible = false;
@@ -204,11 +199,11 @@ namespace Palacio_el_restaurante.src.GUI
             }
         }
         private void rjUpdate_Click(object sender, EventArgs e)
-        {     
-                DialogResult result = RJMessageBox.Show("Are you sure to update the user?",
-                                       "QUESTION!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (result.Equals(DialogResult.Yes))
-                {
+        {
+            DialogResult result = RJMessageBox.Show("Are you sure to update the user?",
+                                   "QUESTION!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result.Equals(DialogResult.Yes))
+            {
                 try
                 {
                     Persona persona = new Persona();
@@ -224,7 +219,7 @@ namespace Palacio_el_restaurante.src.GUI
                         persona.LastNameP = getLastNameP.Texts;
                         persona.LastNameM = getLastNameM.Texts;
                         persona.Password = getPassword.Texts;
-                        persona.PhoneNumber = getPhoneNumber.Texts;         
+                        persona.PhoneNumber = getPhoneNumber.Texts;
                         persona.PrimaryStreet = getStreet1.Texts;
                         persona.SecondaryStreet = getStreet2.Texts;
                         persona.Settlement_type1 = getLocation.Texts;
@@ -258,7 +253,7 @@ namespace Palacio_el_restaurante.src.GUI
                     else
                     {
                         if (!String.IsNullOrEmpty(getUsername.Texts))
-                        {                            
+                        {
                             if (!String.IsNullOrEmpty(getUsername.Texts))
                             {
                                 persona.IdUser = getUsername.Texts;
@@ -266,7 +261,7 @@ namespace Palacio_el_restaurante.src.GUI
                             }
                             if (!String.IsNullOrEmpty(getName.Texts))
                             {
-                                persona.Name = getName.Texts;                             
+                                persona.Name = getName.Texts;
                                 DB.updateUser(persona);
                             }
 
@@ -311,7 +306,7 @@ namespace Palacio_el_restaurante.src.GUI
                                 DB.updateUser(persona);
                             }
 
-                            if(!String.IsNullOrEmpty(rjRank.SelectedItem as String))
+                            if (!String.IsNullOrEmpty(rjRank.SelectedItem as String))
                             {
                                 switch (rjRank.SelectedItem as String)
                                 {
@@ -346,12 +341,65 @@ namespace Palacio_el_restaurante.src.GUI
             }
         }
 
+        private void getPhoneNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (getPhoneNumber.Texts.Length >= 10 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void getUsername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (check.Checked)
+            {
+                if (getUsername.Texts.Length == 10)
+                {
+                    InquiriesDB DB = new InquiriesDB();
+                    try
+                    {
+                        getName.Texts = DB.searchInfoUser(getUsername.Texts)[0];
+                        getLastNameP.Texts = DB.searchInfoUser(getUsername.Texts)[1];
+                        getLastNameM.Texts = DB.searchInfoUser(getUsername.Texts)[2];
+                        getPassword.Texts = DB.searchInfoUser(getUsername.Texts)[3];
+                        switch (DB.searchInfoUser(getUsername.Texts)[4])
+                        {
+                            case "1":
+                                rjRank.Texts = "Administrador";
+                                break;
+                            case "2":
+                                rjRank.Texts = "Usuario";
+                                break;
+                            case "3":
+                                rjRank.Texts = "Repartidor";
+                                break;
+                        }
+                        getStreet1.Texts = DB.searchInfoUser(getUsername.Texts)[5];
+                        getStreet2.Texts = DB.searchInfoUser(getUsername.Texts)[6];
+                        getLocation.Texts = DB.searchInfoUser(getUsername.Texts)[7];
+                        getPhoneNumber.Texts = DB.searchInfoUser(getUsername.Texts)[8];
+
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+
+        }
+
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left)
             { xClick = e.X; yClick = e.Y; }
             else
             { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
-        }   
+        }
     }
 }
