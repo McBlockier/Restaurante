@@ -51,6 +51,54 @@ namespace Palacio_el_restaurante.src.Conection
             }
             return value;
         }
+        public Boolean updateUser(Persona persona)
+        {
+            try
+            {
+                Connection connection = new Connection();
+                MySqlConnection con = connection.getConnection();
+                con.Open();
+
+
+            }
+            catch(Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return value;
+        }
+
+        public Boolean deleteUser(Persona persona)
+        {
+            try
+            {
+                Connection connection = new Connection();
+                MySqlConnection con = connection.getConnection();
+                con.Open();
+                String SQL = "DELETE FROM usuario WHERE idUser LIKE @idUser";
+                MySqlCommand command = new MySqlCommand(SQL, con);
+                command.Parameters.AddWithValue("@idUser", persona.IdUser);
+                int i = command.ExecuteNonQuery();
+                if(i > 0)
+                {
+                    value = true;
+                    con.Close();
+                }
+                else
+                {
+                    value = false;
+                    con.Close();
+                }
+
+            }catch(Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return value;
+        }
+
         public int getRank(String username)
         {
             int rank = 0;

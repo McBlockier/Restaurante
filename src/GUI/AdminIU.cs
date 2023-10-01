@@ -339,6 +339,12 @@ namespace Palacio_el_restaurante.src.GUI
             insert.ShowDialog();
         }
 
+        private void rjAutoStaff_Click(object sender, EventArgs e)
+        {
+            UserGUI user = new UserGUI();
+            user.ShowDialog();
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             TimeSpan tiempoTranscurrido = stopwatch.Elapsed;

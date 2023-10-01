@@ -38,6 +38,7 @@
             this.SetDate = new System.Windows.Forms.Label();
             this.SetTime = new System.Windows.Forms.Label();
             this.panelinv = new System.Windows.Forms.Panel();
+            this.rjInsertPanel = new Palacio_el_restaurante.src.Controls.RJButton();
             this.Upload = new System.Windows.Forms.PictureBox();
             this.rjExecuteIn = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjSQLInv = new Palacio_el_restaurante.src.Controls.RJTextBoxSQL();
@@ -74,7 +75,7 @@
             this.rjPictureRounded2 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.rjPictureRounded1 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.rjInsertPanel = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.rjAutoStaff = new Palacio_el_restaurante.src.Controls.RJButton();
             this.root.SuspendLayout();
             this.panelinv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Upload)).BeginInit();
@@ -190,10 +191,31 @@
             this.panelinv.Controls.Add(this.rjInventory);
             this.panelinv.Controls.Add(this.rjDataInv);
             this.panelinv.Controls.Add(this.pictureBox2);
-            this.panelinv.Location = new System.Drawing.Point(109, 28);
+            this.panelinv.Location = new System.Drawing.Point(109, 27);
             this.panelinv.Name = "panelinv";
-            this.panelinv.Size = new System.Drawing.Size(901, 673);
+            this.panelinv.Size = new System.Drawing.Size(901, 675);
             this.panelinv.TabIndex = 4;
+            // 
+            // rjInsertPanel
+            // 
+            this.rjInsertPanel.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjInsertPanel.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjInsertPanel.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjInsertPanel.BorderRadius = 15;
+            this.rjInsertPanel.BorderSize = 0;
+            this.rjInsertPanel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjInsertPanel.FlatAppearance.BorderSize = 0;
+            this.rjInsertPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjInsertPanel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
+            this.rjInsertPanel.ForeColor = System.Drawing.Color.White;
+            this.rjInsertPanel.Location = new System.Drawing.Point(15, 236);
+            this.rjInsertPanel.Name = "rjInsertPanel";
+            this.rjInsertPanel.Size = new System.Drawing.Size(116, 38);
+            this.rjInsertPanel.TabIndex = 21;
+            this.rjInsertPanel.Text = "Automatic";
+            this.rjInsertPanel.TextColor = System.Drawing.Color.White;
+            this.rjInsertPanel.UseVisualStyleBackColor = false;
+            this.rjInsertPanel.Click += new System.EventHandler(this.rjInsertPanel_Click);
             // 
             // Upload
             // 
@@ -212,7 +234,7 @@
             this.rjExecuteIn.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.rjExecuteIn.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
             this.rjExecuteIn.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjExecuteIn.BorderRadius = 20;
+            this.rjExecuteIn.BorderRadius = 15;
             this.rjExecuteIn.BorderSize = 0;
             this.rjExecuteIn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjExecuteIn.FlatAppearance.BorderSize = 0;
@@ -290,6 +312,7 @@
             // 
             // panelStaff
             // 
+            this.panelStaff.Controls.Add(this.rjAutoStaff);
             this.panelStaff.Controls.Add(this.rjExecute);
             this.panelStaff.Controls.Add(this.rjSQLStaff);
             this.panelStaff.Controls.Add(this.label6);
@@ -306,14 +329,14 @@
             this.rjExecute.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.rjExecute.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
             this.rjExecute.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjExecute.BorderRadius = 20;
+            this.rjExecute.BorderRadius = 15;
             this.rjExecute.BorderSize = 0;
             this.rjExecute.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjExecute.FlatAppearance.BorderSize = 0;
             this.rjExecute.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjExecute.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
             this.rjExecute.ForeColor = System.Drawing.Color.White;
-            this.rjExecute.Location = new System.Drawing.Point(367, 212);
+            this.rjExecute.Location = new System.Drawing.Point(462, 212);
             this.rjExecute.Name = "rjExecute";
             this.rjExecute.Size = new System.Drawing.Size(120, 39);
             this.rjExecute.TabIndex = 17;
@@ -695,26 +718,26 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // rjInsertPanel
+            // rjAutoStaff
             // 
-            this.rjInsertPanel.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjInsertPanel.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjInsertPanel.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjInsertPanel.BorderRadius = 20;
-            this.rjInsertPanel.BorderSize = 0;
-            this.rjInsertPanel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjInsertPanel.FlatAppearance.BorderSize = 0;
-            this.rjInsertPanel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjInsertPanel.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
-            this.rjInsertPanel.ForeColor = System.Drawing.Color.White;
-            this.rjInsertPanel.Location = new System.Drawing.Point(15, 236);
-            this.rjInsertPanel.Name = "rjInsertPanel";
-            this.rjInsertPanel.Size = new System.Drawing.Size(116, 38);
-            this.rjInsertPanel.TabIndex = 21;
-            this.rjInsertPanel.Text = "Automatic";
-            this.rjInsertPanel.TextColor = System.Drawing.Color.White;
-            this.rjInsertPanel.UseVisualStyleBackColor = false;
-            this.rjInsertPanel.Click += new System.EventHandler(this.rjInsertPanel_Click);
+            this.rjAutoStaff.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjAutoStaff.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjAutoStaff.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjAutoStaff.BorderRadius = 15;
+            this.rjAutoStaff.BorderSize = 0;
+            this.rjAutoStaff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjAutoStaff.FlatAppearance.BorderSize = 0;
+            this.rjAutoStaff.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjAutoStaff.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
+            this.rjAutoStaff.ForeColor = System.Drawing.Color.White;
+            this.rjAutoStaff.Location = new System.Drawing.Point(24, 213);
+            this.rjAutoStaff.Name = "rjAutoStaff";
+            this.rjAutoStaff.Size = new System.Drawing.Size(116, 38);
+            this.rjAutoStaff.TabIndex = 22;
+            this.rjAutoStaff.Text = "Automatic";
+            this.rjAutoStaff.TextColor = System.Drawing.Color.White;
+            this.rjAutoStaff.UseVisualStyleBackColor = false;
+            this.rjAutoStaff.Click += new System.EventHandler(this.rjAutoStaff_Click);
             // 
             // AdminIU
             // 
@@ -804,5 +827,6 @@
         private System.Windows.Forms.Label date;
         private System.Windows.Forms.Timer timer1;
         private Controls.RJButton rjInsertPanel;
+        private Controls.RJButton rjAutoStaff;
     }
 }
