@@ -52,59 +52,6 @@ namespace Palacio_el_restaurante.src.GUI
             fillBox();
         }
 
-        private void Upload_Click(object sender, EventArgs e)
-        {
-            btnSeleccionarImagen_Click(sender, e);
-        }
-        private void btnSeleccionarImagen_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                InquiriesDB DB = new InquiriesDB();
-                OpenFileDialog openFileDialog1 = new OpenFileDialog();
-                openFileDialog1.Filter = "Archivos de imagen (*.png)|*.png";
-                openFileDialog1.Title = "Seleccionar imagen";
-
-                if (openFileDialog1.ShowDialog() == DialogResult.OK)
-                {
-                    string rutaImagen = openFileDialog1.FileName;
-                    byte[] imagenBytes = File.ReadAllBytes(rutaImagen);
-                    object name = getName.Texts;
-                    if (DB.existImage(name))
-                    {
-                        Boolean value = DB.updateImage(name, imagenBytes);
-                        if (value)
-                        {
-                            RJMessageBox.Show("It was uploaded successfully", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            this.Upload.Image = Properties.Resources.foto_Off;
-                        }
-                        else
-                        {
-                            RJMessageBox.Show("It wasn't uploaded successfully", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            this.Upload.Image = Properties.Resources.foto_Off;
-                        }
-                    }
-                    else
-                    {
-                        Boolean value = DB.uploadImage(name, imagenBytes);
-                        if (value)
-                        {
-                            RJMessageBox.Show("It was uploaded successfully", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            this.Upload.Image = Properties.Resources.foto_Off;
-                        }
-                        else
-                        {
-                            RJMessageBox.Show("It wasn't uploaded successfully", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            this.Upload.Image = Properties.Resources.foto_Off;
-                        }
-                    }
-                }
-            }catch(Exception ex)
-            {
-                RJMessageBox.Show($"An error occurred while loading the image of type: {ex.Message}", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                this.Upload.Image = Properties.Resources.foto_Off;
-            }
-        }
 
         private void rjInsert_Click(object sender, EventArgs e)
         {

@@ -29,6 +29,47 @@ namespace Palacio_el_restaurante.src.GUI
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            fillBoxes();
+        }
+
+        private void fillBoxes()
+        {
+            rjRank.Items.Clear();
+            rjOperation.Items.Clear();
+
+            rjRank.Items.Add("Administrador");
+            rjRank.Items.Add("Repartidor");
+            rjRank.Items.Add("Usuario");
+
+            rjOperation.Items.Add("Update");
+            rjOperation.Items.Add("Delete");
+            rjOperation.Items.Add("Add Up");
+        }
+
+        private void rjOperation_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch(rjOperation.SelectedItem as String) {
+                case "Update":
+                    rjUpdate.Visible = true;
+                    rjDelete.Visible = false;
+                    rjAddUp.Visible = false;
+                    break;
+                case "Delete":
+                    rjUpdate.Visible = false;
+                    rjDelete.Visible = true;
+                    rjAddUp.Visible = false;
+                    break;
+                case "Add Up":
+                    rjUpdate.Visible = false;
+                    rjDelete.Visible = false;
+                    rjAddUp.Visible = true;
+                    break;
+            }
+        }
+
+        private void rjPictureRounded4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
         }
     }
 }
