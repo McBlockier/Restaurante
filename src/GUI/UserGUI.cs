@@ -13,7 +13,7 @@ namespace Palacio_el_restaurante.src.GUI
 {
     public partial class UserGUI : Form
     {
-
+        public int xClick = 0, yClick = 0;
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
       (
@@ -81,10 +81,19 @@ namespace Palacio_el_restaurante.src.GUI
         {
 
         }
-
         private void rjUpdate_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+            { xClick = e.X; yClick = e.Y; }
+            else
+            { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
+        }
+
+       
     }
 }
