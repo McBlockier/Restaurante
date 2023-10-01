@@ -204,12 +204,12 @@ namespace Palacio_el_restaurante.src.GUI
             }
         }
         private void rjUpdate_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                DialogResult result = RJMessageBox.Show("Are you sure to delete the user?",
+        {     
+                DialogResult result = RJMessageBox.Show("Are you sure to update the user?",
                                        "QUESTION!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result.Equals(DialogResult.Yes))
+                {
+                try
                 {
                     Persona persona = new Persona();
                     InquiriesDB DB = new InquiriesDB();
@@ -258,11 +258,78 @@ namespace Palacio_el_restaurante.src.GUI
                     else
                     {
                         if (!String.IsNullOrEmpty(getUsername.Texts))
-                        {
+                        {                            
+                            if (!String.IsNullOrEmpty(getUsername.Texts))
+                            {
+                                persona.IdUser = getUsername.Texts;
+                                DB.updateUser(persona);
+                            }
+                            if (!String.IsNullOrEmpty(getName.Texts))
+                            {
+                                persona.Name = getName.Texts;                             
+                                DB.updateUser(persona);
+                            }
 
+                            if (!String.IsNullOrEmpty(getPassword.Texts))
+                            {
+                                persona.Password = getPassword.Texts;
+                                DB.updateUser(persona);
+                            }
 
+                            if (!String.IsNullOrEmpty(getLastNameP.Texts))
+                            {
+                                persona.LastNameP = getLastNameP.Texts;
+                                DB.updateUser(persona);
+                            }
 
+                            if (!String.IsNullOrEmpty(getLastNameM.Texts))
+                            {
+                                persona.LastNameM = getLastNameM.Texts;
+                                DB.updateUser(persona);
+                            }
 
+                            if (!String.IsNullOrEmpty(getStreet1.Texts))
+                            {
+                                persona.PrimaryStreet = getStreet1.Texts;
+                                DB.updateUser(persona);
+                            }
+                            if (!String.IsNullOrEmpty(getStreet2.Texts))
+                            {
+                                persona.SecondaryStreet = getStreet2.Texts;
+                                DB.updateUser(persona);
+                            }
+
+                            if (!String.IsNullOrEmpty(getLocation.Texts))
+                            {
+                                persona.Settlement_type1 = getLocation.Texts;
+                                DB.updateUser(persona);
+                            }
+
+                            if (!String.IsNullOrEmpty(getPhoneNumber.Texts))
+                            {
+                                persona.PhoneNumber = getPhoneNumber.Texts;
+                                DB.updateUser(persona);
+                            }
+
+                            if(!String.IsNullOrEmpty(rjRank.SelectedItem as String))
+                            {
+                                switch (rjRank.SelectedItem as String)
+                                {
+                                    case "Administrador":
+                                        persona.Rank = 1;
+                                        break;
+                                    case "Usuario":
+                                        persona.Rank = 2;
+                                        break;
+                                    case "Repartidor":
+                                        persona.Rank = 3;
+                                        break;
+                                    default:
+                                        persona.Rank = 2;
+                                        break;
+                                }
+                                DB.updateUser(persona);
+                            }
                         }
                         else
                         {
@@ -271,10 +338,11 @@ namespace Palacio_el_restaurante.src.GUI
                         }
                     }
                 }
-            }catch (Exception ex)
-            {
-                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                 System.Windows.Forms.MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                     System.Windows.Forms.MessageBoxIcon.Error);
+                }
             }
         }
 

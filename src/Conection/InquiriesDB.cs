@@ -118,6 +118,7 @@ namespace Palacio_el_restaurante.src.Conection
                         {
                             SQL = "UPDATE usuario SET nombre=@nombre WHERE idUser LIKE @idUser";
                             MySqlCommand command = new MySqlCommand(SQL, con);
+                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
                             command.Parameters.AddWithValue("@nombre", persona.Name);
                             int i = command.ExecuteNonQuery();
                             if (i > 0)
@@ -130,11 +131,12 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }
+                        }else
                         if (!String.IsNullOrEmpty(persona.Password))
                         {
                             SQL = "UPDATE usuario SET password=@password WHERE idUser LIKE @idUser";
                             MySqlCommand command = new MySqlCommand(SQL, con);
+                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
                             command.Parameters.AddWithValue("@password", persona.Password);
                             int i = command.ExecuteNonQuery();
                             if (i > 0)
@@ -147,11 +149,12 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }
+                        }else
                         if (!String.IsNullOrEmpty(persona.LastNameP))
                         {
-                            SQL = "PDATE usuario SET lastNameP=@lastNameP WHERE idUser LIKE @idUser";
+                            SQL = "UPDATE usuario SET lastNameP=@lastNameP WHERE idUser LIKE @idUser";
                             MySqlCommand command = new MySqlCommand(SQL, con);
+                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
                             command.Parameters.AddWithValue("@lastNameP", persona.LastNameP);
                             int i = command.ExecuteNonQuery();
                             if (i > 0)
@@ -164,11 +167,12 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }
+                        }else
                         if (!String.IsNullOrEmpty(persona.LastNameM))
                         {
-                            SQL = "PDATE usuario SET lastNameM=@lastNameM WHERE idUser LIKE @idUser";
+                            SQL = "UPDATE usuario SET lastNameM=@lastNameM WHERE idUser LIKE @idUser";
                             MySqlCommand command = new MySqlCommand(SQL, con);
+                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
                             command.Parameters.AddWithValue("@lastNameM", persona.LastNameM);
                             int i = command.ExecuteNonQuery();
                             if (i > 0)
@@ -181,13 +185,14 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }
+                        }else
 
                         //Segunda sección
                         if (!String.IsNullOrEmpty(persona.PrimaryStreet))
                         {
-                            SQL = "PDATE usuario SET street1=@street1 WHERE idUser LIKE @idUser";
+                            SQL = "UPDATE usuario SET street1=@street1 WHERE idUser LIKE @idUser";
                             MySqlCommand command = new MySqlCommand(SQL, con);
+                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
                             command.Parameters.AddWithValue("@street1", persona.PrimaryStreet);
                             int i = command.ExecuteNonQuery();
                             if (i > 0)
@@ -200,11 +205,12 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }
+                        }else
                         if (!String.IsNullOrEmpty(persona.SecondaryStreet))
                         {
-                            SQL = "PDATE usuario SET street2=@street2 WHERE idUser LIKE @idUser";
+                            SQL = "UPDATE usuario SET street2=@street2 WHERE idUser LIKE @idUser";
                             MySqlCommand command = new MySqlCommand(SQL, con);
+                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
                             command.Parameters.AddWithValue("@street2", persona.SecondaryStreet);
                             int i = command.ExecuteNonQuery();
                             if (i > 0)
@@ -217,11 +223,12 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }
+                        }else
                         if (!String.IsNullOrEmpty(persona.Settlement_type1))
                         {
-                            SQL = "PDATE usuario SET locacion=@locacion WHERE idUser LIKE @idUser";
+                            SQL = "UPDATE usuario SET locacion=@locacion WHERE idUser LIKE @idUser";
                             MySqlCommand command = new MySqlCommand(SQL, con);
+                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
                             command.Parameters.AddWithValue("@locacion", persona.Settlement_type1);
                             int i = command.ExecuteNonQuery();
                             if (i > 0)
@@ -234,11 +241,12 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }
+                        }else
                         if (!String.IsNullOrEmpty(persona.PhoneNumber))
                         {
-                            SQL = "PDATE usuario SET telefono=@telefono WHERE idUser LIKE @idUser";
+                            SQL = "UPDATE usuario SET telefono=@telefono WHERE idUser LIKE @idUser";
                             MySqlCommand command = new MySqlCommand(SQL, con);
+                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
                             command.Parameters.AddWithValue("@telefono", persona.PhoneNumber);
                             int i = command.ExecuteNonQuery();
                             if (i > 0)
@@ -251,11 +259,12 @@ namespace Palacio_el_restaurante.src.Conection
                                 value = false;
                                 con.Close();
                             }
-                        }
+                        }else
                         if (!String.IsNullOrEmpty(persona.Rank.ToString()))
                         {
-                            SQL = "PDATE usuario SET id_jerarquia=@id_jerarquia WHERE idUser LIKE @idUser";
+                            SQL = "UPDATE usuario SET id_jerarquia=@id_jerarquia WHERE idUser LIKE @idUser";
                             MySqlCommand command = new MySqlCommand(SQL, con);
+                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
                             command.Parameters.AddWithValue("@id_jerarquia", persona.Rank);
                             int i = command.ExecuteNonQuery();
                             if (i > 0)
@@ -279,8 +288,7 @@ namespace Palacio_el_restaurante.src.Conection
             }
             catch(Exception ex)
             {
-                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                    System.Windows.Forms.MessageBoxIcon.Error);
+                Console.WriteLine(ex.ToString());
             }
             return value;
         }

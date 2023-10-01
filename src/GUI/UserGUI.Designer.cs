@@ -32,6 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.getName = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             this.rjAddUp = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjDelete = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjUpdate = new Palacio_el_restaurante.src.Controls.RJButton();
@@ -47,7 +48,6 @@
             this.getPassword = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             this.rjPictureRounded3 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.getUsername = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
-            this.getName = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded3)).BeginInit();
@@ -109,6 +109,28 @@
             this.label3.Size = new System.Drawing.Size(85, 19);
             this.label3.TabIndex = 31;
             this.label3.Text = "Operation";
+            // 
+            // getName
+            // 
+            this.getName.BackColor = System.Drawing.Color.Gainsboro;
+            this.getName.BorderColor = System.Drawing.Color.Transparent;
+            this.getName.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.getName.BorderRadius = 10;
+            this.getName.BorderSize = 2;
+            this.getName.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.getName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.getName.Location = new System.Drawing.Point(161, 162);
+            this.getName.Margin = new System.Windows.Forms.Padding(4);
+            this.getName.Multiline = false;
+            this.getName.Name = "getName";
+            this.getName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.getName.PasswordChar = false;
+            this.getName.PlaceholderColor = System.Drawing.Color.Gray;
+            this.getName.PlaceholderText = "Name";
+            this.getName.Size = new System.Drawing.Size(260, 40);
+            this.getName.TabIndex = 32;
+            this.getName.Texts = "";
+            this.getName.UnderlinedStyle = false;
             // 
             // rjAddUp
             // 
@@ -422,28 +444,6 @@
             this.getUsername.TabIndex = 2;
             this.getUsername.Texts = "";
             this.getUsername.UnderlinedStyle = false;
-            // 
-            // getName
-            // 
-            this.getName.BackColor = System.Drawing.Color.Gainsboro;
-            this.getName.BorderColor = System.Drawing.Color.Transparent;
-            this.getName.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.getName.BorderRadius = 10;
-            this.getName.BorderSize = 2;
-            this.getName.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getName.Location = new System.Drawing.Point(161, 162);
-            this.getName.Margin = new System.Windows.Forms.Padding(4);
-            this.getName.Multiline = false;
-            this.getName.Name = "getName";
-            this.getName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.getName.PasswordChar = false;
-            this.getName.PlaceholderColor = System.Drawing.Color.Gray;
-            this.getName.PlaceholderText = "Name";
-            this.getName.Size = new System.Drawing.Size(260, 40);
-            this.getName.TabIndex = 32;
-            this.getName.Texts = "";
-            this.getName.UnderlinedStyle = false;
             // 
             // UserGUI
             // 
