@@ -91,7 +91,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(405, 69);
+            this.label1.Location = new System.Drawing.Point(382, 98);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(47, 19);
             this.label1.TabIndex = 30;
@@ -101,7 +101,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(108, 69);
+            this.label3.Location = new System.Drawing.Point(85, 98);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(85, 19);
             this.label3.TabIndex = 31;
@@ -119,13 +119,14 @@
             this.rjAddUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjAddUp.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjAddUp.ForeColor = System.Drawing.Color.White;
-            this.rjAddUp.Location = new System.Drawing.Point(452, 505);
+            this.rjAddUp.Location = new System.Drawing.Point(451, 505);
             this.rjAddUp.Name = "rjAddUp";
             this.rjAddUp.Size = new System.Drawing.Size(150, 40);
             this.rjAddUp.TabIndex = 29;
             this.rjAddUp.Text = "Add Up";
             this.rjAddUp.TextColor = System.Drawing.Color.White;
             this.rjAddUp.UseVisualStyleBackColor = false;
+            this.rjAddUp.Click += new System.EventHandler(this.rjAddUp_Click);
             // 
             // rjDelete
             // 
@@ -139,13 +140,14 @@
             this.rjDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjDelete.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rjDelete.ForeColor = System.Drawing.Color.White;
-            this.rjDelete.Location = new System.Drawing.Point(452, 505);
+            this.rjDelete.Location = new System.Drawing.Point(451, 505);
             this.rjDelete.Name = "rjDelete";
             this.rjDelete.Size = new System.Drawing.Size(150, 40);
             this.rjDelete.TabIndex = 28;
             this.rjDelete.Text = "Delete";
             this.rjDelete.TextColor = System.Drawing.Color.White;
             this.rjDelete.UseVisualStyleBackColor = false;
+            this.rjDelete.Click += new System.EventHandler(this.rjDelete_Click);
             // 
             // rjUpdate
             // 
@@ -166,6 +168,7 @@
             this.rjUpdate.Text = "Update";
             this.rjUpdate.TextColor = System.Drawing.Color.White;
             this.rjUpdate.UseVisualStyleBackColor = false;
+            this.rjUpdate.Click += new System.EventHandler(this.rjUpdate_Click);
             // 
             // rjPictureRounded4
             // 
@@ -196,7 +199,7 @@
             this.rjOperation.IconColor = System.Drawing.Color.MediumSlateBlue;
             this.rjOperation.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.rjOperation.ListTextColor = System.Drawing.Color.DimGray;
-            this.rjOperation.Location = new System.Drawing.Point(96, 87);
+            this.rjOperation.Location = new System.Drawing.Point(73, 116);
             this.rjOperation.MinimumSize = new System.Drawing.Size(200, 30);
             this.rjOperation.Name = "rjOperation";
             this.rjOperation.Padding = new System.Windows.Forms.Padding(1);
@@ -216,7 +219,7 @@
             this.rjRank.IconColor = System.Drawing.Color.MediumSlateBlue;
             this.rjRank.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.rjRank.ListTextColor = System.Drawing.Color.DimGray;
-            this.rjRank.Location = new System.Drawing.Point(394, 87);
+            this.rjRank.Location = new System.Drawing.Point(371, 116);
             this.rjRank.MinimumSize = new System.Drawing.Size(200, 30);
             this.rjRank.Name = "rjRank";
             this.rjRank.Padding = new System.Windows.Forms.Padding(1);

@@ -71,5 +71,20 @@ namespace Palacio_el_restaurante.src.GUI
         {
             this.Hide();
         }
+
+        private void rjAddUp_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rjDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void rjUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
