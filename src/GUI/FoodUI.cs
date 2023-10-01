@@ -575,12 +575,10 @@ namespace Palacio_el_restaurante.src.UI
         {
             Orders.Enabled = true;
         }
-
         private void panelJuice_MouseMove(object sender, MouseEventArgs e)
         {
             motionFrame(sender, e);
         }
-
         private void panelFood_MouseMove(object sender, MouseEventArgs e)
         {
             motionFrame(sender, e);
@@ -590,7 +588,6 @@ namespace Palacio_el_restaurante.src.UI
         {
             motionFrame(sender, e);
         }
-
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             motionFrame(sender, e);
