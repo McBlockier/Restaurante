@@ -121,18 +121,18 @@ namespace Palacio_el_restaurante.src.GUI
                     !String.IsNullOrEmpty(getLastNameP.Texts) && !String.IsNullOrEmpty(getLastNameM.Texts) &&
                     !String.IsNullOrEmpty(getStreet1.Texts) && !String.IsNullOrEmpty(getStreet2.Texts) &&
                     !String.IsNullOrEmpty(getLocation.Texts) && !String.IsNullOrEmpty(getPhoneNumber.Texts) &&
-                    !String.IsNullOrEmpty(rjRank.SelectedItem as String))
+                    !String.IsNullOrEmpty(rjRank.SelectedItem as String) && !String.IsNullOrEmpty(getName.Texts))
                 {
                     persona.IdUser = getUsername.Texts;
-                    persona.Name = getUsername.Texts;
                     persona.Name = getName.Texts;
-                    persona.PhoneNumber = getPhoneNumber.Texts;
                     persona.LastNameP = getLastNameP.Texts;
                     persona.LastNameM = getLastNameM.Texts;
+                    persona.Password = getPassword.Texts;
+                    persona.PhoneNumber = getPhoneNumber.Texts;
                     persona.PrimaryStreet = getStreet1.Texts;
                     persona.SecondaryStreet = getStreet2.Texts;
                     persona.Settlement_type1 = getLocation.Texts;
-                    switch(rjRank.SelectedItem as String)
+                    switch (rjRank.SelectedItem as String)
                     {
                         case "Administrador":
                             persona.Rank = 1;
@@ -147,7 +147,6 @@ namespace Palacio_el_restaurante.src.GUI
                             persona.Rank = 2;
                             break;
                     }
-
                     InquiriesDB DB = new InquiriesDB();
                     if (DB.registerUser(persona))
                     {
@@ -160,7 +159,6 @@ namespace Palacio_el_restaurante.src.GUI
                         RJMessageBox.Show("User registration could not be done",
                         "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
-
                 }
                 else
                 {
@@ -207,7 +205,77 @@ namespace Palacio_el_restaurante.src.GUI
         }
         private void rjUpdate_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DialogResult result = RJMessageBox.Show("Are you sure to delete the user?",
+                                       "QUESTION!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result.Equals(DialogResult.Yes))
+                {
+                    Persona persona = new Persona();
+                    InquiriesDB DB = new InquiriesDB();
+                    if (!String.IsNullOrEmpty(getUsername.Texts) && !String.IsNullOrEmpty(getPassword.Texts) &&
+                        !String.IsNullOrEmpty(getLastNameP.Texts) && !String.IsNullOrEmpty(getLastNameM.Texts) &&
+                        !String.IsNullOrEmpty(getStreet1.Texts) && !String.IsNullOrEmpty(getStreet2.Texts) &&
+                        !String.IsNullOrEmpty(getLocation.Texts) && !String.IsNullOrEmpty(getPhoneNumber.Texts) &&
+                        !String.IsNullOrEmpty(rjRank.SelectedItem as String) && !String.IsNullOrEmpty(getName.Texts))
+                    {
+                        persona.IdUser = getUsername.Texts;
+                        persona.Name = getName.Texts;
+                        persona.LastNameP = getLastNameP.Texts;
+                        persona.LastNameM = getLastNameM.Texts;
+                        persona.Password = getPassword.Texts;
+                        persona.PhoneNumber = getPhoneNumber.Texts;         
+                        persona.PrimaryStreet = getStreet1.Texts;
+                        persona.SecondaryStreet = getStreet2.Texts;
+                        persona.Settlement_type1 = getLocation.Texts;
+                        switch (rjRank.SelectedItem as String)
+                        {
+                            case "Administrador":
+                                persona.Rank = 1;
+                                break;
+                            case "Usuario":
+                                persona.Rank = 2;
+                                break;
+                            case "Repartidor":
+                                persona.Rank = 3;
+                                break;
+                            default:
+                                persona.Rank = 2;
+                                break;
+                        }
+                        if (DB.updateUser(persona))
+                        {
+                            RJMessageBox.Show("The user was successfully updated",
+                                       "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            clearFields();
+                        }
+                        else
+                        {
+                            RJMessageBox.Show("The user wasn't successfully updated",
+                                       "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                    else
+                    {
+                        if (!String.IsNullOrEmpty(getUsername.Texts))
+                        {
 
+
+
+
+                        }
+                        else
+                        {
+                            RJMessageBox.Show("You must enter the recipient user to update",
+                                      "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                    }
+                }
+            }catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                 System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
@@ -216,8 +284,6 @@ namespace Palacio_el_restaurante.src.GUI
             { xClick = e.X; yClick = e.Y; }
             else
             { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
-        }
-
-       
+        }   
     }
 }

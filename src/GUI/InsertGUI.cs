@@ -117,6 +117,8 @@ namespace Palacio_el_restaurante.src.GUI
                     rjInsert.Visible = false;
                     rjDelete.Visible = false;
                     rjUpdate.Visible = true;
+                    getName.Enabled = true;
+                    getPrice.Enabled = true;
                     break;
                 case "Delete":
                     rjInsert.Visible = false;
