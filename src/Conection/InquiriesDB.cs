@@ -2,6 +2,10 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Runtime.ConstrainedExecution;
+using System.Security.Cryptography;
+using System.Web.UI.WebControls.WebParts;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.Conection
@@ -305,6 +309,36 @@ namespace Palacio_el_restaurante.src.Conection
             }
             return value;
         }
+        public Boolean getImage(object nameProduct)
+        {
+            Image getImage = null;
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                connection.Open();
+                String SQL = "SELECT imagen FROM imagenconsumible WHERE nombreConsumible LIKE @nombreConsumible";
+                MySqlCommand command = new MySqlCommand( SQL, connection);
+                command.Parameters.AddWithValue("@nombreConsumible", nameProduct);
+                MySqlDataReader reader = command.ExecuteReader();
+                while(reader.Read())
+                {
+                    
+
+                    //Obtención de imagenes de la base de datos
+
+
+                }
+                connection.Close();
+            }
+            catch(Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return value;
+        }
+
         public Boolean existImage(object nameProduct)
         {
             try
@@ -399,37 +433,29 @@ namespace Palacio_el_restaurante.src.Conection
             }
             return getInfoProduct;
         }
-        public Boolean existProduct(int Clurp)
+        public bool existProduct(int Clurp)
         {
             try
             {
                 Connection con = new Connection();
                 MySqlConnection connection = con.getConnection();
                 connection.Open();
-                String SQL = "SELECT nombre FROM consumible WHERE clurp LIKE @clurp";
+                string SQL = "SELECT COUNT(*) FROM consumible WHERE clurp = @clurp";
                 MySqlCommand command = new MySqlCommand(SQL, connection);
                 command.Parameters.AddWithValue("@clurp", Clurp.ToString());
-                int i = command.ExecuteNonQuery();
-                if (i != 0)
-                {
-                    value = true;
-                    connection.Close();
-                }
-                else
-                {
-                    value = false;
-                    connection.Close();
-                }
+
+                int count = Convert.ToInt32(command.ExecuteScalar());
+                value = count > 0;
+                connection.Close();
             }
             catch (Exception ex)
             {
-                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                    System.Windows.Forms.MessageBoxIcon.Error);
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                value = false;
             }
             return value;
         }
-
-
+ 
         public String[] searchInfoUser(String username)
         {
             String[] getInfo = new String[9];
@@ -854,6 +880,9 @@ namespace Palacio_el_restaurante.src.Conection
             }
             return consumables;
         }
+
+
+
 
 
 

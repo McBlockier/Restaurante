@@ -38,6 +38,13 @@ namespace Palacio_el_restaurante.src.GUI
             fillBoxes();
             setHeader();
             stopwatch.Start();
+            InitPanel();
+        }
+        private void InitPanel()
+        {
+            panelSQL.Visible = true;
+            panelStaff.Visible = false;
+            panelinv.Visible = false;
         }
         private void setHeader()
         {

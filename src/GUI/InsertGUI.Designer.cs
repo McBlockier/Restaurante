@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InsertGUI));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.rjPictureRounded6 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.check = new System.Windows.Forms.CheckBox();
             this.rjDelete = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjUpdate = new Palacio_el_restaurante.src.Controls.RJButton();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,14 +46,15 @@
             this.rjOperation = new Palacio_el_restaurante.src.Controls.RJComboBox();
             this.rjInsert = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjPictureRounded4 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
-            this.check = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.rjPictureRounded6);
             this.panel1.Controls.Add(this.check);
             this.panel1.Controls.Add(this.rjDelete);
             this.panel1.Controls.Add(this.rjUpdate);
@@ -71,6 +75,35 @@
             this.panel1.Size = new System.Drawing.Size(599, 510);
             this.panel1.TabIndex = 0;
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            // 
+            // rjPictureRounded6
+            // 
+            this.rjPictureRounded6.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.rjPictureRounded6.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.rjPictureRounded6.BorderColor = System.Drawing.Color.DeepSkyBlue;
+            this.rjPictureRounded6.BorderColor2 = System.Drawing.Color.DeepSkyBlue;
+            this.rjPictureRounded6.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rjPictureRounded6.BorderSize = 2;
+            this.rjPictureRounded6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjPictureRounded6.GradientAngle = 50F;
+            this.rjPictureRounded6.Location = new System.Drawing.Point(549, 2);
+            this.rjPictureRounded6.Name = "rjPictureRounded6";
+            this.rjPictureRounded6.Size = new System.Drawing.Size(18, 18);
+            this.rjPictureRounded6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.rjPictureRounded6.TabIndex = 26;
+            this.rjPictureRounded6.TabStop = false;
+            this.rjPictureRounded6.Click += new System.EventHandler(this.rjPictureRounded6_Click);
+            // 
+            // check
+            // 
+            this.check.AutoSize = true;
+            this.check.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
+            this.check.Location = new System.Drawing.Point(284, 121);
+            this.check.Name = "check";
+            this.check.Size = new System.Drawing.Size(126, 23);
+            this.check.TabIndex = 25;
+            this.check.Text = "Search Clurp";
+            this.check.UseVisualStyleBackColor = true;
             // 
             // rjDelete
             // 
@@ -230,7 +263,7 @@
             this.getClurp.TabIndex = 16;
             this.getClurp.Texts = "";
             this.getClurp.UnderlinedStyle = false;
-            this.getClurp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.getClurp_KeyPress);
+            this.getClurp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.getClurp_KeyPress_1);
             // 
             // label1
             // 
@@ -328,27 +361,18 @@
             this.rjPictureRounded4.TabStop = false;
             this.rjPictureRounded4.Click += new System.EventHandler(this.rjPictureRounded4_Click);
             // 
-            // check
-            // 
-            this.check.AutoSize = true;
-            this.check.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
-            this.check.Location = new System.Drawing.Point(284, 121);
-            this.check.Name = "check";
-            this.check.Size = new System.Drawing.Size(126, 23);
-            this.check.TabIndex = 25;
-            this.check.Text = "Search Clurp";
-            this.check.UseVisualStyleBackColor = true;
-            // 
             // InsertGUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(591, 509);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InsertGUI";
             this.Text = "InsertGUI";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).EndInit();
             this.ResumeLayout(false);
@@ -373,5 +397,6 @@
         private Controls.RJButton rjUpdate;
         private Controls.RJButton rjDelete;
         private System.Windows.Forms.CheckBox check;
+        private Controls.RJPictureRounded rjPictureRounded6;
     }
 }

@@ -195,9 +195,9 @@ namespace Palacio_el_restaurante
 
         private void create_Click(object sender, EventArgs e)
         {
-            LoginCreateA loginA = new LoginCreateA();
-            loginA.Show();
             this.Hide();
+            LoginCreateA loginA = new LoginCreateA();
+            loginA.Show();        
         }
 
         private void create_MouseHover(object sender, EventArgs e)
@@ -231,6 +231,22 @@ namespace Palacio_el_restaurante
             if (e.KeyCode == Keys.Enter)
             {
                 button_login_Click(sender, e);
+            }
+        }
+
+        private void getPassword_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                button_login_Click(sender, EventArgs.Empty);
+            }
+        }
+
+        private void getUsername_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\r')
+            {
+                button_login_Click(sender, EventArgs.Empty);
             }
         }
 

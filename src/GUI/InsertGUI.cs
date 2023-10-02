@@ -274,6 +274,53 @@ namespace Palacio_el_restaurante.src.GUI
             FillComboBox(rjType, new string[] { "Bebida", "Platillo fuerte", "Postre", "Entrada" });
         }
 
+        private void rjPictureRounded6_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void getClurp_KeyPress_1(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (getClurp.Texts.Length == 3 && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+            if (e.KeyChar == '\r')
+            {
+                try
+                {
+                    InquiriesDB DB = new InquiriesDB();
+                    String[] getInfo = new string[10];
+                    int i = 0;
+                    foreach (String s in DB.infoProduct(getClurp.Texts))
+                    {
+                        getInfo[i] = s;
+                        i++;
+                    }
+                    getName.Texts = getInfo[0];
+                    getPrice.Texts = getInfo[2];
+                    getDescription.Texts = getInfo[3];
+                    switch (getInfo[1])
+                    {
+                        case "Bebida":
+                            break;
+                        case "Platillo fuerte":
+                            break;
+                        case "Entrada":
+                            break;
+                    }
+                }catch (Exception ex)
+                {
+                    RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                  System.Windows.Forms.MessageBoxIcon.Error);
+                }
+            }           
+        }
+
         private void FillComboBox(RJComboBox comboBox, string[] items)
         {
             comboBox.Items.Clear();

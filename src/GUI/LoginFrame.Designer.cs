@@ -216,6 +216,7 @@
             this.getPassword.Texts = "";
             this.getPassword.UnderlinedStyle = false;
             this.getPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.getPassword_KeyDown_1);
+            this.getPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.getPassword_KeyPress);
             // 
             // getUsername
             // 
@@ -239,6 +240,7 @@
             this.getUsername.Texts = "";
             this.getUsername.UnderlinedStyle = false;
             this.getUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.getUsername_KeyDown_1);
+            this.getUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.getUsername_KeyPress);
             // 
             // LoginFrame
             // 
