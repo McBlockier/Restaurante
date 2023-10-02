@@ -3,6 +3,7 @@ using Palacio_el_restaurante.src.Conection;
 using Palacio_el_restaurante.src.GUI;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 

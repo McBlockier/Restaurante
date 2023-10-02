@@ -9,5 +9,23 @@
 
         public string Type { get; set; }
 
+
+        public bool UpdateName { get; set; } = false;
+        public bool UpdateDescription { get; set; } = false;
+        public bool UpdatePrice { get; set; } = false;
+        public bool UpdateType { get; set; } = false;
+
+        public Product()
+        {
+
+        }
+        public Product(int clurp, bool updateName = false, bool updateDescription = false, bool updatePrice = false, bool updateType = false)
+        {
+            Clurp = clurp;
+            UpdateName = updateName;
+            UpdateDescription = updateDescription;
+            UpdatePrice = updatePrice;
+            UpdateType = updateType;
+        }
     }
 }

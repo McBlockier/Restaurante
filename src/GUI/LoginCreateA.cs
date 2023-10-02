@@ -110,7 +110,6 @@ namespace Palacio_el_restaurante.src.UI
                         panelData.Show();
                     }
                 }
-
             }
         }
 
@@ -126,70 +125,52 @@ namespace Palacio_el_restaurante.src.UI
 
         private void rjButton1_Click(object sender, EventArgs e)
         {
-            if (username.Texts.Length == 10)
+            if (username.Texts.Length != 10)
             {
-                if (String.IsNullOrEmpty(rjName.Texts))
-                {
-                    RJMessageBox.Show("Must at least have a  name", "Warning");
-                }
-                else
-                {
-                    if (String.IsNullOrEmpty(lastNameP.Texts))
-                    {
-                        RJMessageBox.Show("Must at least have a last name", "Warning");
-                    }
-                    else
-                    {
-                        if (String.IsNullOrEmpty(tel.Texts))
-                        {
-                            RJMessageBox.Show("Must at least have a phone number", "Warning");
-                        }
-                        else
-                        {
-                            if (String.IsNullOrEmpty(username.Texts) && String.IsNullOrEmpty(password.Texts))
-                            {
-                                RJMessageBox.Show("The username and password spaces must not be empty", "Warning");
-                            }
-                            else
-                            {
+                RJMessageBox.Show("The username must be exactly 10 characters long.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
-                                DialogResult result = RJMessageBox.Show("¿Esta seguro(a) de crear el usuario?", "Pregunta", MessageBoxButtons.YesNo);
-                                if (result == DialogResult.Yes)
-                                {
-                                    InquiriesDB DB = new InquiriesDB();
-                                    Persona persona = new Persona();
-                                    persona.IdUser = username.Texts;
-                                    persona.Password = password.Texts;
-                                    persona.Name = rjName.Texts;
-                                    persona.LastNameP = lastNameP.Texts;
-                                    persona.LastNameM = lastNameM.Texts;
-                                    persona.PhoneNumber = tel.Texts;
-                                    persona.Settlement_type1 = valueLocation;
-                                    persona.PrimaryStreet = rjStreet1.Texts;
-                                    persona.SecondaryStreet = rjStreet2.Texts;
-                                    if (DB.registerUser(persona))
-                                    {
-                                        rjButton1.Hide();
-                                        pictureAcces.Show();
-                                        timer1.Start();
-                                    }
-                                    else
-                                    {
-                                        RJMessageBox.Show("Something went wrong during registration", "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+            if (String.IsNullOrEmpty(rjName.Texts) || String.IsNullOrEmpty(lastNameP.Texts) || String.IsNullOrEmpty(tel.Texts))
+            {
+                RJMessageBox.Show("All fields must be filled in.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            if (String.IsNullOrEmpty(username.Texts) || String.IsNullOrEmpty(password.Texts))
+            {
+                RJMessageBox.Show("The username and password fields must not be empty.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            DialogResult result = RJMessageBox.Show("Are you sure you want to create the user?", "Question", MessageBoxButtons.YesNo);
+            if (result != DialogResult.Yes)
+            {
+                return;
+            }
+            InquiriesDB DB = new InquiriesDB();
+            Persona persona = new Persona();
+            persona.IdUser = username.Texts;
+            persona.Password = password.Texts;
+            persona.Name = rjName.Texts;
+            persona.LastNameP = lastNameP.Texts;
+            persona.LastNameM = lastNameM.Texts;
+            persona.PhoneNumber = tel.Texts;
+            persona.Settlement_type1 = valueLocation;
+            persona.PrimaryStreet = rjStreet1.Texts;
+            persona.SecondaryStreet = rjStreet2.Texts;
+
+            if (DB.registerUser(persona))
+            {
+                rjButton1.Hide();
+                pictureAcces.Show();
+                timer1.Start();
             }
             else
             {
-                RJMessageBox.Show("The username must be 10 of length, please check", "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                RJMessageBox.Show("Something went wrong during registration.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
-
         private void rjAreaCity_MouseLeave(object sender, EventArgs e)
         {
             Thread.Sleep(1000);
@@ -253,6 +234,7 @@ namespace Palacio_el_restaurante.src.UI
                 }
             }
         }
+
 
         private void hover_Effect_Left(String typeButton)
         {

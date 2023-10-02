@@ -79,27 +79,95 @@ namespace Palacio_el_restaurante.src.Conection
                 Connection connection = new Connection();
                 MySqlConnection con = connection.getConnection();
                 con.Open();
-                if (!String.IsNullOrEmpty(persona.IdUser) && !String.IsNullOrEmpty(persona.Name) &&
-                    !String.IsNullOrEmpty(persona.LastNameP) && !String.IsNullOrEmpty(persona.LastNameM) &&
-                    !String.IsNullOrEmpty(persona.PrimaryStreet) && !String.IsNullOrEmpty(persona.SecondaryStreet) &&
-                    !String.IsNullOrEmpty(persona.Settlement_type1) && !String.IsNullOrEmpty(persona.PhoneNumber) &&
-                    !String.IsNullOrEmpty(persona.Rank.ToString()) && !String.IsNullOrEmpty(persona.Password))
+
+                if (!String.IsNullOrEmpty(persona.IdUser))
                 {
-                    SQL = "UPDATE usuario SET nombre=@nombre,lastNameP=@lastNameP," +
-                        "lastNameM=@lastNameM,password=@password,id_jerarquia=@id_jerarquia," +
-                        "street1=@street1,street2=@street2,locacion=@locacion,telefono=@telefono WHERE idUser LIKE @idUser";
+                    List<string> updatedFields = new List<string>();
+                    SQL = "UPDATE usuario SET ";
+                    if (persona.FieldsToUpdate["Name"])
+                    {
+                        SQL += "nombre=@nombre, ";
+                        updatedFields.Add("nombre");
+                    }
+                    if (persona.FieldsToUpdate["LastNameP"])
+                    {
+                        SQL += "lastNameP=@lastNameP, ";
+                        updatedFields.Add("lastNameP");
+                    }
+                    if (persona.FieldsToUpdate["LastNameM"])
+                    {
+                        SQL += "lastNameM=@lastNameM, ";
+                        updatedFields.Add("lastNameM");
+                    }
+                    if (persona.FieldsToUpdate["Password"])
+                    {
+                        SQL += "password=@password, ";
+                        updatedFields.Add("password");
+                    }
+                    if (persona.FieldsToUpdate["Rank"])
+                    {
+                        SQL += "id_jerarquia=@id_jerarquia, ";
+                        updatedFields.Add("id_jerarquia");
+                    }
+                    if (persona.FieldsToUpdate["PrimaryStreet"])
+                    {
+                        SQL += "street1=@street1, ";
+                        updatedFields.Add("street1");
+                    }
+                    if (persona.FieldsToUpdate["SecondaryStreet"])
+                    {
+                        SQL += "street2=@street2, ";
+                        updatedFields.Add("street2");
+                    }
+                    if (persona.FieldsToUpdate["Settlement_type1"])
+                    {
+                        SQL += "locacion=@locacion, ";
+                        updatedFields.Add("locacion");
+                    }
+                    if (persona.FieldsToUpdate["PhoneNumber"])
+                    {
+                        SQL += "telefono=@telefono, ";
+                        updatedFields.Add("telefono");
+                    }
+                    SQL = SQL.TrimEnd(',', ' ');
+                    SQL += " WHERE idUser LIKE @idUser";
 
                     MySqlCommand command = new MySqlCommand(SQL, con);
                     command.Parameters.AddWithValue("@idUser", persona.IdUser);
-                    command.Parameters.AddWithValue("@nombre", persona.Name);
-                    command.Parameters.AddWithValue("@lastNameP", persona.LastNameP);
-                    command.Parameters.AddWithValue("@lastNameM", persona.LastNameM);
-                    command.Parameters.AddWithValue("@password", persona.Password);
-                    command.Parameters.AddWithValue("@id_jerarquia", persona.Rank);
-                    command.Parameters.AddWithValue("@street1", persona.PrimaryStreet);
-                    command.Parameters.AddWithValue("@street2", persona.SecondaryStreet);
-                    command.Parameters.AddWithValue("@locacion", persona.Settlement_type1);
-                    command.Parameters.AddWithValue("@telefono", persona.PhoneNumber);
+                    foreach (var field in updatedFields)
+                    {
+                        switch (field)
+                        {
+                            case "nombre":
+                                command.Parameters.AddWithValue("@nombre", persona.Name);
+                                break;
+                            case "lastNameP":
+                                command.Parameters.AddWithValue("@lastNameP", persona.LastNameP);
+                                break;
+                            case "lastNameM":
+                                command.Parameters.AddWithValue("@lastNameM", persona.LastNameM);
+                                break;
+                            case "password":
+                                command.Parameters.AddWithValue("@password", persona.Password);
+                                break;
+                            case "id_jerarquia":
+                                command.Parameters.AddWithValue("@id_jerarquia", persona.Rank);
+                                break;
+                            case "street1":
+                                command.Parameters.AddWithValue("@street1", persona.PrimaryStreet);
+                                break;
+                            case "street2":
+                                command.Parameters.AddWithValue("@street2", persona.SecondaryStreet);
+                                break;
+                            case "locacion":
+                                command.Parameters.AddWithValue("@locacion", persona.Settlement_type1);
+                                break;
+                            case "telefono":
+                                command.Parameters.AddWithValue("@telefono", persona.PhoneNumber);
+                                break;
+                        }
+                    }
+
                     int i = command.ExecuteNonQuery();
                     if (i > 0)
                     {
@@ -114,187 +182,8 @@ namespace Palacio_el_restaurante.src.Conection
                 }
                 else
                 {
-                    if (!String.IsNullOrEmpty(persona.IdUser))
-                    {
-                        //Primer sección
-                        if (!String.IsNullOrEmpty(persona.Name))
-                        {
-                            SQL = "UPDATE usuario SET nombre=@nombre WHERE idUser LIKE @idUser";
-                            MySqlCommand command = new MySqlCommand(SQL, con);
-                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
-                            command.Parameters.AddWithValue("@nombre", persona.Name);
-                            int i = command.ExecuteNonQuery();
-                            if (i > 0)
-                            {
-                                value = true;
-                                con.Close();
-                            }
-                            else
-                            {
-                                value = false;
-                                con.Close();
-                            }
-                        }
-                        else
-                        if (!String.IsNullOrEmpty(persona.Password))
-                        {
-                            SQL = "UPDATE usuario SET password=@password WHERE idUser LIKE @idUser";
-                            MySqlCommand command = new MySqlCommand(SQL, con);
-                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
-                            command.Parameters.AddWithValue("@password", persona.Password);
-                            int i = command.ExecuteNonQuery();
-                            if (i > 0)
-                            {
-                                value = true;
-                                con.Close();
-                            }
-                            else
-                            {
-                                value = false;
-                                con.Close();
-                            }
-                        }
-                        else
-                        if (!String.IsNullOrEmpty(persona.LastNameP))
-                        {
-                            SQL = "UPDATE usuario SET lastNameP=@lastNameP WHERE idUser LIKE @idUser";
-                            MySqlCommand command = new MySqlCommand(SQL, con);
-                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
-                            command.Parameters.AddWithValue("@lastNameP", persona.LastNameP);
-                            int i = command.ExecuteNonQuery();
-                            if (i > 0)
-                            {
-                                value = true;
-                                con.Close();
-                            }
-                            else
-                            {
-                                value = false;
-                                con.Close();
-                            }
-                        }
-                        else
-                        if (!String.IsNullOrEmpty(persona.LastNameM))
-                        {
-                            SQL = "UPDATE usuario SET lastNameM=@lastNameM WHERE idUser LIKE @idUser";
-                            MySqlCommand command = new MySqlCommand(SQL, con);
-                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
-                            command.Parameters.AddWithValue("@lastNameM", persona.LastNameM);
-                            int i = command.ExecuteNonQuery();
-                            if (i > 0)
-                            {
-                                value = true;
-                                con.Close();
-                            }
-                            else
-                            {
-                                value = false;
-                                con.Close();
-                            }
-                        }
-                        else
-
-                        //Segunda sección
-                        if (!String.IsNullOrEmpty(persona.PrimaryStreet))
-                        {
-                            SQL = "UPDATE usuario SET street1=@street1 WHERE idUser LIKE @idUser";
-                            MySqlCommand command = new MySqlCommand(SQL, con);
-                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
-                            command.Parameters.AddWithValue("@street1", persona.PrimaryStreet);
-                            int i = command.ExecuteNonQuery();
-                            if (i > 0)
-                            {
-                                value = true;
-                                con.Close();
-                            }
-                            else
-                            {
-                                value = false;
-                                con.Close();
-                            }
-                        }
-                        else
-                        if (!String.IsNullOrEmpty(persona.SecondaryStreet))
-                        {
-                            SQL = "UPDATE usuario SET street2=@street2 WHERE idUser LIKE @idUser";
-                            MySqlCommand command = new MySqlCommand(SQL, con);
-                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
-                            command.Parameters.AddWithValue("@street2", persona.SecondaryStreet);
-                            int i = command.ExecuteNonQuery();
-                            if (i > 0)
-                            {
-                                value = true;
-                                con.Close();
-                            }
-                            else
-                            {
-                                value = false;
-                                con.Close();
-                            }
-                        }
-                        else
-                        if (!String.IsNullOrEmpty(persona.Settlement_type1))
-                        {
-                            SQL = "UPDATE usuario SET locacion=@locacion WHERE idUser LIKE @idUser";
-                            MySqlCommand command = new MySqlCommand(SQL, con);
-                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
-                            command.Parameters.AddWithValue("@locacion", persona.Settlement_type1);
-                            int i = command.ExecuteNonQuery();
-                            if (i > 0)
-                            {
-                                value = true;
-                                con.Close();
-                            }
-                            else
-                            {
-                                value = false;
-                                con.Close();
-                            }
-                        }
-                        else
-                        if (!String.IsNullOrEmpty(persona.PhoneNumber))
-                        {
-                            SQL = "UPDATE usuario SET telefono=@telefono WHERE idUser LIKE @idUser";
-                            MySqlCommand command = new MySqlCommand(SQL, con);
-                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
-                            command.Parameters.AddWithValue("@telefono", persona.PhoneNumber);
-                            int i = command.ExecuteNonQuery();
-                            if (i > 0)
-                            {
-                                value = true;
-                                con.Close();
-                            }
-                            else
-                            {
-                                value = false;
-                                con.Close();
-                            }
-                        }
-                        else
-                        if (!String.IsNullOrEmpty(persona.Rank.ToString()))
-                        {
-                            SQL = "UPDATE usuario SET id_jerarquia=@id_jerarquia WHERE idUser LIKE @idUser";
-                            MySqlCommand command = new MySqlCommand(SQL, con);
-                            command.Parameters.AddWithValue("@idUser", persona.IdUser);
-                            command.Parameters.AddWithValue("@id_jerarquia", persona.Rank);
-                            int i = command.ExecuteNonQuery();
-                            if (i > 0)
-                            {
-                                value = true;
-                                con.Close();
-                            }
-                            else
-                            {
-                                value = false;
-                                con.Close();
-                            }
-                        }
-                    }
-                    else
-                    {
-                        RJMessageBox.Show("The user cannot be empty, you must enter the user you want to update",
-                                      "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
+                    RJMessageBox.Show("The user cannot be empty, you must enter the user you want to update",
+                                    "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
@@ -303,36 +192,27 @@ namespace Palacio_el_restaurante.src.Conection
             }
             return value;
         }
-
-        public Boolean deleteUser(Persona persona)
+        public bool deleteUser(Persona persona)
         {
-            try
+            Connection con = new Connection();
+            using (MySqlConnection connection = con.getConnection())
             {
-                Connection connection = new Connection();
-                MySqlConnection con = connection.getConnection();
-                con.Open();
-                String SQL = "DELETE FROM usuario WHERE idUser LIKE @idUser";
-                MySqlCommand command = new MySqlCommand(SQL, con);
-                command.Parameters.AddWithValue("@idUser", persona.IdUser);
-                int i = command.ExecuteNonQuery();
-                if (i > 0)
+                try
                 {
-                    value = true;
-                    con.Close();
-                }
-                else
-                {
-                    value = false;
-                    con.Close();
-                }
+                    connection.Open();
+                    string SQL = "DELETE FROM usuario WHERE idUser = @idUser";
+                    MySqlCommand command = new MySqlCommand(SQL, connection);
+                    command.Parameters.AddWithValue("@idUser", persona.IdUser);
+                    int rowsAffected = command.ExecuteNonQuery();
 
+                    return rowsAffected > 0;
+                }
+                catch (Exception ex)
+                {
+                    RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return false;
+                }
             }
-            catch (Exception ex)
-            {
-                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                    System.Windows.Forms.MessageBoxIcon.Error);
-            }
-            return value;
         }
 
         public int getRank(String username)
@@ -709,6 +589,8 @@ namespace Palacio_el_restaurante.src.Conection
             }
             return value;
         }
+
+
         public Boolean addProduct(Product producto)
         {
             try

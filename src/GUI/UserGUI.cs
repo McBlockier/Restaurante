@@ -1,5 +1,6 @@
 ﻿using CustomMessageBox;
 using Palacio_el_restaurante.src.Conection;
+using Palacio_el_restaurante.src.Controls;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -30,44 +31,40 @@ namespace Palacio_el_restaurante.src.GUI
 
         private void fillBoxes()
         {
-            rjRank.Items.Clear();
-            rjOperation.Items.Clear();
+            FillComboBox(rjRank, new string[] { "Administrador", "Repartidor", "Usuario" });
+            FillComboBox(rjOperation, new string[] { "Update", "Delete", "Add Up" });
+        }
 
-            rjRank.Items.Add("Administrador");
-            rjRank.Items.Add("Repartidor");
-            rjRank.Items.Add("Usuario");
-
-            rjOperation.Items.Add("Update");
-            rjOperation.Items.Add("Delete");
-            rjOperation.Items.Add("Add Up");
+        private void FillComboBox(RJComboBox comboBox, string[] items)
+        {
+            comboBox.Items.Clear();
+            comboBox.Items.AddRange(items);
         }
 
         private void rjOperation_OnSelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (rjOperation.SelectedItem as String)
+            getUsername.Enabled = true;
+            getName.Enabled = true;
+            getPhoneNumber.Enabled = true;
+            getPassword.Enabled = true;
+            getLastNameP.Enabled = true;
+            getLastNameM.Enabled = true;
+            getStreet1.Enabled = true;
+            getStreet2.Enabled = true;
+            getLocation.Enabled = true;
+            rjRank.Enabled = true;
+
+            rjUpdate.Visible = false;
+            rjDelete.Visible = false;
+            rjAddUp.Visible = false;
+
+            switch (rjOperation.SelectedItem as string)
             {
                 case "Update":
                     rjUpdate.Visible = true;
-                    rjDelete.Visible = false;
-                    rjAddUp.Visible = false;
-
-                    getUsername.Enabled = true;
-                    getName.Enabled = true;
-                    getPhoneNumber.Enabled = true;
-                    getPassword.Enabled = true;
-                    getLastNameP.Enabled = true;
-                    getLastNameM.Enabled = true;
-                    getStreet1.Enabled = true;
-                    getStreet2.Enabled = true;
-                    getLocation.Enabled = true;
                     break;
                 case "Delete":
-                    rjUpdate.Visible = false;
                     rjDelete.Visible = true;
-                    rjAddUp.Visible = false;
-
-
-                    getUsername.Enabled = true;
                     getName.Enabled = false;
                     getPhoneNumber.Enabled = false;
                     getPassword.Enabled = false;
@@ -77,26 +74,13 @@ namespace Palacio_el_restaurante.src.GUI
                     getStreet2.Enabled = false;
                     getLocation.Enabled = false;
                     rjRank.Enabled = false;
-
                     break;
                 case "Add Up":
-                    rjUpdate.Visible = false;
-                    rjDelete.Visible = false;
                     rjAddUp.Visible = true;
-
-
-                    getUsername.Enabled = true;
-                    getName.Enabled = true;
-                    getPhoneNumber.Enabled = true;
-                    getPassword.Enabled = true;
-                    getLastNameP.Enabled = true;
-                    getLastNameM.Enabled = true;
-                    getStreet1.Enabled = true;
-                    getStreet2.Enabled = true;
-                    getLocation.Enabled = true;
                     break;
             }
         }
+
 
         private void rjPictureRounded4_Click(object sender, EventArgs e)
         {
@@ -104,62 +88,78 @@ namespace Palacio_el_restaurante.src.GUI
             admin.sqlStaff();
             this.Hide();
         }
+        private bool ValidateInput()
+        {
+            return !string.IsNullOrEmpty(getUsername.Texts)
+                && !string.IsNullOrEmpty(getPassword.Texts)
+                && !string.IsNullOrEmpty(getLastNameP.Texts)
+                && !string.IsNullOrEmpty(getLastNameM.Texts)
+                && !string.IsNullOrEmpty(getStreet1.Texts)
+                && !string.IsNullOrEmpty(getStreet2.Texts)
+                && !string.IsNullOrEmpty(getLocation.Texts)
+                && !string.IsNullOrEmpty(getPhoneNumber.Texts)
+                && !string.IsNullOrEmpty(rjRank.SelectedItem as string)
+                && !string.IsNullOrEmpty(getName.Texts);
+        }
 
         private void rjAddUp_Click(object sender, EventArgs e)
         {
             DialogResult result = RJMessageBox.Show("Are you sure to do this operation?",
-                    "QUESTION!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (result.Equals(DialogResult.Yes))
+                "QUESTION!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result != DialogResult.Yes)
             {
-                Persona persona = new Persona();
-                if (!String.IsNullOrEmpty(getUsername.Texts) && !String.IsNullOrEmpty(getPassword.Texts) &&
-                    !String.IsNullOrEmpty(getLastNameP.Texts) && !String.IsNullOrEmpty(getLastNameM.Texts) &&
-                    !String.IsNullOrEmpty(getStreet1.Texts) && !String.IsNullOrEmpty(getStreet2.Texts) &&
-                    !String.IsNullOrEmpty(getLocation.Texts) && !String.IsNullOrEmpty(getPhoneNumber.Texts) &&
-                    !String.IsNullOrEmpty(rjRank.SelectedItem as String) && !String.IsNullOrEmpty(getName.Texts))
+                return;
+            }
+
+            if (ValidateInput())
+            {
+                Persona persona = new Persona
                 {
-                    persona.IdUser = getUsername.Texts;
-                    persona.Name = getName.Texts;
-                    persona.LastNameP = getLastNameP.Texts;
-                    persona.LastNameM = getLastNameM.Texts;
-                    persona.Password = getPassword.Texts;
-                    persona.PhoneNumber = getPhoneNumber.Texts;
-                    persona.PrimaryStreet = getStreet1.Texts;
-                    persona.SecondaryStreet = getStreet2.Texts;
-                    persona.Settlement_type1 = getLocation.Texts;
-                    switch (rjRank.SelectedItem as String)
-                    {
-                        case "Administrador":
-                            persona.Rank = 1;
-                            break;
-                        case "Usuario":
-                            persona.Rank = 2;
-                            break;
-                        case "Repartidor":
-                            persona.Rank = 3;
-                            break;
-                        default:
-                            persona.Rank = 2;
-                            break;
-                    }
-                    InquiriesDB DB = new InquiriesDB();
-                    if (DB.registerUser(persona))
-                    {
-                        RJMessageBox.Show("Registered user successfully",
+                    IdUser = getUsername.Texts,
+                    Name = getName.Texts,
+                    LastNameP = getLastNameP.Texts,
+                    LastNameM = getLastNameM.Texts,
+                    Password = getPassword.Texts,
+                    PhoneNumber = getPhoneNumber.Texts,
+                    PrimaryStreet = getStreet1.Texts,
+                    SecondaryStreet = getStreet2.Texts,
+                    Settlement_type1 = getLocation.Texts
+                };
+
+                switch (rjRank.SelectedItem as String)
+                {
+                    case "Administrador":
+                        persona.Rank = 1;
+                        break;
+                    case "Usuario":
+                        persona.Rank = 2;
+                        break;
+                    case "Repartidor":
+                        persona.Rank = 3;
+                        break;
+                    default:
+                        persona.Rank = 2;
+                        break;
+                }
+
+                InquiriesDB DB = new InquiriesDB();
+                if (DB.registerUser(persona))
+                {
+                    RJMessageBox.Show("Registered user successfully",
                         "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        clearFields();
-                    }
-                    else
-                    {
-                        RJMessageBox.Show("User registration could not be done",
-                        "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    clearFields();
                 }
                 else
                 {
-                    RJMessageBox.Show("There can be no blank spaces",
+                    RJMessageBox.Show("User registration could not be done",
                         "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+            }
+            else
+            {
+                RJMessageBox.Show("There can be no blank spaces",
+                    "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -198,6 +198,20 @@ namespace Palacio_el_restaurante.src.GUI
                 }
             }
         }
+        private int GetRankValue()
+        {
+            switch (rjRank.SelectedItem as String)
+            {
+                case "Administrador":
+                    return 1;
+                case "Usuario":
+                    return 2;
+                case "Repartidor":
+                    return 3;
+                default:
+                    return 2;
+            }
+        }
         private void rjUpdate_Click(object sender, EventArgs e)
         {
             DialogResult result = RJMessageBox.Show("Are you sure to update the user?",
@@ -208,129 +222,63 @@ namespace Palacio_el_restaurante.src.GUI
                 {
                     Persona persona = new Persona();
                     InquiriesDB DB = new InquiriesDB();
-                    if (!String.IsNullOrEmpty(getUsername.Texts) && !String.IsNullOrEmpty(getPassword.Texts) &&
-                        !String.IsNullOrEmpty(getLastNameP.Texts) && !String.IsNullOrEmpty(getLastNameM.Texts) &&
-                        !String.IsNullOrEmpty(getStreet1.Texts) && !String.IsNullOrEmpty(getStreet2.Texts) &&
-                        !String.IsNullOrEmpty(getLocation.Texts) && !String.IsNullOrEmpty(getPhoneNumber.Texts) &&
-                        !String.IsNullOrEmpty(rjRank.SelectedItem as String) && !String.IsNullOrEmpty(getName.Texts))
+                    persona.IdUser = getUsername.Texts;
+                    persona.FieldsToUpdate["Name"] = !string.IsNullOrEmpty(getName.Texts);
+                    persona.FieldsToUpdate["LastNameP"] = !string.IsNullOrEmpty(getLastNameP.Texts);
+                    persona.FieldsToUpdate["LastNameM"] = !string.IsNullOrEmpty(getLastNameM.Texts);
+                    persona.FieldsToUpdate["Password"] = !string.IsNullOrEmpty(getPassword.Texts);
+                    persona.FieldsToUpdate["PhoneNumber"] = !string.IsNullOrEmpty(getPhoneNumber.Texts);
+                    persona.FieldsToUpdate["PrimaryStreet"] = !string.IsNullOrEmpty(getStreet1.Texts);
+                    persona.FieldsToUpdate["SecondaryStreet"] = !string.IsNullOrEmpty(getStreet2.Texts);
+                    persona.FieldsToUpdate["Settlement_type1"] = !string.IsNullOrEmpty(getLocation.Texts);
+                    persona.FieldsToUpdate["Rank"] = rjRank.SelectedItem != null;
+
+                    foreach (var fieldToUpdate in persona.FieldsToUpdate)
                     {
-                        persona.IdUser = getUsername.Texts;
-                        persona.Name = getName.Texts;
-                        persona.LastNameP = getLastNameP.Texts;
-                        persona.LastNameM = getLastNameM.Texts;
-                        persona.Password = getPassword.Texts;
-                        persona.PhoneNumber = getPhoneNumber.Texts;
-                        persona.PrimaryStreet = getStreet1.Texts;
-                        persona.SecondaryStreet = getStreet2.Texts;
-                        persona.Settlement_type1 = getLocation.Texts;
-                        switch (rjRank.SelectedItem as String)
+                        if (fieldToUpdate.Value)
                         {
-                            case "Administrador":
-                                persona.Rank = 1;
-                                break;
-                            case "Usuario":
-                                persona.Rank = 2;
-                                break;
-                            case "Repartidor":
-                                persona.Rank = 3;
-                                break;
-                            default:
-                                persona.Rank = 2;
-                                break;
+                            switch (fieldToUpdate.Key)
+                            {
+                                case "Name":
+                                    persona.Name = getName.Texts;
+                                    break;
+                                case "LastNameP":
+                                    persona.LastNameP = getLastNameP.Texts;
+                                    break;
+                                case "LastNameM":
+                                    persona.LastNameM = getLastNameM.Texts;
+                                    break;
+                                case "Password":
+                                    persona.Password = getPassword.Texts;
+                                    break;
+                                case "PhoneNumber":
+                                    persona.PhoneNumber = getPhoneNumber.Texts;
+                                    break;
+                                case "PrimaryStreet":
+                                    persona.PrimaryStreet = getStreet1.Texts;
+                                    break;
+                                case "SecondaryStreet":
+                                    persona.SecondaryStreet = getStreet2.Texts;
+                                    break;
+                                case "Settlement_type1":
+                                    persona.Settlement_type1 = getLocation.Texts;
+                                    break;
+                                case "Rank":
+                                    persona.Rank = GetRankValue();
+                                    break;
+                            }
                         }
-                        if (DB.updateUser(persona))
-                        {
-                            RJMessageBox.Show("The user was successfully updated",
-                                       "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            clearFields();
-                        }
-                        else
-                        {
-                            RJMessageBox.Show("The user wasn't successfully updated",
-                                       "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                    }
+                    if (DB.updateUser(persona))
+                    {
+                        RJMessageBox.Show("The user was successfully updated",
+                            "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        clearFields();
                     }
                     else
                     {
-                        if (!String.IsNullOrEmpty(getUsername.Texts))
-                        {
-                            if (!String.IsNullOrEmpty(getUsername.Texts))
-                            {
-                                persona.IdUser = getUsername.Texts;
-                                DB.updateUser(persona);
-                            }
-                            if (!String.IsNullOrEmpty(getName.Texts))
-                            {
-                                persona.Name = getName.Texts;
-                                DB.updateUser(persona);
-                            }
-
-                            if (!String.IsNullOrEmpty(getPassword.Texts))
-                            {
-                                persona.Password = getPassword.Texts;
-                                DB.updateUser(persona);
-                            }
-
-                            if (!String.IsNullOrEmpty(getLastNameP.Texts))
-                            {
-                                persona.LastNameP = getLastNameP.Texts;
-                                DB.updateUser(persona);
-                            }
-
-                            if (!String.IsNullOrEmpty(getLastNameM.Texts))
-                            {
-                                persona.LastNameM = getLastNameM.Texts;
-                                DB.updateUser(persona);
-                            }
-
-                            if (!String.IsNullOrEmpty(getStreet1.Texts))
-                            {
-                                persona.PrimaryStreet = getStreet1.Texts;
-                                DB.updateUser(persona);
-                            }
-                            if (!String.IsNullOrEmpty(getStreet2.Texts))
-                            {
-                                persona.SecondaryStreet = getStreet2.Texts;
-                                DB.updateUser(persona);
-                            }
-
-                            if (!String.IsNullOrEmpty(getLocation.Texts))
-                            {
-                                persona.Settlement_type1 = getLocation.Texts;
-                                DB.updateUser(persona);
-                            }
-
-                            if (!String.IsNullOrEmpty(getPhoneNumber.Texts))
-                            {
-                                persona.PhoneNumber = getPhoneNumber.Texts;
-                                DB.updateUser(persona);
-                            }
-
-                            if (!String.IsNullOrEmpty(rjRank.SelectedItem as String))
-                            {
-                                switch (rjRank.SelectedItem as String)
-                                {
-                                    case "Administrador":
-                                        persona.Rank = 1;
-                                        break;
-                                    case "Usuario":
-                                        persona.Rank = 2;
-                                        break;
-                                    case "Repartidor":
-                                        persona.Rank = 3;
-                                        break;
-                                    default:
-                                        persona.Rank = 2;
-                                        break;
-                                }
-                                DB.updateUser(persona);
-                            }
-                        }
-                        else
-                        {
-                            RJMessageBox.Show("You must enter the recipient user to update",
-                                      "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        RJMessageBox.Show("The user wasn't successfully updated",
+                            "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch (Exception ex)
@@ -355,18 +303,21 @@ namespace Palacio_el_restaurante.src.GUI
 
         private void getUsername_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (check.Checked)
+            if (check.Checked && getUsername.Texts.Length == 10)
             {
-                if (getUsername.Texts.Length == 10)
+                try
                 {
                     InquiriesDB DB = new InquiriesDB();
-                    try
+                    string[] userInfo = DB.searchInfoUser(getUsername.Texts);
+
+                    if (userInfo.Length == 9)
                     {
-                        getName.Texts = DB.searchInfoUser(getUsername.Texts)[0];
-                        getLastNameP.Texts = DB.searchInfoUser(getUsername.Texts)[1];
-                        getLastNameM.Texts = DB.searchInfoUser(getUsername.Texts)[2];
-                        getPassword.Texts = DB.searchInfoUser(getUsername.Texts)[3];
-                        switch (DB.searchInfoUser(getUsername.Texts)[4])
+                        getName.Texts = userInfo[0];
+                        getLastNameP.Texts = userInfo[1];
+                        getLastNameM.Texts = userInfo[2];
+                        getPassword.Texts = userInfo[3];
+
+                        switch (userInfo[4])
                         {
                             case "1":
                                 rjRank.Texts = "Administrador";
@@ -378,20 +329,36 @@ namespace Palacio_el_restaurante.src.GUI
                                 rjRank.Texts = "Repartidor";
                                 break;
                         }
-                        getStreet1.Texts = DB.searchInfoUser(getUsername.Texts)[5];
-                        getStreet2.Texts = DB.searchInfoUser(getUsername.Texts)[6];
-                        getLocation.Texts = DB.searchInfoUser(getUsername.Texts)[7];
-                        getPhoneNumber.Texts = DB.searchInfoUser(getUsername.Texts)[8];
 
-
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine(ex.Message);
+                        getStreet1.Texts = userInfo[5];
+                        getStreet2.Texts = userInfo[6];
+                        getLocation.Texts = userInfo[7];
+                        getPhoneNumber.Texts = userInfo[8];
                     }
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
             }
+        }
 
+        private void check_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!check.Checked)
+            {
+                getUsername.Texts = string.Empty;
+                getName.Texts = string.Empty;
+                getLastNameP.Texts = string.Empty;
+                getLastNameM.Texts = string.Empty;
+                getPassword.Texts = string.Empty;
+                rjRank.Texts = string.Empty;
+                getStreet1.Texts = string.Empty;
+                getStreet2.Texts = string.Empty;
+                getLocation.Texts = string.Empty;
+                getPhoneNumber.Texts = string.Empty;
+                fillBoxes();
+            }
         }
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)

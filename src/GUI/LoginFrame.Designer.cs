@@ -215,6 +215,7 @@
             this.getPassword.TabIndex = 2;
             this.getPassword.Texts = "";
             this.getPassword.UnderlinedStyle = false;
+            this.getPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.getPassword_KeyDown_1);
             // 
             // getUsername
             // 
@@ -237,6 +238,7 @@
             this.getUsername.TabIndex = 1;
             this.getUsername.Texts = "";
             this.getUsername.UnderlinedStyle = false;
+            this.getUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.getUsername_KeyDown_1);
             // 
             // LoginFrame
             // 

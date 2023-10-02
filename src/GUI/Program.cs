@@ -8,9 +8,16 @@ namespace Palacio_el_restaurante
         [STAThread]
         static void Main()
         {
-
-            Application.Run(new LoginFrame());
+            try
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new LoginFrame());
+            }
+            catch (Exception ex)
+            {
+                CustomMessageBox.RJMessageBox.Show($"An unhandled exception occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-
     }
 }

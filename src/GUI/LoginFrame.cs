@@ -14,7 +14,9 @@ namespace Palacio_el_restaurante
     {
         public int xClick = 0, yClick = 0;
         private InquiriesDB request = new InquiriesDB();
-        private int ss;
+        private int ss = 0;
+        private Form preloadedForm = null;
+        private int targetTime = 32;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -82,6 +84,7 @@ namespace Palacio_el_restaurante
             else
             { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
         }
+
         private void button_login_Click(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(getUsername.Texts) || String.IsNullOrEmpty(getPassword.Texts))
@@ -213,6 +216,22 @@ namespace Palacio_el_restaurante
             { xClick = e.X; yClick = e.Y; }
             else
             { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
+        }
+
+        private void getUsername_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button_login_Click(sender, e);
+            }
+        }
+
+        private void getPassword_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                button_login_Click(sender, e);
+            }
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)

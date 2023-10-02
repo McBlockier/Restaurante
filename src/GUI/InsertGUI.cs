@@ -1,5 +1,6 @@
 ﻿using CustomMessageBox;
 using Palacio_el_restaurante.src.Conection;
+using Palacio_el_restaurante.src.Controls;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
@@ -269,17 +270,15 @@ namespace Palacio_el_restaurante.src.GUI
 
         private void fillBox()
         {
-            this.rjOperation.Items.Clear();
-            this.rjOperation.Items.Add("Update");
-            this.rjOperation.Items.Add("Delete");
-            this.rjOperation.Items.Add("Add Up");
-
-
-            this.rjType.Items.Clear();
-            this.rjType.Items.Add("Bebida");
-            this.rjType.Items.Add("Platillo fuerte");
-            this.rjType.Items.Add("Postre");
-            this.rjType.Items.Add("Entrada");
+            FillComboBox(rjOperation, new string[] { "Update", "Delete", "Add Up" });
+            FillComboBox(rjType, new string[] { "Bebida", "Platillo fuerte", "Postre", "Entrada" });
         }
+
+        private void FillComboBox(RJComboBox comboBox, string[] items)
+        {
+            comboBox.Items.Clear();
+            comboBox.Items.AddRange(items);
+        }
+
     }
 }

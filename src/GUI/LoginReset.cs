@@ -72,10 +72,9 @@ namespace Palacio_el_restaurante.src.UI
         //Button for reset passwords
         private void button_reset_Click(object sender, EventArgs e)
         {
-            DialogResult result = RJMessageBox.Show("¿Esta seguro de ingresar la nueva contraseña?", "Pregunta", MessageBoxButtons.YesNo);
+            DialogResult result = RJMessageBox.Show("Are you sure you are entering that password?", "QUESTION!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                //Aqui va la logica para reiniciar la contraseña
                 InquiriesDB DB = new InquiriesDB();
                 Persona persona = new Persona();
                 if (getPassword.Texts.Length > 7 && getPassowrdC.Texts.Length > 7)

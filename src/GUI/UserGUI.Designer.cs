@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.check = new System.Windows.Forms.CheckBox();
             this.getName = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -48,7 +49,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.rjPictureRounded3 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.getUsername = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
-            this.check = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded3)).BeginInit();
@@ -81,6 +81,18 @@
             this.panel1.Size = new System.Drawing.Size(614, 559);
             this.panel1.TabIndex = 0;
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            // 
+            // check
+            // 
+            this.check.AutoSize = true;
+            this.check.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
+            this.check.Location = new System.Drawing.Point(15, 116);
+            this.check.Name = "check";
+            this.check.Size = new System.Drawing.Size(120, 23);
+            this.check.TabIndex = 33;
+            this.check.Text = "Search User";
+            this.check.UseVisualStyleBackColor = true;
+            this.check.CheckedChanged += new System.EventHandler(this.check_CheckedChanged);
             // 
             // getName
             // 
@@ -448,17 +460,6 @@
             this.getUsername.Texts = "";
             this.getUsername.UnderlinedStyle = false;
             this.getUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.getUsername_KeyPress);
-            // 
-            // check
-            // 
-            this.check.AutoSize = true;
-            this.check.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
-            this.check.Location = new System.Drawing.Point(15, 116);
-            this.check.Name = "check";
-            this.check.Size = new System.Drawing.Size(120, 23);
-            this.check.TabIndex = 33;
-            this.check.Text = "Search User";
-            this.check.UseVisualStyleBackColor = true;
             // 
             // UserGUI
             // 
