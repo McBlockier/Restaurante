@@ -84,58 +84,6 @@ namespace Palacio_el_restaurante.src.GUI
             getClurp.Texts = String.Empty;
         }
 
-        private void getClurp_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
-            {
-                e.Handled = true;
-            }
-            else if (getClurp.Texts.Length >= 3 && e.KeyChar != (char)Keys.Back)
-            {
-                e.Handled = true;
-            }
-            if (check.Checked && getClurp.Texts.Length >= 3)
-            {
-                try
-                {
-                    InquiriesDB DB = new InquiriesDB();
-                    Product producto = new Product();
-
-                    if (DB.existProduct(int.Parse(getClurp.Texts)))
-                    {
-                        producto.Clurp = int.Parse(getClurp.Texts);
-                        getName.Texts = DB.infoProduct(getClurp.Texts)[0];
-                        switch (DB.infoProduct(getClurp.Texts)[1])
-                        {
-                            case "Bebida":
-                                rjType.Texts = "Bebida";
-                                break;
-                            case "Platillo fuerte":
-                                rjType.Texts = "Platillo fuerte";
-                                break;
-                            case "Platillo Fuerte":
-                                rjType.Texts = "Platillo fuerte";
-                                break;
-                            case "Postre":
-                                rjType.Texts = "Postre";
-                                break;
-                            case "Entrada":
-                                rjType.Texts = "Entrada";
-                                break;
-                        }
-
-                        getPrice.Texts = DB.infoProduct(getClurp.Texts)[2];
-                        getDescription.Texts = DB.infoProduct(getClurp.Texts)[3];
-                    }
-                }
-                catch (Exception ex)
-                {
-                    RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                  System.Windows.Forms.MessageBoxIcon.Error);
-                }
-            }
-        }
-
         private void rjOperation_OnSelectedIndexChanged(object sender, EventArgs e)
         {
             itemSeleccionado = rjOperation.SelectedItem as String;
@@ -302,18 +250,11 @@ namespace Palacio_el_restaurante.src.GUI
                         i++;
                     }
                     getName.Texts = getInfo[0];
+                    rjType.Texts = getInfo[1];
                     getPrice.Texts = getInfo[2];
-                    getDescription.Texts = getInfo[3];
-                    switch (getInfo[1])
-                    {
-                        case "Bebida":
-                            break;
-                        case "Platillo fuerte":
-                            break;
-                        case "Entrada":
-                            break;
-                    }
-                }catch (Exception ex)
+                    getDescription.Texts = getInfo[3];          
+                }
+                catch (Exception ex)
                 {
                     RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
                   System.Windows.Forms.MessageBoxIcon.Error);
@@ -326,6 +267,10 @@ namespace Palacio_el_restaurante.src.GUI
             comboBox.Items.Clear();
             comboBox.Items.AddRange(items);
         }
+
+
+
+
 
     }
 }
