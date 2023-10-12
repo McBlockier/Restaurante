@@ -560,6 +560,7 @@
             this.rjAreaCity.TabIndex = 5;
             this.rjAreaCity.Texts = "";
             this.rjAreaCity.UnderlinedStyle = false;
+            this.rjAreaCity.Load += new System.EventHandler(this.rjAreaCity_Load);
             this.rjAreaCity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rjAreaCity_KeyPress);
             this.rjAreaCity.MouseLeave += new System.EventHandler(this.rjAreaCity_MouseLeave);
             // 

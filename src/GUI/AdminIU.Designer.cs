@@ -299,6 +299,7 @@
             this.rjDataInv.RowTemplate.Height = 24;
             this.rjDataInv.Size = new System.Drawing.Size(895, 367);
             this.rjDataInv.TabIndex = 0;
+            this.rjDataInv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rjDataInv_CellClick);
             // 
             // pictureBox2
             // 
@@ -804,7 +805,7 @@
         private System.Windows.Forms.Panel panelinv;
         private System.Windows.Forms.Label label5;
         private Controls.RJComboBox rjInventory;
-        private Controls.RJDataGridView rjDataInv;
+        public Controls.RJDataGridView rjDataInv;
         private System.Windows.Forms.Panel panelStaff;
         private System.Windows.Forms.Label label6;
         private Controls.RJComboBox rjStaff;

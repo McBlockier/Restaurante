@@ -1,8 +1,10 @@
 ﻿using CustomMessageBox;
+using MySql.Data.MySqlClient;
 using Palacio_el_restaurante.src.Conection;
 using Palacio_el_restaurante.src.Controls;
 using System;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.GUI
@@ -10,7 +12,12 @@ namespace Palacio_el_restaurante.src.GUI
     public partial class InsertGUI : Form
     {
         public int xClick = 0, yClick = 0;
+        public event Action ProductInserted;
+        public event Action ProductRemoved;
+        public event Action ProductChanged;
+
         private String itemSeleccionado = "";
+        public string ValorDeCelda0 { get; set; }
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
          (
@@ -44,10 +51,11 @@ namespace Palacio_el_restaurante.src.GUI
         }
         private void rjInsert_Click(object sender, EventArgs e)
         {
+            InquiriesDB DB = new InquiriesDB();
             DialogResult result = RJMessageBox.Show("Be sure to do this operation, the changes cannot be reversed?", "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (result.Equals(DialogResult.Yes))
             {
-                if (String.IsNullOrEmpty(getClurp.Texts) && String.IsNullOrEmpty(itemSeleccionado)
+                if (String.IsNullOrEmpty(DB.GetClurp().ToString()) && String.IsNullOrEmpty(itemSeleccionado)
                     && String.IsNullOrEmpty(getName.Texts) && String.IsNullOrEmpty(getPrice.Texts)
                     && String.IsNullOrEmpty(getDescription.Texts))
                 {
@@ -56,8 +64,7 @@ namespace Palacio_el_restaurante.src.GUI
                 else
                 {
                     Product producto = new Product();
-                    InquiriesDB DB = new InquiriesDB();
-                    producto.Clurp = int.Parse(getClurp.Texts);
+                    producto.Clurp = int.Parse(DB.GetClurp().ToString());
                     producto.Name = getName.Texts;
                     producto.Description = getDescription.Texts;
                     producto.Price = float.Parse(getPrice.Texts);
@@ -67,6 +74,7 @@ namespace Palacio_el_restaurante.src.GUI
                     {
                         RJMessageBox.Show("Consumable added correctly", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         clearFiels();
+                        ProductInserted?.Invoke();                      
                     }
                     else
                     {
@@ -76,12 +84,12 @@ namespace Palacio_el_restaurante.src.GUI
                 }
             }
         }
+
         private void clearFiels()
         {
             getName.Texts = String.Empty;
             getPrice.Texts = String.Empty;
             getDescription.Texts = String.Empty;
-            getClurp.Texts = String.Empty;
         }
 
         private void rjOperation_OnSelectedIndexChanged(object sender, EventArgs e)
@@ -118,21 +126,21 @@ namespace Palacio_el_restaurante.src.GUI
             if (result.Equals(DialogResult.Yes))
             {
                 InquiriesDB DB = new InquiriesDB();
-                if (String.IsNullOrEmpty(getClurp.Texts))
+                if (String.IsNullOrEmpty(ValorDeCelda0))
                 {
                     RJMessageBox.Show("You must enter a valid CLURP or one that exists in the database", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
-                    if (DB.existProduct(int.Parse(getClurp.Texts)))
+                    if (DB.existProduct(int.Parse(ValorDeCelda0)))
                     {
-                        if (!String.IsNullOrEmpty(getName.Texts) && !String.IsNullOrEmpty(getClurp.Texts)
+                        if (!String.IsNullOrEmpty(getName.Texts) && !String.IsNullOrEmpty(ValorDeCelda0)
                        && !String.IsNullOrEmpty(getDescription.Texts) && !String.IsNullOrEmpty(getPrice.Texts)
                        && !String.IsNullOrEmpty(rjType.SelectedItem as String))
                         {
                             RJMessageBox.Show("The CLURP cannot be updated, it is unique and cannot be modified.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                             Product producto = new Product();
-                            producto.Clurp = int.Parse(getClurp.Texts);
+                            producto.Clurp = int.Parse(ValorDeCelda0);
                             producto.Name = getName.Texts;
                             producto.Description = getDescription.Texts;
                             producto.Price = float.Parse(getPrice.Texts);
@@ -141,8 +149,7 @@ namespace Palacio_el_restaurante.src.GUI
                             {
                                 RJMessageBox.Show("The consumable was successfully updated", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 clearFiels();
-                                AdminIU admin = new AdminIU();
-                                admin.sql();
+                                ProductChanged?.Invoke();
                             }
                             else
                             {
@@ -151,10 +158,10 @@ namespace Palacio_el_restaurante.src.GUI
                         }
                         else
                         {
-                            if (!String.IsNullOrEmpty(getClurp.Texts) && DB.existProduct(int.Parse(getClurp.Texts)))
+                            if (!String.IsNullOrEmpty(DB.GetClurp().ToString()) && DB.existProduct(int.Parse(ValorDeCelda0   )))
                             {
                                 Product producto = new Product();
-                                producto.Clurp = int.Parse(getClurp.Texts);
+                                producto.Clurp = int.Parse(ValorDeCelda0);
                                 if (!String.IsNullOrEmpty(getName.Texts))
                                 {
                                     producto.Name = getName.Texts;
@@ -175,8 +182,7 @@ namespace Palacio_el_restaurante.src.GUI
                                 {
                                     RJMessageBox.Show("The consumable was successfully updated", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     clearFiels();
-                                    AdminIU admin = new AdminIU();
-                                    admin.sql();
+                                    ProductChanged?.Invoke();
                                 }
                                 else
                                 {
@@ -204,10 +210,11 @@ namespace Palacio_el_restaurante.src.GUI
             if (result == DialogResult.Yes)
             {
                 InquiriesDB DB = new InquiriesDB();
-                if (DB.deleteProduct(getClurp.Texts))
+                if (DB.deleteProduct(ValorDeCelda0))
                 {
                     RJMessageBox.Show("It was successfully removed", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     clearFiels();
+                    ProductRemoved?.Invoke();
                 }
                 else
                 {
@@ -219,58 +226,17 @@ namespace Palacio_el_restaurante.src.GUI
         private void fillBox()
         {
             FillComboBox(rjOperation, new string[] { "Update", "Delete", "Add Up" });
-            FillComboBox(rjType, new string[] { "Bebida", "Platillo fuerte", "Postre", "Entrada" });
+            FillComboBox(rjType, new string[] { "Café","Té","Jugo", "Platillo fuerte", "Comida marina" });
         }
 
         private void rjPictureRounded6_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
-        private void getClurp_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            if (getClurp.Texts.Length == 3 && !char.IsControl(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-            if (e.KeyChar == '\r')
-            {
-                try
-                {
-                    InquiriesDB DB = new InquiriesDB();
-                    String[] getInfo = new string[10];
-                    int i = 0;
-                    foreach (String s in DB.infoProduct(getClurp.Texts))
-                    {
-                        getInfo[i] = s;
-                        i++;
-                    }
-                    getName.Texts = getInfo[0];
-                    rjType.Texts = getInfo[1];
-                    getPrice.Texts = getInfo[2];
-                    getDescription.Texts = getInfo[3];          
-                }
-                catch (Exception ex)
-                {
-                    RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                  System.Windows.Forms.MessageBoxIcon.Error);
-                }
-            }           
-        }
-
         private void FillComboBox(RJComboBox comboBox, string[] items)
         {
             comboBox.Items.Clear();
             comboBox.Items.AddRange(items);
         }
-
-
-
-
-
     }
 }

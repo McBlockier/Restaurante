@@ -14,6 +14,7 @@ namespace Palacio_el_restaurante.src.GUI
     public partial class AdminIU : Form
     {
         public int xClick = 0, yClick = 0;
+        private InsertGUI insertForm;
         private Stopwatch stopwatch = new Stopwatch();
         private int count = 0, countSQL = 0, countStaff = 0;
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -39,7 +40,25 @@ namespace Palacio_el_restaurante.src.GUI
             setHeader();
             stopwatch.Start();
             InitPanel();
+            SubscribeEventArgs();        
         }
+        private void SubscribeEventArgs()
+        {
+            insertForm = new InsertGUI();
+            insertForm.ProductInserted += () =>
+            {
+                sql();
+            };
+            insertForm.ProductRemoved += () =>
+            {
+                sql();
+            };
+            insertForm.ProductChanged += () =>
+            {
+                sql();
+            };
+        }
+
         private void InitPanel()
         {
             panelSQL.Visible = true;
@@ -59,16 +78,18 @@ namespace Palacio_el_restaurante.src.GUI
             rjInventory.Items.Add("");
 
         }
-
+        public void RefreshData()
+        {
+            sql();
+        }
         public void sql()
         {
+            Connection con = new Connection();
+            MySqlConnection connection = con.getConnection();
             try
             {
-                Connection con = new Connection();
-                MySqlConnection connection = con.getConnection();
                 rjDataInv.SetDatabaseConnection(connection);
                 rjDataInv.ExecuteSqlQuery("SELECT * FROM consumible");
-
             }
             catch (Exception ex)
             {
@@ -345,14 +366,30 @@ namespace Palacio_el_restaurante.src.GUI
 
         private void rjInsertPanel_Click(object sender, EventArgs e)
         {
-            InsertGUI insert = new InsertGUI();
-            insert.ShowDialog();
+            insertForm.Show();
         }
 
         private void rjAutoStaff_Click(object sender, EventArgs e)
         {
             UserGUI user = new UserGUI();
-            user.ShowDialog();
+            user.Show();
+        }
+
+        private void rjDataInv_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                object valorCelda = rjDataInv.Rows[e.RowIndex].Cells[0].Value;
+
+                if (valorCelda != null)
+                {
+                    insertForm.ValorDeCelda0 = valorCelda.ToString();
+                }
+                else
+                {
+                    RJMessageBox.Show("The cell is empty", "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)

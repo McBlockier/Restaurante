@@ -1,11 +1,10 @@
 ﻿using CustomMessageBox;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Runtime.ConstrainedExecution;
-using System.Security.Cryptography;
-using System.Web.UI.WebControls.WebParts;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.Conection
@@ -246,6 +245,32 @@ namespace Palacio_el_restaurante.src.Conection
             return rank;
         }
 
+        public int GetClurp()
+        {
+            int newClurp = 0;
+          try {
+            
+                Connection connection = new Connection();
+                MySqlConnection con = connection.getConnection();
+                con.Open();
+                string SQL = "SELECT LPAD(CONVERT(clurp, SIGNED) + 1, 3, '0') AS new_clurp " +
+                         "FROM consumible " +
+                         "ORDER BY CONVERT(clurp, SIGNED) DESC " +
+                         "LIMIT 1";
+                using (MySqlCommand cmd = new MySqlCommand(SQL, con))
+                {
+                    newClurp = Convert.ToInt32(cmd.ExecuteScalar());
+                    return newClurp;
+                }               
+            }
+            catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                  System.Windows.Forms.MessageBoxIcon.Error);
+            }
+            return newClurp;
+        }
+
         public Boolean valueLogin(String username, String password)
         {
             SecureEncryptor encrypt = new SecureEncryptor(password);
@@ -309,35 +334,40 @@ namespace Palacio_el_restaurante.src.Conection
             }
             return value;
         }
-        public Boolean getImage(object nameProduct)
+        public Image getImage(object nameProduct)
         {
-            Image getImage = null;
             try
             {
                 Connection con = new Connection();
-                MySqlConnection connection = con.getConnection();
-                connection.Open();
-                String SQL = "SELECT imagen FROM imagenconsumible WHERE nombreConsumible LIKE @nombreConsumible";
-                MySqlCommand command = new MySqlCommand( SQL, connection);
-                command.Parameters.AddWithValue("@nombreConsumible", nameProduct);
-                MySqlDataReader reader = command.ExecuteReader();
-                while(reader.Read())
+                using (MySqlConnection connection = con.getConnection())
                 {
-                    
-
-                    //Obtención de imagenes de la base de datos
-
-
+                    connection.Open();
+                    string SQL = "SELECT imagen FROM imagenconsumible WHERE nombreConsumible LIKE @nombreConsumible";
+                    using (MySqlCommand command = new MySqlCommand(SQL, connection))
+                    {
+                        command.Parameters.AddWithValue("@nombreConsumible", nameProduct);
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                byte[] imageData = (byte[])reader["imagen"];
+                                using (MemoryStream ms = new MemoryStream(imageData))
+                                {
+                                    return Image.FromStream(ms);
+                                }
+                            }
+                        }
+                    }
                 }
-                connection.Close();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                    System.Windows.Forms.MessageBoxIcon.Error);
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return value;
+
+            return null; // Devuelve null si no se pudo obtener la imagen
         }
+
 
         public Boolean existImage(object nameProduct)
         {
@@ -455,7 +485,7 @@ namespace Palacio_el_restaurante.src.Conection
             }
             return value;
         }
- 
+
         public String[] searchInfoUser(String username)
         {
             String[] getInfo = new String[9];

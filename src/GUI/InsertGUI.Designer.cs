@@ -30,19 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InsertGUI));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.time = new System.Windows.Forms.Label();
             this.rjPictureRounded6 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
-            this.check = new System.Windows.Forms.CheckBox();
             this.rjDelete = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjUpdate = new Palacio_el_restaurante.src.Controls.RJButton();
-            this.label2 = new System.Windows.Forms.Label();
             this.rjType = new Palacio_el_restaurante.src.Controls.RJComboBox();
             this.getDescription = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             this.getPrice = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             this.getName = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
-            this.getClurp = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
-            this.label1 = new System.Windows.Forms.Label();
             this.rjPictureRounded2 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
-            this.time = new System.Windows.Forms.Label();
             this.rjOperation = new Palacio_el_restaurante.src.Controls.RJComboBox();
             this.rjInsert = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjPictureRounded4 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
@@ -55,7 +53,6 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.rjPictureRounded6);
-            this.panel1.Controls.Add(this.check);
             this.panel1.Controls.Add(this.rjDelete);
             this.panel1.Controls.Add(this.rjUpdate);
             this.panel1.Controls.Add(this.label2);
@@ -63,7 +60,6 @@
             this.panel1.Controls.Add(this.getDescription);
             this.panel1.Controls.Add(this.getPrice);
             this.panel1.Controls.Add(this.getName);
-            this.panel1.Controls.Add(this.getClurp);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.rjPictureRounded2);
             this.panel1.Controls.Add(this.time);
@@ -72,9 +68,39 @@
             this.panel1.Controls.Add(this.rjPictureRounded4);
             this.panel1.Location = new System.Drawing.Point(-4, -1);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(599, 510);
+            this.panel1.Size = new System.Drawing.Size(540, 427);
             this.panel1.TabIndex = 0;
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(51, 96);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 25);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Type";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(95, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(109, 27);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Inventory";
+            // 
+            // time
+            // 
+            this.time.AutoSize = true;
+            this.time.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.time.Location = new System.Drawing.Point(278, 96);
+            this.time.Name = "time";
+            this.time.Size = new System.Drawing.Size(103, 25);
+            this.time.TabIndex = 11;
+            this.time.Text = "Operation";
             // 
             // rjPictureRounded6
             // 
@@ -86,24 +112,13 @@
             this.rjPictureRounded6.BorderSize = 2;
             this.rjPictureRounded6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjPictureRounded6.GradientAngle = 50F;
-            this.rjPictureRounded6.Location = new System.Drawing.Point(549, 2);
+            this.rjPictureRounded6.Location = new System.Drawing.Point(490, 2);
             this.rjPictureRounded6.Name = "rjPictureRounded6";
             this.rjPictureRounded6.Size = new System.Drawing.Size(18, 18);
             this.rjPictureRounded6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.rjPictureRounded6.TabIndex = 26;
             this.rjPictureRounded6.TabStop = false;
             this.rjPictureRounded6.Click += new System.EventHandler(this.rjPictureRounded6_Click);
-            // 
-            // check
-            // 
-            this.check.AutoSize = true;
-            this.check.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
-            this.check.Location = new System.Drawing.Point(284, 121);
-            this.check.Name = "check";
-            this.check.Size = new System.Drawing.Size(126, 23);
-            this.check.TabIndex = 25;
-            this.check.Text = "Search Clurp";
-            this.check.UseVisualStyleBackColor = true;
             // 
             // rjDelete
             // 
@@ -117,7 +132,7 @@
             this.rjDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjDelete.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
             this.rjDelete.ForeColor = System.Drawing.Color.White;
-            this.rjDelete.Location = new System.Drawing.Point(424, 459);
+            this.rjDelete.Location = new System.Drawing.Point(382, 381);
             this.rjDelete.Name = "rjDelete";
             this.rjDelete.Size = new System.Drawing.Size(150, 40);
             this.rjDelete.TabIndex = 24;
@@ -138,7 +153,7 @@
             this.rjUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjUpdate.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
             this.rjUpdate.ForeColor = System.Drawing.Color.White;
-            this.rjUpdate.Location = new System.Drawing.Point(423, 459);
+            this.rjUpdate.Location = new System.Drawing.Point(382, 381);
             this.rjUpdate.Name = "rjUpdate";
             this.rjUpdate.Size = new System.Drawing.Size(150, 40);
             this.rjUpdate.TabIndex = 23;
@@ -146,16 +161,6 @@
             this.rjUpdate.TextColor = System.Drawing.Color.White;
             this.rjUpdate.UseVisualStyleBackColor = false;
             this.rjUpdate.Click += new System.EventHandler(this.rjUpdate_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(368, 196);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 25);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Type";
             // 
             // rjType
             // 
@@ -168,7 +173,7 @@
             this.rjType.IconColor = System.Drawing.Color.MediumSlateBlue;
             this.rjType.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.rjType.ListTextColor = System.Drawing.Color.DimGray;
-            this.rjType.Location = new System.Drawing.Point(357, 212);
+            this.rjType.Location = new System.Drawing.Point(40, 112);
             this.rjType.MinimumSize = new System.Drawing.Size(200, 30);
             this.rjType.Name = "rjType";
             this.rjType.Padding = new System.Windows.Forms.Padding(1);
@@ -185,7 +190,7 @@
             this.getDescription.BorderSize = 2;
             this.getDescription.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getDescription.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getDescription.Location = new System.Drawing.Point(17, 344);
+            this.getDescription.Location = new System.Drawing.Point(121, 305);
             this.getDescription.Margin = new System.Windows.Forms.Padding(4);
             this.getDescription.Multiline = false;
             this.getDescription.Name = "getDescription";
@@ -207,7 +212,7 @@
             this.getPrice.BorderSize = 2;
             this.getPrice.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getPrice.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getPrice.Location = new System.Drawing.Point(17, 262);
+            this.getPrice.Location = new System.Drawing.Point(121, 238);
             this.getPrice.Margin = new System.Windows.Forms.Padding(4);
             this.getPrice.Multiline = false;
             this.getPrice.Name = "getPrice";
@@ -229,7 +234,7 @@
             this.getName.BorderSize = 2;
             this.getName.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getName.Location = new System.Drawing.Point(17, 183);
+            this.getName.Location = new System.Drawing.Point(121, 179);
             this.getName.Margin = new System.Windows.Forms.Padding(4);
             this.getName.Multiline = false;
             this.getName.Name = "getName";
@@ -241,39 +246,6 @@
             this.getName.TabIndex = 17;
             this.getName.Texts = "";
             this.getName.UnderlinedStyle = false;
-            // 
-            // getClurp
-            // 
-            this.getClurp.BackColor = System.Drawing.Color.Gainsboro;
-            this.getClurp.BorderColor = System.Drawing.Color.Transparent;
-            this.getClurp.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.getClurp.BorderRadius = 10;
-            this.getClurp.BorderSize = 2;
-            this.getClurp.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.getClurp.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getClurp.Location = new System.Drawing.Point(17, 104);
-            this.getClurp.Margin = new System.Windows.Forms.Padding(4);
-            this.getClurp.Multiline = false;
-            this.getClurp.Name = "getClurp";
-            this.getClurp.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.getClurp.PasswordChar = false;
-            this.getClurp.PlaceholderColor = System.Drawing.Color.Gray;
-            this.getClurp.PlaceholderText = "Clurp";
-            this.getClurp.Size = new System.Drawing.Size(260, 40);
-            this.getClurp.TabIndex = 16;
-            this.getClurp.Texts = "";
-            this.getClurp.UnderlinedStyle = false;
-            this.getClurp.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.getClurp_KeyPress_1);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(95, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 27);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Inventory";
             // 
             // rjPictureRounded2
             // 
@@ -292,16 +264,6 @@
             this.rjPictureRounded2.TabIndex = 12;
             this.rjPictureRounded2.TabStop = false;
             // 
-            // time
-            // 
-            this.time.AutoSize = true;
-            this.time.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.time.Location = new System.Drawing.Point(364, 20);
-            this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(103, 25);
-            this.time.TabIndex = 11;
-            this.time.Text = "Operation";
-            // 
             // rjOperation
             // 
             this.rjOperation.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -313,7 +275,7 @@
             this.rjOperation.IconColor = System.Drawing.Color.MediumSlateBlue;
             this.rjOperation.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.rjOperation.ListTextColor = System.Drawing.Color.DimGray;
-            this.rjOperation.Location = new System.Drawing.Point(357, 36);
+            this.rjOperation.Location = new System.Drawing.Point(271, 112);
             this.rjOperation.MinimumSize = new System.Drawing.Size(200, 30);
             this.rjOperation.Name = "rjOperation";
             this.rjOperation.Padding = new System.Windows.Forms.Padding(1);
@@ -334,7 +296,7 @@
             this.rjInsert.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjInsert.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
             this.rjInsert.ForeColor = System.Drawing.Color.White;
-            this.rjInsert.Location = new System.Drawing.Point(422, 459);
+            this.rjInsert.Location = new System.Drawing.Point(382, 381);
             this.rjInsert.Name = "rjInsert";
             this.rjInsert.Size = new System.Drawing.Size(150, 40);
             this.rjInsert.TabIndex = 4;
@@ -353,7 +315,7 @@
             this.rjPictureRounded4.BorderSize = 2;
             this.rjPictureRounded4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjPictureRounded4.GradientAngle = 50F;
-            this.rjPictureRounded4.Location = new System.Drawing.Point(571, 2);
+            this.rjPictureRounded4.Location = new System.Drawing.Point(512, 2);
             this.rjPictureRounded4.Name = "rjPictureRounded4";
             this.rjPictureRounded4.Size = new System.Drawing.Size(18, 18);
             this.rjPictureRounded4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -365,7 +327,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(591, 509);
+            this.ClientSize = new System.Drawing.Size(534, 425);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InsertGUI";
@@ -389,14 +351,12 @@
         private Controls.RJPictureRounded rjPictureRounded2;
         private System.Windows.Forms.Label label1;
         public Controls.RJTextBoxRounded getName;
-        public Controls.RJTextBoxRounded getClurp;
         public Controls.RJTextBoxRounded getDescription;
         public Controls.RJTextBoxRounded getPrice;
         private System.Windows.Forms.Label label2;
         private Controls.RJComboBox rjType;
         private Controls.RJButton rjUpdate;
         private Controls.RJButton rjDelete;
-        private System.Windows.Forms.CheckBox check;
         private Controls.RJPictureRounded rjPictureRounded6;
     }
 }

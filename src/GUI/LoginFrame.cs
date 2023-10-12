@@ -5,6 +5,7 @@ using Palacio_el_restaurante.src.UI;
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -15,8 +16,7 @@ namespace Palacio_el_restaurante
         public int xClick = 0, yClick = 0;
         private InquiriesDB request = new InquiriesDB();
         private int ss = 0;
-        private Form preloadedForm = null;
-        private int targetTime = 32;
+        public Form preloadedForm = null;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
@@ -31,51 +31,111 @@ namespace Palacio_el_restaurante
         public LoginFrame()
         {
             InitializeComponent();
+            timer2.Start();
             this.FormBorderStyle = FormBorderStyle.None;
-            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            toolTip1.OwnerDraw = true;
-            toolTip1.Draw += new DrawToolTipEventHandler(toolTip1_Draw);
-            toolTip1.Popup += new PopupEventHandler(toolTip1_Popup);
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 14, 14));
 
+            ToolTipMessage();
             panelL.Hide();
             loadPicture.Hide();
+
             getPassword.PasswordChar = true;
             showPassword.Image = Properties.Resources.ojo_off;
             resetPassword.Visible = false;
+            ErrorConnection.Visible = false;
 
-        }
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
-            string texto = e.AssociatedControl.Text;
-            Size textSize = TextRenderer.MeasureText(texto, e.AssociatedControl.Font);
-            int margen = 5;
-            e.ToolTipSize = new Size(textSize.Width + margen, textSize.Height + margen);
-
-            Point cursorPos = Cursor.Position;
-            if (cursorPos.X + e.ToolTipSize.Width > Screen.PrimaryScreen.Bounds.Right)
+            this.Shown += (sender, e) =>
             {
-                cursorPos.X = Screen.PrimaryScreen.Bounds.Right - e.ToolTipSize.Width;
-            }
+                Task.Run(async () => await keepSession());
+            };
 
-            if (cursorPos.Y + e.ToolTipSize.Height > Screen.PrimaryScreen.Bounds.Bottom)
+            this.Shown += (sender, e) =>
             {
-                cursorPos.Y = Screen.PrimaryScreen.Bounds.Bottom - e.ToolTipSize.Height;
-            }
+                Invoke((MethodInvoker)(() =>
+                {
+                    ErrorConnection.Visible = true;
+                    button_login.Enabled = false;
+                    ErrorConnection.Image = Properties.Resources.trabajo_en_progreso;
+                }));
 
-            toolTip1.Show(texto, e.AssociatedControl, cursorPos, 3000);
+                Task.Run(async () => await valueConnection());
+            };           
         }
-
-
-        private void toolTip1_Draw(object sender, DrawToolTipEventArgs e)
+        private async Task keepSession()
         {
-            e.DrawBackground();
-            e.DrawBorder();
+            try
+            {
+                SessionManager sessionManager = new SessionManager();
+                SessionInfo sessionInfo = sessionManager.GetSessionInfo();
 
-            Font font = new Font("Arial", 12, FontStyle.Bold);
-            Brush textColor = Brushes.White;
+                if (sessionInfo != null)
+                {
+                    string username = sessionInfo.Username;
+                    string password = sessionInfo.Password;
 
-            e.Graphics.DrawString(e.ToolTipText, font, textColor, e.Bounds.X + 6, e.Bounds.Y + 6);
+                    getUsername.Text = username;
+                    getPassword.Text = password;
+
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        button_login.Focus();
+                    }));
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
+
+        private async Task valueConnection()
+        {
+            try
+            {
+                timer2.Start();
+                Connection connection = new Connection();
+                if (connection != null && connection.IsConnectionConfiguredAsync())
+                {
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        ErrorConnection.Visible = false;
+                        button_login.Enabled = true;
+                    }));
+                }
+                else
+                {
+                    Invoke((MethodInvoker)(() =>
+                    {
+                        ErrorConnection.Image = Properties.Resources.setConnection;
+                        ErrorConnection.Visible = true;
+                        button_login.Enabled = false;
+                    }));
+                }
+            }
+            catch (Exception ex)
+            {
+                Invoke((MethodInvoker)(() =>
+                {
+                    RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Error);
+                }));
+                Console.WriteLine(ex.ToString());
+            }
+            finally
+            {
+                resetTimer2();
+            }
+        }
+        private void ToolTipMessage()
+        {
+            toolTip1.SetToolTip(getPassword, "Set your password account");
+            toolTip1.SetToolTip(resetPassword, "Reset your password");
+            toolTip1.SetToolTip(button_login, "Log in");
+            toolTip1.SetToolTip(create, "Create new account");
+            toolTip1.SetToolTip(showPassword, "Show/Hide Password");
+            toolTip1.SetToolTip(getUsername, "Set your username");
+            toolTip1.SetToolTip(ErrorConnection, "Connection error");
+        }
+
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -85,38 +145,115 @@ namespace Palacio_el_restaurante
             { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
         }
 
-        private void button_login_Click(object sender, EventArgs e)
+        private async void saveSession()
         {
-            if (String.IsNullOrEmpty(getUsername.Texts) || String.IsNullOrEmpty(getPassword.Texts))
+            try
             {
-                RJMessageBox.Show("You can't leave empty spaces",
-                    "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-            else
-            {
-                InquiriesDB DB = new InquiriesDB();
-                if (DB.valueLogin(getUsername.Texts, getPassword.Texts))
-                {
-                    panelL.Show();
-                    resetPassword.Hide();
-                    create.Hide();
-                    button_login.Hide();
-                    loadPicture.Show();
-                    timer1.Start();
+                SessionManager sessionManager = new SessionManager();
+                sessionManager.SaveSession(getUsername.Texts, getPassword.Texts);
 
-                }
-                else
-                {
-                    RJMessageBox.Show("Username or password aren't correct, please check out it",
-                    "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    resetPassword.Visible = true;
-                }
+            }catch(Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                       System.Windows.Forms.MessageBoxIcon.Error);
             }
+        }
+
+        private async void button_login_Click(object sender, EventArgs e)
+        {
+            
+                try
+                {
+                    if (String.IsNullOrEmpty(getUsername.Texts) || String.IsNullOrEmpty(getPassword.Texts))
+                    {
+                        RJMessageBox.Show("You can't leave empty spaces",
+                            "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                    InquiriesDB DB = new InquiriesDB();
+                    if (DB.valueLogin(getUsername.Texts, getPassword.Texts))
+                        {
+                            panelL.Show();
+                            resetPassword.Hide();
+                            create.Hide();
+                            button_login.Hide();
+                            loadPicture.Show();
+                            timer1.Start();
+                            saveSession();
+                            await loadForms(false);
+
+                        }
+                        else
+                        {
+                            RJMessageBox.Show("Username or password aren't correct, please check out it",
+                            "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            resetPassword.Visible = true;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                       System.Windows.Forms.MessageBoxIcon.Error);
+                }           
         }
         private void resetTimer()
         {
             ss = 0;
             timer1.Stop();
+            loadForms(true);
+        }
+        private async Task loadForms(Boolean status)
+        {
+            try
+            {
+                InquiriesDB DB = new InquiriesDB();
+                switch (DB.getRank(getUsername.Texts))
+                {
+                    case 1:
+                        AdminIU adminFrame = new AdminIU();
+                        if (status)
+                        {
+                            adminFrame.Show();
+                            this.Hide();
+                        }
+                        break;
+                    case 2:
+                        FoodUI food = new FoodUI();
+                        food.panelOrder.Visible = false;
+                        food.panelRecord.Visible = false;
+                        if (status)
+                        {
+                            food.Show();
+                            this.Hide();
+                        }
+                        break;
+                    case 3:
+                        FoodUI food2 = new FoodUI();
+                        food2.panelOrder.Visible = true;
+                        food2.panelRecord.Visible = false;
+                        if (status)
+                        {
+                            food2.Show();
+                            this.Hide();
+                        }
+                        break;
+                    default:
+                        FoodUI food3 = new FoodUI();
+                        food3.Show();
+                        food3.panelOrder.Visible = false;
+                        food3.panelRecord.Visible = false;
+                        this.Hide();
+                        break;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                   System.Windows.Forms.MessageBoxIcon.Error);
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -124,43 +261,7 @@ namespace Palacio_el_restaurante
             ss += 1;
             if (ss == 32)
             {
-                InquiriesDB DB = new InquiriesDB();
                 resetTimer();
-                timer1.Stop();
-                switch (DB.getRank(getUsername.Texts))
-                {
-                    case 1:
-
-                        DialogResult result = RJMessageBox.Show("Access the administration panel?", "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (result.Equals(DialogResult.Yes))
-                        {
-                            AdminIU admin = new AdminIU();
-                            admin.Show();
-                            this.Hide();
-                        }
-                        else
-                        {
-                            FoodUI food3 = new FoodUI();
-                            food3.Show();
-                            food3.panelOrder.Visible = true;
-                            food3.panelRecord.Visible = true;
-                        }
-                        break;
-                    case 2:
-                        FoodUI food = new FoodUI();
-                        food.Show();
-                        food.panelOrder.Visible = false;
-                        food.panelRecord.Visible = false;
-                        this.Hide();
-                        break;
-                    case 3:
-                        FoodUI food2 = new FoodUI();
-                        food2.Show();
-                        food2.panelOrder.Visible = true;
-                        food2.panelRecord.Visible = false;
-                        this.Hide();
-                        break;
-                }
             }
         }
 
@@ -197,7 +298,7 @@ namespace Palacio_el_restaurante
         {
             this.Hide();
             LoginCreateA loginA = new LoginCreateA();
-            loginA.Show();        
+            loginA.Show();
         }
 
         private void create_MouseHover(object sender, EventArgs e)
@@ -248,6 +349,24 @@ namespace Palacio_el_restaurante
             {
                 button_login_Click(sender, EventArgs.Empty);
             }
+        }
+
+        private void ErrorConnection_Click(object sender, EventArgs e)
+        {
+            SetConnection setConnection = new SetConnection();
+            setConnection.Show();
+            this.Hide();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            ss += 1;
+
+        }
+        private void resetTimer2()
+        {
+            timer2.Stop();
+            ss += 0;          
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)

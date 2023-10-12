@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.UI
@@ -37,18 +38,84 @@ namespace Palacio_el_restaurante.src.UI
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             loadDrink.Enabled = false;
             loadFood.Enabled = false;
-            fillBoxes();
+            fillBoxes("Bebida","Platillo fuerte");
         }
-        private void fillBoxes()
+
+        private async Task loadPicturesDrink()
+        {
+            try
+            {
+                InquiriesDB DB = new InquiriesDB();
+                string selectedDrinkName = rjItemD.SelectedItem as string;
+
+                if (string.IsNullOrEmpty(selectedDrinkName))
+                {
+                    return; 
+                }
+
+                Image image = DB.getImage(selectedDrinkName);
+                if (pictureDrink.InvokeRequired)
+                {
+                    pictureDrink.Invoke((MethodInvoker)(() =>
+                    {
+                        pictureDrink.Image = image;
+                    }));
+                }
+                else
+                {
+                    pictureDrink.Image = image;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+
+        private async Task loadPicturesFood()
+        {
+            try
+            {
+                InquiriesDB DB = new InquiriesDB();
+                string selectedFoodName = rjItemF.SelectedItem as string;
+
+                if (string.IsNullOrEmpty(selectedFoodName))
+                {
+                    return; 
+                }
+
+                Image image = DB.getImage(selectedFoodName);
+                if (pictureFood.InvokeRequired)
+                {
+                    pictureFood.Invoke((MethodInvoker)(() =>
+                    {
+                        pictureFood.Image = image;
+                        labelFood.Text = selectedFoodName;
+                    }));
+                }
+                else
+                {
+                    pictureFood.Image = image;
+                    labelFood.Text = selectedFoodName;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void fillBoxes(String typeDrink, String typeFood)
         {
             InquiriesDB DB = new InquiriesDB();
-            List<string> consumablesList = DB.getConsumable("Bebida");
+            List<string> consumablesList = DB.getConsumable(typeDrink);
             foreach (string consumable in consumablesList)
             {
                 rjItemD.Items.Add(consumable);
             }
 
-            List<string> foodList = DB.GetFood("Platillo Fuerte");
+            List<string> foodList = DB.GetFood(typeFood);
             foreach (string food in foodList)
             {
                 rjItemF.Items.Add(food);
@@ -644,6 +711,82 @@ namespace Palacio_el_restaurante.src.UI
                 button_VerySpicy.Image = Properties.Resources.fuego_Off;
                 ssAminationFood = 0;
             }
+        }
+
+        private void rjItemD_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void rjItemD_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                labelDrink.Text = rjItemD.SelectedItem as String;
+                Task.Run(async () => await loadPicturesDrink());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void rjItemF_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                labelFood.Text = rjItemF.SelectedItem as String;
+                Task.Run(async () => await loadPicturesFood());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+        private void fillBoxDrink(String type)
+        {
+            rjItemD.Items.Clear();
+            InquiriesDB DB = new InquiriesDB();
+            List<string> consumablesList = DB.getConsumable(type);
+            foreach (string consumable in consumablesList)
+            {
+                rjItemD.Items.Add(consumable);
+            }
+        }
+        private void fillBoxFood(String type)
+        {
+            rjItemF.Items.Clear();
+            InquiriesDB DB = new InquiriesDB();
+            List<string> foodList = DB.GetFood(type);
+            foreach (string food in foodList)
+            {
+                rjItemF.Items.Add(food);
+            }
+        }
+
+        private void button_coffe_Click(object sender, EventArgs e)
+        {
+            fillBoxDrink("Café");
+        }
+
+        private void rjButton2_Click(object sender, EventArgs e)
+        {
+            fillBoxDrink("Te");
+        }
+
+        private void rjButton3_Click(object sender, EventArgs e)
+        {
+            fillBoxDrink("Jugo");
+        }
+
+        private void rjButton4_Click(object sender, EventArgs e)
+        {
+            fillBoxFood("Platillo fuerte");
+        }
+
+        private void rjButton5_Click(object sender, EventArgs e)
+        {
+            fillBoxFood("Comida marina");
         }
 
         private void button_MinusF_Click(object sender, EventArgs e)

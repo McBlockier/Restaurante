@@ -4,6 +4,7 @@ using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.UI
@@ -181,10 +182,17 @@ namespace Palacio_el_restaurante.src.UI
         {
             if (rjAreaCity.Texts.Length > 3)
             {
-                pictureLocation.Show();
-                pictureLocation.Enabled = true;
+                Task.Run(() =>
+                {
+                    pictureLocation.Invoke((MethodInvoker)(() =>
+                    {
+                        pictureLocation.Show();
+                        pictureLocation.Enabled = true;
+                    }));
+                });
             }
         }
+
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -235,6 +243,10 @@ namespace Palacio_el_restaurante.src.UI
             }
         }
 
+        private void rjAreaCity_Load(object sender, EventArgs e)
+        {
+
+        }
 
         private void hover_Effect_Left(String typeButton)
         {
