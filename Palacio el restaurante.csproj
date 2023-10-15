@@ -554,6 +554,11 @@
     <None Include="src\Img\caja-de-entrega %281%29.png" />
     <None Include="src\Img\candado %281%29.png" />
     <None Include="src\Img\bases-de-datos.png" />
+    <None Include="src\Img\carga.png" />
+    <None Include="src\Img\10%25.png" />
+    <None Include="src\Img\30%25.png" />
+    <None Include="src\Img\50%25.png" />
+    <None Include="src\Img\80%25.png" />
     <Content Include="src\Img\chat.png" />
     <None Include="src\Img\contrasena.gif" />
     <None Include="src\Img\conexion.gif" />

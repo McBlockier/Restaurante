@@ -514,4 +514,19 @@
   <data name="trabajo_en_progreso" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\trabajo-en-progreso.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="carga" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\carga.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_10_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\10%.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_30_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\30%.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_50_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\50%.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_80_" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\80%.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

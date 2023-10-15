@@ -63,6 +63,46 @@ namespace Palacio_el_restaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap _10_ {
+            get {
+                object obj = ResourceManager.GetObject("_10_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap _30_ {
+            get {
+                object obj = ResourceManager.GetObject("_30_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap _50_ {
+            get {
+                object obj = ResourceManager.GetObject("_50_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap _80_ {
+            get {
+                object obj = ResourceManager.GetObject("_80_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap acceso {
             get {
                 object obj = ResourceManager.GetObject("acceso", resourceCulture);
@@ -266,6 +306,16 @@ namespace Palacio_el_restaurante.Properties {
         public static System.Drawing.Bitmap Capu {
             get {
                 object obj = ResourceManager.GetObject("Capu", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap carga {
+            get {
+                object obj = ResourceManager.GetObject("carga", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

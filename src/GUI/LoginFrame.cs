@@ -135,8 +135,6 @@ namespace Palacio_el_restaurante
             toolTip1.SetToolTip(getUsername, "Set your username");
             toolTip1.SetToolTip(ErrorConnection, "Connection error");
         }
-
-
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left)

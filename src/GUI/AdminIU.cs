@@ -1,4 +1,5 @@
 ﻿using CustomMessageBox;
+using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using Palacio_el_restaurante.src.Conection;
 using System;
@@ -15,6 +16,7 @@ namespace Palacio_el_restaurante.src.GUI
     {
         public int xClick = 0, yClick = 0;
         private InsertGUI insertForm;
+        private int s = 0;
         private Stopwatch stopwatch = new Stopwatch();
         private int count = 0, countSQL = 0, countStaff = 0;
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -32,6 +34,7 @@ namespace Palacio_el_restaurante.src.GUI
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            
             s1.Visible = true;
             s2.Visible = false;
             s3.Visible = false;
@@ -40,9 +43,59 @@ namespace Palacio_el_restaurante.src.GUI
             setHeader();
             stopwatch.Start();
             InitPanel();
-            SubscribeEventArgs();        
+            SubscribeEventArgs();
+
+            timer2.Interval = 1000;
+            showBattery.Visible = false;
+            SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
         }
-        private void SubscribeEventArgs()
+        private void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
+        {
+            if (e.Mode == PowerModes.StatusChange)
+            {
+                UpdateBatteryIcon();
+            }
+        }
+
+        private void UpdateBatteryIcon()
+        {
+            if (SystemInformation.PowerStatus.BatteryChargeStatus == BatteryChargeStatus.Charging)
+            {
+                showBattery.Image = Properties.Resources.carga;
+                int batteryPercentage = (int)(SystemInformation.PowerStatus.BatteryLifePercent * 100);
+                percent.Text = batteryPercentage.ToString() + "%";
+                showBattery.Visible = true;
+            }
+            else
+            {
+                int batteryPercentage = (int)(SystemInformation.PowerStatus.BatteryLifePercent * 100);
+                percent.Text = batteryPercentage.ToString() + "%";
+                if (batteryPercentage >= 80)
+                {
+                    showBattery.Image = Properties.Resources._80_;
+                }
+                else if (batteryPercentage >= 50)
+                {
+                    showBattery.Image = Properties.Resources._50_;
+                }
+                else if (batteryPercentage >= 30)
+                {
+                    showBattery.Image = Properties.Resources._30_;
+                }
+                else if (batteryPercentage >= 10)
+                {
+                    showBattery.Image = Properties.Resources._10_;
+                }
+                else
+                {
+                    showBattery.Visible = false;
+                }
+            }
+        }
+    
+
+
+    private void SubscribeEventArgs()
         {
             insertForm = new InsertGUI();
             insertForm.ProductInserted += () =>
@@ -204,7 +257,7 @@ namespace Palacio_el_restaurante.src.GUI
         private void Upload_Click(object sender, EventArgs e)
         {
             this.Upload.Image = Properties.Resources.foto_Upload;
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+            System.Windows.Forms.OpenFileDialog openFileDialog = new System.Windows.Forms.OpenFileDialog();
             openFileDialog.Filter = "Archivos de imagen (*.png)|*.png";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
@@ -390,6 +443,27 @@ namespace Palacio_el_restaurante.src.GUI
                     RJMessageBox.Show("The cell is empty", "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
+        }
+
+        private void AdminIU_Load(object sender, EventArgs e)
+        {
+            timer2.Start();
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            showBattery.Visible = true;
+            if(s == 1)
+            {
+                int batteryPercentage = (int)(SystemInformation.PowerStatus.BatteryLifePercent * 100);
+                percent.Text = batteryPercentage.ToString() + "%";
+                UpdateBatteryIcon();
+                s += 0;
+            }
+            else
+            {
+                s++;
+            }          
         }
 
         private void timer1_Tick(object sender, EventArgs e)
