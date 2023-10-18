@@ -500,6 +500,7 @@
     <None Include="src\Img\wallpaper_blue.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\Img\SQL_Off.jpg" />
     <None Include="src\Img\trabajo-en-progreso.gif" />
     <None Include="src\Img\setConnection.png" />
     <None Include="src\Img\servidor.png" />
@@ -571,6 +572,7 @@
     <None Include="src\Img\chile.png" />
     <None Include="src\Img\envio.gif" />
     <None Include="src\Img\desplazarse.gif" />
+    <None Include="src\Img\Consult_Off.jpg" />
     <Content Include="src\Img\error.png" />
     <None Include="src\Img\espaguetis.gif" />
     <Content Include="src\Img\exclamation.png" />
@@ -622,6 +624,7 @@
     <None Include="src\Img\mysql.png" />
     <None Include="src\Img\proteccion.png" />
     <None Include="src\Img\programador.png" />
+    <None Include="src\Img\Inv_Off.jpg" />
     <Content Include="src\Img\question.png" />
   </ItemGroup>
   <ItemGroup>

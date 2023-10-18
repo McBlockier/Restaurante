@@ -155,7 +155,5 @@ namespace Palacio_el_restaurante.src.Conection
                 return false;
             }
         }
-
-
     }
 }

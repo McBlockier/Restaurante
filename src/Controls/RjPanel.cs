@@ -5,9 +5,9 @@ namespace Palacio_el_restaurante.src.Controls
 {
     public class RjPanel : Panel
     {
-
         private int borderRadius = 10;
         private Color borderColor = Color.Black;
+        private float borderThickness = 2.0f; 
 
         public int BorderRadius
         {
@@ -18,6 +18,7 @@ namespace Palacio_el_restaurante.src.Controls
                 Invalidate();
             }
         }
+
         public Color BorderColor
         {
             get { return borderColor; }
@@ -28,10 +29,21 @@ namespace Palacio_el_restaurante.src.Controls
             }
         }
 
+        public float BorderThickness
+        {
+            get { return borderThickness; }
+            set
+            {
+                borderThickness = value;
+                Invalidate();
+            }
+        }
+
         public RjPanel()
         {
             DoubleBuffered = true;
         }
+
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
@@ -41,7 +53,7 @@ namespace Palacio_el_restaurante.src.Controls
                 e.Graphics.FillRectangle(brush, ClientRectangle);
             }
 
-            using (var pen = new Pen(borderColor, 2))
+            using (var pen = new Pen(borderColor, borderThickness))
             {
                 Rectangle rect = ClientRectangle;
                 rect.Width -= 1;
@@ -49,6 +61,5 @@ namespace Palacio_el_restaurante.src.Controls
                 e.Graphics.DrawRoundedRectangle(pen, rect, borderRadius);
             }
         }
-        //Fin de la clase
     }
 }

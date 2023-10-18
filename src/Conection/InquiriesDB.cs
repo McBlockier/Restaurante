@@ -195,6 +195,8 @@ namespace Palacio_el_restaurante.src.Conection
             }
             return value;
         }
+
+        
         public bool deleteUser(Persona persona)
         {
             Connection con = new Connection();
@@ -216,6 +218,30 @@ namespace Palacio_el_restaurante.src.Conection
                     return false;
                 }
             }
+        }
+
+
+        public void GetConsultInv(String typeConsult)
+        {
+            
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();             
+                switch(typeConsult)
+                {
+                    case "a":
+                        String SQL1 = "";
+                        break;
+                    case "s":
+                        String SQL2 = "";
+                        break;
+                }
+            }catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+           
         }
 
         public int getRank(String username)
@@ -744,9 +770,6 @@ namespace Palacio_el_restaurante.src.Conection
             return value;
         }
 
-
-
-
         //FoodGUI
 
 
@@ -910,11 +933,5 @@ namespace Palacio_el_restaurante.src.Conection
             }
             return consumables;
         }
-
-
-
-
-
-
     }
 }

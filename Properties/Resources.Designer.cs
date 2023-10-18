@@ -433,6 +433,16 @@ namespace Palacio_el_restaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap Consult_Off {
+            get {
+                object obj = ResourceManager.GetObject("Consult_Off", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap consulta {
             get {
                 object obj = ResourceManager.GetObject("consulta", resourceCulture);
@@ -751,6 +761,16 @@ namespace Palacio_el_restaurante.Properties {
         public static System.Drawing.Bitmap information {
             get {
                 object obj = ResourceManager.GetObject("information", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Inv_Off {
+            get {
+                object obj = ResourceManager.GetObject("Inv_Off", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -1311,6 +1331,16 @@ namespace Palacio_el_restaurante.Properties {
         public static System.Drawing.Bitmap Spagueti {
             get {
                 object obj = ResourceManager.GetObject("Spagueti", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap SQL_Off {
+            get {
+                object obj = ResourceManager.GetObject("SQL_Off", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

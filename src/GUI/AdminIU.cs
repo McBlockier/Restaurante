@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.GUI
@@ -34,11 +35,13 @@ namespace Palacio_el_restaurante.src.GUI
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
-            
+            SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
+
             s1.Visible = true;
             s2.Visible = false;
             s3.Visible = false;
             s4.Visible = false;
+
             fillBoxes();
             setHeader();
             stopwatch.Start();
@@ -46,56 +49,67 @@ namespace Palacio_el_restaurante.src.GUI
             SubscribeEventArgs();
 
             timer2.Interval = 1000;
-            showBattery.Visible = false;
-            SystemEvents.PowerModeChanged += SystemEvents_PowerModeChanged;
+            showBattery.Visible = false;         
+            
         }
         private void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
         {
-            if (e.Mode == PowerModes.StatusChange)
+            try
             {
-                UpdateBatteryIcon();
+                if (e.Mode == PowerModes.StatusChange)
+                {
+                    UpdateBatteryIcon();
+                }
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
             }
         }
 
-        private void UpdateBatteryIcon()
+        private  void UpdateBatteryIcon()
         {
-            if (SystemInformation.PowerStatus.BatteryChargeStatus == BatteryChargeStatus.Charging)
+            try
             {
-                showBattery.Image = Properties.Resources.carga;
-                int batteryPercentage = (int)(SystemInformation.PowerStatus.BatteryLifePercent * 100);
-                percent.Text = batteryPercentage.ToString() + "%";
-                showBattery.Visible = true;
-            }
-            else
-            {
-                int batteryPercentage = (int)(SystemInformation.PowerStatus.BatteryLifePercent * 100);
-                percent.Text = batteryPercentage.ToString() + "%";
-                if (batteryPercentage >= 80)
+                if (SystemInformation.PowerStatus.BatteryChargeStatus == BatteryChargeStatus.Charging)
                 {
-                    showBattery.Image = Properties.Resources._80_;
-                }
-                else if (batteryPercentage >= 50)
-                {
-                    showBattery.Image = Properties.Resources._50_;
-                }
-                else if (batteryPercentage >= 30)
-                {
-                    showBattery.Image = Properties.Resources._30_;
-                }
-                else if (batteryPercentage >= 10)
-                {
-                    showBattery.Image = Properties.Resources._10_;
+                    showBattery.Image = Properties.Resources.carga;
+                    int batteryPercentage = (int)(SystemInformation.PowerStatus.BatteryLifePercent * 100);
+                    percent.Text = batteryPercentage.ToString() + "%";
+                    showBattery.Visible = true;
                 }
                 else
                 {
-                    showBattery.Visible = false;
+                    int batteryPercentage = (int)(SystemInformation.PowerStatus.BatteryLifePercent * 100);
+                    percent.Text = batteryPercentage.ToString() + "%";
+                    if (batteryPercentage >= 80)
+                    {
+                        showBattery.Image = Properties.Resources._80_;
+                    }
+                    else if (batteryPercentage >= 50)
+                    {
+                        showBattery.Image = Properties.Resources._50_;
+                    }
+                    else if (batteryPercentage >= 30)
+                    {
+                        showBattery.Image = Properties.Resources._30_;
+                    }
+                    else if (batteryPercentage >= 10)
+                    {
+                        showBattery.Image = Properties.Resources._10_;
+                    }
+                    else
+                    {
+                        showBattery.Visible = false;
+                    }
                 }
+            }catch(Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
-    
 
-
-    private void SubscribeEventArgs()
+        private void SubscribeEventArgs()
         {
             insertForm = new InsertGUI();
             insertForm.ProductInserted += () =>
@@ -128,7 +142,20 @@ namespace Palacio_el_restaurante.src.GUI
         private void fillBoxes()
         {
             rjInventory.Items.Clear();
-            rjInventory.Items.Add("");
+            rjInventory.Items.Add("Consumibles mas vendidos");
+            rjInventory.Items.Add("Precio promedio");
+            rjInventory.Items.Add("Total de ventas de consumibles");
+            rjInventory.Items.Add("Consumibles que no se han vendido");
+            rjInventory.Items.Add("Consumibles más caro");
+           
+
+            rjStaff.Items.Clear();
+            rjStaff.Items.Add("Empleado del mes");
+            rjStaff.Items.Add("Ganacias generadas");
+            rjStaff.Items.Add("Empleados con al menos 10 ventas de un tipo específico");
+            rjStaff.Items.Add("Consumibles consumidos por empleado");
+            rjStaff.Items.Add("Personal masculino");
+            rjStaff.Items.Add("Personal femenino");
 
         }
         public void RefreshData()
@@ -194,6 +221,10 @@ namespace Palacio_el_restaurante.src.GUI
             panelinv.Visible = true;
             panelStaff.Visible = false;
 
+            rjButtonSQL.Image = Properties.Resources.SQL_Off;
+            rjPictureRounded2.Image = Properties.Resources.portapapeles;
+            rjPictureRounded3.Image = Properties.Resources.consulta;
+
             sql();
         }
 
@@ -225,7 +256,6 @@ namespace Palacio_el_restaurante.src.GUI
                  System.Windows.Forms.MessageBoxIcon.Error);
             }
         }
-
         private void rjPictureRounded5_Click(object sender, EventArgs e)
         {
             s1.Visible = false;
@@ -334,7 +364,6 @@ namespace Palacio_el_restaurante.src.GUI
                 return stream.ToArray();
             }
         }
-
         private Image RemoveWhiteBackground(Image imagen)
         {
             Bitmap bmp = new Bitmap(imagen);
@@ -360,7 +389,6 @@ namespace Palacio_el_restaurante.src.GUI
 
             }
         }
-
         private void rjExecute_Click(object sender, EventArgs e)
         {
             try
@@ -397,7 +425,6 @@ namespace Palacio_el_restaurante.src.GUI
                 }
             }
         }
-
         private void rjSQL_Click(object sender, EventArgs e)
         {
             if (countSQL == 0)
@@ -453,7 +480,7 @@ namespace Palacio_el_restaurante.src.GUI
         private void timer2_Tick(object sender, EventArgs e)
         {
             showBattery.Visible = true;
-            if(s == 1)
+            if (s == 1)
             {
                 int batteryPercentage = (int)(SystemInformation.PowerStatus.BatteryLifePercent * 100);
                 percent.Text = batteryPercentage.ToString() + "%";
@@ -463,7 +490,129 @@ namespace Palacio_el_restaurante.src.GUI
             else
             {
                 s++;
-            }          
+            }
+        }
+        private void panelinv_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+            { xClick = e.X; yClick = e.Y; }
+            else
+            { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
+        }
+
+        private void rjDataInv_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+            { xClick = e.X; yClick = e.Y; }
+            else
+            { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
+        }
+
+        private void panelStaff_MouseMove_1(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+            { xClick = e.X; yClick = e.Y; }
+            else
+            { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
+        }
+
+        private void rjDataStaff_MouseMove_1(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+            { xClick = e.X; yClick = e.Y; }
+            else
+            { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
+        }
+
+        private void panelSQL_MouseMove_1(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+            { xClick = e.X; yClick = e.Y; }
+            else
+            { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
+        }
+
+        private void rjData_MouseMove_1(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left)
+            { xClick = e.X; yClick = e.Y; }
+            else
+            { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
+        }
+
+        //ComoBox de inventario (Consumibles)
+        private void rjInventory_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            Connection con = new Connection();
+            MySqlConnection connection = con.getConnection();
+            switch (rjInventory.SelectedItem as String)
+            {
+                case "Consumibles mas vendidos":
+                    rjDataInv.SetDatabaseConnection(connection);
+                    rjDataInv.ExecuteSqlQuery("select consumible.clurp, consumible.nombre, venta.idPlato, venta.precio\r\nfrom consumible\r\ninner join venta\r\non consumible.clurp=venta.idPlato;");
+                    connection.Close();
+                    break;
+                case "Precio promedio":
+                    rjDataInv.SetDatabaseConnection(connection);
+                    rjDataInv.ExecuteSqlQuery("SELECT AVG(venta.precio) AS precio_promedio\r\nFROM venta;\r\n");
+                    connection.Close();
+                    break;
+                case "Total de ventas de consumibles":
+                    rjDataInv.SetDatabaseConnection(connection);
+                    rjDataInv.ExecuteSqlQuery("SELECT consumible.nombre, COUNT(venta.idVenta) AS total_ventas\r\nFROM consumible\r\nLEFT JOIN venta ON consumible.clurp = venta.idPlato\r\nGROUP BY consumible.nombre;\r\n");
+                    connection.Close();
+                    break;
+                case "Consumibles que no se han vendido":
+                    rjDataInv.SetDatabaseConnection(connection);
+                    rjDataInv.ExecuteSqlQuery("SELECT consumible.clurp, consumible.nombre\r\nFROM consumible\r\nLEFT JOIN venta ON consumible.clurp = venta.idPlato\r\nWHERE venta.idPlato IS NULL;\r\n");
+                    connection.Close();
+                    break;
+                case "Consumibles más caro":
+                    rjDataInv.SetDatabaseConnection(connection);
+                    rjDataInv.ExecuteSqlQuery("SELECT c.tipo, MAX(c.precio) AS precio_mas_alto\r\nFROM consumible AS c\r\nGROUP BY c.tipo\r\nORDER BY precio_mas_alto DESC\r\nLIMIT 10;\r\n");
+                    connection.Close();
+                    break;
+            }
+        }
+        //ComoBox de personal
+        private void rjStaff_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            Connection con = new Connection();
+            MySqlConnection connection = con.getConnection();
+            switch (rjStaff.SelectedItem as String)
+            {
+                case "Empleado del mes":                   
+                    rjDataStaff.SetDatabaseConnection(connection);
+                    rjDataStaff.ExecuteSqlQuery("SELECT v.Idemple AS IdEmpleado, c.nombre AS NombrePlato, c.tipo AS TipoPlato, v.cantidad, (c.precio * v.cantidad) AS MontoGenerado\r\nFROM venta v, consumible c\r\nWHERE v.idPlato = c.clurp AND v.Idemple = (SELECT Idemple FROM venta GROUP BY Idemple ORDER BY SUM(cantidad) DESC LIMIT 1);");
+                    connection.Close();
+                    break;
+                case "Ganacias generadas":
+                    rjDataStaff.SetDatabaseConnection(connection);
+                    rjDataStaff.ExecuteSqlQuery("SELECT v.Idemple AS IdEmpleado, SUM(v.cantidad) AS TotalVentas, SUM(c.precio * v.cantidad) AS MontoTotalGenerado\r\nFROM venta v, consumible c\r\nWHERE v.idPlato = c.clurp\r\nGROUP BY v.Idemple;");
+                    connection.Close();
+                    break;
+                case "Empleados con al menos 10 ventas de un tipo específico":
+                    rjDataStaff.SetDatabaseConnection(connection);
+                    rjDataStaff.ExecuteSqlQuery("SELECT v.Idemple AS IdEmpleado, e.nombre AS NombreEmpleado, c.tipo AS TipoPlato, SUM(v.cantidad) AS TotalVentas\r\nFROM venta v, empleado e, consumible c\r\nWHERE v.Idemple = e.id AND v.idPlato = c.clurp\r\nGROUP BY Idemple, c.tipo\r\nHAVING SUM(v.cantidad) >= 10;");
+                    connection.Close();
+                    break;
+                case "Consumibles consumidos por empleado":
+                    rjDataStaff.SetDatabaseConnection(connection);
+                    rjDataStaff.ExecuteSqlQuery("SELECT e.id AS empleado_id, e.nombre AS empleado_nombre, COUNT(c.clurp) AS cantidad_consumida\r\nFROM empleado AS e\r\nCROSS JOIN consumible AS c\r\nGROUP BY e.id, e.nombre;\r\n");
+                    connection.Close();
+                    break;
+                case "Personal masculino":
+                    rjDataStaff.SetDatabaseConnection(connection);
+                    rjDataStaff.ExecuteSqlQuery("select * from empleado\r\n  where find_in_set('M',sexo)>0;");
+                    connection.Close();
+                    break;
+                case "Personal femenino":
+                    rjDataStaff.SetDatabaseConnection(connection);
+                    rjDataStaff.ExecuteSqlQuery("select * from empleado\r\n  where find_in_set('F',sexo)>0;");
+                    connection.Close();
+                    break;
+
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)
