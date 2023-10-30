@@ -1,10 +1,16 @@
 ﻿using CustomMessageBox;
+using IronXL;
+using MathNet.Numerics.LinearAlgebra;
 using MySql.Data.MySqlClient;
+using OfficeOpenXml;
+using OfficeOpenXml.Style;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.Conection
@@ -391,7 +397,7 @@ namespace Palacio_el_restaurante.src.Conection
                 RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            return null; // Devuelve null si no se pudo obtener la imagen
+            return null; 
         }
 
 
@@ -671,8 +677,6 @@ namespace Palacio_el_restaurante.src.Conection
             }
             return value;
         }
-
-
         public Boolean addProduct(Product producto)
         {
             try
@@ -932,6 +936,116 @@ namespace Palacio_el_restaurante.src.Conection
                     System.Windows.Forms.MessageBoxIcon.Error);
             }
             return consumables;
+        }
+
+        public bool AcctionProve(string Operation, string Contra, string idPed, string repNam)
+        {
+            Connection con = new Connection();
+            MySqlConnection connection = con.getConnection();
+            MySqlCommand cmd = new MySqlCommand();
+            connection.Open();
+
+            cmd.Connection = connection;
+
+            switch (Operation)
+            {
+                case "Update":
+                    string updateQuery = "UPDATE pedidoprove SET repNam = @repNam WHERE contra = @contra AND idPed = @idPed";
+                    cmd.CommandText = updateQuery;
+                    cmd.Parameters.AddWithValue("@repNam", repNam);
+                    cmd.Parameters.AddWithValue("@contra", Contra);
+                    cmd.Parameters.AddWithValue("@idPed", idPed);
+                    break;
+
+                case "Delete":
+                    string deleteQuery = "DELETE FROM pedidoprove WHERE contra = @contra";
+                    cmd.CommandText = deleteQuery;
+                    cmd.Parameters.AddWithValue("@contra", Contra);
+                    break;
+
+                case "Add Up":
+                    string insertQuery = "INSERT INTO pedidoprove (contra, idPed, repNam) VALUES (@contra, @idPed, @repNam)";
+                    cmd.CommandText = insertQuery;
+                    cmd.Parameters.AddWithValue("@contra", Contra);
+                    cmd.Parameters.AddWithValue("@idPed", idPed);
+                    cmd.Parameters.AddWithValue("@repNam", repNam);
+                    break;
+            }
+            int rowsAffected = cmd.ExecuteNonQuery();
+            connection.Close();
+            return rowsAffected > 0;
+        }
+
+
+        public void GetDataTable(String SQL)
+        {
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                connection.Open();
+                MySqlDataAdapter adapter = new MySqlDataAdapter(SQL, connection);
+                DataSet dataSet = new DataSet();
+                adapter.Fill(dataSet, "Resultados");
+                if (dataSet.Tables["Resultados"].Rows.Count == 0)
+                {
+                    MessageBox.Show("There is no data to export", "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string defaultFileName = "Resultados.xlsx";
+
+                using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+                {
+                    saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
+                    saveFileDialog.Title = "Save data in excel";
+                    saveFileDialog.FileName = defaultFileName;
+
+                    if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        string filePath = saveFileDialog.FileName;
+
+                        if (string.IsNullOrWhiteSpace(filePath))
+                        {
+                            MessageBox.Show("The file name is invalid", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+
+                        FileInfo newFile = new FileInfo(filePath);
+
+                        using (ExcelPackage package = new ExcelPackage(newFile))
+                        {
+                            using (FileStream templateStream = new FileStream("modelo2.xlsx", FileMode.Open))
+                            {
+                                package.Load(templateStream);
+                            }
+
+                            ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+                            worksheet.Cells["A2"].LoadFromDataTable(dataSet.Tables["Resultados"], true);
+                            worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
+                            using (ExcelRange cells = worksheet.Cells[worksheet.Dimension.Address])
+                            {
+                               
+                                cells.Style.Font.Size = 12;
+                                cells.Style.Font.Bold = true;
+                                cells.Style.Font.Color.SetColor(System.Drawing.Color.Black);
+                                cells.Style.Fill.PatternType = ExcelFillStyle.Solid;
+                                cells.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray);
+                            }
+
+                            package.Save();
+                        }
+
+                        MessageBox.Show($"The data has been exported successfully in '{filePath}'.", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.Message);
+            }
         }
     }
 }

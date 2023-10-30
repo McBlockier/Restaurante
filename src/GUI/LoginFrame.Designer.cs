@@ -216,7 +216,7 @@
             this.getPassword.BorderFocusColor = System.Drawing.Color.HotPink;
             this.getPassword.BorderRadius = 10;
             this.getPassword.BorderSize = 2;
-            this.getPassword.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.getPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.getPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.getPassword.Location = new System.Drawing.Point(478, 224);
             this.getPassword.Margin = new System.Windows.Forms.Padding(4);
@@ -240,7 +240,7 @@
             this.getUsername.BorderFocusColor = System.Drawing.Color.HotPink;
             this.getUsername.BorderRadius = 10;
             this.getUsername.BorderSize = 2;
-            this.getUsername.Font = new System.Drawing.Font("Microsoft Tai Le", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.getUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.getUsername.Location = new System.Drawing.Point(478, 174);
             this.getUsername.Margin = new System.Windows.Forms.Padding(4);
@@ -256,6 +256,7 @@
             this.getUsername.UnderlinedStyle = false;
             this.getUsername.KeyDown += new System.Windows.Forms.KeyEventHandler(this.getUsername_KeyDown_1);
             this.getUsername.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.getUsername_KeyPress);
+            this.getUsername.KeyUp += new System.Windows.Forms.KeyEventHandler(this.getUsername_KeyUp);
             // 
             // timer2
             // 

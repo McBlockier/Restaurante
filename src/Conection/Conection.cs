@@ -20,12 +20,33 @@ namespace Palacio_el_restaurante.src.Conection
     public class Connection
     {
         private ConnectionInfo info;
+        private Boolean valueUser = false;
+        private String setConnectionUser = "";
 
         public Connection()
         {
             InitializeConnectionInfoAsync();
         }
-
+        public void SetConnectionUser(String userName)
+        {
+            try
+            {
+                switch (userName)
+                {
+                    case "Miguel":
+                        setConnectionUser = "Server=localhost;Database=palacio;User ID=Miguel;Password=root;";
+                        valueUser = true;
+                        break;
+                    case "Jesus":
+                        setConnectionUser = "Server=localhost;Database=palacio;User ID=Jesus;Password=root;";
+                        valueUser = true;
+                        break;
+                }
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }            
+         }
         public async void InitializeConnectionInfoAsync()
         {
             info = await valuesConnection();
@@ -83,26 +104,45 @@ namespace Palacio_el_restaurante.src.Conection
 
         public MySqlConnection getConnection()
         {
-            ConnectionInfo connectionInfo = ReadConnectionInfoFromJson();
-            if (connectionInfo != null)
+            if (valueUser)
             {
                 try
                 {
-                    string stringConnection = $"Server={connectionInfo.Server};Port={connectionInfo.Port};Database={connectionInfo.Database};Uid={connectionInfo.Uid};Pwd={connectionInfo.Pwd}";
-                    MySqlConnection connection = new MySqlConnection(stringConnection);
+
+                    MySqlConnection connection = new MySqlConnection(setConnectionUser);
                     return connection;
-                }
-                catch (MySqlException ex)
+
+                }catch (Exception ex)
                 {
                     RJMessageBox.Show("The database is not configured correctly", "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                        System.Windows.Forms.MessageBoxIcon.Error);
+                            System.Windows.Forms.MessageBoxIcon.Error);
                     Console.WriteLine(ex.Message);
                     return null;
                 }
             }
             else
             {
-                return null;
+                ConnectionInfo connectionInfo = ReadConnectionInfoFromJson();
+                if (connectionInfo != null)
+                {
+                    try
+                    {
+                        string stringConnection = $"Server={connectionInfo.Server};Port={connectionInfo.Port};Database={connectionInfo.Database};Uid={connectionInfo.Uid};Pwd={connectionInfo.Pwd}";
+                        MySqlConnection connection = new MySqlConnection(stringConnection);
+                        return connection;
+                    }
+                    catch (MySqlException ex)
+                    {
+                        RJMessageBox.Show("The database is not configured correctly", "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                            System.Windows.Forms.MessageBoxIcon.Error);
+                        Console.WriteLine(ex.Message);
+                        return null;
+                    }
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 

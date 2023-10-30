@@ -4,6 +4,7 @@ using Palacio_el_restaurante.src.GUI;
 using Palacio_el_restaurante.src.UI;
 using System;
 using System.Drawing;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -158,8 +159,46 @@ namespace Palacio_el_restaurante
         }
 
         private async void button_login_Click(object sender, EventArgs e)
-        {
-            
+        {        
+            if (getUsername.Texts == "Miguel" || getUsername.Texts == "Jesus")
+            {
+                if (!String.IsNullOrEmpty(getUsername.Texts) && !String.IsNullOrEmpty(getPassword.Texts))
+                {
+                    if (getPassword.Texts == "root")
+                    {
+                        switch (getUsername.Texts)
+                        {
+                            case "Miguel":
+                                panelL.Show();
+                                resetPassword.Hide();
+                                create.Hide();
+                                button_login.Hide();
+                                loadPicture.Show();
+                                timer1.Start();
+                                await loadFormDedicated("Miguel");
+
+                                break;
+                            case "Jesus":
+                                panelL.Show();
+                                resetPassword.Hide();
+                                create.Hide();
+                                button_login.Hide();
+                                loadPicture.Show();
+                                timer1.Start();
+                                await loadFormDedicated("Jesus");
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        RJMessageBox.Show("Username or password aren't correct, please check out it",
+                            "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            else
+            {
+
                 try
                 {
                     if (String.IsNullOrEmpty(getUsername.Texts) || String.IsNullOrEmpty(getPassword.Texts))
@@ -169,8 +208,8 @@ namespace Palacio_el_restaurante
                     }
                     else
                     {
-                    InquiriesDB DB = new InquiriesDB();
-                    if (DB.valueLogin(getUsername.Texts, getPassword.Texts))
+                        InquiriesDB DB = new InquiriesDB();
+                        if (DB.valueLogin(getUsername.Texts, getPassword.Texts))
                         {
                             panelL.Show();
                             resetPassword.Hide();
@@ -186,6 +225,7 @@ namespace Palacio_el_restaurante
                         {
                             RJMessageBox.Show("Username or password aren't correct, please check out it",
                             "WARNING!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            RJMessageBox.Show("Accede 191");
                             resetPassword.Visible = true;
                         }
                     }
@@ -194,7 +234,8 @@ namespace Palacio_el_restaurante
                 {
                     RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
                        System.Windows.Forms.MessageBoxIcon.Error);
-                }           
+                }        
+            }
         }
         private void resetTimer()
         {
@@ -202,6 +243,51 @@ namespace Palacio_el_restaurante
             timer1.Stop();
             loadForms(true);
         }
+        private String userN = "";
+        private async Task loadFormDedicated(String userName)
+        {
+            userN = userName;
+            try
+            {
+                switch(userName)
+                {
+                    case "Miguel":
+                        AdminIU adminUI = new AdminIU();
+                        adminUI.panelSQL.Visible = false;
+                        adminUI.panelStaff.Visible = false;
+                        adminUI.rjButtonSQL.Enabled = false;
+                        adminUI.rjButtonStaff.Enabled = false;
+                        adminUI.panelinv.Visible = true;
+                        adminUI.s1.Visible = false;
+                        adminUI.s2.Visible = true;
+                        adminUI.getRank = "Miguel";
+                        adminUI.rjJob.Visible = true;
+                        adminUI.Show();
+                        this.Hide();
+                        break;
+                    case "Jesus":
+                        AdminIU adminUI2 = new AdminIU();
+                        adminUI2.rjInsertPanel.Visible = false;
+                        adminUI2.s1.Visible = false;
+                        adminUI2.rjJob.Visible = false;
+                        adminUI2.rjExecuteIn.Visible = false;
+                        adminUI2.Upload.Visible = false;
+                        adminUI2.adminFood.Visible = false;
+                        adminUI2.ExportToExcel.Visible = false;
+                        adminUI2.rjButtonSQL.Enabled = false;
+                        adminUI2.rjButtonStaff.Enabled = false;
+                        adminUI2.panelinv.Visible = true;
+                        adminUI2.Show();
+                        this.Hide();
+                        break;
+                }
+
+            }catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         private async Task loadForms(Boolean status)
         {
             try
@@ -209,13 +295,13 @@ namespace Palacio_el_restaurante
                 InquiriesDB DB = new InquiriesDB();
                 switch (DB.getRank(getUsername.Texts))
                 {
-                    case 1:
-                        AdminIU adminFrame = new AdminIU();
-                        if (status)
-                        {
-                            adminFrame.Show();
-                            this.Hide();
-                        }
+                    case 1:                      
+                            AdminIU adminFrame = new AdminIU();
+                            if (status)
+                            {
+                                adminFrame.Show();
+                                this.Hide();
+                            }                          
                         break;
                     case 2:
                         FoodUI food = new FoodUI();
@@ -238,11 +324,18 @@ namespace Palacio_el_restaurante
                         }
                         break;
                     default:
-                        FoodUI food3 = new FoodUI();
-                        food3.Show();
-                        food3.panelOrder.Visible = false;
-                        food3.panelRecord.Visible = false;
-                        this.Hide();
+                        if(userN == "Miguel" || userN == "Jesus")
+                        {
+                            this.Hide();
+                        }
+                        else
+                        {
+                            FoodUI food3 = new FoodUI();
+                            food3.Show();
+                            food3.panelOrder.Visible = false;
+                            food3.panelRecord.Visible = false;
+                            this.Hide();
+                        }                 
                         break;
                 }
 
@@ -365,6 +458,29 @@ namespace Palacio_el_restaurante
         {
             timer2.Stop();
             ss += 0;          
+        }
+
+        private void getUsername_KeyUp(object sender, KeyEventArgs e)
+        {
+            try
+            {
+                string[] validNames = { "Miguel", "Jesus", "McBlockier" };
+                string enteredName = getUsername.Texts.Trim();
+
+                if (validNames.Contains(enteredName))
+                {
+                    switch (getUsername.Texts)
+                    {
+                        case "Miguel":
+                            break;
+                        case "Jesus":
+                            break;
+                    }
+                }
+            }catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)

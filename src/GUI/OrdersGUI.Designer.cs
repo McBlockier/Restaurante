@@ -28,27 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrdersGUI));
             this.rjPanel1 = new Palacio_el_restaurante.src.Controls.RjPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.rjPictureRounded1 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.panelOrders = new System.Windows.Forms.Panel();
-            this.rjMod = new Palacio_el_restaurante.src.Controls.RJButton();
-            this.rjCancel = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.rjPictureRounded4 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.rjDataOrders = new Palacio_el_restaurante.src.Controls.RJDataGridView();
             this.rjDone = new Palacio_el_restaurante.src.Controls.RJButton();
-            this.rjPictureRounded4 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.rjPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded1)).BeginInit();
             this.panelOrders.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rjDataOrders)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjDataOrders)).BeginInit();
             this.SuspendLayout();
             // 
             // rjPanel1
             // 
             this.rjPanel1.BorderColor = System.Drawing.Color.Blue;
             this.rjPanel1.BorderRadius = 15;
+            this.rjPanel1.BorderThickness = 2F;
             this.rjPanel1.Controls.Add(this.label1);
             this.rjPanel1.Controls.Add(this.rjPictureRounded1);
             this.rjPanel1.Location = new System.Drawing.Point(1, 1);
@@ -87,8 +87,6 @@
             // panelOrders
             // 
             this.panelOrders.Controls.Add(this.rjPictureRounded4);
-            this.panelOrders.Controls.Add(this.rjMod);
-            this.panelOrders.Controls.Add(this.rjCancel);
             this.panelOrders.Controls.Add(this.rjDataOrders);
             this.panelOrders.Controls.Add(this.rjDone);
             this.panelOrders.Location = new System.Drawing.Point(117, 1);
@@ -97,45 +95,23 @@
             this.panelOrders.TabIndex = 1;
             this.panelOrders.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelOrders_MouseMove);
             // 
-            // rjMod
+            // rjPictureRounded4
             // 
-            this.rjMod.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjMod.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjMod.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjMod.BorderRadius = 20;
-            this.rjMod.BorderSize = 0;
-            this.rjMod.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjMod.FlatAppearance.BorderSize = 0;
-            this.rjMod.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjMod.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.rjMod.ForeColor = System.Drawing.Color.White;
-            this.rjMod.Location = new System.Drawing.Point(185, 433);
-            this.rjMod.Name = "rjMod";
-            this.rjMod.Size = new System.Drawing.Size(150, 40);
-            this.rjMod.TabIndex = 3;
-            this.rjMod.Text = "Modify";
-            this.rjMod.TextColor = System.Drawing.Color.White;
-            this.rjMod.UseVisualStyleBackColor = false;
-            // 
-            // rjCancel
-            // 
-            this.rjCancel.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjCancel.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.rjCancel.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjCancel.BorderRadius = 20;
-            this.rjCancel.BorderSize = 0;
-            this.rjCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjCancel.FlatAppearance.BorderSize = 0;
-            this.rjCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rjCancel.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F);
-            this.rjCancel.ForeColor = System.Drawing.Color.White;
-            this.rjCancel.Location = new System.Drawing.Point(384, 433);
-            this.rjCancel.Name = "rjCancel";
-            this.rjCancel.Size = new System.Drawing.Size(150, 40);
-            this.rjCancel.TabIndex = 2;
-            this.rjCancel.Text = "Cancel";
-            this.rjCancel.TextColor = System.Drawing.Color.White;
-            this.rjCancel.UseVisualStyleBackColor = false;
+            this.rjPictureRounded4.BackColor = System.Drawing.Color.Red;
+            this.rjPictureRounded4.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.rjPictureRounded4.BorderColor = System.Drawing.Color.Red;
+            this.rjPictureRounded4.BorderColor2 = System.Drawing.Color.Red;
+            this.rjPictureRounded4.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rjPictureRounded4.BorderSize = 2;
+            this.rjPictureRounded4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjPictureRounded4.GradientAngle = 50F;
+            this.rjPictureRounded4.Location = new System.Drawing.Point(725, 1);
+            this.rjPictureRounded4.Name = "rjPictureRounded4";
+            this.rjPictureRounded4.Size = new System.Drawing.Size(18, 18);
+            this.rjPictureRounded4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.rjPictureRounded4.TabIndex = 4;
+            this.rjPictureRounded4.TabStop = false;
+            this.rjPictureRounded4.Click += new System.EventHandler(this.rjPictureRounded4_Click);
             // 
             // rjDataOrders
             // 
@@ -167,24 +143,7 @@
             this.rjDone.Text = "Delivered";
             this.rjDone.TextColor = System.Drawing.Color.White;
             this.rjDone.UseVisualStyleBackColor = false;
-            // 
-            // rjPictureRounded4
-            // 
-            this.rjPictureRounded4.BackColor = System.Drawing.Color.Red;
-            this.rjPictureRounded4.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPictureRounded4.BorderColor = System.Drawing.Color.Red;
-            this.rjPictureRounded4.BorderColor2 = System.Drawing.Color.Red;
-            this.rjPictureRounded4.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPictureRounded4.BorderSize = 2;
-            this.rjPictureRounded4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjPictureRounded4.GradientAngle = 50F;
-            this.rjPictureRounded4.Location = new System.Drawing.Point(725, 1);
-            this.rjPictureRounded4.Name = "rjPictureRounded4";
-            this.rjPictureRounded4.Size = new System.Drawing.Size(18, 18);
-            this.rjPictureRounded4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPictureRounded4.TabIndex = 4;
-            this.rjPictureRounded4.TabStop = false;
-            this.rjPictureRounded4.Click += new System.EventHandler(this.rjPictureRounded4_Click);
+            this.rjDone.Click += new System.EventHandler(this.rjDone_Click);
             // 
             // OrdersGUI
             // 
@@ -201,8 +160,8 @@
             this.rjPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded1)).EndInit();
             this.panelOrders.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.rjDataOrders)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjDataOrders)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -215,8 +174,6 @@
         private Controls.RJButton rjDone;
         private System.Windows.Forms.Label label1;
         private Controls.RJDataGridView rjDataOrders;
-        private Controls.RJButton rjCancel;
-        private Controls.RJButton rjMod;
         private Controls.RJPictureRounded rjPictureRounded4;
     }
 }

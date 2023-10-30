@@ -48,6 +48,13 @@ namespace Palacio_el_restaurante.src.GUI
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             fillBox();
+            
+        }
+        public void fillBoxSpecial()
+        {
+            FillComboBox(rjOperation, new string[] { "Update", "Add Up" });
+            FillComboBox(rjType, new string[] { "Café", "Té", "Jugo", "Platillo fuerte", "Comida marina" });
+            rjDelete.Visible = false;
         }
         private void rjInsert_Click(object sender, EventArgs e)
         {

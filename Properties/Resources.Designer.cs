@@ -548,6 +548,16 @@ namespace Palacio_el_restaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap excel {
+            get {
+                object obj = ResourceManager.GetObject("excel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap exclamation {
             get {
                 object obj = ResourceManager.GetObject("exclamation", resourceCulture);
@@ -971,6 +981,16 @@ namespace Palacio_el_restaurante.Properties {
         public static System.Drawing.Bitmap mesa {
             get {
                 object obj = ResourceManager.GetObject("mesa", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap mesa1 {
+            get {
+                object obj = ResourceManager.GetObject("mesa1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

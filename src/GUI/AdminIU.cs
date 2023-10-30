@@ -2,6 +2,7 @@
 using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using Palacio_el_restaurante.src.Conection;
+using Palacio_el_restaurante.src.UI;
 using System;
 using System.Diagnostics;
 using System.Drawing;
@@ -10,6 +11,11 @@ using System.IO;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using IronXL;
+using Palacio_el_restaurante.src.Controls;
+using MySqlX.XDevAPI.Relational;
+using OfficeOpenXml;
+
 
 namespace Palacio_el_restaurante.src.GUI
 {
@@ -18,6 +24,7 @@ namespace Palacio_el_restaurante.src.GUI
         public int xClick = 0, yClick = 0;
         private InsertGUI insertForm;
         private int s = 0;
+        public String getRank { get; set; }
         private Stopwatch stopwatch = new Stopwatch();
         private int count = 0, countSQL = 0, countStaff = 0;
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -41,6 +48,7 @@ namespace Palacio_el_restaurante.src.GUI
             s2.Visible = false;
             s3.Visible = false;
             s4.Visible = false;
+            rjJob.Visible = false;
 
             fillBoxes();
             setHeader();
@@ -223,7 +231,7 @@ namespace Palacio_el_restaurante.src.GUI
 
             rjButtonSQL.Image = Properties.Resources.SQL_Off;
             rjPictureRounded2.Image = Properties.Resources.portapapeles;
-            rjPictureRounded3.Image = Properties.Resources.consulta;
+            rjButtonStaff.Image = Properties.Resources.consulta;
 
             sql();
         }
@@ -266,6 +274,7 @@ namespace Palacio_el_restaurante.src.GUI
             loginFrame.Show();
             this.Hide();
         }
+        private String cacheSQL = "";
 
         private void Execute_Click(object sender, EventArgs e)
         {
@@ -275,6 +284,7 @@ namespace Palacio_el_restaurante.src.GUI
                 MySqlConnection connection = conn.getConnection();
                 rjData.SetDatabaseConnection(connection);
                 rjData.ExecuteSqlQuery(rjSQL.GetAllText());
+                cacheSQL = rjSQL.GetAllText();  
                 rjSQL.Clear();
             }
             catch (Exception ex)
@@ -446,7 +456,15 @@ namespace Palacio_el_restaurante.src.GUI
 
         private void rjInsertPanel_Click(object sender, EventArgs e)
         {
-            insertForm.Show();
+            if(getRank == "Miguel")
+            {
+                insertForm.fillBoxSpecial();
+                insertForm.Show();
+            }
+            else
+            {
+                insertForm.Show();
+            }         
         }
 
         private void rjAutoStaff_Click(object sender, EventArgs e)
@@ -613,6 +631,100 @@ namespace Palacio_el_restaurante.src.GUI
                     break;
 
             }
+        }
+
+        private void pictureBox5_Click(object sender, EventArgs e)
+        {
+            foodV();
+        }
+        private void foodV()
+        {
+            FoodUI food = new FoodUI();
+            food.panelOrder.Visible = true;
+            food.panelRecord.Visible = true;
+            food.Show();
+            this.Hide();
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+            foodV();
+        }
+
+        private void rjRefresh_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            try
+            {            
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                rjData.SetDatabaseConnection(connection);
+                rjData.ExecuteSqlQuery($"SELECT consumible WHERE clurp LIKE={rjRefresh.Texts};");
+            }catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+           
+        }
+
+        private void rjJob_Click(object sender, EventArgs e)
+        {
+            FormM migue = new FormM();
+            migue.Show();
+        }
+        private void ExportToExcel_Click(object sender, EventArgs e)
+        {
+            InquiriesDB DB = new InquiriesDB();
+            DB.GetDataTable("SELECT * FROM consumible");
+        }
+
+
+        private void rjDataInv_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            GetAllCellValues();
+        }
+        private object CellsValues;
+
+        private void GetAllCellValues()
+        {
+            for (int row = 0; row < rjDataInv.Rows.Count; row++)
+            {
+                for (int col = 0; col < rjDataInv.Columns.Count; col++)
+                {
+                    object cellValue = rjDataInv.Rows[row].Cells[col].Value;
+                    if (cellValue != null)
+                    {
+                        CellsValues = cellValue;
+                        Console.WriteLine($"Valor de la celda en la fila {row}, columna {col}: {cellValue.ToString()}");
+                    }
+                }
+            }
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            InquiriesDB DB = new InquiriesDB();
+            DB.GetDataTable("SELECT * FROM usuario");
+        }
+
+        private void pictureBox7_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(rjSQL.GetAllText()))
+                {
+                    InquiriesDB DB = new InquiriesDB();
+                    DB.GetDataTable(rjSQL.GetAllText());
+                }
+                else
+                {
+                    InquiriesDB DB = new InquiriesDB();
+                    DB.GetDataTable(cacheSQL);
+                }
+            }catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)

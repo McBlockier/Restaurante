@@ -40,28 +40,39 @@
             this.SetDate = new System.Windows.Forms.Label();
             this.SetTime = new System.Windows.Forms.Label();
             this.panelinv = new System.Windows.Forms.Panel();
-            this.rjInsertPanel = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.ExportToExcel = new System.Windows.Forms.PictureBox();
+            this.adminFood = new System.Windows.Forms.PictureBox();
             this.Upload = new System.Windows.Forms.PictureBox();
-            this.rjExecuteIn = new Palacio_el_restaurante.src.Controls.RJButton();
-            this.rjSQLInv = new Palacio_el_restaurante.src.Controls.RJTextBoxSQL();
             this.label5 = new System.Windows.Forms.Label();
-            this.rjInventory = new Palacio_el_restaurante.src.Controls.RJComboBox();
-            this.rjDataInv = new Palacio_el_restaurante.src.Controls.RJDataGridView();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panelStaff = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.panelSQL = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.rjJob = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.rjInsertPanel = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.rjExecuteIn = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.rjSQLInv = new Palacio_el_restaurante.src.Controls.RJTextBoxSQL();
+            this.rjInventory = new Palacio_el_restaurante.src.Controls.RJComboBox();
+            this.rjDataInv = new Palacio_el_restaurante.src.Controls.RJDataGridView();
             this.rjAutoStaff = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjExecute = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjSQLStaff = new Palacio_el_restaurante.src.Controls.RJTextBoxSQL();
-            this.label6 = new System.Windows.Forms.Label();
             this.rjStaff = new Palacio_el_restaurante.src.Controls.RJComboBox();
             this.rjDataStaff = new Palacio_el_restaurante.src.Controls.RJDataGridView();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.panelSQL = new System.Windows.Forms.Panel();
+            this.rjRefresh = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             this.Execute = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjSQL = new Palacio_el_restaurante.src.Controls.RJTextBoxSQL();
-            this.label4 = new System.Windows.Forms.Label();
             this.rjData = new Palacio_el_restaurante.src.Controls.RJDataGridView();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rjPictureRounded6 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.rjPictureRounded4 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.leftPanel = new Palacio_el_restaurante.src.Controls.RjPanel();
@@ -74,23 +85,26 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.rjPictureRounded5 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
-            this.rjPictureRounded3 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.rjButtonStaff = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.rjPictureRounded2 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.rjButtonSQL = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.root.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.showBattery)).BeginInit();
             this.panelinv.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ExportToExcel)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adminFood)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Upload)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjDataInv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelStaff.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rjDataStaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             this.panelSQL.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rjData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjDataInv)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjDataStaff)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).BeginInit();
             this.leftPanel.SuspendLayout();
@@ -99,7 +113,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.s2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.s1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjButtonStaff)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjButtonSQL)).BeginInit();
             this.SuspendLayout();
@@ -208,6 +222,9 @@
             // 
             // panelinv
             // 
+            this.panelinv.Controls.Add(this.ExportToExcel);
+            this.panelinv.Controls.Add(this.rjJob);
+            this.panelinv.Controls.Add(this.adminFood);
             this.panelinv.Controls.Add(this.rjInsertPanel);
             this.panelinv.Controls.Add(this.Upload);
             this.panelinv.Controls.Add(this.rjExecuteIn);
@@ -216,11 +233,215 @@
             this.panelinv.Controls.Add(this.rjInventory);
             this.panelinv.Controls.Add(this.rjDataInv);
             this.panelinv.Controls.Add(this.pictureBox2);
-            this.panelinv.Location = new System.Drawing.Point(109, 28);
+            this.panelinv.Location = new System.Drawing.Point(109, 26);
             this.panelinv.Name = "panelinv";
-            this.panelinv.Size = new System.Drawing.Size(901, 674);
+            this.panelinv.Size = new System.Drawing.Size(901, 676);
             this.panelinv.TabIndex = 4;
             this.panelinv.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelinv_MouseMove);
+            // 
+            // ExportToExcel
+            // 
+            this.ExportToExcel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.ExportToExcel.Image = global::Palacio_el_restaurante.Properties.Resources.excel;
+            this.ExportToExcel.Location = new System.Drawing.Point(851, 265);
+            this.ExportToExcel.Name = "ExportToExcel";
+            this.ExportToExcel.Size = new System.Drawing.Size(39, 37);
+            this.ExportToExcel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ExportToExcel.TabIndex = 24;
+            this.ExportToExcel.TabStop = false;
+            this.ExportToExcel.Click += new System.EventHandler(this.ExportToExcel_Click);
+            // 
+            // adminFood
+            // 
+            this.adminFood.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.adminFood.Image = global::Palacio_el_restaurante.Properties.Resources.mesa1;
+            this.adminFood.Location = new System.Drawing.Point(532, 14);
+            this.adminFood.Name = "adminFood";
+            this.adminFood.Size = new System.Drawing.Size(38, 37);
+            this.adminFood.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.adminFood.TabIndex = 22;
+            this.adminFood.TabStop = false;
+            this.adminFood.Click += new System.EventHandler(this.pictureBox4_Click);
+            // 
+            // Upload
+            // 
+            this.Upload.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Upload.Image = global::Palacio_el_restaurante.Properties.Resources.foto_Off;
+            this.Upload.Location = new System.Drawing.Point(838, 8);
+            this.Upload.Name = "Upload";
+            this.Upload.Size = new System.Drawing.Size(50, 52);
+            this.Upload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Upload.TabIndex = 19;
+            this.Upload.TabStop = false;
+            this.Upload.Click += new System.EventHandler(this.Upload_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("FZYaoTi", 19.8F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(563, 89);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(210, 38);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "Consultations";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Palacio_el_restaurante.Properties.Resources.mysql;
+            this.pictureBox2.Location = new System.Drawing.Point(703, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(104, 101);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 20;
+            this.pictureBox2.TabStop = false;
+            // 
+            // panelStaff
+            // 
+            this.panelStaff.Controls.Add(this.pictureBox6);
+            this.panelStaff.Controls.Add(this.pictureBox5);
+            this.panelStaff.Controls.Add(this.rjAutoStaff);
+            this.panelStaff.Controls.Add(this.rjExecute);
+            this.panelStaff.Controls.Add(this.rjSQLStaff);
+            this.panelStaff.Controls.Add(this.label6);
+            this.panelStaff.Controls.Add(this.rjStaff);
+            this.panelStaff.Controls.Add(this.rjDataStaff);
+            this.panelStaff.Controls.Add(this.pictureBox3);
+            this.panelStaff.Location = new System.Drawing.Point(109, 27);
+            this.panelStaff.Name = "panelStaff";
+            this.panelStaff.Size = new System.Drawing.Size(904, 675);
+            this.panelStaff.TabIndex = 5;
+            this.panelStaff.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelStaff_MouseMove_1);
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox5.Image = global::Palacio_el_restaurante.Properties.Resources.mesa1;
+            this.pictureBox5.Location = new System.Drawing.Point(588, 12);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(38, 37);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 23;
+            this.pictureBox5.TabStop = false;
+            this.pictureBox5.Click += new System.EventHandler(this.pictureBox5_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("FZYaoTi", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.Location = new System.Drawing.Point(634, 78);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(210, 38);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Consultations";
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::Palacio_el_restaurante.Properties.Resources.mysql;
+            this.pictureBox3.Location = new System.Drawing.Point(765, 15);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(104, 101);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox3.TabIndex = 21;
+            this.pictureBox3.TabStop = false;
+            // 
+            // panelSQL
+            // 
+            this.panelSQL.Controls.Add(this.pictureBox7);
+            this.panelSQL.Controls.Add(this.label7);
+            this.panelSQL.Controls.Add(this.rjRefresh);
+            this.panelSQL.Controls.Add(this.Execute);
+            this.panelSQL.Controls.Add(this.rjSQL);
+            this.panelSQL.Controls.Add(this.label4);
+            this.panelSQL.Controls.Add(this.rjData);
+            this.panelSQL.Controls.Add(this.pictureBox1);
+            this.panelSQL.Location = new System.Drawing.Point(109, 27);
+            this.panelSQL.Name = "panelSQL";
+            this.panelSQL.Size = new System.Drawing.Size(901, 676);
+            this.panelSQL.TabIndex = 3;
+            this.panelSQL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelSQL_MouseMove_1);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
+            this.label7.Location = new System.Drawing.Point(613, 168);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 19);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "label7";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("FZYaoTi", 19.8F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(610, 88);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(210, 38);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Consultations";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Palacio_el_restaurante.Properties.Resources.mysql;
+            this.pictureBox1.Location = new System.Drawing.Point(771, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 107);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 17;
+            this.pictureBox1.TabStop = false;
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // timer2
+            // 
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox6.Image = global::Palacio_el_restaurante.Properties.Resources.excel;
+            this.pictureBox6.Location = new System.Drawing.Point(852, 226);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(39, 37);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 25;
+            this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
+            // 
+            // pictureBox7
+            // 
+            this.pictureBox7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox7.Image = global::Palacio_el_restaurante.Properties.Resources.excel;
+            this.pictureBox7.Location = new System.Drawing.Point(849, 291);
+            this.pictureBox7.Name = "pictureBox7";
+            this.pictureBox7.Size = new System.Drawing.Size(39, 37);
+            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox7.TabIndex = 25;
+            this.pictureBox7.TabStop = false;
+            this.pictureBox7.Click += new System.EventHandler(this.pictureBox7_Click);
+            // 
+            // rjJob
+            // 
+            this.rjJob.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjJob.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjJob.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.rjJob.BorderRadius = 15;
+            this.rjJob.BorderSize = 0;
+            this.rjJob.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjJob.FlatAppearance.BorderSize = 0;
+            this.rjJob.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rjJob.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
+            this.rjJob.ForeColor = System.Drawing.Color.White;
+            this.rjJob.Location = new System.Drawing.Point(210, 233);
+            this.rjJob.Name = "rjJob";
+            this.rjJob.Size = new System.Drawing.Size(120, 39);
+            this.rjJob.TabIndex = 23;
+            this.rjJob.Text = "Job";
+            this.rjJob.TextColor = System.Drawing.Color.White;
+            this.rjJob.UseVisualStyleBackColor = false;
+            this.rjJob.Click += new System.EventHandler(this.rjJob_Click);
             // 
             // rjInsertPanel
             // 
@@ -242,18 +463,6 @@
             this.rjInsertPanel.TextColor = System.Drawing.Color.White;
             this.rjInsertPanel.UseVisualStyleBackColor = false;
             this.rjInsertPanel.Click += new System.EventHandler(this.rjInsertPanel_Click);
-            // 
-            // Upload
-            // 
-            this.Upload.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Upload.Image = global::Palacio_el_restaurante.Properties.Resources.foto_Off;
-            this.Upload.Location = new System.Drawing.Point(838, 8);
-            this.Upload.Name = "Upload";
-            this.Upload.Size = new System.Drawing.Size(50, 52);
-            this.Upload.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Upload.TabIndex = 19;
-            this.Upload.TabStop = false;
-            this.Upload.Click += new System.EventHandler(this.Upload_Click);
             // 
             // rjExecuteIn
             // 
@@ -287,16 +496,6 @@
             this.rjSQLInv.Text = "";
             this.rjSQLInv.Click += new System.EventHandler(this.rjSQLInv_Click);
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("FZYaoTi", 19.8F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(563, 89);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(210, 38);
-            this.label5.TabIndex = 15;
-            this.label5.Text = "Consultations";
-            // 
             // rjInventory
             // 
             this.rjInventory.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -327,32 +526,8 @@
             this.rjDataInv.Size = new System.Drawing.Size(902, 367);
             this.rjDataInv.TabIndex = 0;
             this.rjDataInv.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.rjDataInv_CellClick);
+            this.rjDataInv.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.rjDataInv_CellMouseClick);
             this.rjDataInv.MouseMove += new System.Windows.Forms.MouseEventHandler(this.rjDataInv_MouseMove);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = global::Palacio_el_restaurante.Properties.Resources.mysql;
-            this.pictureBox2.Location = new System.Drawing.Point(703, 12);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(104, 101);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 20;
-            this.pictureBox2.TabStop = false;
-            // 
-            // panelStaff
-            // 
-            this.panelStaff.Controls.Add(this.rjAutoStaff);
-            this.panelStaff.Controls.Add(this.rjExecute);
-            this.panelStaff.Controls.Add(this.rjSQLStaff);
-            this.panelStaff.Controls.Add(this.label6);
-            this.panelStaff.Controls.Add(this.rjStaff);
-            this.panelStaff.Controls.Add(this.rjDataStaff);
-            this.panelStaff.Controls.Add(this.pictureBox3);
-            this.panelStaff.Location = new System.Drawing.Point(109, 27);
-            this.panelStaff.Name = "panelStaff";
-            this.panelStaff.Size = new System.Drawing.Size(904, 675);
-            this.panelStaff.TabIndex = 5;
-            this.panelStaff.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelStaff_MouseMove_1);
             // 
             // rjAutoStaff
             // 
@@ -407,16 +582,6 @@
             this.rjSQLStaff.Text = "";
             this.rjSQLStaff.Click += new System.EventHandler(this.rjSQLStaff_Click);
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("FZYaoTi", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(634, 78);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(210, 38);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Consultations";
-            // 
             // rjStaff
             // 
             this.rjStaff.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -448,28 +613,28 @@
             this.rjDataStaff.TabIndex = 0;
             this.rjDataStaff.MouseMove += new System.Windows.Forms.MouseEventHandler(this.rjDataStaff_MouseMove_1);
             // 
-            // pictureBox3
+            // rjRefresh
             // 
-            this.pictureBox3.Image = global::Palacio_el_restaurante.Properties.Resources.mysql;
-            this.pictureBox3.Location = new System.Drawing.Point(765, 15);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(104, 101);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox3.TabIndex = 21;
-            this.pictureBox3.TabStop = false;
-            // 
-            // panelSQL
-            // 
-            this.panelSQL.Controls.Add(this.Execute);
-            this.panelSQL.Controls.Add(this.rjSQL);
-            this.panelSQL.Controls.Add(this.label4);
-            this.panelSQL.Controls.Add(this.rjData);
-            this.panelSQL.Controls.Add(this.pictureBox1);
-            this.panelSQL.Location = new System.Drawing.Point(109, 27);
-            this.panelSQL.Name = "panelSQL";
-            this.panelSQL.Size = new System.Drawing.Size(901, 676);
-            this.panelSQL.TabIndex = 3;
-            this.panelSQL.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelSQL_MouseMove_1);
+            this.rjRefresh.BackColor = System.Drawing.SystemColors.Window;
+            this.rjRefresh.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjRefresh.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.rjRefresh.BorderRadius = 0;
+            this.rjRefresh.BorderSize = 2;
+            this.rjRefresh.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rjRefresh.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.rjRefresh.Location = new System.Drawing.Point(617, 207);
+            this.rjRefresh.Margin = new System.Windows.Forms.Padding(4);
+            this.rjRefresh.Multiline = false;
+            this.rjRefresh.Name = "rjRefresh";
+            this.rjRefresh.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.rjRefresh.PasswordChar = false;
+            this.rjRefresh.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.rjRefresh.PlaceholderText = "";
+            this.rjRefresh.Size = new System.Drawing.Size(250, 35);
+            this.rjRefresh.TabIndex = 18;
+            this.rjRefresh.Texts = "";
+            this.rjRefresh.UnderlinedStyle = false;
+            this.rjRefresh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rjRefresh_KeyPress);
             // 
             // Execute
             // 
@@ -503,16 +668,6 @@
             this.rjSQL.Text = "";
             this.rjSQL.Click += new System.EventHandler(this.rjSQL_Click);
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("FZYaoTi", 19.8F, System.Drawing.FontStyle.Bold);
-            this.label4.Location = new System.Drawing.Point(588, 116);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(210, 38);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Consultations";
-            // 
             // rjData
             // 
             this.rjData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -523,16 +678,6 @@
             this.rjData.Size = new System.Drawing.Size(893, 341);
             this.rjData.TabIndex = 0;
             this.rjData.MouseMove += new System.Windows.Forms.MouseEventHandler(this.rjData_MouseMove_1);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Palacio_el_restaurante.Properties.Resources.mysql;
-            this.pictureBox1.Location = new System.Drawing.Point(744, 58);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 107);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 17;
-            this.pictureBox1.TabStop = false;
             // 
             // rjPictureRounded6
             // 
@@ -585,7 +730,7 @@
             this.leftPanel.Controls.Add(this.label1);
             this.leftPanel.Controls.Add(this.label21);
             this.leftPanel.Controls.Add(this.rjPictureRounded5);
-            this.leftPanel.Controls.Add(this.rjPictureRounded3);
+            this.leftPanel.Controls.Add(this.rjButtonStaff);
             this.leftPanel.Controls.Add(this.rjPictureRounded2);
             this.leftPanel.Controls.Add(this.rjButtonSQL);
             this.leftPanel.Location = new System.Drawing.Point(2, 4);
@@ -716,23 +861,23 @@
             this.rjPictureRounded5.TabStop = false;
             this.rjPictureRounded5.Click += new System.EventHandler(this.rjPictureRounded5_Click);
             // 
-            // rjPictureRounded3
+            // rjButtonStaff
             // 
-            this.rjPictureRounded3.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.rjPictureRounded3.BorderColor = System.Drawing.Color.RoyalBlue;
-            this.rjPictureRounded3.BorderColor2 = System.Drawing.Color.HotPink;
-            this.rjPictureRounded3.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.rjPictureRounded3.BorderSize = 2;
-            this.rjPictureRounded3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rjPictureRounded3.GradientAngle = 50F;
-            this.rjPictureRounded3.Image = global::Palacio_el_restaurante.Properties.Resources.consulta;
-            this.rjPictureRounded3.Location = new System.Drawing.Point(13, 399);
-            this.rjPictureRounded3.Name = "rjPictureRounded3";
-            this.rjPictureRounded3.Size = new System.Drawing.Size(66, 66);
-            this.rjPictureRounded3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.rjPictureRounded3.TabIndex = 3;
-            this.rjPictureRounded3.TabStop = false;
-            this.rjPictureRounded3.Click += new System.EventHandler(this.rjPictureRounded3_Click);
+            this.rjButtonStaff.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.rjButtonStaff.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.rjButtonStaff.BorderColor2 = System.Drawing.Color.HotPink;
+            this.rjButtonStaff.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rjButtonStaff.BorderSize = 2;
+            this.rjButtonStaff.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjButtonStaff.GradientAngle = 50F;
+            this.rjButtonStaff.Image = global::Palacio_el_restaurante.Properties.Resources.consulta;
+            this.rjButtonStaff.Location = new System.Drawing.Point(13, 399);
+            this.rjButtonStaff.Name = "rjButtonStaff";
+            this.rjButtonStaff.Size = new System.Drawing.Size(66, 66);
+            this.rjButtonStaff.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.rjButtonStaff.TabIndex = 3;
+            this.rjButtonStaff.TabStop = false;
+            this.rjButtonStaff.Click += new System.EventHandler(this.rjPictureRounded3_Click);
             // 
             // rjPictureRounded2
             // 
@@ -770,14 +915,6 @@
             this.rjButtonSQL.TabStop = false;
             this.rjButtonSQL.Click += new System.EventHandler(this.rjPictureRounded1_Click);
             // 
-            // timer1
-            // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // timer2
-            // 
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
             // AdminIU
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -794,17 +931,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.showBattery)).EndInit();
             this.panelinv.ResumeLayout(false);
             this.panelinv.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ExportToExcel)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.adminFood)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Upload)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjDataInv)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelStaff.ResumeLayout(false);
             this.panelStaff.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rjDataStaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.panelSQL.ResumeLayout(false);
             this.panelSQL.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.rjData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjDataInv)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjDataStaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjData)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).EndInit();
             this.leftPanel.ResumeLayout(false);
@@ -814,7 +956,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.s2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.s1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjButtonStaff)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjButtonSQL)).EndInit();
             this.ResumeLayout(false);
@@ -824,9 +966,7 @@
         #endregion
 
         private Controls.RjPanel leftPanel;
-        private Controls.RJPictureRounded rjButtonSQL;
         private Controls.RJPictureRounded rjPictureRounded5;
-        private Controls.RJPictureRounded rjPictureRounded3;
         private Controls.RJPictureRounded rjPictureRounded2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -835,18 +975,12 @@
         private System.Windows.Forms.Panel root;
         private Controls.RJPictureRounded rjPictureRounded4;
         private Controls.RJPictureRounded rjPictureRounded6;
-        private System.Windows.Forms.Panel panelSQL;
-        private Controls.RJPictureRounded s2;
-        private Controls.RJPictureRounded s1;
         private Controls.RJPictureRounded s4;
         private Controls.RJPictureRounded s3;
         private Controls.RJDataGridView rjData;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Panel panelinv;
         private System.Windows.Forms.Label label5;
-        private Controls.RJComboBox rjInventory;
         public Controls.RJDataGridView rjDataInv;
-        private System.Windows.Forms.Panel panelStaff;
         private System.Windows.Forms.Label label6;
         private Controls.RJComboBox rjStaff;
         private Controls.RJDataGridView rjDataStaff;
@@ -855,8 +989,6 @@
         private Controls.RJTextBoxSQL rjSQLInv;
         private Controls.RJTextBoxSQL rjSQLStaff;
         private Controls.RJButton rjExecute;
-        private Controls.RJButton rjExecuteIn;
-        private System.Windows.Forms.PictureBox Upload;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
@@ -867,10 +999,29 @@
         private System.Windows.Forms.Label time;
         private System.Windows.Forms.Label date;
         private System.Windows.Forms.Timer timer1;
-        private Controls.RJButton rjInsertPanel;
         private Controls.RJButton rjAutoStaff;
         private System.Windows.Forms.PictureBox showBattery;
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.Label percent;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Label label7;
+        private Controls.RJTextBoxRounded rjRefresh;
+        public System.Windows.Forms.Panel panelinv;
+        public System.Windows.Forms.Panel panelSQL;
+        public System.Windows.Forms.Panel panelStaff;
+        internal Controls.RJPictureRounded rjButtonSQL;
+        internal Controls.RJPictureRounded rjButtonStaff;
+        internal Controls.RJPictureRounded s2;
+        internal Controls.RJPictureRounded s1;
+        internal Controls.RJButton rjJob;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.PictureBox pictureBox7;
+        internal Controls.RJButton rjExecuteIn;
+        internal Controls.RJButton rjInsertPanel;
+        internal System.Windows.Forms.PictureBox ExportToExcel;
+        internal System.Windows.Forms.PictureBox Upload;
+        internal System.Windows.Forms.PictureBox adminFood;
+        internal Controls.RJComboBox rjInventory;
     }
 }

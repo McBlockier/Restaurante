@@ -1,4 +1,7 @@
-﻿using System;
+﻿using CustomMessageBox;
+using MySql.Data.MySqlClient;
+using Palacio_el_restaurante.src.Conection;
+using System;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -23,6 +26,7 @@ namespace Palacio_el_restaurante.src.GUI
             InitializeComponent();
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
+            orders();
         }
 
         private void rjPictureRounded4_Click(object sender, EventArgs e)
@@ -53,5 +57,36 @@ namespace Palacio_el_restaurante.src.GUI
             else
             { this.Left = this.Left + (e.X - xClick); this.Top = this.Top + (e.Y - yClick); }
         }
+
+        private void rjDone_Click(object sender, EventArgs e)
+        {
+            DialogResult result = RJMessageBox.Show("Do you wanna make this?", "QUESTION",
+                                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result.Equals(DialogResult.Yes))
+            {
+                try
+                {
+                    rjDataOrders.DataSource = null;
+                }
+                catch (Exception)
+                {
+
+                }
+            }        
+        }
+
+        private void orders()
+        {
+            try {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                rjDataOrders.SetDatabaseConnection(connection);
+                rjDataOrders.ExecuteSqlQuery("SELECT c.nombre AS NombreConsumible, \r\n       v.cantidad AS CantidadVendida, \r\n       v.fecha AS FechaVenta, \r\n       c.precio AS PrecioUnitario\r\nFROM venta AS v\r\nINNER JOIN consumible AS c ON v.idPlato = c.clurp;\r\n");
+            
+            }catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
     }
 }
