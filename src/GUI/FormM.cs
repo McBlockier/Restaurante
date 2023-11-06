@@ -1,16 +1,8 @@
 ﻿using CustomMessageBox;
-using Microsoft.Win32;
 using MySql.Data.MySqlClient;
 using Palacio_el_restaurante.src.Conection;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.GUI
@@ -20,6 +12,10 @@ namespace Palacio_el_restaurante.src.GUI
         public int xClick = 0, yClick = 0;
         private int contadorAperturas = 0;
         private PediProve pediProve;
+        private int countHover = 0;
+        private int cSMS = 0;
+        private String cacheSQL = "";
+        public String getUserName { get; set; }
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
      (
@@ -43,7 +39,7 @@ namespace Palacio_el_restaurante.src.GUI
             MySqlConnection connection = con.getConnection();
             try
             {
-                
+
                 rjDataV.SetDatabaseConnection(connection);
                 rjDataV.ExecuteSqlQuery("SELECT * FROM venta");
 
@@ -53,21 +49,40 @@ namespace Palacio_el_restaurante.src.GUI
             }
             catch (Exception ex)
             {
-                Console.WriteLine (ex.Message);
+                Console.WriteLine(ex.Message);
             }
-        }      
+        }
         private void rjButton1_Click(object sender, EventArgs e)
         {
-            if (contadorAperturas < 2)
-            {
-                if (pediProve == null || pediProve.IsDisposed)
-                {
-                    pediProve = new PediProve();
-                    pediProve.fillBoxV();
-                }
 
-                pediProve.Show();
-                contadorAperturas++;
+            if (getUserName != "Miguel" || getUserName != "Jesus")
+            {
+
+                if (contadorAperturas < 2)
+                {
+                    if (pediProve == null || pediProve.IsDisposed)
+                    {
+                        pediProve = new PediProve();
+                        pediProve.boxesAdmin();
+                    }
+
+                    pediProve.Show();
+                    contadorAperturas++;
+                }
+            }
+            else
+            {
+                if (contadorAperturas < 2)
+                {
+                    if (pediProve == null || pediProve.IsDisposed)
+                    {
+                        pediProve = new PediProve();
+                        pediProve.fillBoxV();
+                    }
+
+                    pediProve.Show();
+                    contadorAperturas++;
+                }
             }
         }
 
@@ -89,24 +104,126 @@ namespace Palacio_el_restaurante.src.GUI
 
         private void rjButton_pe_Click(object sender, EventArgs e)
         {
-            DialogResult result = RJMessageBox.Show("You are about to modify or alter something about the entity, " +
-                "this action cannot be reversed. Continue?", "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result.Equals(DialogResult.Yes))
+            if (cSMS == 0)
             {
-                try
+                cSMS = 1;
+                DialogResult result = RJMessageBox.Show("You are accessing full control, the actions cannot be undone," +
+                   " once executed. Do you want to continue?", "WARNING", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result.Equals(DialogResult.Yes))
                 {
-                    Connection con = new Connection();
-                    MySqlConnection connection = con.getConnection();
-                    rjDataPe.SetDatabaseConnection(connection);
-                    rjDataPe.ExecuteSqlQuery(rjPe.GetAllText());
+                    rjPe.ReadOnly = false;
+                    if (!String.IsNullOrEmpty(rjPe.GetAllText()))
+                    {
+                        DialogResult result2 = RJMessageBox.Show("You are about to modify or alter something about the entity, " +
+                            "this action cannot be reversed. Continue?", "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+                        if (result2.Equals(DialogResult.Yes))
+                        {
+                            try
+                            {
+                                Connection con = new Connection();
+                                MySqlConnection connection = con.getConnection();
+                                rjDataPe.SetDatabaseConnection(connection);
+                                rjDataPe.ExecuteSqlQuery(rjPe.GetAllText());
+                                cacheSQL = rjPe.GetAllText();
+
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.Message);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        RJMessageBox.Show("There is no SQL statement to execute", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.WriteLine(ex.Message);
+                    rjPe.ReadOnly = true;
                 }
-            }     
+            }
+            else
+            {
+
+                if (!String.IsNullOrEmpty(rjPe.GetAllText()))
+                {
+
+                    try
+                    {
+                        Connection con = new Connection();
+                        MySqlConnection connection = con.getConnection();
+                        rjDataPe.SetDatabaseConnection(connection);
+                        rjDataPe.ExecuteSqlQuery(rjPe.GetAllText());
+                        cacheSQL = rjPe.GetAllText();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+                else
+                {
+                    RJMessageBox.Show("There is no SQL statement to execute", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+
+        private void rjV_TextChanged(object sender, EventArgs e)
+        {
+            RJMessageBox.Show("You are accessing full control, the actions cannot be undone," +
+            " once executed", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            rjV.ReadOnly = true;
+        }
+
+        private void panel1_MouseHover(object sender, EventArgs e)
+        {
+            if (countHover == 0)
+            {
+                countHover++;
+                rjBPe.Focus();
+            }
+            else
+            {
+                countHover--;
+                rjButton_V.Focus();
+            }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!String.IsNullOrEmpty(cacheSQL))
+                {
+                    InquiriesDB DB = new InquiriesDB();
+                    DB.GetDataTable(cacheSQL);
+                }
+                else
+                {
+                    InquiriesDB DB = new InquiriesDB();
+                    DB.GetDataTable("SELECT * FROM pedidoprove");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ExportToExcel_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                InquiriesDB DB = new InquiriesDB();
+                DB.GetDataTable("SELECT * FROM pedidoprove");
+            }
+            catch (Exception ex) { Console.WriteLine(ex.Message); }
         }
 
         private void FormM_MouseMove(object sender, MouseEventArgs e)

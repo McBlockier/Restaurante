@@ -544,4 +544,16 @@
   <data name="excel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\src\Img\excel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="desconocido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\desconocido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="alimento" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\alimento.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sale" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\sale.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="bateria_llena" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\src\Img\bateria-llena.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

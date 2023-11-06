@@ -622,6 +622,7 @@
     <None Include="src\Img\wallpaper_blue.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="src\Img\sale.gif" />
     <None Include="src\Img\SQL_Off.jpg" />
     <None Include="src\Img\trabajo-en-progreso.gif" />
     <None Include="src\Img\setConnection.png" />
@@ -682,6 +683,8 @@
     <None Include="src\Img\30%25.png" />
     <None Include="src\Img\50%25.png" />
     <None Include="src\Img\80%25.png" />
+    <None Include="src\Img\alimento.gif" />
+    <None Include="src\Img\bateria-llena.png" />
     <Content Include="src\Img\chat.png" />
     <None Include="src\Img\contrasena.gif" />
     <None Include="src\Img\conexion.gif" />
@@ -695,6 +698,7 @@
     <None Include="src\Img\envio.gif" />
     <None Include="src\Img\desplazarse.gif" />
     <None Include="src\Img\Consult_Off.jpg" />
+    <None Include="src\Img\desconocido.png" />
     <Content Include="src\Img\error.png" />
     <None Include="src\Img\espaguetis.gif" />
     <None Include="src\Img\excel.png" />

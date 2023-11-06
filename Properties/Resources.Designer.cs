@@ -143,6 +143,16 @@ namespace Palacio_el_restaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap alimento {
+            get {
+                object obj = ResourceManager.GetObject("alimento", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap alojamiento {
             get {
                 object obj = ResourceManager.GetObject("alojamiento", resourceCulture);
@@ -186,6 +196,16 @@ namespace Palacio_el_restaurante.Properties {
         public static System.Drawing.Bitmap bases_de_datos {
             get {
                 object obj = ResourceManager.GetObject("bases_de_datos", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap bateria_llena {
+            get {
+                object obj = ResourceManager.GetObject("bateria_llena", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -482,6 +502,16 @@ namespace Palacio_el_restaurante.Properties {
         public static string CustomMessageBox {
             get {
                 return ResourceManager.GetString("CustomMessageBox", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap desconocido {
+            get {
+                object obj = ResourceManager.GetObject("desconocido", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -1261,6 +1291,16 @@ namespace Palacio_el_restaurante.Properties {
         public static System.Drawing.Bitmap RGB_button {
             get {
                 object obj = ResourceManager.GetObject("RGB_button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap sale {
+            get {
+                object obj = ResourceManager.GetObject("sale", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

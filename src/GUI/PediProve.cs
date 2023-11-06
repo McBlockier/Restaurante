@@ -28,6 +28,16 @@ namespace Palacio_el_restaurante.src.GUI
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
         }
+
+        public void boxesAdmin()
+        {
+            rjPe.Items.Clear();
+            rjPe.Items.Add("Update");
+            rjPe.Items.Add("Delete");
+            rjPe.Items.Add("Add Up");
+            rjDelete.Visible = true;
+            rjDelete.Enabled = true;
+        }
         public void fillBoxV()
         {
             rjPe.Items.Clear();
@@ -56,61 +66,74 @@ namespace Palacio_el_restaurante.src.GUI
         }
         private void rjAdd_Click(object sender, EventArgs e)
         {
-            string contra = getContra.Text;
-            string idPed = getIdPed.Text;
-            string repNam = getNam.Text;
-            InquiriesDB Db = new InquiriesDB();
-            bool success = Db.AcctionProve("Add Up", contra, idPed, repNam);
+            DialogResult result = RJMessageBox.Show("Are you sure to do it?", "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result.Equals(DialogResult.Yes))
+            {
+                string contra = getContra.Texts;
+                string idPed = getIdPed.Texts;
+                string repNam = getNam.Texts;
+                InquiriesDB Db = new InquiriesDB();
+                bool success = Db.AcctionProve("Add Up", contra, idPed, repNam);
 
-            if (success)
-            {
-                RJMessageBox.Show("Éxito", "El registro se ha agregado correctamente.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                getContra.Text = "";
-                getIdPed.Text = "";
-                getNam.Text = "";
-            }
-            else
-            {
-                RJMessageBox.Show("Error", "Hubo un problema al agregar el registro.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (success)
+                {
+                    RJMessageBox.Show("Éxito", "El registro se ha agregado correctamente.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    getContra.Texts = "";
+                    getIdPed.Texts = "";
+                    getNam.Texts = "";
+                }
+                else
+                {
+                    RJMessageBox.Show("Error", "Hubo un problema al agregar el registro.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void rjUpdate_Click(object sender, EventArgs e)
         {
-            string contra = getContra.Text;
-            string idPed = getIdPed.Text;
-            string repNam = getNam.Text;
-            InquiriesDB Db = new InquiriesDB();
-            bool success = Db.AcctionProve("Update", contra, idPed, repNam);
-
-            if (success)
+            DialogResult result = RJMessageBox.Show("Are you sure to do it?", "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result.Equals(DialogResult.Yes))
             {
-                RJMessageBox.Show("Éxito", "El registro se ha actualizado correctamente.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string contra = getContra.Texts;
+                string idPed = getIdPed.Texts;
+                string repNam = getNam.Texts;
+                InquiriesDB Db = new InquiriesDB();
+                bool success = Db.AcctionProve("Update", contra, idPed, repNam);
 
-                getContra.Text = "";
-                getIdPed.Text = "";
-                getNam.Text = "";
-            }
-            else
-            {
-                RJMessageBox.Show("Error", "Hubo un problema al actualizar el registro.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (success)
+                {
+                    RJMessageBox.Show("Éxito", "El registro se ha actualizado correctamente.", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    getContra.Texts = "";
+                    getIdPed.Texts = "";
+                    getNam.Texts = "";
+                }
+                else
+                {
+                    RJMessageBox.Show("Error", "Hubo un problema al actualizar el registro.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
         private void rjDelete_Click(object sender, EventArgs e)
         {
-            string contra = getContra.Text;
-            InquiriesDB Db = new InquiriesDB();
-            bool success = Db.AcctionProve("Delete", contra, "", "");
 
-            if (success)
+            DialogResult result = RJMessageBox.Show("Are you sure to do it?", "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result.Equals(DialogResult.Yes))
             {
-                RJMessageBox.Show("Éxito", "El registro se ha eliminado correctamente.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                getContra.Text = "";
-            }
-            else
-            {
-                RJMessageBox.Show("Error", "Hubo un problema al eliminar el registro.", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                string contra = getContra.Texts;
+                InquiriesDB Db = new InquiriesDB();
+                bool success = Db.AcctionProve("Delete", contra, "", "");
+
+                if (success)
+                {
+                    RJMessageBox.Show("It has been successfully removed", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    getContra.Texts = "";
+                }
+                else
+                {
+                    RJMessageBox.Show("An error occurred when deleting the record", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

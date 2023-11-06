@@ -950,7 +950,7 @@ namespace Palacio_el_restaurante.src.Conection
             switch (Operation)
             {
                 case "Update":
-                    string updateQuery = "UPDATE pedidoprove SET repNam = @repNam WHERE contra = @contra AND idPed = @idPed";
+                    string updateQuery = "UPDATE pedidoprove SET repNam = @repNam, idPed = @idPed WHERE contra = @contra";
                     cmd.CommandText = updateQuery;
                     cmd.Parameters.AddWithValue("@repNam", repNam);
                     cmd.Parameters.AddWithValue("@contra", Contra);

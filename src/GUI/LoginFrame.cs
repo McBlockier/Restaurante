@@ -262,6 +262,7 @@ namespace Palacio_el_restaurante
                         adminUI.s2.Visible = true;
                         adminUI.getRank = "Miguel";
                         adminUI.rjJob.Visible = true;
+                        adminUI.loadDataAdmin("Miguel");
                         adminUI.Show();
                         this.Hide();
                         break;
@@ -277,6 +278,7 @@ namespace Palacio_el_restaurante
                         adminUI2.rjButtonSQL.Enabled = false;
                         adminUI2.rjButtonStaff.Enabled = false;
                         adminUI2.panelinv.Visible = true;
+                        adminUI2.loadDataAdmin("Jesus");
                         adminUI2.Show();
                         this.Hide();
                         break;
@@ -299,6 +301,7 @@ namespace Palacio_el_restaurante
                             AdminIU adminFrame = new AdminIU();
                             if (status)
                             {
+                                adminFrame.loadDataAdmin("Alexis");
                                 adminFrame.Show();
                                 this.Hide();
                             }                          

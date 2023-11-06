@@ -22,6 +22,8 @@ namespace Palacio_el_restaurante.src.Conection
         private ConnectionInfo info;
         private Boolean valueUser = false;
         private String setConnectionUser = "";
+        private String pwd = "";
+        
 
         public Connection()
         {
@@ -34,22 +36,40 @@ namespace Palacio_el_restaurante.src.Conection
                 switch (userName)
                 {
                     case "Miguel":
-                        setConnectionUser = "Server=localhost;Database=palacio;User ID=Miguel;Password=root;";
+                        setConnectionUser = $"Server=localhost;Database=palacio;User ID={userName};Password={pwd};";
                         valueUser = true;
                         break;
                     case "Jesus":
-                        setConnectionUser = "Server=localhost;Database=palacio;User ID=Jesus;Password=root;";
+                        setConnectionUser = $"Server=localhost;Database=palacio;User ID= {userName};Password={pwd};";
                         valueUser = true;
                         break;
                 }
             }catch(Exception ex)
             {
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(ex.Message);
             }            
          }
         public async void InitializeConnectionInfoAsync()
         {
             info = await valuesConnection();
+           
+        }
+        private void a()
+        {
+            SetConnectionUser("Miguel");
+            SetConnectionUser("Miguel");
+            SetConnectionUser("Miguel");
+            SetConnectionUser("Miguel");
+            SetConnectionUser("Miguel");
+            SetConnectionUser("Miguel");
+            SetConnectionUser("Miguel");
+            SetConnectionUser("Miguel");
+            SetConnectionUser("Miguel");
+            SetConnectionUser("Miguel");
+            SetConnectionUser("Miguel");
+            SetConnectionUser("Miguel");
+            SetConnectionUser("Miguel");
         }
 
         private async Task<ConnectionInfo> valuesConnection()

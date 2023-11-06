@@ -9,12 +9,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using IronXL;
-using Palacio_el_restaurante.src.Controls;
-using MySqlX.XDevAPI.Relational;
-using OfficeOpenXml;
 
 
 namespace Palacio_el_restaurante.src.GUI
@@ -24,6 +19,9 @@ namespace Palacio_el_restaurante.src.GUI
         public int xClick = 0, yClick = 0;
         private InsertGUI insertForm;
         private int s = 0;
+        private PediProve pedi;
+        private String getUserName;
+        private String cacheSQL = "";
         public String getRank { get; set; }
         private Stopwatch stopwatch = new Stopwatch();
         private int count = 0, countSQL = 0, countStaff = 0;
@@ -57,8 +55,8 @@ namespace Palacio_el_restaurante.src.GUI
             SubscribeEventArgs();
 
             timer2.Interval = 1000;
-            showBattery.Visible = false;         
-            
+            showBattery.Visible = false;
+
         }
         private void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
         {
@@ -68,13 +66,14 @@ namespace Palacio_el_restaurante.src.GUI
                 {
                     UpdateBatteryIcon();
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
         }
 
-        private  void UpdateBatteryIcon()
+        private void UpdateBatteryIcon()
         {
             try
             {
@@ -89,6 +88,10 @@ namespace Palacio_el_restaurante.src.GUI
                 {
                     int batteryPercentage = (int)(SystemInformation.PowerStatus.BatteryLifePercent * 100);
                     percent.Text = batteryPercentage.ToString() + "%";
+                    if(batteryPercentage >= 90)
+                    {
+                        showBattery.Image = Properties.Resources.bateria_llena;
+                    }
                     if (batteryPercentage >= 80)
                     {
                         showBattery.Image = Properties.Resources._80_;
@@ -110,7 +113,8 @@ namespace Palacio_el_restaurante.src.GUI
                         showBattery.Visible = false;
                     }
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
                     System.Windows.Forms.MessageBoxIcon.Error);
@@ -155,7 +159,7 @@ namespace Palacio_el_restaurante.src.GUI
             rjInventory.Items.Add("Total de ventas de consumibles");
             rjInventory.Items.Add("Consumibles que no se han vendido");
             rjInventory.Items.Add("Consumibles más caro");
-           
+
 
             rjStaff.Items.Clear();
             rjStaff.Items.Add("Empleado del mes");
@@ -274,8 +278,7 @@ namespace Palacio_el_restaurante.src.GUI
             loginFrame.Show();
             this.Hide();
         }
-        private String cacheSQL = "";
-
+        
         private void Execute_Click(object sender, EventArgs e)
         {
             try
@@ -284,7 +287,7 @@ namespace Palacio_el_restaurante.src.GUI
                 MySqlConnection connection = conn.getConnection();
                 rjData.SetDatabaseConnection(connection);
                 rjData.ExecuteSqlQuery(rjSQL.GetAllText());
-                cacheSQL = rjSQL.GetAllText();  
+                cacheSQL = rjSQL.GetAllText();
                 rjSQL.Clear();
             }
             catch (Exception ex)
@@ -380,7 +383,6 @@ namespace Palacio_el_restaurante.src.GUI
             bmp.MakeTransparent(Color.White);
             return bmp;
         }
-
         private void rjExecuteIn_Click(object sender, EventArgs e)
         {
             try
@@ -456,7 +458,7 @@ namespace Palacio_el_restaurante.src.GUI
 
         private void rjInsertPanel_Click(object sender, EventArgs e)
         {
-            if(getRank == "Miguel")
+            if (getRank == "Miguel")
             {
                 insertForm.fillBoxSpecial();
                 insertForm.Show();
@@ -464,7 +466,7 @@ namespace Palacio_el_restaurante.src.GUI
             else
             {
                 insertForm.Show();
-            }         
+            }
         }
 
         private void rjAutoStaff_Click(object sender, EventArgs e)
@@ -493,6 +495,18 @@ namespace Palacio_el_restaurante.src.GUI
         private void AdminIU_Load(object sender, EventArgs e)
         {
             timer2.Start();
+        }
+
+        public void loadDataAdmin(String username)
+        {
+            getUserName = username;
+            setName.Text = username;
+            setPorfile.Image = Properties.Resources.desconocido;
+            if (username == "Alexis")
+            {
+                rjJob.Visible = true;
+
+            }
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -599,7 +613,7 @@ namespace Palacio_el_restaurante.src.GUI
             MySqlConnection connection = con.getConnection();
             switch (rjStaff.SelectedItem as String)
             {
-                case "Empleado del mes":                   
+                case "Empleado del mes":
                     rjDataStaff.SetDatabaseConnection(connection);
                     rjDataStaff.ExecuteSqlQuery("SELECT v.Idemple AS IdEmpleado, c.nombre AS NombrePlato, c.tipo AS TipoPlato, v.cantidad, (c.precio * v.cantidad) AS MontoGenerado\r\nFROM venta v, consumible c\r\nWHERE v.idPlato = c.clurp AND v.Idemple = (SELECT Idemple FROM venta GROUP BY Idemple ORDER BY SUM(cantidad) DESC LIMIT 1);");
                     connection.Close();
@@ -654,21 +668,23 @@ namespace Palacio_el_restaurante.src.GUI
         private void rjRefresh_KeyPress(object sender, KeyPressEventArgs e)
         {
             try
-            {            
+            {
                 Connection con = new Connection();
                 MySqlConnection connection = con.getConnection();
                 rjData.SetDatabaseConnection(connection);
                 rjData.ExecuteSqlQuery($"SELECT consumible WHERE clurp LIKE={rjRefresh.Texts};");
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
-           
+
         }
 
         private void rjJob_Click(object sender, EventArgs e)
         {
             FormM migue = new FormM();
+            migue.getUserName = this.getUserName;
             migue.Show();
         }
         private void ExportToExcel_Click(object sender, EventArgs e)
@@ -676,8 +692,6 @@ namespace Palacio_el_restaurante.src.GUI
             InquiriesDB DB = new InquiriesDB();
             DB.GetDataTable("SELECT * FROM consumible");
         }
-
-
         private void rjDataInv_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             GetAllCellValues();
@@ -720,13 +734,13 @@ namespace Palacio_el_restaurante.src.GUI
                     InquiriesDB DB = new InquiriesDB();
                     DB.GetDataTable(cacheSQL);
                 }
-            }catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-        }
 
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             TimeSpan tiempoTranscurrido = stopwatch.Elapsed;

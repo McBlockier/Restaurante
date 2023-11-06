@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InsertGUI));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.time = new System.Windows.Forms.Label();
             this.rjPictureRounded6 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.rjDelete = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjUpdate = new Palacio_el_restaurante.src.Controls.RJButton();
+            this.label2 = new System.Windows.Forms.Label();
             this.rjType = new Palacio_el_restaurante.src.Controls.RJComboBox();
             this.getDescription = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             this.getPrice = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
             this.getName = new Palacio_el_restaurante.src.Controls.RJTextBoxRounded();
+            this.label1 = new System.Windows.Forms.Label();
             this.rjPictureRounded2 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
+            this.time = new System.Windows.Forms.Label();
             this.rjOperation = new Palacio_el_restaurante.src.Controls.RJComboBox();
             this.rjInsert = new Palacio_el_restaurante.src.Controls.RJButton();
             this.rjPictureRounded4 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
@@ -71,36 +71,6 @@
             this.panel1.Size = new System.Drawing.Size(540, 427);
             this.panel1.TabIndex = 0;
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(51, 96);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(55, 25);
-            this.label2.TabIndex = 22;
-            this.label2.Text = "Type";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(95, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 27);
-            this.label1.TabIndex = 15;
-            this.label1.Text = "Inventory";
-            // 
-            // time
-            // 
-            this.time.AutoSize = true;
-            this.time.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.time.Location = new System.Drawing.Point(278, 96);
-            this.time.Name = "time";
-            this.time.Size = new System.Drawing.Size(103, 25);
-            this.time.TabIndex = 11;
-            this.time.Text = "Operation";
             // 
             // rjPictureRounded6
             // 
@@ -161,6 +131,16 @@
             this.rjUpdate.TextColor = System.Drawing.Color.White;
             this.rjUpdate.UseVisualStyleBackColor = false;
             this.rjUpdate.Click += new System.EventHandler(this.rjUpdate_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(51, 96);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(55, 25);
+            this.label2.TabIndex = 22;
+            this.label2.Text = "Type";
             // 
             // rjType
             // 
@@ -247,6 +227,16 @@
             this.getName.Texts = "";
             this.getName.UnderlinedStyle = false;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(95, 36);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(109, 27);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Inventory";
+            // 
             // rjPictureRounded2
             // 
             this.rjPictureRounded2.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
@@ -263,6 +253,16 @@
             this.rjPictureRounded2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.rjPictureRounded2.TabIndex = 12;
             this.rjPictureRounded2.TabStop = false;
+            // 
+            // time
+            // 
+            this.time.AutoSize = true;
+            this.time.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.time.Location = new System.Drawing.Point(278, 96);
+            this.time.Name = "time";
+            this.time.Size = new System.Drawing.Size(103, 25);
+            this.time.TabIndex = 11;
+            this.time.Text = "Operation";
             // 
             // rjOperation
             // 

@@ -39,8 +39,10 @@
             this.rjPictureRounded4 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.rjPictureRounded6 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.label5 = new System.Windows.Forms.Label();
+            this.rjButtonSQL = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjButtonSQL)).BeginInit();
             this.SuspendLayout();
             // 
             // getContra
@@ -52,7 +54,7 @@
             this.getContra.BorderSize = 2;
             this.getContra.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getContra.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getContra.Location = new System.Drawing.Point(78, 136);
+            this.getContra.Location = new System.Drawing.Point(84, 214);
             this.getContra.Margin = new System.Windows.Forms.Padding(4);
             this.getContra.Multiline = false;
             this.getContra.Name = "getContra";
@@ -74,7 +76,7 @@
             this.getIdPed.BorderSize = 2;
             this.getIdPed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getIdPed.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getIdPed.Location = new System.Drawing.Point(78, 214);
+            this.getIdPed.Location = new System.Drawing.Point(84, 292);
             this.getIdPed.Margin = new System.Windows.Forms.Padding(4);
             this.getIdPed.Multiline = false;
             this.getIdPed.Name = "getIdPed";
@@ -96,7 +98,7 @@
             this.getNam.BorderSize = 2;
             this.getNam.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.getNam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.getNam.Location = new System.Drawing.Point(78, 293);
+            this.getNam.Location = new System.Drawing.Point(84, 371);
             this.getNam.Margin = new System.Windows.Forms.Padding(4);
             this.getNam.Multiline = false;
             this.getNam.Name = "getNam";
@@ -120,7 +122,7 @@
             this.rjPe.IconColor = System.Drawing.Color.MediumSlateBlue;
             this.rjPe.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.rjPe.ListTextColor = System.Drawing.Color.DimGray;
-            this.rjPe.Location = new System.Drawing.Point(202, 49);
+            this.rjPe.Location = new System.Drawing.Point(225, 105);
             this.rjPe.MinimumSize = new System.Drawing.Size(200, 30);
             this.rjPe.Name = "rjPe";
             this.rjPe.Padding = new System.Windows.Forms.Padding(1);
@@ -134,13 +136,14 @@
             this.rjAdd.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.rjAdd.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
             this.rjAdd.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjAdd.BorderRadius = 20;
+            this.rjAdd.BorderRadius = 15;
             this.rjAdd.BorderSize = 0;
+            this.rjAdd.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjAdd.FlatAppearance.BorderSize = 0;
             this.rjAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjAdd.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
             this.rjAdd.ForeColor = System.Drawing.Color.White;
-            this.rjAdd.Location = new System.Drawing.Point(255, 426);
+            this.rjAdd.Location = new System.Drawing.Point(291, 488);
             this.rjAdd.Name = "rjAdd";
             this.rjAdd.Size = new System.Drawing.Size(150, 40);
             this.rjAdd.TabIndex = 4;
@@ -154,14 +157,14 @@
             this.rjUpdate.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.rjUpdate.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
             this.rjUpdate.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjUpdate.BorderRadius = 20;
+            this.rjUpdate.BorderRadius = 15;
             this.rjUpdate.BorderSize = 0;
             this.rjUpdate.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjUpdate.FlatAppearance.BorderSize = 0;
             this.rjUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjUpdate.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
             this.rjUpdate.ForeColor = System.Drawing.Color.White;
-            this.rjUpdate.Location = new System.Drawing.Point(255, 426);
+            this.rjUpdate.Location = new System.Drawing.Point(291, 488);
             this.rjUpdate.Name = "rjUpdate";
             this.rjUpdate.Size = new System.Drawing.Size(150, 40);
             this.rjUpdate.TabIndex = 5;
@@ -175,14 +178,14 @@
             this.rjDelete.BackColor = System.Drawing.Color.MediumSlateBlue;
             this.rjDelete.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
             this.rjDelete.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.rjDelete.BorderRadius = 20;
+            this.rjDelete.BorderRadius = 15;
             this.rjDelete.BorderSize = 0;
             this.rjDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjDelete.FlatAppearance.BorderSize = 0;
             this.rjDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rjDelete.Font = new System.Drawing.Font("Microsoft YaHei UI", 9F, System.Drawing.FontStyle.Bold);
             this.rjDelete.ForeColor = System.Drawing.Color.White;
-            this.rjDelete.Location = new System.Drawing.Point(254, 426);
+            this.rjDelete.Location = new System.Drawing.Point(291, 488);
             this.rjDelete.Name = "rjDelete";
             this.rjDelete.Size = new System.Drawing.Size(150, 40);
             this.rjDelete.TabIndex = 6;
@@ -201,7 +204,7 @@
             this.rjPictureRounded4.BorderSize = 2;
             this.rjPictureRounded4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjPictureRounded4.GradientAngle = 50F;
-            this.rjPictureRounded4.Location = new System.Drawing.Point(397, 2);
+            this.rjPictureRounded4.Location = new System.Drawing.Point(427, 2);
             this.rjPictureRounded4.Name = "rjPictureRounded4";
             this.rjPictureRounded4.Size = new System.Drawing.Size(18, 18);
             this.rjPictureRounded4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -219,7 +222,7 @@
             this.rjPictureRounded6.BorderSize = 2;
             this.rjPictureRounded6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rjPictureRounded6.GradientAngle = 50F;
-            this.rjPictureRounded6.Location = new System.Drawing.Point(377, 2);
+            this.rjPictureRounded6.Location = new System.Drawing.Point(407, 2);
             this.rjPictureRounded6.Name = "rjPictureRounded6";
             this.rjPictureRounded6.Size = new System.Drawing.Size(18, 18);
             this.rjPictureRounded6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -230,18 +233,36 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("FZYaoTi", 19.8F, System.Drawing.FontStyle.Bold);
-            this.label5.Location = new System.Drawing.Point(5, 4);
+            this.label5.Font = new System.Drawing.Font("FZYaoTi", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.Location = new System.Drawing.Point(88, 25);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(159, 38);
+            this.label5.Size = new System.Drawing.Size(200, 32);
             this.label5.TabIndex = 30;
-            this.label5.Text = "PediProve";
+            this.label5.Text = "Supplier Orders";
+            // 
+            // rjButtonSQL
+            // 
+            this.rjButtonSQL.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.rjButtonSQL.BorderColor = System.Drawing.Color.RoyalBlue;
+            this.rjButtonSQL.BorderColor2 = System.Drawing.Color.HotPink;
+            this.rjButtonSQL.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.rjButtonSQL.BorderSize = 2;
+            this.rjButtonSQL.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rjButtonSQL.GradientAngle = 50F;
+            this.rjButtonSQL.Image = global::Palacio_el_restaurante.Properties.Resources.alimento;
+            this.rjButtonSQL.Location = new System.Drawing.Point(3, 4);
+            this.rjButtonSQL.Name = "rjButtonSQL";
+            this.rjButtonSQL.Size = new System.Drawing.Size(78, 78);
+            this.rjButtonSQL.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.rjButtonSQL.TabIndex = 31;
+            this.rjButtonSQL.TabStop = false;
             // 
             // PediProve
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(417, 478);
+            this.ClientSize = new System.Drawing.Size(448, 535);
+            this.Controls.Add(this.rjButtonSQL);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.rjPictureRounded6);
             this.Controls.Add(this.rjPictureRounded4);
@@ -258,6 +279,7 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PediProve_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.rjButtonSQL)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,5 +297,6 @@
         private Controls.RJPictureRounded rjPictureRounded4;
         private Controls.RJPictureRounded rjPictureRounded6;
         private System.Windows.Forms.Label label5;
+        internal Controls.RJPictureRounded rjButtonSQL;
     }
 }
