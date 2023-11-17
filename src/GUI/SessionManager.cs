@@ -102,4 +102,3 @@ namespace Palacio_el_restaurante.src.GUI
         }
     }
 }
-

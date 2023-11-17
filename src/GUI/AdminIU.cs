@@ -169,6 +169,12 @@ namespace Palacio_el_restaurante.src.GUI
             rjStaff.Items.Add("Personal masculino");
             rjStaff.Items.Add("Personal femenino");
 
+            rjTipo.Items.Clear();
+            rjTipo.Items.Add("Platillo fuerte");
+            rjTipo.Items.Add("Postre");
+            rjTipo.Items.Add("Bebida");
+            rjTipo.Items.Add("Entrada");
+
         }
         public void RefreshData()
         {
@@ -665,21 +671,6 @@ namespace Palacio_el_restaurante.src.GUI
             foodV();
         }
 
-        private void rjRefresh_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            try
-            {
-                Connection con = new Connection();
-                MySqlConnection connection = con.getConnection();
-                rjData.SetDatabaseConnection(connection);
-                rjData.ExecuteSqlQuery($"SELECT consumible WHERE clurp LIKE={rjRefresh.Texts};");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-
-        }
 
         private void rjJob_Click(object sender, EventArgs e)
         {
@@ -741,6 +732,30 @@ namespace Palacio_el_restaurante.src.GUI
             }
 
         }
+
+        private void rjTipo_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                rjDataInv.SetDatabaseConnection(connection);
+                String getTypeFilter = rjTipo.SelectedItem as String;
+                rjDataInv.ExecuteSqlQuery($"SELECT * FROM consumible WHERE tipo = '{getTypeFilter}';");
+
+            }
+            catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            sql();
+        }
+
         private void timer1_Tick(object sender, EventArgs e)
         {
             TimeSpan tiempoTranscurrido = stopwatch.Elapsed;

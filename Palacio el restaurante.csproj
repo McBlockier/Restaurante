@@ -685,6 +685,7 @@
     <None Include="src\Img\80%25.png" />
     <None Include="src\Img\alimento.gif" />
     <None Include="src\Img\bateria-llena.png" />
+    <None Include="src\Img\actualizar.png" />
     <Content Include="src\Img\chat.png" />
     <None Include="src\Img\contrasena.gif" />
     <None Include="src\Img\conexion.gif" />
