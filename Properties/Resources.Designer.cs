@@ -463,6 +463,16 @@ namespace Palacio_el_restaurante.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap configuracion {
+            get {
+                object obj = ResourceManager.GetObject("configuracion", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Consult_Off {
             get {
                 object obj = ResourceManager.GetObject("Consult_Off", resourceCulture);

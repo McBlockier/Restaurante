@@ -1,9 +1,11 @@
 ﻿using CustomMessageBox;
 using Microsoft.Win32;
 using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using Palacio_el_restaurante.src.Conection;
 using Palacio_el_restaurante.src.UI;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -22,9 +24,12 @@ namespace Palacio_el_restaurante.src.GUI
         private PediProve pedi;
         private String getUserName;
         private String cacheSQL = "";
+        public int countViews = 0;
+        private Settings settings;
         public String getRank { get; set; }
         private Stopwatch stopwatch = new Stopwatch();
         private int count = 0, countSQL = 0, countStaff = 0;
+        private Boolean Triggers, Additional;
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn
       (
@@ -56,8 +61,38 @@ namespace Palacio_el_restaurante.src.GUI
 
             timer2.Interval = 1000;
             showBattery.Visible = false;
+            rjR.Visible = false;
+            refresh.Visible = false;
 
         }
+
+        private void loadSettings()
+        {
+            try
+            {
+                if (File.Exists("settings.json"))
+                {
+                    string json = File.ReadAllText("settings.json");
+                    SettingsJSON settings = JsonConvert.DeserializeObject<SettingsJSON>(json);
+
+                    Additional = settings.Addi;
+                    Triggers = settings.Triggers;
+
+                }
+                else
+                {
+                    RJMessageBox.Show("Missing root file dependencies", "WARNING!",
+                        System.Windows.Forms.MessageBoxButtons.OK, System.Windows.Forms.MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
+                    System.Windows.Forms.MessageBoxIcon.Error);
+            }
+
+        }
+
         private void SystemEvents_PowerModeChanged(object sender, PowerModeChangedEventArgs e)
         {
             try
@@ -88,7 +123,7 @@ namespace Palacio_el_restaurante.src.GUI
                 {
                     int batteryPercentage = (int)(SystemInformation.PowerStatus.BatteryLifePercent * 100);
                     percent.Text = batteryPercentage.ToString() + "%";
-                    if(batteryPercentage >= 90)
+                    if (batteryPercentage >= 90)
                     {
                         showBattery.Image = Properties.Resources.bateria_llena;
                     }
@@ -175,6 +210,10 @@ namespace Palacio_el_restaurante.src.GUI
             rjTipo.Items.Add("Bebida");
             rjTipo.Items.Add("Entrada");
 
+            filterStaff.Items.Clear();
+            filterStaff.Items.Add("Jerarquía");
+            filterStaff.Items.Add("Nombre");
+
         }
         public void RefreshData()
         {
@@ -221,7 +260,7 @@ namespace Palacio_el_restaurante.src.GUI
             s2.Visible = false;
             s3.Visible = false;
             s4.Visible = false;
-
+            s5.Visible = false;
             panelSQL.Visible = true;
             panelinv.Visible = false;
             panelStaff.Visible = false;
@@ -234,6 +273,7 @@ namespace Palacio_el_restaurante.src.GUI
             s2.Visible = true;
             s3.Visible = false;
             s4.Visible = false;
+            s5.Visible = false;
 
             panelSQL.Visible = false;
             panelinv.Visible = true;
@@ -252,7 +292,7 @@ namespace Palacio_el_restaurante.src.GUI
             s2.Visible = false;
             s3.Visible = true;
             s4.Visible = false;
-
+            s5.Visible = false;
             panelSQL.Visible = false;
             panelinv.Visible = false;
             panelStaff.Visible = true;
@@ -280,11 +320,12 @@ namespace Palacio_el_restaurante.src.GUI
             s2.Visible = false;
             s3.Visible = false;
             s4.Visible = true;
+            s5.Visible = false;
             LoginFrame loginFrame = new LoginFrame();
             loginFrame.Show();
             this.Hide();
         }
-        
+
         private void Execute_Click(object sender, EventArgs e)
         {
             try
@@ -314,7 +355,7 @@ namespace Palacio_el_restaurante.src.GUI
                 string rutaArchivo = openFileDialog.FileName;
                 try
                 {
-                    Image imagenOriginal = Image.FromFile(rutaArchivo);
+                    System.Drawing.Image imagenOriginal = System.Drawing.Image.FromFile(rutaArchivo);
                     bool esTransparente = imagenOriginal is Bitmap && ((Bitmap)imagenOriginal).PixelFormat == PixelFormat.Format32bppArgb;
 
                     if (!esTransparente)
@@ -375,7 +416,7 @@ namespace Palacio_el_restaurante.src.GUI
                 }
             }
         }
-        private byte[] ImageToByteArray(Image imagen)
+        private byte[] ImageToByteArray(System.Drawing.Image imagen)
         {
             using (MemoryStream stream = new MemoryStream())
             {
@@ -383,7 +424,7 @@ namespace Palacio_el_restaurante.src.GUI
                 return stream.ToArray();
             }
         }
-        private Image RemoveWhiteBackground(Image imagen)
+        private System.Drawing.Image RemoveWhiteBackground(System.Drawing.Image imagen)
         {
             Bitmap bmp = new Bitmap(imagen);
             bmp.MakeTransparent(Color.White);
@@ -735,6 +776,7 @@ namespace Palacio_el_restaurante.src.GUI
 
         private void rjTipo_OnSelectedIndexChanged(object sender, EventArgs e)
         {
+            refresh.Visible = true;
             try
             {
                 Connection con = new Connection();
@@ -754,6 +796,218 @@ namespace Palacio_el_restaurante.src.GUI
         private void refresh_Click(object sender, EventArgs e)
         {
             sql();
+            refresh.Visible = false;
+        }
+
+        //Filtrador
+        private void rjComboBox1_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            rjR.Visible = true;
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                rjDataStaff.SetDatabaseConnection(connection);
+                String getTypeFilter = filterStaff.SelectedItem as String;
+                switch (getTypeFilter)
+                {
+                    case "Jerarquía":
+                        rjDataStaff.ExecuteSqlQuery("SELECT nombre, id_jerarquia FROM usuario;");
+                        break;
+                    case "Nombre":
+                        rjDataStaff.ExecuteSqlQuery("SELECT nombre FROM usuario;");
+                        break;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void rjR_Click(object sender, EventArgs e)
+        {
+            rjR.Visible = false;
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                rjDataStaff.SetDatabaseConnection(connection);
+                rjDataStaff.ExecuteSqlQuery("SELECT * FROM usuario;");
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+        }
+
+        //Busquedad personalizada
+
+        private void rjGetLooking_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void PerformEnterAction()
+        {
+            try
+            {
+                LookingFor lookingFor = new LookingFor();
+
+                String[] keyWords = { "consumible", "empleado", "imagenconsumible",
+                    "jerarquia", "pedidoprove", "proveedor", "usuario", "venta" };
+
+                String getLookingFor = rjGetLooking.Texts;
+
+                if (!string.IsNullOrEmpty(cacheSQL))
+                {
+                    foreach (var keyWord in keyWords)
+                    {
+                        if (cacheSQL.Contains(keyWord))
+                        {
+                            this.Invoke((MethodInvoker)async delegate
+                            {
+                                try
+                                {
+                                    switch (keyWord.ToLower())
+                                    {
+                                        case "consumible":
+
+                                            rjData.DataSource = null;
+                                            rjData.Rows.Clear();
+                                            List<Consumible> consumibles = await lookingFor.lookingConsumible(getLookingFor);
+
+                                            if (consumibles != null)
+                                            {
+                                                rjData.DataSource = consumibles;
+
+                                            }
+                                            break;
+                                        case "empleado":
+
+                                            rjData.DataSource = null;
+                                            rjData.Rows.Clear();
+                                            List<Empleado> empleados = await lookingFor.lookingEmpleado(getLookingFor);
+
+                                            if (empleados != null)
+                                            {
+                                                rjData.DataSource = empleados;
+
+                                            }
+                                            break;
+                                        case "usuario":
+                                            rjData.DataSource = null;
+                                            rjData.Rows.Clear();
+                                            List<Usuario> usuarios = await lookingFor.lookingUsuario(getLookingFor);
+
+                                            if (usuarios != null)
+                                            {
+                                                rjData.DataSource = usuarios;
+
+                                            }
+                                            break;
+                                        case "jerarquia":
+                                            rjData.DataSource = null;
+                                            rjData.Rows.Clear();
+                                            List<Jerarquia> jerarquia = await lookingFor.lookingJerarquia(getLookingFor);
+
+                                            if (jerarquia != null)
+                                            {
+                                                rjData.DataSource = jerarquia;
+
+                                            }
+                                            break;
+                                        case "venta":
+                                            rjData.DataSource = null;
+                                            rjData.Rows.Clear();
+                                            List<Venta> ventas = await lookingFor.lookingVenta(getLookingFor);
+
+                                            if (ventas != null)
+                                            {
+                                                rjData.DataSource = ventas;
+
+                                            }
+                                            break;
+                                        case "pedidoprove":
+                                            rjData.DataSource = null;
+                                            rjData.Rows.Clear();
+                                            List<PedidoProve> pedidos = await lookingFor.lookingPedidoProve(getLookingFor);
+
+                                            if (pedidos != null)
+                                            {
+                                                rjData.DataSource = pedidos;
+
+                                            }
+                                            break;
+                                        case "proveedor":
+                                            rjData.DataSource = null;
+                                            rjData.Rows.Clear();
+                                            List<Proveedor> proveedor = await lookingFor.lookingProveedor(getLookingFor);
+
+                                            if (proveedor != null)
+                                            {
+                                                rjData.DataSource = proveedor;
+
+                                            }
+                                            break;
+                                        default:
+                                            RJMessageBox.Show("No soportado -> " + keyWord.ToLower(), "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            break;
+                                    }
+                                }
+                                catch (Exception innerEx)
+                                {
+                                    Console.WriteLine(innerEx.Message);
+                                    RJMessageBox.Show(innerEx.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
+                            });
+
+                            break; // Romper el bucle si se encuentra una palabra clave
+                        }
+                    }
+                }
+                else
+                {
+                    RJMessageBox.Show("La cache está vacía ", "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
+        }
+
+        private void rjGetLooking_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+
+                PerformEnterAction();
+            }
+
+        }
+
+        private void rjPictureRounded1_Click_1(object sender, EventArgs e)
+        {
+            s1.Visible = false;
+            s2.Visible = false;
+            s3.Visible = false;
+            s4.Visible = false;
+            s5.Visible = true;
+
+            using (Settings settingsForm = new Settings())
+            {
+                if (settingsForm.ShowDialog() == DialogResult.OK)
+                {
+
+                }
+            }
         }
 
         private void timer1_Tick(object sender, EventArgs e)

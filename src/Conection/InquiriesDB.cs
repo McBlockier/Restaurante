@@ -1047,5 +1047,15 @@ namespace Palacio_el_restaurante.src.Conection
                 Console.WriteLine(ex.Message);
             }
         }
+
+
+        //Triggers
+
+
+
+
+        //Functions
+
+
     }
 }

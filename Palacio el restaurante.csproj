@@ -369,12 +369,16 @@
   <ItemGroup>
     <Compile Include="src\Conection\Conection.cs" />
     <Compile Include="src\Conection\InquiriesDB.cs" />
+    <Compile Include="src\Conection\LookingFor.cs" />
     <Compile Include="src\Conection\Persona.cs" />
     <Compile Include="src\Conection\Product.cs" />
     <Compile Include="src\Conection\SaleHistory.cs" />
     <Compile Include="src\Conection\SecureEncryptor.cs" />
     <Compile Include="src\Conection\Sale.cs" />
     <Compile Include="src\Controls\ModernCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="src\Controls\ToggleButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\GUI\FormM.cs">
@@ -494,6 +498,13 @@
     <Compile Include="src\GUI\RecordGUI.Designer.cs">
       <DependentUpon>RecordGUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\GUI\Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\GUI\Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\GUI\SettingsJSON.cs" />
     <Compile Include="src\GUI\UserGUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -555,6 +566,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\GUI\RecordGUI.resx">
       <DependentUpon>RecordGUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\GUI\Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\GUI\UserGUI.resx">
       <DependentUpon>UserGUI.cs</DependentUpon>
@@ -700,6 +714,7 @@
     <None Include="src\Img\desplazarse.gif" />
     <None Include="src\Img\Consult_Off.jpg" />
     <None Include="src\Img\desconocido.png" />
+    <None Include="src\Img\configuracion.png" />
     <Content Include="src\Img\error.png" />
     <None Include="src\Img\espaguetis.gif" />
     <None Include="src\Img\excel.png" />
