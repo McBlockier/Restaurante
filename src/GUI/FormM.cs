@@ -226,6 +226,23 @@ namespace Palacio_el_restaurante.src.GUI
             catch (Exception ex) { Console.WriteLine(ex.Message); }
         }
 
+        private void refresh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection = con.getConnection();
+                rjDataPe.SetDatabaseConnection(connection);
+                rjDataPe.ExecuteSqlQuery("SELECT * FROM pedidoprove");
+                cacheSQL = rjPe.GetAllText();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
         private void FormM_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left)

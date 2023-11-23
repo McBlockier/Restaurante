@@ -2,6 +2,7 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -69,7 +70,7 @@ namespace Palacio_el_restaurante.src.Conection
 
     public class LookingFor
     {
-        public async Task<List<Consumible>> lookingConsumible(string keyWord)
+        public async Task<List<Consumible>> BuscarConsumibles(string keyWord)
         {
             List<Consumible> consumibles = new List<Consumible>();
 
@@ -80,11 +81,12 @@ namespace Palacio_el_restaurante.src.Conection
                 {
                     await connection.OpenAsync();
 
-                    string query = "SELECT * FROM consumible WHERE nombre LIKE @keyword OR tipo LIKE @keyword OR descri LIKE @keyword";
+                    string storedProcedure = "BuscarConsumibles";
 
-                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    using (MySqlCommand cmd = new MySqlCommand(storedProcedure, connection))
                     {
-                        cmd.Parameters.AddWithValue("@keyword", "%" + keyWord + "%");
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@keyword", keyWord);
 
                         using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
                         {
@@ -110,10 +112,12 @@ namespace Palacio_el_restaurante.src.Conection
             catch (Exception ex)
             {
                 RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                Console.WriteLine("Error en la búsqueda: " + ex.Message);
+                Console.WriteLine("Error en la búsqueda de consumibles: " + ex.Message);
                 return null;
             }
         }
+
+
         public async Task<List<Empleado>> lookingEmpleado(string keyWord)
         {
             List<Empleado> empleados = new List<Empleado>();
@@ -160,10 +164,9 @@ namespace Palacio_el_restaurante.src.Conection
         }
 
 
-        public async Task<List<Usuario>> lookingUsuario(string keyWord)
+        public async Task<List<Usuario>> BuscarUsuarios(string keyWord)
         {
             List<Usuario> usuarios = new List<Usuario>();
-
             try
             {
                 Connection con = new Connection();
@@ -171,11 +174,12 @@ namespace Palacio_el_restaurante.src.Conection
                 {
                     await connection.OpenAsync();
 
-                    string query = "SELECT * FROM usuario WHERE idUser LIKE @keyword OR nombre LIKE @keyword OR lastNameP LIKE @keyword OR lastNameM LIKE @keyword";
+                    string storedProcedure = "BuscarUsuarios";
 
-                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    using (MySqlCommand cmd = new MySqlCommand(storedProcedure, connection))
                     {
-                        cmd.Parameters.AddWithValue("@keyword", "%" + keyWord + "%");
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@keyword", keyWord);
 
                         using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
                         {
@@ -211,7 +215,8 @@ namespace Palacio_el_restaurante.src.Conection
             }
         }
 
-        public async Task<List<Jerarquia>> lookingJerarquia(string keyWord)
+
+        public async Task<List<Jerarquia>> BuscarJerarquias(string keyWord)
         {
             List<Jerarquia> jerarquias = new List<Jerarquia>();
 
@@ -222,11 +227,12 @@ namespace Palacio_el_restaurante.src.Conection
                 {
                     await connection.OpenAsync();
 
-                    string query = "SELECT * FROM jerarquia WHERE nombre LIKE @keyword";
+                    string storedProcedure = "BuscarJerarquias";
 
-                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    using (MySqlCommand cmd = new MySqlCommand(storedProcedure, connection))
                     {
-                        cmd.Parameters.AddWithValue("@keyword", "%" + keyWord + "%");
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@keyword", keyWord);
 
                         using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
                         {
@@ -254,7 +260,8 @@ namespace Palacio_el_restaurante.src.Conection
             }
         }
 
-        public async Task<List<Venta>> lookingVenta(string keyWord)
+
+        public async Task<List<Venta>> BuscarVentas(string keyWord)
         {
             List<Venta> ventas = new List<Venta>();
 
@@ -265,11 +272,12 @@ namespace Palacio_el_restaurante.src.Conection
                 {
                     await connection.OpenAsync();
 
-                    string query = "SELECT * FROM venta WHERE idPlato LIKE @keyword OR Idemple LIKE @keyword";
+                    string storedProcedure = "BuscarVentas";
 
-                    using (MySqlCommand cmd = new MySqlCommand(query, connection))
+                    using (MySqlCommand cmd = new MySqlCommand(storedProcedure, connection))
                     {
-                        cmd.Parameters.AddWithValue("@keyword", "%" + keyWord + "%");
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@keyword", keyWord);
 
                         using (MySqlDataReader reader = (MySqlDataReader)await cmd.ExecuteReaderAsync())
                         {
@@ -300,6 +308,7 @@ namespace Palacio_el_restaurante.src.Conection
                 return null;
             }
         }
+
 
         public async Task<List<PedidoProve>> lookingPedidoProve(string keyWord)
         {
@@ -391,6 +400,39 @@ namespace Palacio_el_restaurante.src.Conection
                 return null;
             }
         }
+
+        public async Task<string> BuscarClurpConsumible(string nombre, string descripcion, float precio)
+        {
+            try
+            {
+                Connection con = new Connection();
+                using (MySqlConnection connection = con.getConnection())
+                {
+                    await connection.OpenAsync();
+
+                    string storedProcedure = "BuscarClurpConsumible";
+
+                    using (MySqlCommand cmd = new MySqlCommand(storedProcedure, connection))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@nombreConsumible", nombre);
+                        cmd.Parameters.AddWithValue("@descripcionConsumible", descripcion);
+                        cmd.Parameters.AddWithValue("@precioConsumible", precio);
+
+                        object result = await cmd.ExecuteScalarAsync();
+                        return result?.ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Error en la búsqueda del clurp del consumible: " + ex.Message);
+                return null;
+            }
+        }
+
+
 
 
 

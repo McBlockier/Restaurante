@@ -46,6 +46,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ExportToExcel = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.refresh = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.rjDataV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjDataPe)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).BeginInit();
@@ -54,6 +55,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExportToExcel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).BeginInit();
             this.SuspendLayout();
             // 
             // rjDataV
@@ -283,11 +285,24 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
+            // refresh
+            // 
+            this.refresh.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.refresh.Image = global::Palacio_el_restaurante.Properties.Resources.actualizar;
+            this.refresh.Location = new System.Drawing.Point(630, 304);
+            this.refresh.Name = "refresh";
+            this.refresh.Size = new System.Drawing.Size(32, 37);
+            this.refresh.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.refresh.TabIndex = 37;
+            this.refresh.TabStop = false;
+            this.refresh.Click += new System.EventHandler(this.refresh_Click);
+            // 
             // FormM
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1226, 707);
+            this.Controls.Add(this.refresh);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.ExportToExcel);
             this.Controls.Add(this.label2);
@@ -316,6 +331,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ExportToExcel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.refresh)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -339,5 +355,6 @@
         private System.Windows.Forms.Label label2;
         internal System.Windows.Forms.PictureBox ExportToExcel;
         internal System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox refresh;
     }
 }

@@ -628,27 +628,27 @@ namespace Palacio_el_restaurante.src.GUI
             {
                 case "Consumibles mas vendidos":
                     rjDataInv.SetDatabaseConnection(connection);
-                    rjDataInv.ExecuteSqlQuery("select consumible.clurp, consumible.nombre, venta.idPlato, venta.precio\r\nfrom consumible\r\ninner join venta\r\non consumible.clurp=venta.idPlato;");
+                    rjDataInv.ExecuteSqlQuery("CALL ObtenerConsumiblesMasVendidos();");
                     connection.Close();
                     break;
                 case "Precio promedio":
                     rjDataInv.SetDatabaseConnection(connection);
-                    rjDataInv.ExecuteSqlQuery("SELECT AVG(venta.precio) AS precio_promedio\r\nFROM venta;\r\n");
+                    rjDataInv.ExecuteSqlQuery("CALL ObtenerPrecioPromedio();");
                     connection.Close();
                     break;
                 case "Total de ventas de consumibles":
                     rjDataInv.SetDatabaseConnection(connection);
-                    rjDataInv.ExecuteSqlQuery("SELECT consumible.nombre, COUNT(venta.idVenta) AS total_ventas\r\nFROM consumible\r\nLEFT JOIN venta ON consumible.clurp = venta.idPlato\r\nGROUP BY consumible.nombre;\r\n");
+                    rjDataInv.ExecuteSqlQuery("CALL ObtenerTotalVentasConsumibles();");
                     connection.Close();
                     break;
                 case "Consumibles que no se han vendido":
                     rjDataInv.SetDatabaseConnection(connection);
-                    rjDataInv.ExecuteSqlQuery("SELECT consumible.clurp, consumible.nombre\r\nFROM consumible\r\nLEFT JOIN venta ON consumible.clurp = venta.idPlato\r\nWHERE venta.idPlato IS NULL;\r\n");
+                    rjDataInv.ExecuteSqlQuery("CALL ObtenerConsumiblesNoVendidos();");
                     connection.Close();
                     break;
                 case "Consumibles más caro":
                     rjDataInv.SetDatabaseConnection(connection);
-                    rjDataInv.ExecuteSqlQuery("SELECT c.tipo, MAX(c.precio) AS precio_mas_alto\r\nFROM consumible AS c\r\nGROUP BY c.tipo\r\nORDER BY precio_mas_alto DESC\r\nLIMIT 10;\r\n");
+                    rjDataInv.ExecuteSqlQuery("CALL ObtenerConsumiblesMasCaros();");
                     connection.Close();
                     break;
             }
@@ -662,17 +662,17 @@ namespace Palacio_el_restaurante.src.GUI
             {
                 case "Empleado del mes":
                     rjDataStaff.SetDatabaseConnection(connection);
-                    rjDataStaff.ExecuteSqlQuery("SELECT v.Idemple AS IdEmpleado, c.nombre AS NombrePlato, c.tipo AS TipoPlato, v.cantidad, (c.precio * v.cantidad) AS MontoGenerado\r\nFROM venta v, consumible c\r\nWHERE v.idPlato = c.clurp AND v.Idemple = (SELECT Idemple FROM venta GROUP BY Idemple ORDER BY SUM(cantidad) DESC LIMIT 1);");
+                    rjDataStaff.ExecuteSqlQuery("CALL obtener_empleado_del_mes();");
                     connection.Close();
                     break;
                 case "Ganacias generadas":
                     rjDataStaff.SetDatabaseConnection(connection);
-                    rjDataStaff.ExecuteSqlQuery("SELECT v.Idemple AS IdEmpleado, SUM(v.cantidad) AS TotalVentas, SUM(c.precio * v.cantidad) AS MontoTotalGenerado\r\nFROM venta v, consumible c\r\nWHERE v.idPlato = c.clurp\r\nGROUP BY v.Idemple;");
+                    rjDataStaff.ExecuteSqlQuery("CALL obtener_ganancias_generadas();");
                     connection.Close();
                     break;
                 case "Empleados con al menos 10 ventas de un tipo específico":
                     rjDataStaff.SetDatabaseConnection(connection);
-                    rjDataStaff.ExecuteSqlQuery("SELECT v.Idemple AS IdEmpleado, e.nombre AS NombreEmpleado, c.tipo AS TipoPlato, SUM(v.cantidad) AS TotalVentas\r\nFROM venta v, empleado e, consumible c\r\nWHERE v.Idemple = e.id AND v.idPlato = c.clurp\r\nGROUP BY Idemple, c.tipo\r\nHAVING SUM(v.cantidad) >= 10;");
+                    rjDataStaff.ExecuteSqlQuery("CALL obtener_empleados_ventas_tipo();");
                     connection.Close();
                     break;
                 case "Consumibles consumidos por empleado":
@@ -682,12 +682,12 @@ namespace Palacio_el_restaurante.src.GUI
                     break;
                 case "Personal masculino":
                     rjDataStaff.SetDatabaseConnection(connection);
-                    rjDataStaff.ExecuteSqlQuery("select * from empleado\r\n  where find_in_set('M',sexo)>0;");
+                    rjDataStaff.ExecuteSqlQuery("CALL obtener_personal_masculino();");
                     connection.Close();
                     break;
                 case "Personal femenino":
                     rjDataStaff.SetDatabaseConnection(connection);
-                    rjDataStaff.ExecuteSqlQuery("select * from empleado\r\n  where find_in_set('F',sexo)>0;");
+                    rjDataStaff.ExecuteSqlQuery("CALL obtener_personal_femenino();");
                     connection.Close();
                     break;
 
@@ -846,11 +846,6 @@ namespace Palacio_el_restaurante.src.GUI
 
         //Busquedad personalizada
 
-        private void rjGetLooking_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
         private void PerformEnterAction()
         {
             try
@@ -878,7 +873,7 @@ namespace Palacio_el_restaurante.src.GUI
 
                                             rjData.DataSource = null;
                                             rjData.Rows.Clear();
-                                            List<Consumible> consumibles = await lookingFor.lookingConsumible(getLookingFor);
+                                            List<Consumible> consumibles = await lookingFor.BuscarConsumibles(getLookingFor);
 
                                             if (consumibles != null)
                                             {
@@ -901,7 +896,7 @@ namespace Palacio_el_restaurante.src.GUI
                                         case "usuario":
                                             rjData.DataSource = null;
                                             rjData.Rows.Clear();
-                                            List<Usuario> usuarios = await lookingFor.lookingUsuario(getLookingFor);
+                                            List<Usuario> usuarios = await lookingFor.BuscarUsuarios(getLookingFor);
 
                                             if (usuarios != null)
                                             {
@@ -912,7 +907,7 @@ namespace Palacio_el_restaurante.src.GUI
                                         case "jerarquia":
                                             rjData.DataSource = null;
                                             rjData.Rows.Clear();
-                                            List<Jerarquia> jerarquia = await lookingFor.lookingJerarquia(getLookingFor);
+                                            List<Jerarquia> jerarquia = await lookingFor.BuscarJerarquias(getLookingFor);
 
                                             if (jerarquia != null)
                                             {
@@ -923,7 +918,7 @@ namespace Palacio_el_restaurante.src.GUI
                                         case "venta":
                                             rjData.DataSource = null;
                                             rjData.Rows.Clear();
-                                            List<Venta> ventas = await lookingFor.lookingVenta(getLookingFor);
+                                            List<Venta> ventas = await lookingFor.BuscarVentas(getLookingFor);
 
                                             if (ventas != null)
                                             {
@@ -965,7 +960,7 @@ namespace Palacio_el_restaurante.src.GUI
                                 }
                             });
 
-                            break; // Romper el bucle si se encuentra una palabra clave
+                            break;
                         }
                     }
                 }

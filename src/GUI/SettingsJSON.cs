@@ -14,5 +14,7 @@ namespace Palacio_el_restaurante.src.GUI
         public bool Addi { get; set; }
         public bool Triggers { get; set; }
         public Color SelectedColor { get; set; }
+        public String StyleFormat { get; set; }
+        public String Format {  get; set; }
     }
 }

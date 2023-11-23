@@ -36,6 +36,18 @@ namespace Palacio_el_restaurante.src.GUI
             this.FormBorderStyle = FormBorderStyle.None;
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 20, 20));
             loadSettings();
+            fillBoxes();
+        }
+        private void fillBoxes()
+        {
+            rjFormats.Items.Clear();
+            rjFormats.Items.Add("XLSX");
+            rjFormats.Items.Add("PDF");
+            rjFormats.Items.Add("DOCX");
+
+            rjStyle.Items.Clear();
+            rjStyle.Items.Add("Donut");
+            rjStyle.Items.Add("Table");
         }
         private void loadSettings()
         {
@@ -49,6 +61,8 @@ namespace Palacio_el_restaurante.src.GUI
                     getThread.Checked = settings.Thread;
                     getAddi.Checked = settings.Addi;
                     getTriggers.Checked = settings.Triggers;
+                    rjFormats.Texts = settings.Format;
+                    rjStyle.Texts = settings.StyleFormat;
 
                 }
                 else
@@ -83,7 +97,9 @@ namespace Palacio_el_restaurante.src.GUI
                 {
                     Thread = getThread.Checked,
                     Addi = getAddi.Checked,
-                    Triggers = getTriggers.Checked
+                    Triggers = getTriggers.Checked,
+                    StyleFormat = rjStyle.SelectedItem as String,
+                    Format = rjFormats.SelectedItem as String                   
                 };
 
                 string json = JsonConvert.SerializeObject(settings);

@@ -251,9 +251,9 @@
             this.panelinv.Controls.Add(this.rjInventory);
             this.panelinv.Controls.Add(this.rjDataInv);
             this.panelinv.Controls.Add(this.pictureBox2);
-            this.panelinv.Location = new System.Drawing.Point(752, 454);
+            this.panelinv.Location = new System.Drawing.Point(109, 25);
             this.panelinv.Name = "panelinv";
-            this.panelinv.Size = new System.Drawing.Size(258, 248);
+            this.panelinv.Size = new System.Drawing.Size(901, 677);
             this.panelinv.TabIndex = 4;
             this.panelinv.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelinv_MouseMove);
             // 
@@ -476,9 +476,9 @@
             this.panelStaff.Controls.Add(this.rjStaff);
             this.panelStaff.Controls.Add(this.rjDataStaff);
             this.panelStaff.Controls.Add(this.pictureBox3);
-            this.panelStaff.Location = new System.Drawing.Point(721, 437);
+            this.panelStaff.Location = new System.Drawing.Point(109, 27);
             this.panelStaff.Name = "panelStaff";
-            this.panelStaff.Size = new System.Drawing.Size(292, 265);
+            this.panelStaff.Size = new System.Drawing.Size(904, 675);
             this.panelStaff.TabIndex = 5;
             this.panelStaff.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelStaff_MouseMove_1);
             // 
@@ -688,7 +688,6 @@
             this.rjGetLooking.TabIndex = 26;
             this.rjGetLooking.Texts = "";
             this.rjGetLooking.UnderlinedStyle = false;
-            this.rjGetLooking.KeyDown += new System.Windows.Forms.KeyEventHandler(this.rjGetLooking_KeyDown);
             this.rjGetLooking.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.rjGetLooking_KeyPress);
             // 
             // pictureBox7

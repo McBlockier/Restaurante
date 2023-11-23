@@ -42,6 +42,12 @@
             this.rjPictureRounded4 = new Palacio_el_restaurante.src.Controls.RJPictureRounded();
             this.rjButton1 = new Palacio_el_restaurante.src.Controls.RJButton();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.rjFormats = new Palacio_el_restaurante.src.Controls.RJComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.rjStyle = new Palacio_el_restaurante.src.Controls.RJComboBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.toggleButton1 = new Palacio_el_restaurante.src.Controls.ToggleButton();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rjPictureRounded4)).BeginInit();
@@ -50,6 +56,12 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.toggleButton1);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.rjStyle);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.rjFormats);
             this.panel1.Controls.Add(this.rjButton_Save);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label3);
@@ -230,6 +242,94 @@
             this.rjButton1.UseVisualStyleBackColor = false;
             this.rjButton1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.rjButton1_MouseMove);
             // 
+            // rjFormats
+            // 
+            this.rjFormats.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rjFormats.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjFormats.BorderSize = 1;
+            this.rjFormats.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.rjFormats.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.rjFormats.ForeColor = System.Drawing.Color.DimGray;
+            this.rjFormats.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjFormats.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.rjFormats.ListTextColor = System.Drawing.Color.DimGray;
+            this.rjFormats.Location = new System.Drawing.Point(455, 47);
+            this.rjFormats.MinimumSize = new System.Drawing.Size(200, 30);
+            this.rjFormats.Name = "rjFormats";
+            this.rjFormats.Padding = new System.Windows.Forms.Padding(1);
+            this.rjFormats.Size = new System.Drawing.Size(200, 30);
+            this.rjFormats.TabIndex = 13;
+            this.rjFormats.Texts = "";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("FZYaoTi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(457, 21);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(174, 23);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Formats Summary";
+            // 
+            // rjStyle
+            // 
+            this.rjStyle.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.rjStyle.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjStyle.BorderSize = 1;
+            this.rjStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.rjStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.rjStyle.ForeColor = System.Drawing.Color.DimGray;
+            this.rjStyle.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.rjStyle.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.rjStyle.ListTextColor = System.Drawing.Color.DimGray;
+            this.rjStyle.Location = new System.Drawing.Point(455, 136);
+            this.rjStyle.MinimumSize = new System.Drawing.Size(200, 30);
+            this.rjStyle.Name = "rjStyle";
+            this.rjStyle.Padding = new System.Windows.Forms.Padding(1);
+            this.rjStyle.Size = new System.Drawing.Size(200, 30);
+            this.rjStyle.TabIndex = 15;
+            this.rjStyle.Texts = "";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("FZYaoTi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(457, 110);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(64, 23);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "Styles";
+            // 
+            // toggleButton1
+            // 
+            this.toggleButton1.AutoSize = true;
+            this.toggleButton1.Location = new System.Drawing.Point(40, 267);
+            this.toggleButton1.MinimumSize = new System.Drawing.Size(45, 22);
+            this.toggleButton1.Name = "toggleButton1";
+            this.toggleButton1.OffBackColor = System.Drawing.Color.Gray;
+            this.toggleButton1.OffToggleColor = System.Drawing.Color.Gainsboro;
+            this.toggleButton1.OnBackColor = System.Drawing.Color.MediumSlateBlue;
+            this.toggleButton1.OnToggleColor = System.Drawing.Color.WhiteSmoke;
+            this.toggleButton1.Size = new System.Drawing.Size(45, 22);
+            this.toggleButton1.TabIndex = 17;
+            this.toggleButton1.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("FZYaoTi", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(107, 267);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 23);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "Additional";
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -270,5 +370,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ColorDialog colorDialog1;
         private Controls.RJButton rjButton_Save;
+        private System.Windows.Forms.Label label5;
+        private Controls.RJComboBox rjFormats;
+        private System.Windows.Forms.Label label6;
+        private Controls.RJComboBox rjStyle;
+        private System.Windows.Forms.Label label7;
+        private Controls.ToggleButton toggleButton1;
     }
 }
