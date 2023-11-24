@@ -3,8 +3,10 @@ using MySql.Data.MySqlClient;
 using Palacio_el_restaurante.src.Conection;
 using Palacio_el_restaurante.src.Controls;
 using System;
+using System.Linq.Expressions;
 using System.Runtime.InteropServices;
 using System.Threading;
+using System.Web.Services.Protocols;
 using System.Windows.Forms;
 
 namespace Palacio_el_restaurante.src.GUI
@@ -129,106 +131,61 @@ namespace Palacio_el_restaurante.src.GUI
         //Actualizar
         private async void rjUpdate_Click(object sender, EventArgs e)
         {
-            DialogResult result = RJMessageBox.Show("Be sure to do this operation, the changes cannot be reversed?", "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (result.Equals(DialogResult.Yes))
+            try
             {
-                InquiriesDB DB = new InquiriesDB();
+                DialogResult result = RJMessageBox.Show("Be sure to do this operation, the changes cannot be reversed?", "QUESTION", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (String.IsNullOrEmpty(ValorDeCelda0))
+                if (result.Equals(DialogResult.Yes))
                 {
-                    RJMessageBox.Show("You must enter a valid CLURP or one that exists in the database", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                else
-                {
-                    LookingFor looking = new LookingFor();
-                    // Obtener el clurp del consumible
-                    string clurp = await looking.BuscarClurpConsumible(getName.Texts, getDescription.Texts, float.Parse(getPrice.Texts));
+                    InquiriesDB DB = new InquiriesDB();
 
-                    if (!String.IsNullOrEmpty(clurp))
+                    if (String.IsNullOrEmpty(ValorDeCelda0))
                     {
-                        // El consumible existe, puedes continuar con la actualización
-                        if (DB.existProduct(int.Parse(ValorDeCelda0)))
-                        {
-                            if (!String.IsNullOrEmpty(getName.Texts) && !String.IsNullOrEmpty(ValorDeCelda0)
-                                && !String.IsNullOrEmpty(getDescription.Texts) && !String.IsNullOrEmpty(getPrice.Texts)
-                                && !String.IsNullOrEmpty(rjType.SelectedItem as String))
-                            {
-                                RJMessageBox.Show("The CLURP cannot be updated, it is unique and cannot be modified.", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                                Product producto = new Product();
-                                producto.Clurp = int.Parse(ValorDeCelda0);
-                                producto.Name = getName.Texts;
-                                producto.Description = getDescription.Texts;
-                                producto.Price = float.Parse(getPrice.Texts);
-                                producto.Type = rjType.SelectedItem as String;
-
-                                if (DB.updateProduct(producto))
-                                {
-                                    RJMessageBox.Show("The consumable was successfully updated", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    clearFiels();
-                                    ProductChanged?.Invoke();
-                                }
-                                else
-                                {
-                                    RJMessageBox.Show("The consumable was not updated correctly", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                                }
-                            }
-                            else
-                            {
-                                if (!String.IsNullOrEmpty(clurp) && DB.existProduct(int.Parse(ValorDeCelda0)))
-                                {
-                                    Product producto = new Product();
-                                    producto.Clurp = int.Parse(ValorDeCelda0);
-
-                                    if (!String.IsNullOrEmpty(getName.Texts))
-                                    {
-                                        producto.Name = getName.Texts;
-                                    }
-
-                                    if (!String.IsNullOrEmpty(getPrice.Texts))
-                                    {
-                                        producto.Price = float.Parse(getPrice.Texts);
-                                    }
-
-                                    if (!String.IsNullOrEmpty(getDescription.Texts))
-                                    {
-                                        producto.Description = getDescription.Texts;
-                                    }
-
-                                    if (!String.IsNullOrEmpty(rjType.SelectedItem as String))
-                                    {
-                                        producto.Type = rjType.SelectedItem as String;
-                                    }
-
-                                    if (DB.updateProduct(producto))
-                                    {
-                                        RJMessageBox.Show("The consumable was successfully updated", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        clearFiels();
-                                        ProductChanged?.Invoke();
-                                    }
-                                    else
-                                    {
-                                        RJMessageBox.Show("The consumable wasn't successfully updated", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                        clearFiels();
-                                    }
-                                }
-                                else
-                                {
-                                    RJMessageBox.Show("You must enter a valid CLURP or one that exists in the database", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            RJMessageBox.Show("CLURP not that exists in the database", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
+                        RJMessageBox.Show("You must enter a valid CLURP or one that exists in the database", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        RJMessageBox.Show("The consumable does not exist in the database", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                        LookingFor looking = new LookingFor();
+                        // Obtener el clurp del consumible
+                        string clurp = await looking.BuscarClurpConsumible(getName.Texts, getDescription.Texts, float.Parse(getPrice.Texts));
+
+                        Product producto = new Product();
+                        producto.Clurp = int.Parse(ValorDeCelda0);
+
+                        // Asignar null a los campos que no se desean actualizar
+                        producto.Name = String.IsNullOrEmpty(getName.Texts) ? null : getName.Texts;
+                        producto.Description = String.IsNullOrEmpty(getDescription.Texts) ? null : getDescription.Texts;
+                        producto.Type = String.IsNullOrEmpty(rjType.SelectedItem as String) ? null : rjType.SelectedItem as String;
+
+                        float precio;                      
+                        if (float.TryParse(getPrice.Texts, out precio))
+                        {
+                            producto.Price = precio;
+                        }
+                        else
+                        {
+                            producto.Price = DB.getPriceProduct(ValorDeCelda0);
+                        }
+
+                        if (DB.updateProduct(producto))
+                        {
+                            RJMessageBox.Show("The consumable was successfully updated", "INFORMATION", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            clearFiels();
+                            ProductChanged?.Invoke();
+                        }
+                        else
+                        {
+                            RJMessageBox.Show("The consumable was not updated correctly", "WARNING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    
                     }
                 }
+                 }catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

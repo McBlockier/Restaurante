@@ -2,8 +2,10 @@
 using IronXL;
 using MathNet.Numerics.LinearAlgebra;
 using MySql.Data.MySqlClient;
+using NPOI.SS.Formula.Functions;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
+using Palacio_el_restaurante.src.Conection;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -12,6 +14,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace Palacio_el_restaurante.src.Conection
 {
@@ -250,7 +253,7 @@ namespace Palacio_el_restaurante.src.Conection
            
         }
 
-        public int getRank(String username)
+        public int getRank(string username)
         {
             int rank = 0;
             try
@@ -258,55 +261,52 @@ namespace Palacio_el_restaurante.src.Conection
                 Connection connection = new Connection();
                 MySqlConnection con = connection.getConnection();
                 con.Open();
-                String SQL = "SELECT id_jerarquia FROM usuario WHERE idUser LIKE @idUser";
+
+                // Utiliza el nombre de la función almacenada en lugar de la consulta directa
+                String SQL = "SELECT GetRankByUsername(@idUser)";
                 MySqlCommand command = new MySqlCommand(SQL, con);
                 command.Parameters.AddWithValue("@idUser", username);
-                MySqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
-                {
-                    rank = (int)reader["id_jerarquia"];
-                    con.Close();
-                }
 
+                // Especifica que estás ejecutando una función escalar
+                rank = Convert.ToInt32(command.ExecuteScalar());
+
+                con.Close();
             }
             catch (Exception ex)
             {
-                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                  System.Windows.Forms.MessageBoxIcon.Error);
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return rank;
         }
 
-        public int GetClurp()
+
+        public string GetClurp()
         {
-            int newClurp = 0;
-          try {
-            
+            string newClurp = "000";
+            try
+            {
                 Connection connection = new Connection();
                 MySqlConnection con = connection.getConnection();
                 con.Open();
-                string SQL = "SELECT LPAD(CONVERT(clurp, SIGNED) + 1, 3, '0') AS new_clurp " +
-                         "FROM consumible " +
-                         "ORDER BY CONVERT(clurp, SIGNED) DESC " +
-                         "LIMIT 1";
+
+                // Utiliza el nombre de la función almacenada en lugar de la consulta directa
+                string SQL = "SELECT GetNextClurp()";
                 using (MySqlCommand cmd = new MySqlCommand(SQL, con))
                 {
-                    newClurp = Convert.ToInt32(cmd.ExecuteScalar());
+                    newClurp = cmd.ExecuteScalar().ToString();
                     return newClurp;
-                }               
+                }
             }
             catch (Exception ex)
             {
-                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                  System.Windows.Forms.MessageBoxIcon.Error);
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return newClurp;
         }
 
+
         public Boolean valueLogin(String username, String password)
         {
-            SecureEncryptor encrypt = new SecureEncryptor(password);
-            string getPassword = SecureEncryptor.EncryptPassword(password);
             try
             {
                 Connection connection = new Connection();
@@ -338,6 +338,7 @@ namespace Palacio_el_restaurante.src.Conection
             }
             return value;
         }
+
         public Boolean uploadImage(object nameProduct, byte[] image)
         {
             try
@@ -406,58 +407,72 @@ namespace Palacio_el_restaurante.src.Conection
             try
             {
                 Connection con = new Connection();
-                MySqlConnection connection = con.getConnection();
-                connection.Open();
-                String SQL = "SELECT image FROM imagenconsumible WHERE nombreConsumible LIKE @nombreConsumible";
-                MySqlCommand command = new MySqlCommand(SQL, connection);
-                command.Parameters.AddWithValue("@nombreConsumible", nameProduct.ToString());
-                int i = command.ExecuteNonQuery();
-                if (i != 1)
+                MySqlConnection connection1 = con.getConnection();
+                using (MySqlConnection connection = connection1)
                 {
-                    value = false;
-                }
-                else
-                {
-                    value = true;
+                    connection.Open();
+                    string SQL = "SELECT ImageExists(@nombreConsumible)";
+
+                    using (MySqlCommand command = new MySqlCommand(SQL, connection))
+                    {
+                        command.Parameters.AddWithValue("@nombreConsumible", nameProduct);
+                        return (Boolean)command.ExecuteScalar();
+                    }
                 }
             }
             catch (Exception ex)
             {
-                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                    System.Windows.Forms.MessageBoxIcon.Error);
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return value;
+
+            return false;
         }
-        public Boolean deleteProduct(String clurp)
+        public Boolean deleteProduct(string clurp)
         {
+            Connection con = new Connection();
+            MySqlConnection connection = con.getConnection();
+            connection.Open();
+            MySqlCommand command;
+
             try
             {
-                Connection con = new Connection();
-                MySqlConnection connection = con.getConnection();
-                connection.Open();
-                String SQL = "DELETE FROM consumible WHERE clurp LIKE @clurp";
-                MySqlCommand command = new MySqlCommand(SQL, connection);
-                command.Parameters.AddWithValue("@clurp", clurp);
-                int i = command.ExecuteNonQuery();
-                if (i != 1)
+                string storedProcedureName = "CRUDConsumibles";
+                command = new MySqlCommand(storedProcedureName, connection);
+                command.CommandType = CommandType.StoredProcedure;
+
+                // Parámetros del procedimiento almacenado
+                command.Parameters.AddWithValue("@mode", "D"); // Modo de eliminación
+                command.Parameters.AddWithValue("@clurpParam", clurp);
+                //Valores predeterminados para los demas
+                command.Parameters.AddWithValue("@nombreParam", "");
+                command.Parameters.AddWithValue("@tipoParam", "");
+                command.Parameters.AddWithValue("@precioParam", 0);
+                command.Parameters.AddWithValue("@descriParam", "");
+
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected != 1)
                 {
+                    // No se eliminó ninguna fila o se eliminaron más de una fila (lo cual no debería suceder)
                     value = false;
-                    connection.Close();
                 }
                 else
                 {
+                    // Eliminación exitosa
                     value = true;
-                    connection.Close();
                 }
 
+                connection.Close();
             }
             catch (Exception ex)
             {
-                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                    System.Windows.Forms.MessageBoxIcon.Error);
+                Console.WriteLine(ex.Message);
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             return value;
         }
+
 
         public String[] infoProduct(String clurp)
         {
@@ -502,12 +517,12 @@ namespace Palacio_el_restaurante.src.Conection
                 Connection con = new Connection();
                 MySqlConnection connection = con.getConnection();
                 connection.Open();
-                string SQL = "SELECT COUNT(*) FROM consumible WHERE clurp = @clurp";
+                string SQL = "SELECT existe_producto(@clurp)";
                 MySqlCommand command = new MySqlCommand(SQL, connection);
-                command.Parameters.AddWithValue("@clurp", Clurp.ToString());
+                command.Parameters.AddWithValue("@clurp", Clurp);
 
-                int count = Convert.ToInt32(command.ExecuteScalar());
-                value = count > 0;
+                bool exists = Convert.ToBoolean(command.ExecuteScalar());
+                value = exists;
                 connection.Close();
             }
             catch (Exception ex)
@@ -520,197 +535,170 @@ namespace Palacio_el_restaurante.src.Conection
 
         public String[] searchInfoUser(String username)
         {
-            String[] getInfo = new String[9];
+            string[] getInfo = new string[9];
+
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection1 = con.getConnection();
+                using (MySqlConnection connection = connection1)
+                {
+                    connection.Open();
+
+                    using (MySqlCommand command = new MySqlCommand("buscar_informacion_usuario", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@p_username", username);
+
+                        using (MySqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                getInfo[0] = reader["v_nombre"].ToString();
+                                getInfo[1] = reader["v_apellido_paterno"].ToString();
+                                getInfo[2] = reader["v_apellido_materno"].ToString();
+                                getInfo[3] = reader["v_password"].ToString();
+                                getInfo[4] = reader["v_id_jerarquia"].ToString();
+                                getInfo[5] = reader["v_street1"].ToString();
+                                getInfo[6] = reader["v_street2"].ToString();
+                                getInfo[7] = reader["v_locacion"].ToString();
+                                getInfo[8] = reader["v_telefono"].ToString();
+                            }
+                            else
+                            {
+                                // Puedes manejar el caso donde no se encontraron resultados
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar la excepción según tus necesidades
+                Console.WriteLine(ex.Message);
+            }
+
+            return getInfo;
+        }
+
+
+        public Boolean updateProduct(Product producto)
+        {
+            try
+            {
+                Connection con = new Connection();
+                MySqlConnection connection1 = con.getConnection();
+                using (MySqlConnection connection = connection1)
+                {
+                    connection.Open();
+
+                    using (MySqlCommand command = new MySqlCommand("CRUDConsumibles", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        // Parámetros del procedimiento almacenado
+                        command.Parameters.AddWithValue("@mode", "U"); // Modo de actualización
+                        command.Parameters.AddWithValue("@clurpParam", producto.Clurp);
+                        command.Parameters.AddWithValue("@nombreParam", producto.Name);
+                        command.Parameters.AddWithValue("@tipoParam", producto.Type);
+                        command.Parameters.AddWithValue("@precioParam", producto.Price);
+                        command.Parameters.AddWithValue("@descriParam", producto.Description);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+
+                        if (rowsAffected == 1)
+                        {
+                            // No se actualizó ninguna fila o se actualizaron más de una fila (lo cual no debería suceder)
+                            return true;
+                        }
+                    }
+                }
+
+                // Si llegamos aquí, algo salió mal
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        public float getPriceProduct(string clurp)
+        {
+            float precio = 0;
+
             try
             {
                 Connection con = new Connection();
                 MySqlConnection connection = con.getConnection();
                 connection.Open();
-                String SQL = "SELECT * FROM usuario WHERE idUser LIKE @idUser";
-                MySqlCommand command = new MySqlCommand(SQL, connection);
-                command.Parameters.AddWithValue("@idUser", username);
-                MySqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
-                {
-                    getInfo[0] = reader["nombre"].ToString();
-                    getInfo[1] = reader["lastNameP"].ToString();
-                    getInfo[2] = reader["lastNameM"].ToString();
-                    getInfo[3] = reader["password"].ToString();
-                    getInfo[4] = reader["id_jerarquia"].ToString();
-                    getInfo[5] = reader["street1"].ToString();
-                    getInfo[6] = reader["street2"].ToString();
-                    getInfo[7] = reader["locacion"].ToString();
-                    getInfo[8] = reader["telefono"].ToString();
-                }
-                else
-                {
-                    if (count == 0)
-                    {
-                        RJMessageBox.Show("The infor of username aren't exists in the data base",
-                                      "INFORMATION!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        count++;
-                    }
-                }
-                connection.Close();
 
+                // Llamar a la función almacenada para obtener el precio
+                string storedProcedureName = "ObtenerPrecioPorClurp";
+                MySqlCommand command = new MySqlCommand(storedProcedureName, connection);
+                command.CommandType = CommandType.StoredProcedure;
+                command.Parameters.AddWithValue("@clurpParam", clurp);
+
+                // Obtener el resultado de la función
+                precio = Convert.ToSingle(command.ExecuteScalar());
+
+                connection.Close();
             }
             catch (Exception ex)
             {
-                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                   System.Windows.Forms.MessageBoxIcon.Error);
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return getInfo;
+
+            return precio;
         }
-        public Boolean updateProduct(Product producto)
+
+
+        public Boolean addProduct(Product producto)
         {
             Connection con = new Connection();
             MySqlConnection connection = con.getConnection();
             connection.Open();
-            String SQL = "";
             MySqlCommand command;
+
             try
             {
+                string storedProcedureName = "CRUDConsumibles";
+                command = new MySqlCommand(storedProcedureName, connection);
+                command.CommandType = CommandType.StoredProcedure;
 
-                if (!String.IsNullOrEmpty(producto.Name) && !String.IsNullOrEmpty(producto.Description)
-                        && !String.IsNullOrEmpty(producto.Price.ToString()) && !String.IsNullOrEmpty(producto.Type))
-                {
-                    SQL = "UPDATE consumible SET nombre=@nombre, tipo=@tipo, precio=@precio, descri=@descri WHERE clurp LIKE @clurp";
-                    MySqlCommand command2 = new MySqlCommand(SQL, connection);
-                    command2.Parameters.AddWithValue("@clurp", producto.Clurp);
-                    command2.Parameters.AddWithValue("@nombre", producto.Name);
-                    command2.Parameters.AddWithValue("@tipo", producto.Type);
-                    command2.Parameters.AddWithValue("@precio", producto.Price);
-                    command2.Parameters.AddWithValue("@descri", producto.Description);
-                    int j = command2.ExecuteNonQuery();
-                    if (j > 0)
-                    {
-                        value = true;
-                        connection.Close();
-                    }
-                    else
-                    {
-                        value = false;
-                        connection.Close();
-                    }
-                }
-                else
-                {
-                    if (!String.IsNullOrEmpty(producto.Name))
-                    {
-                        SQL = "UPDATE consumible SET nombre=@nombre WHERE clurp LIKE @clurp";
-                        command = new MySqlCommand(SQL, connection);
-                        command.Parameters.AddWithValue("@clurp", producto.Clurp);
-                        command.Parameters.AddWithValue("@nombre", producto.Name);
-                        int i = command.ExecuteNonQuery();
-                        if (i > 0)
-                        {
-                            value = true;
-                            connection.Close();
-                        }
-                        else
-                        {
-                            value = false;
-                            connection.Close();
-                        }
-                    }
-                    else if (!String.IsNullOrEmpty(producto.Description))
-                    {
-                        SQL = "UPDATE consumible SET descri=@descri WHERE clurp LIKE @clurp ";
-                        command = new MySqlCommand(SQL, connection);
-                        command.Parameters.AddWithValue("@clurp", producto.Clurp);
-                        command.Parameters.AddWithValue("@descri", producto.Description);
-                        int i = command.ExecuteNonQuery();
-                        if (i > 0)
-                        {
-                            value = true;
-                            connection.Close();
-                        }
-                        else
-                        {
-                            value = false;
-                            connection.Close();
-                        }
-                    }
-                    else if (!String.IsNullOrEmpty(producto.Price.ToString()))
-                    {
-                        SQL = "UPDATE consumible SET precio=@precio WHERE clurp LIKE @clurp";
-                        command = new MySqlCommand(SQL, connection);
-                        command.Parameters.AddWithValue("@clurp", producto.Clurp);
-                        command.Parameters.AddWithValue("@precio", producto.Price);
-                        int i = command.ExecuteNonQuery();
-                        if (i > 0)
-                        {
-                            value = true;
-                            connection.Close();
-                        }
-                        else
-                        {
-                            value = false;
-                            connection.Close();
-                        }
-                    }
-                    else if (!String.IsNullOrEmpty(producto.Type))
-                    {
-                        SQL = "UPDATE consumible SET tipo=@tipo WHERE clurp LIKE @clurp";
-                        command = new MySqlCommand(SQL, connection);
-                        command.Parameters.AddWithValue("@clurp", producto.Clurp);
-                        command.Parameters.AddWithValue("@tipo", producto.Type);
-                        int i = command.ExecuteNonQuery();
-                        if (i > 0)
-                        {
-                            value = true;
-                            connection.Close();
-                        }
-                        else
-                        {
-                            value = false;
-                            connection.Close();
-                        }
-                    }
-                }
+                // Parámetros del procedimiento almacenado
+                command.Parameters.AddWithValue("@mode", "C"); // Modo de creación
+                command.Parameters.AddWithValue("@clurpParam", producto.Clurp);
+                command.Parameters.AddWithValue("@nombreParam", producto.Name);
+                command.Parameters.AddWithValue("@tipoParam", producto.Type);
+                command.Parameters.AddWithValue("@precioParam", producto.Price);
+                command.Parameters.AddWithValue("@descriParam", producto.Description);
 
-            }
-            catch (Exception ex)
-            {
-                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                  System.Windows.Forms.MessageBoxIcon.Error);
-            }
-            return value;
-        }
-        public Boolean addProduct(Product producto)
-        {
-            try
-            {
-                Connection con = new Connection();
-                MySqlConnection connection = con.getConnection();
-                connection.Open();
-                String SQL = "INSERT INTO consumible(clurp, nombre, tipo, precio, descri) " +
-                    "VALUES(@clurp, @nombre, @tipo, @precio, @descri)";
-                MySqlCommand command = new MySqlCommand(SQL, connection);
-                command.Parameters.AddWithValue("@clurp", producto.Clurp);
-                command.Parameters.AddWithValue("@nombre", producto.Name);
-                command.Parameters.AddWithValue("@tipo", producto.Type);
-                command.Parameters.AddWithValue("@precio", producto.Price);
-                command.Parameters.AddWithValue("@descri", producto.Description);
-                int i = command.ExecuteNonQuery();
-                if (i != 1)
+                int rowsAffected = command.ExecuteNonQuery();
+
+                if (rowsAffected != 1)
                 {
+                    // No se creó ninguna fila o se crearon más de una fila (lo cual no debería suceder)
                     value = false;
-                    connection.Close();
                 }
                 else
                 {
+                    // Creación exitosa
                     value = true;
-                    connection.Close();
                 }
+
+                connection.Close();
             }
             catch (Exception ex)
             {
-                RJMessageBox.Show(ex.Message, "ERROR!", System.Windows.Forms.MessageBoxButtons.OK,
-                    System.Windows.Forms.MessageBoxIcon.Error);
+                RJMessageBox.Show(ex.Message, "ERROR!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
             return value;
         }
+
 
         public Boolean updateImage(object nameProduct, byte[] newImage)
         {
@@ -1047,15 +1035,5 @@ namespace Palacio_el_restaurante.src.Conection
                 Console.WriteLine(ex.Message);
             }
         }
-
-
-        //Triggers
-
-
-
-
-        //Functions
-
-
     }
 }
